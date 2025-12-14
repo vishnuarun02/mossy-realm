@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - All Explored Palettes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0d0d0d;
+      color: #fff;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #90ee90;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    .palette-section {
+      max-width: 1200px;
+      margin: 0 auto 50px auto;
+      padding: 25px;
+      border-radius: 12px;
+      border: 2px solid #333;
+    }
+
+    .palette-section.chosen {
+      border-color: #90ee90;
+      background: rgba(144, 238, 144, 0.05);
+    }
+
+    .palette-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .palette-header h2 {
+      font-size: 20px;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .badge-chosen {
+      background: #90ee90;
+      color: #0d0d0d;
+    }
+
+    .badge-explored {
+      background: #444;
+      color: #aaa;
+    }
+
+    .palette-desc {
+      color: #888;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .colors-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .color-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .color-box {
+      width: 60px;
+      height: 40px;
+      border-radius: 6px;
+      border: 2px solid #444;
+    }
+
+    .color-label {
+      font-size: 9px;
+      color: #666;
+    }
+
+    .color-hex {
+      font-size: 10px;
+      color: #aaa;
+      font-family: monospace;
+    }
+
+    .mini-preview {
+      display: inline-block;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .mini-preview-title {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .mini-preview-box {
+      padding: 10px;
+      border-width: 2px;
+      border-style: solid;
+      font-size: 11px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin: 40px 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #555;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🎨 MossyRealm Design Exploration</h1>
+  <p class="subtitle">All color palettes explored during design phase • December 2025</p>
+
+  <!-- OPTION 4: CHOSEN -->
+  <div class="palette-section chosen">
+    <div class="palette-header">
+      <h2 style="color: #ffeaa7;">Option 4: Sunlit Glade</h2>
+      <span class="badge badge-chosen">✓ CHOSEN</span>
+    </div>
+    <p class="palette-desc">Golden morning light filtering through the forest canopy. Warm, cheerful, inviting. Pacific
+      Northwest sunshine vibes.</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #2a3f35;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#2a3f35</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #1e3028;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#1e3028</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #355a45;"></div>
+        <span class="color-label">bg-box-alt</span>
+        <span class="color-hex">#355a45</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #e8a54b;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#e8a54b</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #ffeaa7;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#ffeaa7</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #f5f0e1;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#f5f0e1</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #90ee90;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#90ee90</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #ff8c42;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#ff8c42</span>
+      </div>
+    </div>
+
+    <div class="mini-preview" style="background: #2a3f35;">
+      <div class="mini-preview-title" style="color: #ffeaa7;">☀️ preview</div>
+      <div class="mini-preview-box" style="background: #1e3028; border-color: #e8a54b; color: #f5f0e1;">
+        hello traveler! <a href="#" style="color: #90ee90;">click me</a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- OPTION 1: Forest at Dusk -->
+  <div class="palette-section">
+    <div class="palette-header">
+      <h2 style="color: #d4a574;">Option 1: Forest at Dusk</h2>
+      <span class="badge badge-explored">explored</span>
+    </div>
+    <p class="palette-desc">Dark and mysterious. Warm copper/gold borders with salmon headers. Classic Neocities energy.
+      Cozy cabin at twilight.</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #1a2f23;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#1a2f23</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #0d1f17;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#0d1f17</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #1c3a2a;"></div>
+        <span class="color-label">bg-box-alt</span>
+        <span class="color-hex">#1c3a2a</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #8b6914;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#8b6914</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #d4a574;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#d4a574</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #e8e4d9;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#e8e4d9</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #7cb342;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#7cb342</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #2d8f7b;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#2d8f7b</span>
+      </div>
+    </div>
+
+    <div class="mini-preview" style="background: #1a2f23;">
+      <div class="mini-preview-title" style="color: #d4a574;">✨ preview</div>
+      <div class="mini-preview-box" style="background: #0d1f17; border-color: #8b6914; color: #e8e4d9;">
+        hello traveler! <a href="#" style="color: #7cb342;">click me</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 2: Mossy Stone (rejected) -->
+  <div class="palette-section">
+    <div class="palette-header">
+      <h2 style="color: #8fbc8f;">Option 2: Mossy Stone</h2>
+      <span class="badge badge-explored">explored</span>
+    </div>
+    <p class="palette-desc">Lighter, earthier, more muted. Sage greens with rust accents. Cozy cottage vibe. (Rejected:
+      too boring/not exciting)</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #2d3b36;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#2d3b36</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #3d4a3a;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#3d4a3a</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #6b7b6e;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#6b7b6e</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #8fbc8f;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#8fbc8f</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #f5f5dc;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#f5f5dc</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #daa520;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#daa520</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #cd853f;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#cd853f</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 3: Enchanted Grove -->
+  <div class="palette-section">
+    <div class="palette-header">
+      <h2 style="color: #ff6b9d;">Option 3: Enchanted Grove</h2>
+      <span class="badge badge-explored">explored</span>
+    </div>
+    <p class="palette-desc">Magical bioluminescent vibes. Glowing teal borders with fairy pink headers. Fireflies in a
+      midnight forest.</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #1a2a2e;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#1a2a2e</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #0f1f24;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#0f1f24</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #1e3a3a;"></div>
+        <span class="color-label">bg-box-alt</span>
+        <span class="color-hex">#1e3a3a</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #4ecdc4;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#4ecdc4</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #ff6b9d;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#ff6b9d</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #e8f4f0;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#e8f4f0</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #4ecdc4;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#4ecdc4</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #a855f7;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#a855f7</span>
+      </div>
+    </div>
+
+    <div class="mini-preview" style="background: #1a2a2e;">
+      <div class="mini-preview-title" style="color: #ff6b9d;">✨ preview</div>
+      <div class="mini-preview-box" style="background: #0f1f24; border-color: #4ecdc4; color: #e8f4f0;">
+        hello traveler! <a href="#" style="color: #4ecdc4;">click me</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 5: Autumn Hollow -->
+  <div class="palette-section">
+    <div class="palette-header">
+      <h2 style="color: #ffcc80;">Option 5: Autumn Hollow</h2>
+      <span class="badge badge-explored">explored</span>
+    </div>
+    <p class="palette-desc">Rustic fall warmth. Brown-toned backgrounds with burnt orange borders. Cozy October cabin
+      with falling leaves.</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #2d2a24;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#2d2a24</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #1f1c17;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#1f1c17</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #3d3830;"></div>
+        <span class="color-label">bg-box-alt</span>
+        <span class="color-hex">#3d3830</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #d4763a;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#d4763a</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #ffcc80;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#ffcc80</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #faf3e8;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#faf3e8</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #a8d08d;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#a8d08d</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #8d6e4c;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#8d6e4c</span>
+      </div>
+    </div>
+
+    <div class="mini-preview" style="background: #2d2a24;">
+      <div class="mini-preview-title" style="color: #ffcc80;">🍂 preview</div>
+      <div class="mini-preview-box" style="background: #1f1c17; border-color: #d4763a; color: #faf3e8;">
+        hello traveler! <a href="#" style="color: #a8d08d;">click me</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 6: Honeydew Morning -->
+  <div class="palette-section">
+    <div class="palette-header">
+      <h2 style="color: #fff8dc;">Option 6: Honeydew Morning</h2>
+      <span class="badge badge-explored">explored</span>
+    </div>
+    <p class="palette-desc">Fresh dewy forest. Deep emerald greens with soft lemon borders. Creamy white headers. Most
+      spring-like and refreshing.</p>
+
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="color-box" style="background: #2e4a3e;"></div>
+        <span class="color-label">bg-main</span>
+        <span class="color-hex">#2e4a3e</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #1f3a2e;"></div>
+        <span class="color-label">bg-box</span>
+        <span class="color-hex">#1f3a2e</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #3d6050;"></div>
+        <span class="color-label">bg-box-alt</span>
+        <span class="color-hex">#3d6050</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #f0c674;"></div>
+        <span class="color-label">border</span>
+        <span class="color-hex">#f0c674</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #fff8dc;"></div>
+        <span class="color-label">header</span>
+        <span class="color-hex">#fff8dc</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #f8fff5;"></div>
+        <span class="color-label">text</span>
+        <span class="color-hex">#f8fff5</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #98fb98;"></div>
+        <span class="color-label">link</span>
+        <span class="color-hex">#98fb98</span>
+      </div>
+      <div class="color-chip">
+        <div class="color-box" style="background: #ffb347;"></div>
+        <span class="color-label">accent</span>
+        <span class="color-hex">#ffb347</span>
+      </div>
+    </div>
+
+    <div class="mini-preview" style="background: #2e4a3e;">
+      <div class="mini-preview-title" style="color: #fff8dc;">🌿 preview</div>
+      <div class="mini-preview-box" style="background: #1f3a2e; border-color: #f0c674; color: #f8fff5;">
+        hello traveler! <a href="#" style="color: #98fb98;">click me</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    📁 design-kitchen • MossyRealm • Created December 2025<br>
+    All palettes designed for whimsical Pacific Northwest forest aesthetic
+  </p>
+</body>
+
+</html>

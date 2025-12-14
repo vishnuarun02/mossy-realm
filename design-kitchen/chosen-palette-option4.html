@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - Chosen Palette: Sunlit Glade</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffeaa7;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #90ee90;
+      margin-bottom: 40px;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+    }
+
+    .color-card {
+      background: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #333;
+    }
+
+    .color-swatch {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .color-info {
+      padding: 15px;
+    }
+
+    .color-name {
+      font-weight: bold;
+      color: #ffeaa7;
+      margin-bottom: 5px;
+    }
+
+    .color-hex {
+      font-family: monospace;
+      color: #90ee90;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .color-usage {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    .css-vars {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      border: 2px solid #e8a54b;
+    }
+
+    .css-vars h2 {
+      color: #ffeaa7;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .css-vars pre {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .css-vars code {
+      color: #90ee90;
+    }
+
+    .tailwind-section {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      border: 2px solid #90ee90;
+    }
+
+    .tailwind-section h2 {
+      color: #90ee90;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .tailwind-section pre {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .preview-section {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .preview-section h2 {
+      color: #ffeaa7;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Live Preview */
+    .live-preview {
+      --bg-main: #2a3f35;
+      --bg-box: #1e3028;
+      --bg-box-alt: #355a45;
+      --border: #e8a54b;
+      --header: #ffeaa7;
+      --text: #f5f0e1;
+      --link: #90ee90;
+
+      background: var(--bg-main);
+      border: 3px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .preview-nav {
+      background: var(--bg-box);
+      border-bottom: 3px solid var(--border);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .preview-nav h3 {
+      color: var(--header);
+      margin-bottom: 10px;
+    }
+
+    .preview-nav a {
+      color: var(--link);
+      margin: 0 10px;
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-box-alt);
+    }
+
+    .preview-content {
+      padding: 20px;
+    }
+
+    .preview-box {
+      background: var(--bg-box);
+      border: 2px solid var(--border);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .preview-box-title {
+      background: var(--border);
+      color: var(--bg-box);
+      padding: 5px 10px;
+      margin: -15px -15px 15px -15px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .preview-box p {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .preview-footer {
+      background: var(--bg-box);
+      border-top: 3px solid var(--border);
+      padding: 10px;
+      text-align: center;
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    .preview-footer a {
+      color: var(--link);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>☀️ Sunlit Glade ☀️</h1>
+  <p class="subtitle">MossyRealm Chosen Palette • Option 4</p>
+
+  <!-- Color Cards -->
+  <div class="palette-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #2a3f35; color: #f5f0e1;">Background</div>
+      <div class="color-info">
+        <div class="color-name">Main Background</div>
+        <div class="color-hex">#2a3f35</div>
+        <div class="color-usage">Page background, main container</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1e3028; color: #f5f0e1;">Box Dark</div>
+      <div class="color-info">
+        <div class="color-name">Box Background</div>
+        <div class="color-hex">#1e3028</div>
+        <div class="color-usage">Sidebar boxes, navbar, footer</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #355a45; color: #f5f0e1;">Box Light</div>
+      <div class="color-info">
+        <div class="color-name">Box Alt Background</div>
+        <div class="color-hex">#355a45</div>
+        <div class="color-usage">Main panel boxes, hover states</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #e8a54b; color: #1e3028;">Border</div>
+      <div class="color-info">
+        <div class="color-name">Border / Accent</div>
+        <div class="color-hex">#e8a54b</div>
+        <div class="color-usage">All borders, box titles bg, dividers</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #ffeaa7; color: #1e3028;">Header</div>
+      <div class="color-info">
+        <div class="color-name">Headers</div>
+        <div class="color-hex">#ffeaa7</div>
+        <div class="color-usage">Page titles, section headers, dates</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #f5f0e1; color: #1e3028;">Text</div>
+      <div class="color-info">
+        <div class="color-name">Body Text</div>
+        <div class="color-hex">#f5f0e1</div>
+        <div class="color-usage">Paragraphs, list items, general text</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #90ee90; color: #1e3028;">Link</div>
+      <div class="color-info">
+        <div class="color-name">Links</div>
+        <div class="color-hex">#90ee90</div>
+        <div class="color-usage">Navigation links, inline links</div>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background: #ff8c42; color: #1e3028;">Accent</div>
+      <div class="color-info">
+        <div class="color-name">Accent Orange</div>
+        <div class="color-hex">#ff8c42</div>
+        <div class="color-usage">Highlights, badges, special elements</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS Variables -->
+  <div class="css-vars">
+    <h2>📋 CSS Variables (Copy/Paste)</h2>
+    <pre><code>:root {
+  /* Backgrounds */
+  --bg-main: #2a3f35;
+  --bg-box: #1e3028;
+  --bg-box-alt: #355a45;
+  
+  /* Border & Accent */
+  --border: #e8a54b;
+  --border-glow: #ffc857;
+  
+  /* Text Colors */
+  --header: #ffeaa7;
+  --header-alt: #fff3c4;
+  --text: #f5f0e1;
+  --text-muted: #c5c0a8;
+  
+  /* Interactive */
+  --link: #90ee90;
+  --link-hover: #b8ffb8;
+  --accent: #ff8c42;
+}</code></pre>
+  </div>
+
+  <!-- Tailwind Config -->
+  <div class="tailwind-section">
+    <h2>🎨 Tailwind Config (Copy/Paste)</h2>
+    <pre><code>// tailwind.config.ts
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        mossy: {
+          'bg-main': '#2a3f35',
+          'bg-box': '#1e3028',
+          'bg-box-alt': '#355a45',
+          'border': '#e8a54b',
+          'border-glow': '#ffc857',
+          'header': '#ffeaa7',
+          'header-alt': '#fff3c4',
+          'text': '#f5f0e1',
+          'text-muted': '#c5c0a8',
+          'link': '#90ee90',
+          'link-hover': '#b8ffb8',
+          'accent': '#ff8c42',
+        }
+      }
+    }
+  }
+}</code></pre>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="preview-section">
+    <h2>👁️ Live Preview</h2>
+    <div class="live-preview">
+      <div class="preview-nav">
+        <h3>☀️ mossyrealm ☀️</h3>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+      </div>
+      <div class="preview-content">
+        <div class="preview-box">
+          <div class="preview-box-title">welcome!</div>
+          <p>hello traveler! this is what your site will look like with the Sunlit Glade palette~ ☀️🌲</p>
+        </div>
+        <div class="preview-box">
+          <div class="preview-box-title">updates</div>
+          <p style="color: #ffeaa7; font-size: 11px;">12/13/2025</p>
+          <p>building something magical...</p>
+        </div>
+      </div>
+      <div class="preview-footer">
+        ♡ mossyrealm 2025 | <a href="#">contact</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

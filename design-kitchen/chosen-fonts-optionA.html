@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - Chosen Fonts: Enchanted Forest Storybook</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Mystery+Quest&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffeaa7;
+      margin-bottom: 10px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 36px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #90ee90;
+      margin-bottom: 40px;
+      font-family: 'Lora', serif;
+      font-style: italic;
+    }
+
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px auto;
+    }
+
+    .font-card {
+      background: #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #333;
+    }
+
+    .font-preview {
+      padding: 30px;
+      background: #2a3f35;
+      border-bottom: 3px solid #e8a54b;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .font-preview-text {
+      color: #ffeaa7;
+      text-align: center;
+    }
+
+    .font-info {
+      padding: 20px;
+    }
+
+    .font-name {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #ffeaa7;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .font-usage {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #90ee90;
+      margin-bottom: 10px;
+    }
+
+    .font-details {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* Font Previews */
+    .cinzel-decorative {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 28px;
+    }
+
+    .cinzel {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    .cormorant {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .lora {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #f5f0e1;
+    }
+
+    .mystery-quest {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 24px;
+    }
+
+    /* CSS Code Block */
+    .css-block {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      border: 2px solid #e8a54b;
+    }
+
+    .css-block h2 {
+      color: #ffeaa7;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+    }
+
+    .css-block pre {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .css-block code {
+      color: #90ee90;
+      font-family: 'Courier New', monospace;
+    }
+
+    .css-block .comment {
+      color: #666;
+    }
+
+    .css-block .property {
+      color: #4ecdc4;
+    }
+
+    .css-block .value {
+      color: #ffeaa7;
+    }
+
+    .css-block .keyword {
+      color: #ff6b9d;
+    }
+
+    /* Live Preview */
+    .live-preview {
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+    }
+
+    .live-preview h2 {
+      color: #ffeaa7;
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Cinzel', serif;
+    }
+
+    .preview-container {
+      --bg-main: #2a3f35;
+      --bg-box: #1e3028;
+      --bg-box-alt: #355a45;
+      --border: #e8a54b;
+      --header: #ffeaa7;
+      --text: #f5f0e1;
+      --link: #90ee90;
+
+      background: var(--bg-main);
+      border: 3px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .preview-nav {
+      background: var(--bg-box);
+      border-bottom: 3px solid var(--border);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .preview-nav h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--header);
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .preview-nav a {
+      font-family: 'Cormorant', serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--link);
+      margin: 0 10px;
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 2px solid var(--border);
+      background: var(--bg-box-alt);
+    }
+
+    .preview-content {
+      padding: 20px;
+    }
+
+    .preview-box {
+      background: var(--bg-box);
+      border: 3px solid var(--border);
+      margin-bottom: 15px;
+    }
+
+    .preview-box-title {
+      font-family: 'Cinzel', serif;
+      background: var(--border);
+      color: var(--bg-box);
+      padding: 8px 15px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: lowercase;
+    }
+
+    .preview-box-body {
+      font-family: 'Lora', serif;
+      padding: 15px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .preview-box-body h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--header);
+      margin-bottom: 10px;
+    }
+
+    .preview-box-body .accent {
+      font-family: 'Mystery Quest', cursive;
+      color: var(--header);
+      font-size: 18px;
+    }
+
+    .preview-box-body a {
+      color: var(--link);
+    }
+
+    .preview-footer {
+      background: var(--bg-box);
+      border-top: 3px solid var(--border);
+      padding: 15px;
+      text-align: center;
+      font-family: 'Lora', serif;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    /* Usage Guide */
+    .usage-guide {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px;
+      background: #2a2a2a;
+      border-radius: 12px;
+      border: 2px solid #444;
+    }
+
+    .usage-guide h2 {
+      color: #ffeaa7;
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Cinzel', serif;
+    }
+
+    .usage-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .usage-table th,
+    .usage-table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    .usage-table th {
+      background: #333;
+      color: #ffeaa7;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .usage-table td {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .usage-table tr:nth-child(even) {
+      background: #333;
+    }
+
+    .implementation-note {
+      background: #1e3028;
+      border: 2px solid #90ee90;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 900px;
+    }
+
+    .implementation-note h3 {
+      color: #90ee90;
+      margin-bottom: 15px;
+      font-family: 'Cinzel', serif;
+    }
+
+    .implementation-note p {
+      color: #f5f0e1;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .implementation-note ul {
+      color: #c5c0a8;
+      padding-left: 20px;
+      font-size: 13px;
+    }
+
+    .implementation-note li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>✨ Enchanted Forest Storybook ✨</h1>
+  <p class="subtitle">MossyRealm Chosen Font Stack • Option A</p>
+
+  <!-- Implementation Note -->
+  <div class="implementation-note">
+    <h3>⚡ Next.js Implementation</h3>
+    <p>These fonts are loaded using <strong>next/font/google</strong> for optimal performance:</p>
+    <ul>
+      <li>Fonts are downloaded at build time and self-hosted</li>
+      <li>No external requests to Google Fonts at runtime</li>
+      <li>Automatic font optimization and subsetting</li>
+      <li>CSS variables are set on the body element</li>
+    </ul>
+    <p style="margin-top: 15px;"><strong>Files:</strong> <code>app/fonts.ts</code> + <code>app/layout.tsx</code></p>
+  </div>
+
+  <!-- Font Cards -->
+  <div class="font-grid">
+    <div class="font-card">
+      <div class="font-preview">
+        <div class="font-preview-text cinzel-decorative">MossyRealm</div>
+      </div>
+      <div class="font-info">
+        <div class="font-name">Cinzel Decorative</div>
+        <div class="font-usage">Site Title / Hero Headers</div>
+        <div class="font-details">
+          CSS class: <code>font-display</code><br>
+          Weights: 400, 700<br>
+          Use sparingly for impact
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card">
+      <div class="font-preview">
+        <div class="font-preview-text cinzel">UPDATES • TO DO • GALLERY</div>
+      </div>
+      <div class="font-info">
+        <div class="font-name">Cinzel</div>
+        <div class="font-usage">Box Titles / Section Headers</div>
+        <div class="font-details">
+          CSS class: <code>font-heading</code><br>
+          Weights: 400, 500, 600, 700<br>
+          Good for navigation & titles
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card">
+      <div class="font-preview">
+        <div class="font-preview-text cormorant">Trailhead • Garden • Gallery</div>
+      </div>
+      <div class="font-info">
+        <div class="font-name">Cormorant</div>
+        <div class="font-usage">Navigation Links</div>
+        <div class="font-details">
+          CSS class: <code>font-nav</code><br>
+          Weights: 400, 500, 600, 700<br>
+          Great for interactive elements
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card">
+      <div class="font-preview">
+        <div class="font-preview-text lora">Welcome to my little corner of the internet where I share my thoughts...
+        </div>
+      </div>
+      <div class="font-info">
+        <div class="font-name">Lora</div>
+        <div class="font-usage">Body Text / Paragraphs</div>
+        <div class="font-details">
+          CSS class: <code>font-body</code><br>
+          Weights: 400, 500, 600, 700 + italics<br>
+          Excellent readability
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card">
+      <div class="font-preview">
+        <div class="font-preview-text mystery-quest">~ a cozy place ~</div>
+      </div>
+      <div class="font-info">
+        <div class="font-name">Mystery Quest</div>
+        <div class="font-usage">Accent Text / Special Quotes</div>
+        <div class="font-details">
+          CSS class: <code>font-accent</code><br>
+          Weight: 400 only<br>
+          Use for magical touches
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next.js Code -->
+  <div class="css-block">
+    <h2>📋 Next.js Font Setup (app/fonts.ts)</h2>
+    <pre><code><span class="keyword">import</span> { 
+  Cinzel, 
+  Cinzel_Decorative, 
+  Cormorant, 
+  Lora, 
+  Mystery_Quest 
+} <span class="keyword">from</span> <span class="value">'next/font/google'</span>;
+
+<span class="comment">// Site Title - Fancy decorative</span>
+<span class="keyword">export const</span> cinzelDecorative = Cinzel_Decorative({
+  subsets: [<span class="value">'latin'</span>],
+  weight: [<span class="value">'400'</span>, <span class="value">'700'</span>],
+  variable: <span class="value">'--font-display'</span>,
+  display: <span class="value">'swap'</span>,
+});
+
+<span class="comment">// Box Titles / Section Headers</span>
+<span class="keyword">export const</span> cinzel = Cinzel({
+  subsets: [<span class="value">'latin'</span>],
+  weight: [<span class="value">'400'</span>, <span class="value">'500'</span>, <span class="value">'600'</span>, <span class="value">'700'</span>],
+  variable: <span class="value">'--font-heading'</span>,
+  display: <span class="value">'swap'</span>,
+});
+
+<span class="comment">// Navigation Links</span>
+<span class="keyword">export const</span> cormorant = Cormorant({...});
+
+<span class="comment">// Body Text</span>
+<span class="keyword">export const</span> lora = Lora({...});
+
+<span class="comment">// Accent / Whimsical Text</span>
+<span class="keyword">export const</span> mysteryQuest = Mystery_Quest({...});</code></pre>
+  </div>
+
+  <!-- CSS Classes Code -->
+  <div class="css-block" style="border-color: #90ee90;">
+    <h2>🎨 CSS Classes (globals.css)</h2>
+    <pre><code><span class="comment">/* Font utility classes using CSS variables from next/font */</span>
+
+<span class="property">.font-display</span> {
+  font-family: var(--font-display), 'Cinzel Decorative', serif;
+}
+
+<span class="property">.font-heading</span> {
+  font-family: var(--font-heading), 'Cinzel', serif;
+}
+
+<span class="property">.font-nav</span> {
+  font-family: var(--font-nav), 'Cormorant', serif;
+}
+
+<span class="property">.font-body</span> {
+  font-family: var(--font-body), 'Lora', serif;
+}
+
+<span class="property">.font-accent</span> {
+  font-family: var(--font-accent), 'Mystery Quest', cursive;
+}</code></pre>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="live-preview">
+    <h2>👁️ Live Preview</h2>
+    <div class="preview-container">
+      <div class="preview-nav">
+        <h3>☀️ welcome to mossyrealm ☀️</h3>
+        <a href="#">Trailhead</a>
+        <a href="#">Garden</a>
+        <a href="#">Gallery</a>
+      </div>
+      <div class="preview-content">
+        <div class="preview-box">
+          <div class="preview-box-title">✨ updates</div>
+          <div class="preview-box-body">
+            <h4>December 13th, 2025</h4>
+            <p>Welcome to the realm! 🌲 Just planted the first seeds of this little corner of the web~</p>
+          </div>
+        </div>
+        <div class="preview-box">
+          <div class="preview-box-title">🌲 what's going on here?</div>
+          <div class="preview-box-body">
+            <p>Hello, dear traveler! Welcome to <strong>MossyRealm</strong>, my little home on the internet.</p>
+            <p class="accent">~ a cozy place for wandering souls ~</p>
+            <p>Feel free to explore and discover <a href="#">secret pages</a> hidden throughout!</p>
+          </div>
+        </div>
+      </div>
+      <div class="preview-footer">
+        ♡ mossyrealm 2025 | made with 💚 and lots of moss
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage Guide -->
+  <div class="usage-guide">
+    <h2>🌿 Font Usage Guide</h2>
+    <table class="usage-table">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Font</th>
+          <th>CSS Class</th>
+          <th>Example Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Site Title</td>
+          <td>Cinzel Decorative</td>
+          <td><code>font-display</code></td>
+          <td><code>&lt;h1 className="font-display"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Box Titles</td>
+          <td>Cinzel</td>
+          <td><code>font-heading</code></td>
+          <td><code>&lt;div className="font-heading"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Section Headers</td>
+          <td>Cinzel</td>
+          <td><code>font-heading</code></td>
+          <td><code>&lt;h3 className="font-heading"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Navigation</td>
+          <td>Cormorant</td>
+          <td><code>font-nav</code></td>
+          <td><code>&lt;Link className="font-nav"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Body Text</td>
+          <td>Lora</td>
+          <td><code>font-body</code></td>
+          <td><code>&lt;p className="font-body"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>Accent/Quotes</td>
+          <td>Mystery Quest</td>
+          <td><code>font-accent</code></td>
+          <td><code>&lt;span className="font-accent"&gt;</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+import { ReactNode } from 'react';
+
+interface RetroBoxProps {
+  title?: string;
+  children: ReactNode;
+  variant?: 'default' | 'alt';
+  className?: string;
+}
+
+export default function RetroBox({
+  title,
+  children,
+  variant = 'default',
+  className = ''
+}: RetroBoxProps) {
+  const bgClass = variant === 'alt' ? 'bg-mossy-bg-box-alt' : 'bg-mossy-bg-box';
+
+  return (
+    <div
+      className={`
+        ${bgClass}
+        border-[3px] border-mossy-border
+        rounded-sm
+        overflow-hidden
+        ${className}
+      `}
+    >
+      {title && (
+        <div
+          className="
+            font-heading
+            bg-mossy-border 
+            text-mossy-bg-box 
+            px-3 py-1.5
+            font-semibold
+            text-sm
+            lowercase
+            tracking-wider
+          "
+        >
+          {title}
+        </div>
+      )}
+      <div className="p-3 font-body">
+        {children}
+      </div>
+    </div>
+  );
+}

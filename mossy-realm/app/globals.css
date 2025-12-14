@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+:root {
+  /* MossyRealm - Sunlit Glade Palette */
+  --mossy-bg-main: #2a3f35;
+  --mossy-bg-box: #1e3028;
+  --mossy-bg-box-alt: #355a45;
+  --mossy-border: #e8a54b;
+  --mossy-border-glow: #ffc857;
+  --mossy-header: #ffeaa7;
+  --mossy-header-alt: #fff3c4;
+  --mossy-text: #f5f0e1;
+  --mossy-text-muted: #c5c0a8;
+  --mossy-link: #90ee90;
+  --mossy-link-hover: #b8ffb8;
+  --mossy-accent: #ff8c42;
+}
+
+@theme inline {
+  /* Background colors */
+  --color-mossy-bg-main: var(--mossy-bg-main);
+  --color-mossy-bg-box: var(--mossy-bg-box);
+  --color-mossy-bg-box-alt: var(--mossy-bg-box-alt);
+
+  /* Border colors */
+  --color-mossy-border: var(--mossy-border);
+  --color-mossy-border-glow: var(--mossy-border-glow);
+
+  /* Text colors */
+  --color-mossy-header: var(--mossy-header);
+  --color-mossy-header-alt: var(--mossy-header-alt);
+  --color-mossy-text: var(--mossy-text);
+  --color-mossy-text-muted: var(--mossy-text-muted);
+
+  /* Interactive colors */
+  --color-mossy-link: var(--mossy-link);
+  --color-mossy-link-hover: var(--mossy-link-hover);
+  --color-mossy-accent: var(--mossy-accent);
+}
+
+/* ============================================ */
+/* 90s WALLPAPER BACKGROUND - Fixed & Dreamy   */
+/* ============================================ */
+
+html {
+  /* Fallback color while image loads */
+  background-color: var(--mossy-bg-main);
+}
+
+body {
+  /* The wallpaper */
+  background-image: url('/vintage-natgeo.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  /* THE MAGIC: Fixed background - content scrolls over it */
+  background-attachment: fixed;
+
+  /* Fallback color */
+  background-color: var(--mossy-bg-main);
+
+  /* Text & font */
+  color: var(--mossy-text);
+  font-family: var(--font-body), 'Lora', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Mobile: Use scroll instead of fixed for better performance */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+
+/* Light overlay - wallpaper blues & greens shine through for that healing vibe */
+.wallpaper-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom,
+      rgba(30, 48, 40, 0.35) 0%,
+      rgba(42, 63, 53, 0.30) 50%,
+      rgba(30, 48, 40, 0.40) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================ */
+/* 90s CENTERED SITE CONTAINER                  */
+/* ============================================ */
+
+/* Wrapper positions everything */
+.site-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px 16px;
+}
+
+/* The main "site box" - where all content lives */
+.site-container {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(30, 48, 40, 0.92);
+  border: 4px solid var(--mossy-border);
+  box-shadow:
+    0 0 0 2px var(--mossy-bg-box),
+    0 0 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Site header area (title + nav) */
+.site-header {
+  background: var(--mossy-bg-box);
+  border-bottom: 3px solid var(--mossy-border);
+  padding: 16px;
+  text-align: center;
+}
+
+.site-title {
+  margin-bottom: 12px;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Main content area */
+.site-main {
+  flex: 1;
+  padding: 16px;
+}
+
+/* Site footer area */
+.site-footer {
+  background: var(--mossy-bg-box);
+  border-top: 3px solid var(--mossy-border);
+  padding: 16px;
+  text-align: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .site-wrapper {
+    padding: 10px 8px;
+  }
+
+  .site-container {
+    border-width: 3px;
+  }
+
+  .site-header,
+  .site-main,
+  .site-footer {
+    padding: 12px;
+  }
+}
+
+/* ============================================ */
+/* END SITE CONTAINER STYLES                    */
+/* ============================================ */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), 'Cinzel', Georgia, serif;
+  color: var(--mossy-header);
+  line-height: 1.3;
+}
+
+/* Retro link styles */
+a {
+  color: var(--mossy-link);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--mossy-link-hover);
+  text-shadow: 0 0 8px var(--mossy-link);
+}
+
+/* Retro scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mossy-bg-box);
+  border: 2px solid var(--mossy-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mossy-border);
+  border: 2px solid var(--mossy-bg-box);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mossy-border-glow);
+}
+
+/* Selection highlight */
+::selection {
+  background: var(--mossy-border);
+  color: var(--mossy-bg-box);
+}
+
+/* Utility classes for retro effects */
+.retro-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.retro-shadow {
+  box-shadow:
+    4px 4px 0 var(--mossy-bg-box),
+    6px 6px 0 var(--mossy-border);
+}
+
+/* Dotted pattern background (subtle) */
+.dotted-bg {
+  background-image: radial-gradient(var(--mossy-bg-box-alt) 1px,
+      transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Font utility classes using CSS variables from next/font */
+.font-display {
+  font-family: var(--font-display), 'Cinzel Decorative', serif;
+}
+
+.font-heading {
+  font-family: var(--font-heading), 'Cinzel', serif;
+}
+
+.font-nav {
+  font-family: var(--font-nav), 'Cormorant', serif;
+}
+
+.font-body {
+  font-family: var(--font-body), 'Lora', serif;
+}
+
+.font-accent {
+  font-family: var(--font-accent), 'Mystery Quest', cursive;
+}

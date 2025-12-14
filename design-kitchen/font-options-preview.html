@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - Font Options Preview</title>
+
+  <!-- Google Fonts - All Options -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Mystery+Quest&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Satisfy&family=Pacifico&family=MedievalSharp&family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Griffy&family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 30px;
+      font-family: Georgia, serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffeaa7;
+      margin-bottom: 10px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #90ee90;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 30px;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+
+    .option-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 3px solid #444;
+    }
+
+    .option-header {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .option-header h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .option-header p {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Sunlit Glade colors for preview */
+    .preview-container {
+      --bg-main: #2a3f35;
+      --bg-box: #1e3028;
+      --bg-box-alt: #355a45;
+      --border: #e8a54b;
+      --header: #ffeaa7;
+      --text: #f5f0e1;
+      --link: #90ee90;
+      --accent: #ff8c42;
+
+      background: var(--bg-main);
+      padding: 20px;
+      min-height: 500px;
+    }
+
+    .preview-navbar {
+      background: var(--bg-box);
+      border: 3px solid var(--border);
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .preview-navbar h3 {
+      color: var(--header);
+      margin-bottom: 10px;
+    }
+
+    .preview-navbar nav {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .preview-navbar a {
+      background: var(--bg-box-alt);
+      border: 2px solid var(--border);
+      padding: 6px 12px;
+      color: var(--link);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .preview-box {
+      background: var(--bg-box);
+      border: 3px solid var(--border);
+      margin-bottom: 15px;
+    }
+
+    .preview-box-title {
+      background: var(--border);
+      color: var(--bg-box);
+      padding: 8px 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .preview-box-content {
+      padding: 15px;
+      color: var(--text);
+    }
+
+    .preview-box-content h4 {
+      color: var(--header);
+      margin-bottom: 10px;
+    }
+
+    .preview-box-content p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .preview-box-content a {
+      color: var(--link);
+    }
+
+    .preview-box-content .date {
+      color: var(--header);
+      font-size: 0.9em;
+    }
+
+    .preview-box-content .accent {
+      color: var(--accent);
+    }
+
+    .preview-box-content ul {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    .font-list {
+      background: #222;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    .font-list h4 {
+      color: #ffeaa7;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .font-list code {
+      display: block;
+      color: #90ee90;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+
+    /* ============================================ */
+    /* OPTION A: Enchanted Forest Storybook */
+    /* ============================================ */
+    .option-a .option-header {
+      background: linear-gradient(135deg, #2d4a3e 0%, #1e3028 100%);
+      border-bottom: 3px solid #e8a54b;
+    }
+
+    .option-a .option-header h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #ffeaa7;
+    }
+
+    .option-a .preview-navbar h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .option-a .preview-navbar a {
+      font-family: 'Cormorant', serif;
+      font-weight: 600;
+    }
+
+    .option-a .preview-box-title {
+      font-family: 'Cinzel', serif;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+    }
+
+    .option-a .preview-box-content {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+    }
+
+    .option-a .preview-box-content h4 {
+      font-family: 'Cinzel', serif;
+    }
+
+    .option-a .accent-text {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 18px;
+    }
+
+    /* ============================================ */
+    /* OPTION B: Cozy 90s Personal Site */
+    /* ============================================ */
+    .option-b .option-header {
+      background: linear-gradient(135deg, #3a4a5e 0%, #2a3a4e 100%);
+      border-bottom: 3px solid #e8a54b;
+    }
+
+    .option-b .option-header h2 {
+      font-family: 'Playfair Display', serif;
+      color: #ffeaa7;
+    }
+
+    .option-b .preview-navbar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .option-b .preview-navbar a {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+    }
+
+    .option-b .preview-box-title {
+      font-family: 'Playfair Display', serif;
+      text-transform: lowercase;
+    }
+
+    .option-b .preview-box-content {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+    }
+
+    .option-b .preview-box-content h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .option-b .accent-text {
+      font-family: 'Satisfy', cursive;
+      font-size: 20px;
+    }
+
+    /* ============================================ */
+    /* OPTION C: Whimsical Fantasy */
+    /* ============================================ */
+    .option-c .option-header {
+      background: linear-gradient(135deg, #4a3a5e 0%, #3a2a4e 100%);
+      border-bottom: 3px solid #e8a54b;
+    }
+
+    .option-c .option-header h2 {
+      font-family: 'MedievalSharp', cursive;
+      color: #ffeaa7;
+    }
+
+    .option-c .preview-navbar h3 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 26px;
+    }
+
+    .option-c .preview-navbar a {
+      font-family: 'Crimson Text', serif;
+      font-size: 15px;
+    }
+
+    .option-c .preview-box-title {
+      font-family: 'MedievalSharp', cursive;
+      text-transform: lowercase;
+    }
+
+    .option-c .preview-box-content {
+      font-family: 'Crimson Text', serif;
+      font-size: 17px;
+    }
+
+    .option-c .preview-box-content h4 {
+      font-family: 'MedievalSharp', cursive;
+    }
+
+    .option-c .accent-text {
+      font-family: 'Griffy', cursive;
+      font-size: 18px;
+    }
+
+    /* Instructions */
+    .instructions {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #222;
+      border-radius: 12px;
+      border: 2px solid #444;
+    }
+
+    .instructions h3 {
+      color: #ffeaa7;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    .instructions p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .instructions strong {
+      color: #90ee90;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    .comparison-table th {
+      background: #333;
+      color: #ffeaa7;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .comparison-table td {
+      color: #ccc;
+      font-size: 13px;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #2a2a2a;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>✨ MossyRealm Font Options ✨</h1>
+  <p class="subtitle">Compare three whimsical 90s-inspired font combinations</p>
+
+  <div class="options-grid">
+    <!-- OPTION A: Enchanted Forest Storybook -->
+    <div class="option-card option-a">
+      <div class="option-header">
+        <h2>Option A: Enchanted Forest Storybook</h2>
+        <p>Fantasy medieval • Elegant • Fairy tale vibes</p>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-navbar">
+          <h3>☀️ Welcome to MossyRealm ☀️</h3>
+          <nav>
+            <a href="#">Trailhead</a>
+            <a href="#">The Cabin</a>
+            <a href="#">Garden</a>
+            <a href="#">Gallery</a>
+          </nav>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">✨ updates</div>
+          <div class="preview-box-content">
+            <p class="date">December 13th, 2025</p>
+            <p>Welcome to the realm! 🌲 Just planted the first seeds of this little corner of the web~</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">🌲 what's going on here?</div>
+          <div class="preview-box-content">
+            <h4>Hello, dear traveler!</h4>
+            <p>Welcome to <strong>MossyRealm</strong>, my little home on the internet where I share my thoughts, art,
+              projects, and whatever else I feel like putting here!</p>
+            <p class="accent-text">~ a cozy place for wandering souls ~</p>
+            <p>This realm exists at a crossroads between dimensions, with visitors from all sorts of worlds coming and
+              going.</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">📝 to do</div>
+          <div class="preview-box-content">
+            <ul>
+              <li>Add more pages</li>
+              <li>Draw site mascot</li>
+              <li>Make a guestbook</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-list">
+        <h4>📋 FONTS USED:</h4>
+        <code>Headers: Cinzel Decorative / Cinzel</code>
+        <code>Nav: Cormorant (600 weight)</code>
+        <code>Body: Lora</code>
+        <code>Accent: Mystery Quest</code>
+      </div>
+    </div>
+
+    <!-- OPTION B: Cozy 90s Personal Site -->
+    <div class="option-card option-b">
+      <div class="option-header">
+        <h2>Option B: Cozy 90s Personal Site</h2>
+        <p>Classic elegant • Warm readable • Personal blog vibes</p>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-navbar">
+          <h3>☀️ Welcome to MossyRealm ☀️</h3>
+          <nav>
+            <a href="#">Trailhead</a>
+            <a href="#">The Cabin</a>
+            <a href="#">Garden</a>
+            <a href="#">Gallery</a>
+          </nav>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">✨ updates</div>
+          <div class="preview-box-content">
+            <p class="date">December 13th, 2025</p>
+            <p>Welcome to the realm! 🌲 Just planted the first seeds of this little corner of the web~</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">🌲 what's going on here?</div>
+          <div class="preview-box-content">
+            <h4>Hello, dear traveler!</h4>
+            <p>Welcome to <strong>MossyRealm</strong>, my little home on the internet where I share my thoughts, art,
+              projects, and whatever else I feel like putting here!</p>
+            <p class="accent-text">~ a cozy place for wandering souls ~</p>
+            <p>This realm exists at a crossroads between dimensions, with visitors from all sorts of worlds coming and
+              going.</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">📝 to do</div>
+          <div class="preview-box-content">
+            <ul>
+              <li>Add more pages</li>
+              <li>Draw site mascot</li>
+              <li>Make a guestbook</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-list">
+        <h4>📋 FONTS USED:</h4>
+        <code>Headers: Playfair Display</code>
+        <code>Nav: EB Garamond</code>
+        <code>Body: EB Garamond</code>
+        <code>Accent: Satisfy (script)</code>
+      </div>
+    </div>
+
+    <!-- OPTION C: Whimsical Fantasy -->
+    <div class="option-card option-c">
+      <div class="option-header">
+        <h2>Option C: Whimsical Fantasy</h2>
+        <p>Gothic medieval • Quirky • Old manuscript vibes</p>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-navbar">
+          <h3>☀️ Welcome to MossyRealm ☀️</h3>
+          <nav>
+            <a href="#">Trailhead</a>
+            <a href="#">The Cabin</a>
+            <a href="#">Garden</a>
+            <a href="#">Gallery</a>
+          </nav>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">✨ updates</div>
+          <div class="preview-box-content">
+            <p class="date">December 13th, 2025</p>
+            <p>Welcome to the realm! 🌲 Just planted the first seeds of this little corner of the web~</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">🌲 what's going on here?</div>
+          <div class="preview-box-content">
+            <h4>Hello, dear traveler!</h4>
+            <p>Welcome to <strong>MossyRealm</strong>, my little home on the internet where I share my thoughts, art,
+              projects, and whatever else I feel like putting here!</p>
+            <p class="accent-text">~ a cozy place for wandering souls ~</p>
+            <p>This realm exists at a crossroads between dimensions, with visitors from all sorts of worlds coming and
+              going.</p>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-box-title">📝 to do</div>
+          <div class="preview-box-content">
+            <ul>
+              <li>Add more pages</li>
+              <li>Draw site mascot</li>
+              <li>Make a guestbook</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-list">
+        <h4>📋 FONTS USED:</h4>
+        <code>Headers: UnifrakturMaguntia / MedievalSharp</code>
+        <code>Nav: Crimson Text</code>
+        <code>Body: Crimson Text</code>
+        <code>Accent: Griffy (quirky)</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>🌿 Choose Your Font Style 🌿</h3>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Option A</th>
+          <th>Option B</th>
+          <th>Option C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vibe</strong></td>
+          <td>Fantasy storybook</td>
+          <td>Classic 90s blog</td>
+          <td>Medieval manuscript</td>
+        </tr>
+        <tr>
+          <td><strong>Header Style</strong></td>
+          <td>Elegant serif with flourishes</td>
+          <td>Refined italic serif</td>
+          <td>Gothic blackletter</td>
+        </tr>
+        <tr>
+          <td><strong>Readability</strong></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐ (headers less readable)</td>
+        </tr>
+        <tr>
+          <td><strong>Whimsy Level</strong></td>
+          <td>High (fairy tale)</td>
+          <td>Medium (warm & cozy)</td>
+          <td>Very High (quirky)</td>
+        </tr>
+        <tr>
+          <td><strong>Best For</strong></td>
+          <td>Fantasy/nature themes</td>
+          <td>Personal diary/blog</td>
+          <td>Dark fantasy/gothic</td>
+        </tr>
+        <tr>
+          <td><strong>Similar To</strong></td>
+          <td>Oldlands site</td>
+          <td>Classic GeoCities</td>
+          <td>Fairygore site</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 20px; text-align: center;">
+      <strong style="color: #ffeaa7;">My Recommendation:</strong>
+      <span style="color: #fff;">Option A (Enchanted Forest Storybook)</span> -
+      Best balance of whimsy + readability for a forest/nature themed realm!
+    </p>
+  </div>
+</body>
+
+</html>

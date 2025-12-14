@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm Color Palette Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .comparison {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      width: 480px;
+    }
+
+    .option h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .option-desc {
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    /* ==================== */
+    /* OPTION 4: Sunlit Glade - Golden Morning Light (YOUR PICK) */
+    /* ==================== */
+    .option4 {
+      --bg-main: #2a3f35;
+      --bg-box: #1e3028;
+      --bg-box-alt: #355a45;
+      --border: #e8a54b;
+      --border-glow: #ffc857;
+      --header: #ffeaa7;
+      --header-alt: #fff3c4;
+      --text: #f5f0e1;
+      --text-muted: #c5c0a8;
+      --accent: #ff8c42;
+      --link: #90ee90;
+      --link-hover: #b8ffb8;
+    }
+
+    /* ==================== */
+    /* OPTION 5: Autumn Hollow - Rustic Fall Warmth */
+    /* ==================== */
+    .option5 {
+      --bg-main: #2d2a24;
+      --bg-box: #1f1c17;
+      --bg-box-alt: #3d3830;
+      --border: #d4763a;
+      --border-glow: #ff9f5a;
+      --header: #ffcc80;
+      --header-alt: #ffe0b2;
+      --text: #faf3e8;
+      --text-muted: #c9bfae;
+      --accent: #8d6e4c;
+      --link: #a8d08d;
+      --link-hover: #c5e8aa;
+    }
+
+    /* ==================== */
+    /* OPTION 6: Honeydew Morning - Fresh & Bright */
+    /* ==================== */
+    .option6 {
+      --bg-main: #2e4a3e;
+      --bg-box: #1f3a2e;
+      --bg-box-alt: #3d6050;
+      --border: #f0c674;
+      --border-glow: #ffe066;
+      --header: #fff8dc;
+      --header-alt: #fffaeb;
+      --text: #f8fff5;
+      --text-muted: #b8d4a8;
+      --accent: #ffb347;
+      --link: #98fb98;
+      --link-hover: #c0ffc0;
+    }
+
+    /* Shared layout styles */
+    .preview-container {
+      background: var(--bg-main);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 3px solid var(--border);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--bg-box);
+      border-bottom: 3px solid var(--border);
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .navbar h3 {
+      color: var(--header);
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: var(--link);
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-box-alt);
+      font-size: 12px;
+    }
+
+    .navbar a:hover {
+      color: var(--link-hover);
+      border-color: var(--border-glow);
+    }
+
+    /* Main grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr 110px;
+      gap: 8px;
+      padding: 8px;
+      min-height: 300px;
+    }
+
+    /* Retro Box */
+    .retro-box {
+      background: var(--bg-box);
+      border: 2px solid var(--border);
+      padding: 8px;
+      margin-bottom: 8px;
+    }
+
+    .retro-box-title {
+      background: var(--border);
+      color: var(--bg-box);
+      padding: 4px 8px;
+      margin: -8px -8px 8px -8px;
+      font-weight: bold;
+      font-size: 11px;
+      text-transform: lowercase;
+    }
+
+    .retro-box p {
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .retro-box .date {
+      color: var(--header);
+      font-size: 9px;
+      margin-bottom: 4px;
+    }
+
+    .retro-box a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    .retro-box ul {
+      color: var(--text);
+      font-size: 9px;
+      padding-left: 12px;
+    }
+
+    .retro-box li {
+      margin-bottom: 2px;
+    }
+
+    /* Sidebars */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main panel */
+    .main-panel .retro-box {
+      background: var(--bg-box-alt);
+    }
+
+    .main-panel h4 {
+      color: var(--header);
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .main-panel .welcome-text {
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .main-panel .status {
+      text-align: center;
+      padding: 8px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 8px 0;
+    }
+
+    .main-panel .status-label {
+      color: var(--header-alt);
+      font-size: 10px;
+    }
+
+    .main-panel .status-text {
+      color: var(--text);
+      font-size: 9px;
+    }
+
+    /* Bottom grid in main */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* Art/image placeholder */
+    .art-placeholder {
+      background: var(--bg-box);
+      border: 2px dashed var(--border);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-box);
+      border-top: 3px solid var(--border);
+      padding: 8px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    .footer a {
+      color: var(--link);
+    }
+
+    /* Color swatches */
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    .swatch {
+      text-align: center;
+    }
+
+    .swatch-color {
+      width: 40px;
+      height: 25px;
+      border: 2px solid #fff;
+      margin-bottom: 2px;
+    }
+
+    .swatch-label {
+      font-size: 8px;
+      color: #aaa;
+    }
+
+    /* Option 4 swatches */
+    .option4 .sw-bg {
+      background: #2a3f35;
+    }
+
+    .option4 .sw-box {
+      background: #1e3028;
+    }
+
+    .option4 .sw-border {
+      background: #e8a54b;
+    }
+
+    .option4 .sw-header {
+      background: #ffeaa7;
+    }
+
+    .option4 .sw-text {
+      background: #f5f0e1;
+    }
+
+    .option4 .sw-link {
+      background: #90ee90;
+    }
+
+    /* Option 5 swatches */
+    .option5 .sw-bg {
+      background: #2d2a24;
+    }
+
+    .option5 .sw-box {
+      background: #1f1c17;
+    }
+
+    .option5 .sw-border {
+      background: #d4763a;
+    }
+
+    .option5 .sw-header {
+      background: #ffcc80;
+    }
+
+    .option5 .sw-text {
+      background: #faf3e8;
+    }
+
+    .option5 .sw-link {
+      background: #a8d08d;
+    }
+
+    /* Option 6 swatches */
+    .option6 .sw-bg {
+      background: #2e4a3e;
+    }
+
+    .option6 .sw-box {
+      background: #1f3a2e;
+    }
+
+    .option6 .sw-border {
+      background: #f0c674;
+    }
+
+    .option6 .sw-header {
+      background: #fff8dc;
+    }
+
+    .option6 .sw-text {
+      background: #f8fff5;
+    }
+
+    .option6 .sw-link {
+      background: #98fb98;
+    }
+
+    /* Instructions */
+    .instructions {
+      text-align: center;
+      margin: 30px auto;
+      max-width: 900px;
+      padding: 20px;
+      background: #222;
+      border-radius: 8px;
+      border: 2px solid #444;
+    }
+
+    .instructions h3 {
+      color: #ffeaa7;
+      margin-bottom: 15px;
+    }
+
+    .instructions p {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .badge-fav {
+      background: #e8a54b;
+      color: #1e3028;
+    }
+
+    .badge-new {
+      background: #90ee90;
+      color: #1e3028;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🌻 MossyRealm - Warm Palette Options 🌻</h1>
+  <p class="subtitle">Golden Hour Vibes • Pacific Northwest Sunshine</p>
+
+  <div class="comparison">
+    <!-- OPTION 4: Sunlit Glade (Original Pick) -->
+    <div class="option option4">
+      <h2 style="background: #2a3f35; color: #ffeaa7; border: 2px solid #e8a54b;">
+        Option 4: Sunlit Glade <span class="badge badge-fav">★ YOUR PICK</span>
+      </h2>
+      <p class="option-desc">Golden morning light • Honey amber borders • Fresh & cheerful</p>
+
+      <div class="preview-container">
+        <div class="navbar">
+          <h3>☀️ welcome to mossyrealm ☀️</h3>
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Gallery</a>
+            <a href="#">Links</a>
+          </nav>
+        </div>
+
+        <div class="main-grid">
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">updates</div>
+              <p class="date">12/13/2025</p>
+              <p>working on the site!</p>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">to do</div>
+              <ul>
+                <li>add gallery</li>
+                <li>make guestbook</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="main-panel">
+            <div class="retro-box">
+              <h4>🌲 what's going on here? 🌲</h4>
+              <div class="art-placeholder">[cabin art here]</div>
+              <p class="welcome-text">
+                hello traveler! welcome to my mossy corner~
+              </p>
+              <div class="status">
+                <div class="status-label">current status:</div>
+                <div class="status-text">☀️ soaking up the sun!</div>
+              </div>
+              <div class="bottom-grid">
+                <div class="retro-box">
+                  <div class="retro-box-title">latest post</div>
+                  <p>coming soon...</p>
+                </div>
+                <div class="retro-box">
+                  <div class="retro-box-title">latest art</div>
+                  <div class="art-placeholder">[art]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">radio</div>
+              <div class="art-placeholder">[🎵]</div>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">fun fact</div>
+              <p>sunbeams are cozy!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          ♡ mossyrealm 2025 | <a href="#">contact</a>
+        </div>
+      </div>
+
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color sw-bg"></div>
+          <div class="swatch-label">bg #2a3f35</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-box"></div>
+          <div class="swatch-label">box #1e3028</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-border"></div>
+          <div class="swatch-label">border #e8a54b</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-header"></div>
+          <div class="swatch-label">header #ffeaa7</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-text"></div>
+          <div class="swatch-label">text #f5f0e1</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-link"></div>
+          <div class="swatch-label">link #90ee90</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 5: Autumn Hollow -->
+    <div class="option option5">
+      <h2 style="background: #2d2a24; color: #ffcc80; border: 2px solid #d4763a;">
+        Option 5: Autumn Hollow <span class="badge badge-new">🍂 NEW</span>
+      </h2>
+      <p class="option-desc">Rustic fall warmth • Burnt orange borders • Cozy cabin in October</p>
+
+      <div class="preview-container">
+        <div class="navbar">
+          <h3>🍂 welcome to mossyrealm 🍂</h3>
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Gallery</a>
+            <a href="#">Links</a>
+          </nav>
+        </div>
+
+        <div class="main-grid">
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">updates</div>
+              <p class="date">12/13/2025</p>
+              <p>working on the site!</p>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">to do</div>
+              <ul>
+                <li>add gallery</li>
+                <li>make guestbook</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="main-panel">
+            <div class="retro-box">
+              <h4>🌲 what's going on here? 🌲</h4>
+              <div class="art-placeholder">[cabin art here]</div>
+              <p class="welcome-text">
+                hello traveler! welcome to my mossy corner~
+              </p>
+              <div class="status">
+                <div class="status-label">current status:</div>
+                <div class="status-text">🍁 crunching leaves!</div>
+              </div>
+              <div class="bottom-grid">
+                <div class="retro-box">
+                  <div class="retro-box-title">latest post</div>
+                  <p>coming soon...</p>
+                </div>
+                <div class="retro-box">
+                  <div class="retro-box-title">latest art</div>
+                  <div class="art-placeholder">[art]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">radio</div>
+              <div class="art-placeholder">[🎵]</div>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">fun fact</div>
+              <p>fall is magical!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          ♡ mossyrealm 2025 | <a href="#">contact</a>
+        </div>
+      </div>
+
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color sw-bg"></div>
+          <div class="swatch-label">bg #2d2a24</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-box"></div>
+          <div class="swatch-label">box #1f1c17</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-border"></div>
+          <div class="swatch-label">border #d4763a</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-header"></div>
+          <div class="swatch-label">header #ffcc80</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-text"></div>
+          <div class="swatch-label">text #faf3e8</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-link"></div>
+          <div class="swatch-label">link #a8d08d</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 6: Honeydew Morning -->
+    <div class="option option6">
+      <h2 style="background: #2e4a3e; color: #fff8dc; border: 2px solid #f0c674;">
+        Option 6: Honeydew Morning <span class="badge badge-new">🌿 NEW</span>
+      </h2>
+      <p class="option-desc">Fresh dewy forest • Soft lemon borders • Bright spring energy</p>
+
+      <div class="preview-container">
+        <div class="navbar">
+          <h3>🌿 welcome to mossyrealm 🌿</h3>
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Gallery</a>
+            <a href="#">Links</a>
+          </nav>
+        </div>
+
+        <div class="main-grid">
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">updates</div>
+              <p class="date">12/13/2025</p>
+              <p>working on the site!</p>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">to do</div>
+              <ul>
+                <li>add gallery</li>
+                <li>make guestbook</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="main-panel">
+            <div class="retro-box">
+              <h4>🌲 what's going on here? 🌲</h4>
+              <div class="art-placeholder">[cabin art here]</div>
+              <p class="welcome-text">
+                hello traveler! welcome to my mossy corner~
+              </p>
+              <div class="status">
+                <div class="status-label">current status:</div>
+                <div class="status-text">🌱 feeling fresh!</div>
+              </div>
+              <div class="bottom-grid">
+                <div class="retro-box">
+                  <div class="retro-box-title">latest post</div>
+                  <p>coming soon...</p>
+                </div>
+                <div class="retro-box">
+                  <div class="retro-box-title">latest art</div>
+                  <div class="art-placeholder">[art]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="retro-box">
+              <div class="retro-box-title">radio</div>
+              <div class="art-placeholder">[🎵]</div>
+            </div>
+            <div class="retro-box">
+              <div class="retro-box-title">fun fact</div>
+              <p>dew drops sparkle!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          ♡ mossyrealm 2025 | <a href="#">contact</a>
+        </div>
+      </div>
+
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-color sw-bg"></div>
+          <div class="swatch-label">bg #2e4a3e</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-box"></div>
+          <div class="swatch-label">box #1f3a2e</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-border"></div>
+          <div class="swatch-label">border #f0c674</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-header"></div>
+          <div class="swatch-label">header #fff8dc</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-text"></div>
+          <div class="swatch-label">text #f8fff5</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color sw-link"></div>
+          <div class="swatch-label">link #98fb98</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>☀️ Compare Your Sunny Options ☀️</h3>
+    <p>
+      <strong style="color: #ffeaa7;">Option 4: Sunlit Glade</strong> — Your current favorite! Balanced golden warmth
+      with deep forest greens. The honey-amber borders (#e8a54b) pop nicely against the green backgrounds. Fresh but
+      grounded.<br><br>
+
+      <strong style="color: #ffcc80;">Option 5: Autumn Hollow</strong> — 🍂 Warmer and more rustic! The background leans
+      brown instead of green (#2d2a24), and borders are burnt orange (#d4763a). Feels like a cozy October cabin with
+      falling leaves. More earthy/woodsy.<br><br>
+
+      <strong style="color: #fff8dc;">Option 6: Honeydew Morning</strong> — 🌿 Freshest and brightest! Deeper, richer
+      greens in the background (#2e4a3e) with softer lemon-yellow borders (#f0c674). Creamy white headers feel like
+      morning dew. Most spring-like and refreshing!<br><br>
+
+      <span style="color: #90ee90;">💡 Quick comparison:<br>
+        • Option 4 = Balanced (summer morning)<br>
+        • Option 5 = Warmest (fall afternoon)<br>
+        • Option 6 = Freshest (spring dawn)</span>
+    </p>
+  </div>
+</body>
+
+</html>
