@@ -17,10 +17,13 @@ export default function NavBar() {
 
   return (
     <header className="site-header">
+      {/* Decorative top bar */}
+      <div className="pixel-bar-double mb-3" />
+      
       {/* Site Title */}
       <div className="site-title">
-        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mb-1">
-          ✦ ◆ ✦
+        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mb-2">
+          .:**:. .:**:. .:**:.
         </p>
         <h1
           className="
@@ -33,10 +36,13 @@ export default function NavBar() {
         >
           welcome to mossyrealm
         </h1>
-        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mt-1">
-          ✦ ◆ ✦
+        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mt-2">
+          .:**:. .:**:. .:**:.
         </p>
       </div>
+
+      {/* Decorative bar before nav */}
+      <div className="pixel-bar my-3" />
 
       {/* Desktop Navigation */}
       <nav className="site-nav hidden md:flex">
@@ -58,8 +64,11 @@ export default function NavBar() {
               text-base
               font-semibold
             "
+            style={{
+              boxShadow: '2px 2px 0 #3c2912'
+            }}
           >
-            {link.label}
+            [ {link.label} ]
           </Link>
         ))}
       </nav>
@@ -78,8 +87,11 @@ export default function NavBar() {
             flex items-center justify-center gap-2
             font-semibold
           "
+          style={{
+            boxShadow: '2px 2px 0 #3c2912'
+          }}
         >
-          Navigation {isOpen ? '▲' : '▼'}
+          [ Navigation {isOpen ? '[-]' : '[+]'} ]
         </button>
 
         {/* Mobile Dropdown */}
@@ -103,7 +115,7 @@ export default function NavBar() {
                   font-semibold
                 "
               >
-                {link.label}
+                [ {link.label} ]
               </Link>
             ))}
           </div>

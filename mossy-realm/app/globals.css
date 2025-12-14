@@ -264,20 +264,16 @@ a:hover {
 
 /* ============================================ */
 /* 90s RETRO BOX STYLING                        */
-/* Double borders, noise texture, inset shadows */
+/* Hard-edge beveled shadows, noise texture     */
 /* ============================================ */
 
 .retro-box {
-  /* Double border effect - outer dark, inner lighter */
+  /* HARD EDGE 90s BEVEL - no soft shadows! */
   border: 3px solid var(--mossy-border);
-  outline: 2px solid rgba(0, 0, 0, 0.4);
-  outline-offset: -5px;
-
-  /* Inset shadow for depth */
   box-shadow:
-    inset 0 0 8px rgba(0, 0, 0, 0.4),
-    inset 0 2px 4px rgba(0, 0, 0, 0.2),
-    2px 2px 0 rgba(0, 0, 0, 0.3);
+    0 0 0 2px #7f5d2e,
+    0 0 0 4px #3c2912,
+    4px 4px 0 0 #1a1a1a;
 
   /* Slight noise texture via SVG */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -288,6 +284,7 @@ a:hover {
   position: relative;
 }
 
+/* Inner bevel highlight */
 .retro-box::before {
   content: '';
   position: absolute;
@@ -295,67 +292,206 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      transparent 50%,
-      rgba(0, 0, 0, 0.05) 100%);
+  border: 2px solid rgba(255, 234, 167, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-right-color: rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
 
 .retro-box-title {
-  background: linear-gradient(180deg,
-      var(--mossy-border) 0%,
-      #c4883d 100%);
+  /* Beveled title bar */
+  background: linear-gradient(180deg, #f0b860 0%, var(--mossy-border) 50%, #a67c3d 100%);
   color: var(--mossy-bg-box);
-  padding: 8px 12px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
   text-transform: lowercase;
-  letter-spacing: 0.1em;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.15em;
+  border-top: 2px solid #ffd280;
+  border-bottom: 2px solid #7f5d2e;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+/* ASCII decoration in title */
+.retro-box-title::before {
+  content: '.:';
+  margin-right: 6px;
+  opacity: 0.6;
+}
+
+.retro-box-title::after {
+  content: ':.';
+  margin-left: 6px;
+  opacity: 0.6;
 }
 
 .retro-box-content {
   padding: 12px;
   position: relative;
   z-index: 1;
+  /* Inner shadow for depth */
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================ */
-/* DECORATIVE UNICODE SYMBOLS                   */
+/* DECORATIVE ELEMENTS - 90s NEOCITIES STYLE    */
 /* ============================================ */
 
-.symbol-accent {
+/* Pixel horizontal bar */
+.pixel-bar {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mossy-border) 0px,
+    var(--mossy-border) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  margin: 8px 0;
+}
+
+/* Double pixel bar */
+.pixel-bar-double {
+  height: 8px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      var(--mossy-border) 0px,
+      var(--mossy-border) 4px,
+      transparent 4px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #7f5d2e 0px,
+      #7f5d2e 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  background-size: 100% 4px;
+  background-position: 0 0, 2px 4px;
+  background-repeat: repeat-x;
+}
+
+/* Sparkle text effect */
+.sparkle {
+  display: inline-block;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Corner decorations */
+.corner-deco {
+  position: relative;
+}
+
+.corner-deco::before,
+.corner-deco::after {
+  content: '+';
+  position: absolute;
   color: var(--mossy-border);
-  opacity: 0.8;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.7;
 }
 
-.symbol-muted {
-  color: var(--mossy-text-muted);
-  opacity: 0.6;
+.corner-deco::before {
+  top: 4px;
+  left: 4px;
+}
+
+.corner-deco::after {
+  top: 4px;
+  right: 4px;
+}
+
+/* ASCII underline */
+.ascii-underline {
+  border-bottom: none;
+  background-image: linear-gradient(
+    90deg,
+    var(--mossy-border) 0%,
+    var(--mossy-border) 33%,
+    transparent 33%,
+    transparent 66%,
+    var(--mossy-border) 66%
+  );
+  background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  padding-bottom: 4px;
+}
+
+/* Tiny decorative sprites (CSS-only) */
+.tiny-star {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--mossy-border);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.tiny-diamond {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--mossy-border);
+  transform: rotate(45deg);
+}
+
+/* Blinking cursor effect */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ============================================ */
-/* ENHANCED SITE CONTAINER (more 90s feel)      */
+/* ENHANCED SITE CONTAINER - HARD 90s SHADOWS   */
 /* ============================================ */
 
 .site-container {
-  /* Enhanced double border */
+  /* HARD EDGE BEVEL - authentic 90s */
   border: 4px solid var(--mossy-border);
-  outline: 3px solid rgba(0, 0, 0, 0.5);
-  outline-offset: -7px;
-
-  /* Stronger shadow to "float" above wallpaper */
   box-shadow:
-    0 0 0 2px var(--mossy-bg-box),
-    0 4px 20px rgba(0, 0, 0, 0.6),
-    0 8px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 80px rgba(0, 0, 0, 0.15);
+    0 0 0 3px #7f5d2e,
+    0 0 0 6px #3c2912,
+    8px 8px 0 0 rgba(0, 0, 0, 0.5);
 
   /* Noise texture */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-color: rgba(30, 48, 40, 0.94);
   background-blend-mode: overlay;
   background-size: 200px;
+}
+
+/* Site header with decorative borders */
+.site-header {
+  background: var(--mossy-bg-box);
+  border-bottom: 4px solid var(--mossy-border);
+  box-shadow: 
+    inset 0 -2px 0 #7f5d2e,
+    inset 0 2px 0 rgba(255, 234, 167, 0.1);
+  padding: 16px;
+  text-align: center;
+  position: relative;
+}
+
+/* Footer with decorative borders */
+.site-footer {
+  background: var(--mossy-bg-box);
+  border-top: 4px solid var(--mossy-border);
+  box-shadow: 
+    inset 0 2px 0 #7f5d2e,
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
 }
