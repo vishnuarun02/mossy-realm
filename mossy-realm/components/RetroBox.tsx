@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 interface RetroBoxProps {
   title?: string;
+  titleIcon?: string;  // Unicode symbol for title decoration
   children: ReactNode;
   variant?: 'default' | 'alt';
   className?: string;
@@ -9,6 +10,7 @@ interface RetroBoxProps {
 
 export default function RetroBox({
   title,
+  titleIcon,
   children,
   variant = 'default',
   className = ''
@@ -18,30 +20,18 @@ export default function RetroBox({
   return (
     <div
       className={`
+        retro-box
         ${bgClass}
-        border-[3px] border-mossy-border
-        rounded-sm
-        overflow-hidden
         ${className}
       `}
     >
       {title && (
-        <div
-          className="
-            font-heading
-            bg-mossy-border 
-            text-mossy-bg-box 
-            px-3 py-1.5
-            font-semibold
-            text-sm
-            lowercase
-            tracking-wider
-          "
-        >
+        <div className="retro-box-title font-heading">
+          {titleIcon && <span className="mr-2 opacity-80">{titleIcon}</span>}
           {title}
         </div>
       )}
-      <div className="p-3 font-body">
+      <div className="retro-box-content font-body">
         {children}
       </div>
     </div>

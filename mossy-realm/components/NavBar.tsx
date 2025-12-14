@@ -19,6 +19,9 @@ export default function NavBar() {
     <header className="site-header">
       {/* Site Title */}
       <div className="site-title">
+        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mb-1">
+          ✦ ◆ ✦
+        </p>
         <h1
           className="
             font-display
@@ -28,8 +31,11 @@ export default function NavBar() {
             drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]
           "
         >
-          ☀️ welcome to mossyrealm ☀️
+          welcome to mossyrealm
         </h1>
+        <p className="text-mossy-border/70 text-xs tracking-[0.3em] mt-1">
+          ✦ ◆ ✦
+        </p>
       </div>
 
       {/* Desktop Navigation */}
