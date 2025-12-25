@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - Emoji Replacement Mockup</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --mossy-bg-main: #2a3f35;
+      --mossy-bg-box: #1e3028;
+      --mossy-bg-box-alt: #355a45;
+      --mossy-border: #e8a54b;
+      --mossy-header: #ffeaa7;
+      --mossy-text: #f5f0e1;
+      --mossy-text-muted: #c5c0a8;
+      --mossy-link: #90ee90;
+      --mossy-accent: #ff8c42;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--mossy-bg-main);
+      color: var(--mossy-text);
+      font-family: 'Lora', Georgia, serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: var(--mossy-text-muted);
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .column {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 20px;
+    }
+
+    .column-title {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--mossy-border);
+      font-size: 1.3em;
+    }
+
+    .before {
+      border-color: #cc6666;
+    }
+
+    .before .column-title {
+      color: #ffaaaa;
+    }
+
+    .after {
+      border-color: #66cc66;
+    }
+
+    .after .column-title {
+      color: #aaffaa;
+    }
+
+    .section {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed var(--mossy-border);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.75em;
+      color: var(--mossy-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .item {
+      background: var(--mossy-bg-box-alt);
+      border: 2px solid var(--mossy-border);
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    .item-header {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+    }
+
+    .item-small {
+      font-size: 0.85em;
+      color: var(--mossy-text-muted);
+    }
+
+    .divider {
+      text-align: center;
+      color: var(--mossy-border);
+      margin: 10px 0;
+    }
+
+    .poll-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+    }
+
+    .poll-radio {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--mossy-border);
+      border-radius: 50%;
+    }
+
+    .placeholder-box {
+      background: var(--mossy-bg-box);
+      border: 2px dashed var(--mossy-border);
+      padding: 20px;
+      text-align: center;
+      color: var(--mossy-text-muted);
+      font-style: italic;
+    }
+
+    .summary {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 20px;
+    }
+
+    .summary h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      margin-bottom: 15px;
+    }
+
+    .summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .summary th,
+    .summary td {
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid var(--mossy-border);
+    }
+
+    .summary th {
+      background: var(--mossy-bg-box-alt);
+      color: var(--mossy-header);
+      font-family: 'Cinzel', serif;
+    }
+
+    .summary td:first-child {
+      color: var(--mossy-text-muted);
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 800px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>MossyRealm Emoji Replacement Mockup</h1>
+  <p class="intro">Side-by-side comparison: Current (with emojis) vs Proposed (90s ASCII style)</p>
+
+  <div class="comparison-grid">
+    <!-- BEFORE COLUMN -->
+    <div class="column before">
+      <div class="column-title">CURRENT (Modern Emojis)</div>
+
+      <div class="section">
+        <div class="section-label">Site Title</div>
+        <div class="item item-header">☀️ welcome to mossyrealm ☀️</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Box Titles</div>
+        <div class="item item-header">✨ updates</div>
+        <div class="item item-header">📝 to do</div>
+        <div class="item item-header">🍄 realm guardian</div>
+        <div class="item item-header">🌲 what's going on here?</div>
+        <div class="item item-header">📖 latest blog post</div>
+        <div class="item item-header">🎨 latest art</div>
+        <div class="item item-header">🎵 realm radio</div>
+        <div class="item item-header">🌿 nature fact!</div>
+        <div class="item item-header">📊 monthly poll</div>
+        <div class="item item-header">🏷️ badges</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Poll Options</div>
+        <div class="item">
+          <div class="poll-option">
+            <div class="poll-radio"></div> 🌸 Spring
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> ☀️ Summer
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> 🍂 Autumn
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> ❄️ Winter
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Content Text</div>
+        <div class="item">Welcome to the realm! 🌲 Just planted the first seeds...</div>
+        <div class="item">Add background music 🎵</div>
+        <div class="item">realm keeper 🌻 just now</div>
+        <div class="item">feeling sunny today! ☀️ working on...</div>
+        <div class="item">🌱 Did you know? The oldest moss...</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Placeholders</div>
+        <div class="placeholder-box">🏡🌲🌲<br>[cozy cabin art coming soon]</div>
+        <div class="placeholder-box" style="margin-top:8px;">📻 ♪♫♪<br>Music player coming soon~</div>
+        <div class="placeholder-box" style="margin-top:8px;">🌱<br>(nature fact icon)</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Footer</div>
+        <div class="item item-small">[best viewed with ☀️]</div>
+        <div class="item item-small">🌻 visitors: 000001</div>
+        <div class="item item-small">♡ MossyRealm © 2025</div>
+        <div class="item item-small">✧ thanks for visiting! come back soon~ ✧</div>
+      </div>
+    </div>
+
+    <!-- AFTER COLUMN -->
+    <div class="column after">
+      <div class="column-title">PROPOSED (90s ASCII Style)</div>
+
+      <div class="section">
+        <div class="section-label">Site Title</div>
+        <div class="item item-header">+ + welcome to mossyrealm + +</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Box Titles</div>
+        <div class="item item-header">:: updates ::</div>
+        <div class="item item-header">:: to do ::</div>
+        <div class="item item-header">:: realm guardian ::</div>
+        <div class="item item-header">:: what's going on here? ::</div>
+        <div class="item item-header">:: latest blog post ::</div>
+        <div class="item item-header">:: latest art ::</div>
+        <div class="item item-header">:: realm radio ::</div>
+        <div class="item item-header">:: nature fact! ::</div>
+        <div class="item item-header">:: monthly poll ::</div>
+        <div class="item item-header">:: badges ::</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Poll Options</div>
+        <div class="item">
+          <div class="poll-option">
+            <div class="poll-radio"></div> Spring
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> Summer
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> Autumn
+          </div>
+          <div class="poll-option">
+            <div class="poll-radio"></div> Winter
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Content Text</div>
+        <div class="item">Welcome to the realm! Just planted the first seeds...</div>
+        <div class="item">Add background music</div>
+        <div class="item">realm keeper - just now</div>
+        <div class="item">feeling bright today! working on...</div>
+        <div class="item">Did you know? The oldest moss...</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Placeholders</div>
+        <div class="placeholder-box">[ cabin art placeholder ]</div>
+        <div class="placeholder-box" style="margin-top:8px;">[ ~ music ~ ]<br>Music player coming soon~</div>
+        <div class="placeholder-box" style="margin-top:8px;">*<br>(simple asterisk)</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Footer</div>
+        <div class="item item-small">[best viewed with care]</div>
+        <div class="item item-small">visitors: 000001</div>
+        <div class="item item-small">* MossyRealm * 2025</div>
+        <div class="item item-small">~ thanks for visiting! come back soon ~</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL REPLACEMENT TABLE -->
+  <div class="summary">
+    <h2>Complete Replacement List</h2>
+    <table>
+      <tr>
+        <th>Location</th>
+        <th>Current</th>
+        <th>Proposed</th>
+      </tr>
+      <tr>
+        <td>NavBar - Title</td>
+        <td>☀️ welcome to mossyrealm ☀️</td>
+        <td>+ + welcome to mossyrealm + +</td>
+      </tr>
+      <tr>
+        <td>All Box Titles</td>
+        <td>🌲 / ✨ / 📝 / 🍄 / 🎵 / etc.</td>
+        <td>:: title ::</td>
+      </tr>
+      <tr>
+        <td>Poll - Spring</td>
+        <td>🌸 Spring</td>
+        <td>Spring</td>
+      </tr>
+      <tr>
+        <td>Poll - Summer</td>
+        <td>☀️ Summer</td>
+        <td>Summer</td>
+      </tr>
+      <tr>
+        <td>Poll - Autumn</td>
+        <td>🍂 Autumn</td>
+        <td>Autumn</td>
+      </tr>
+      <tr>
+        <td>Poll - Winter</td>
+        <td>❄️ Winter</td>
+        <td>Winter</td>
+      </tr>
+      <tr>
+        <td>Updates text</td>
+        <td>Welcome to the realm! 🌲</td>
+        <td>Welcome to the realm!</td>
+      </tr>
+      <tr>
+        <td>To-do item</td>
+        <td>Add background music 🎵</td>
+        <td>Add background music</td>
+      </tr>
+      <tr>
+        <td>Status - keeper</td>
+        <td>realm keeper 🌻</td>
+        <td>realm keeper -</td>
+      </tr>
+      <tr>
+        <td>Status - mood</td>
+        <td>feeling sunny today! ☀️</td>
+        <td>feeling bright today!</td>
+      </tr>
+      <tr>
+        <td>Nature fact icon</td>
+        <td>🌱</td>
+        <td>* (asterisk)</td>
+      </tr>
+      <tr>
+        <td>Cabin placeholder</td>
+        <td>🏡🌲🌲</td>
+        <td>[ cabin art placeholder ]</td>
+      </tr>
+      <tr>
+        <td>Radio placeholder</td>
+        <td>📻 ♪♫♪</td>
+        <td>[ ~ music ~ ]</td>
+      </tr>
+      <tr>
+        <td>Art placeholder</td>
+        <td>🖼️</td>
+        <td>[ img ]</td>
+      </tr>
+      <tr>
+        <td>Guardian icon</td>
+        <td>🍄</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Footer badge</td>
+        <td>[best viewed with ☀️]</td>
+        <td>[best viewed with care]</td>
+      </tr>
+      <tr>
+        <td>Footer visitors</td>
+        <td>🌻 visitors:</td>
+        <td>visitors:</td>
+      </tr>
+      <tr>
+        <td>Footer copyright</td>
+        <td>♡ MossyRealm</td>
+        <td>* MossyRealm *</td>
+      </tr>
+      <tr>
+        <td>Footer message</td>
+        <td>✧ thanks for visiting! ✧</td>
+        <td>~ thanks for visiting! ~</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+
+</html>

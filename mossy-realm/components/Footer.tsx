@@ -14,7 +14,7 @@ export default function Footer() {
             [next.js]
           </div>
           <div className="bg-mossy-bg-box-alt border-2 border-mossy-border px-2 py-1 text-xs text-mossy-text-muted hover:border-mossy-link transition-colors">
-            [best viewed with ☀️]
+            [best viewed with ☼]
           </div>
         </div>
 
@@ -40,17 +40,17 @@ export default function Footer() {
         {/* Visitor Counter + Copyright in one line */}
         <div className="flex flex-wrap justify-center items-center gap-3 text-xs">
           <span className="text-mossy-text-muted font-body">
-            🌻 visitors: <span className="text-mossy-header font-bold">000001</span>
+            ● visitors: <span className="text-mossy-header font-bold">000001</span>
           </span>
           <span className="text-mossy-border">|</span>
           <span className="text-mossy-text-muted font-body">
-            ♡ MossyRealm © 2025
+            ♥ MossyRealm 2025
           </span>
         </div>
 
         {/* Fun little message */}
         <p className="text-mossy-text-muted text-xs font-accent">
-          ✧ thanks for visiting! come back soon~ ✧
+          ☆ thanks for visiting! come back soon~ ☆
         </p>
       </div>
     </footer>

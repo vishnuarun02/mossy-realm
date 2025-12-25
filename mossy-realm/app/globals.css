@@ -39,6 +39,36 @@
 }
 
 /* ============================================ */
+/* GLOBAL GRAIN/NOISE OVERLAY SYSTEM           */
+/* Makes content panels look like scanned 90s  */
+/* pages with subtle film grain / JPG artifacts */
+/* ============================================ */
+
+/* 
+ * GLOBAL GRAIN OVERLAY
+ * 
+ * This is ONE overlay that covers the ENTIRE page.
+ * It sits ABOVE everything - text, borders, panels, all of it.
+ * The grain does not know about components.
+ * It treats the whole page as one scanned artifact.
+ * 
+ * New pages automatically inherit this - no setup required.
+ */
+#grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.20;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+}
+
+/* ============================================ */
 /* 90s WALLPAPER BACKGROUND - Fixed & Dreamy   */
 /* ============================================ */
 
@@ -102,13 +132,15 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 20px 16px;
+  /* More horizontal padding = more wallpaper visible on sides */
+  padding: 30px 40px;
 }
 
 /* The main "site box" - where all content lives */
 .site-container {
   width: 100%;
-  max-width: 1100px;
+  /* Reduced from 1100px to show more wallpaper on desktop */
+  max-width: 920px;
   background: rgba(30, 48, 40, 0.92);
   border: 4px solid var(--mossy-border);
   box-shadow:
@@ -131,8 +163,8 @@ body {
   margin-bottom: 12px;
 }
 
+/* Desktop nav - hidden on mobile via Tailwind classes in component */
 .site-nav {
-  display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
@@ -152,14 +184,27 @@ body {
   text-align: center;
 }
 
-/* Mobile adjustments */
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .site-wrapper {
+    padding: 25px 20px;
+  }
+}
+
+/* Mobile adjustments - wallpaper visible above/below */
 @media (max-width: 768px) {
   .site-wrapper {
-    padding: 10px 8px;
+    /* Vertical padding shows wallpaper above/below content */
+    padding: 15px 8px 60px 8px;
+    /* Don't force full height - let content determine height */
+    min-height: auto;
   }
 
   .site-container {
     border-width: 3px;
+    /* Small top margin, larger bottom margin for wallpaper */
+    margin-top: 8px;
+    margin-bottom: 40px;
   }
 
   .site-header,

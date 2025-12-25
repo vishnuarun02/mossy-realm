@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MossyRealm - Emoji Replacement Options</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --mossy-bg-main: #2a3f35;
+      --mossy-bg-box: #1e3028;
+      --mossy-bg-box-alt: #355a45;
+      --mossy-border: #e8a54b;
+      --mossy-header: #ffeaa7;
+      --mossy-text: #f5f0e1;
+      --mossy-text-muted: #c5c0a8;
+      --mossy-link: #90ee90;
+      --mossy-accent: #ff8c42;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--mossy-bg-main);
+      color: var(--mossy-text);
+      font-family: 'Lora', Georgia, serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      color: var(--mossy-text-muted);
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto 40px;
+    }
+
+    .option-card {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 20px;
+    }
+
+    .option-title {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--mossy-border);
+      font-size: 1.1em;
+    }
+
+    .option-desc {
+      color: var(--mossy-text-muted);
+      font-size: 0.85em;
+      text-align: center;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .item {
+      background: var(--mossy-bg-box-alt);
+      border: 2px solid var(--mossy-border);
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      font-size: 0.9em;
+    }
+
+    .item-header {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+    }
+
+    .item-small {
+      font-size: 0.8em;
+      color: var(--mossy-text-muted);
+    }
+
+    .section-label {
+      font-size: 0.7em;
+      color: var(--mossy-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 12px 0 6px;
+    }
+
+    .current {
+      border-color: #666;
+      opacity: 0.7;
+    }
+
+    .current .option-title {
+      color: #aaa;
+    }
+
+    .recommended {
+      border-color: #66cc66;
+      box-shadow: 0 0 15px rgba(102, 204, 102, 0.3);
+    }
+
+    .recommended .option-title::after {
+      content: " ★";
+      color: #66cc66;
+    }
+
+    /* Full comparison table */
+    .comparison-table {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .comparison-table h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85em;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid var(--mossy-border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--mossy-bg-box-alt);
+      color: var(--mossy-header);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9em;
+    }
+
+    th.current-col {
+      color: #aaa;
+    }
+
+    th.recommended-col {
+      color: #aaffaa;
+    }
+
+    td:first-child {
+      color: var(--mossy-text-muted);
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+
+    .note {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 15px 20px;
+      background: var(--mossy-bg-box);
+      border: 2px dashed var(--mossy-border);
+      color: var(--mossy-text-muted);
+      font-size: 0.9em;
+    }
+
+    .note strong {
+      color: var(--mossy-header);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>MossyRealm - Style Variations</h1>
+  <p class="intro">
+    Four different approaches to replacing modern emojis. Each has a different vibe.
+    <br>The 90s web used simple symbols from standard character sets, not colorful emojis.
+  </p>
+
+  <div class="options-grid">
+
+    <!-- CURRENT -->
+    <div class="option-card current">
+      <div class="option-title">CURRENT</div>
+      <div class="option-desc">Modern emojis (what we have now)</div>
+
+      <div class="section-label">Site Title</div>
+      <div class="item item-header">☀️ welcome to mossyrealm ☀️</div>
+
+      <div class="section-label">Box Titles</div>
+      <div class="item item-header">✨ updates</div>
+      <div class="item item-header">🌲 what's going on here?</div>
+      <div class="item item-header">🎵 realm radio</div>
+      <div class="item item-header">🍄 realm guardian</div>
+
+      <div class="section-label">Content</div>
+      <div class="item">realm keeper 🌻 just now</div>
+      <div class="item">feeling sunny today! ☀️</div>
+
+      <div class="section-label">Footer</div>
+      <div class="item item-small">🌻 visitors: 000001</div>
+      <div class="item item-small">✧ thanks for visiting! ✧</div>
+    </div>
+
+    <!-- OPTION A: Pure ASCII -->
+    <div class="option-card">
+      <div class="option-title">OPTION A: Pure ASCII</div>
+      <div class="option-desc">Minimal, clean, uses only punctuation</div>
+
+      <div class="section-label">Site Title</div>
+      <div class="item item-header">+ + welcome to mossyrealm + +</div>
+
+      <div class="section-label">Box Titles</div>
+      <div class="item item-header">:: updates ::</div>
+      <div class="item item-header">:: what's going on here? ::</div>
+      <div class="item item-header">:: realm radio ::</div>
+      <div class="item item-header">:: realm guardian ::</div>
+
+      <div class="section-label">Content</div>
+      <div class="item">realm keeper - just now</div>
+      <div class="item">feeling bright today!</div>
+
+      <div class="section-label">Footer</div>
+      <div class="item item-small">visitors: 000001</div>
+      <div class="item item-small">~ thanks for visiting! ~</div>
+    </div>
+
+    <!-- OPTION B: 90s Symbols -->
+    <div class="option-card recommended">
+      <div class="option-title">OPTION B: 90s Symbols</div>
+      <div class="option-desc">Stars, hearts, diamonds from old character sets</div>
+
+      <div class="section-label">Site Title</div>
+      <div class="item item-header">★ welcome to mossyrealm ★</div>
+
+      <div class="section-label">Box Titles</div>
+      <div class="item item-header">✦ updates</div>
+      <div class="item item-header">❧ what's going on here?</div>
+      <div class="item item-header">♫ realm radio</div>
+      <div class="item item-header">✿ realm guardian</div>
+
+      <div class="section-label">Content</div>
+      <div class="item">realm keeper ○ just now</div>
+      <div class="item">feeling bright today! ☼</div>
+
+      <div class="section-label">Footer</div>
+      <div class="item item-small">● visitors: 000001</div>
+      <div class="item item-small">~ thanks for visiting! ~</div>
+    </div>
+
+    <!-- OPTION C: Decorative Mix -->
+    <div class="option-card">
+      <div class="option-title">OPTION C: Decorative Mix</div>
+      <div class="option-desc">Brackets, tildes, varied decorations</div>
+
+      <div class="section-label">Site Title</div>
+      <div class="item item-header">~* welcome to mossyrealm *~</div>
+
+      <div class="section-label">Box Titles</div>
+      <div class="item item-header">[ updates ]</div>
+      <div class="item item-header">{ what's going on here? }</div>
+      <div class="item item-header">-= realm radio =-</div>
+      <div class="item item-header">&lt;&lt; realm guardian &gt;&gt;</div>
+
+      <div class="section-label">Content</div>
+      <div class="item">realm keeper * just now</div>
+      <div class="item">feeling bright today! ~</div>
+
+      <div class="section-label">Footer</div>
+      <div class="item item-small">[visitors: 000001]</div>
+      <div class="item item-small">*~ thanks for visiting! ~*</div>
+    </div>
+
+    <!-- OPTION D: Minimal + Select Symbols -->
+    <div class="option-card">
+      <div class="option-title">OPTION D: Minimal</div>
+      <div class="option-desc">Mostly plain, symbols only where needed</div>
+
+      <div class="section-label">Site Title</div>
+      <div class="item item-header">welcome to mossyrealm</div>
+
+      <div class="section-label">Box Titles</div>
+      <div class="item item-header">updates</div>
+      <div class="item item-header">what's going on here?</div>
+      <div class="item item-header">realm radio</div>
+      <div class="item item-header">realm guardian</div>
+
+      <div class="section-label">Content</div>
+      <div class="item">realm keeper - just now</div>
+      <div class="item">feeling bright today!</div>
+
+      <div class="section-label">Footer</div>
+      <div class="item item-small">visitors: 000001</div>
+      <div class="item item-small">thanks for visiting!</div>
+    </div>
+
+  </div>
+
+  <!-- FULL COMPARISON TABLE -->
+  <div class="comparison-table">
+    <h2>Full Replacement Comparison</h2>
+    <table>
+      <tr>
+        <th>Element</th>
+        <th class="current-col">Current</th>
+        <th>A: Pure ASCII</th>
+        <th class="recommended-col">B: 90s Symbols ★</th>
+        <th>C: Decorative</th>
+        <th>D: Minimal</th>
+      </tr>
+
+      <!-- SITE TITLE -->
+      <tr>
+        <td>Site Title</td>
+        <td>☀️ welcome to mossyrealm ☀️</td>
+        <td>+ + welcome to mossyrealm + +</td>
+        <td>★ welcome to mossyrealm ★</td>
+        <td>~* welcome to mossyrealm *~</td>
+        <td>welcome to mossyrealm</td>
+      </tr>
+
+      <!-- BOX TITLES -->
+      <tr>
+        <td>Updates</td>
+        <td>✨ updates</td>
+        <td>:: updates ::</td>
+        <td>✦ updates</td>
+        <td>[ updates ]</td>
+        <td>updates</td>
+      </tr>
+      <tr>
+        <td>To Do</td>
+        <td>📝 to do</td>
+        <td>:: to do ::</td>
+        <td>◆ to do</td>
+        <td>[ to do ]</td>
+        <td>to do</td>
+      </tr>
+      <tr>
+        <td>Main Box</td>
+        <td>🌲 what's going on here?</td>
+        <td>:: what's going on here? ::</td>
+        <td>❧ what's going on here?</td>
+        <td>{ what's going on here? }</td>
+        <td>what's going on here?</td>
+      </tr>
+      <tr>
+        <td>Guardian</td>
+        <td>🍄 realm guardian</td>
+        <td>:: realm guardian ::</td>
+        <td>✿ realm guardian</td>
+        <td>&lt;&lt; realm guardian &gt;&gt;</td>
+        <td>realm guardian</td>
+      </tr>
+      <tr>
+        <td>Blog</td>
+        <td>📖 latest blog post</td>
+        <td>:: latest blog post ::</td>
+        <td>❧ latest blog post</td>
+        <td>[ latest blog post ]</td>
+        <td>latest blog post</td>
+      </tr>
+      <tr>
+        <td>Art</td>
+        <td>🎨 latest art</td>
+        <td>:: latest art ::</td>
+        <td>✦ latest art</td>
+        <td>[ latest art ]</td>
+        <td>latest art</td>
+      </tr>
+      <tr>
+        <td>Radio</td>
+        <td>🎵 realm radio</td>
+        <td>:: realm radio ::</td>
+        <td>♫ realm radio</td>
+        <td>-= realm radio =-</td>
+        <td>realm radio</td>
+      </tr>
+      <tr>
+        <td>Nature Fact</td>
+        <td>🌿 nature fact!</td>
+        <td>:: nature fact! ::</td>
+        <td>❋ nature fact!</td>
+        <td>{ nature fact! }</td>
+        <td>nature fact!</td>
+      </tr>
+      <tr>
+        <td>Poll</td>
+        <td>📊 monthly poll</td>
+        <td>:: monthly poll ::</td>
+        <td>◇ monthly poll</td>
+        <td>[ monthly poll ]</td>
+        <td>monthly poll</td>
+      </tr>
+      <tr>
+        <td>Badges</td>
+        <td>🏷️ badges</td>
+        <td>:: badges ::</td>
+        <td>★ badges</td>
+        <td>[ badges ]</td>
+        <td>badges</td>
+      </tr>
+
+      <!-- POLL OPTIONS -->
+      <tr>
+        <td>Poll: Spring</td>
+        <td>🌸 Spring</td>
+        <td>Spring</td>
+        <td>Spring</td>
+        <td>Spring</td>
+        <td>Spring</td>
+      </tr>
+      <tr>
+        <td>Poll: Summer</td>
+        <td>☀️ Summer</td>
+        <td>Summer</td>
+        <td>Summer</td>
+        <td>Summer</td>
+        <td>Summer</td>
+      </tr>
+      <tr>
+        <td>Poll: Autumn</td>
+        <td>🍂 Autumn</td>
+        <td>Autumn</td>
+        <td>Autumn</td>
+        <td>Autumn</td>
+        <td>Autumn</td>
+      </tr>
+      <tr>
+        <td>Poll: Winter</td>
+        <td>❄️ Winter</td>
+        <td>Winter</td>
+        <td>Winter</td>
+        <td>Winter</td>
+        <td>Winter</td>
+      </tr>
+
+      <!-- CONTENT TEXT -->
+      <tr>
+        <td>Update text</td>
+        <td>Welcome! 🌲 Just planted...</td>
+        <td>Welcome! Just planted...</td>
+        <td>Welcome! Just planted...</td>
+        <td>Welcome! Just planted...</td>
+        <td>Welcome! Just planted...</td>
+      </tr>
+      <tr>
+        <td>To-do music</td>
+        <td>Add background music 🎵</td>
+        <td>Add background music</td>
+        <td>Add background music</td>
+        <td>Add background music</td>
+        <td>Add background music</td>
+      </tr>
+      <tr>
+        <td>Status keeper</td>
+        <td>realm keeper 🌻 just now</td>
+        <td>realm keeper - just now</td>
+        <td>realm keeper ○ just now</td>
+        <td>realm keeper * just now</td>
+        <td>realm keeper - just now</td>
+      </tr>
+      <tr>
+        <td>Status mood</td>
+        <td>feeling sunny! ☀️</td>
+        <td>feeling bright!</td>
+        <td>feeling bright! ☼</td>
+        <td>feeling bright! ~</td>
+        <td>feeling bright!</td>
+      </tr>
+      <tr>
+        <td>Nature icon</td>
+        <td>🌱</td>
+        <td>*</td>
+        <td>❀</td>
+        <td>~</td>
+        <td>(none)</td>
+      </tr>
+
+      <!-- PLACEHOLDERS -->
+      <tr>
+        <td>Cabin art</td>
+        <td>🏡🌲🌲</td>
+        <td>[ cabin art ]</td>
+        <td>[ cabin art ]</td>
+        <td>[ cabin art ]</td>
+        <td>[ cabin art ]</td>
+      </tr>
+      <tr>
+        <td>Radio box</td>
+        <td>📻 ♪♫♪</td>
+        <td>[ ~ music ~ ]</td>
+        <td>♫ ♪ ♫</td>
+        <td>-=[ music ]=-</td>
+        <td>[ music ]</td>
+      </tr>
+      <tr>
+        <td>Art preview</td>
+        <td>🖼️</td>
+        <td>[ img ]</td>
+        <td>[ img ]</td>
+        <td>[ img ]</td>
+        <td>[ img ]</td>
+      </tr>
+      <tr>
+        <td>Guardian icon</td>
+        <td>🍄</td>
+        <td>?</td>
+        <td>✿</td>
+        <td>*</td>
+        <td>?</td>
+      </tr>
+
+      <!-- FOOTER -->
+      <tr>
+        <td>Best viewed</td>
+        <td>[best viewed with ☀️]</td>
+        <td>[best viewed with care]</td>
+        <td>[best viewed with ☼]</td>
+        <td>[best viewed with ~care~]</td>
+        <td>[best viewed with care]</td>
+      </tr>
+      <tr>
+        <td>Visitors</td>
+        <td>🌻 visitors: 000001</td>
+        <td>visitors: 000001</td>
+        <td>● visitors: 000001</td>
+        <td>[visitors: 000001]</td>
+        <td>visitors: 000001</td>
+      </tr>
+      <tr>
+        <td>Copyright</td>
+        <td>♡ MossyRealm © 2025</td>
+        <td>* MossyRealm * 2025</td>
+        <td>♥ MossyRealm 2025</td>
+        <td>~* MossyRealm *~ 2025</td>
+        <td>MossyRealm 2025</td>
+      </tr>
+      <tr>
+        <td>Thanks msg</td>
+        <td>✧ thanks for visiting! ✧</td>
+        <td>~ thanks for visiting! ~</td>
+        <td>☆ thanks for visiting! ☆</td>
+        <td>*~ thanks for visiting! ~*</td>
+        <td>thanks for visiting!</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>90s Symbol Reference:</strong><br>
+    These symbols come from standard character sets (not modern emoji):<br><br>
+    Stars: ★ ☆ ✦ ✧ ✶<br>
+    Flowers: ✿ ❀ ❁ ❃ ❋<br>
+    Hearts: ♥ ♡<br>
+    Music: ♪ ♫ ♬<br>
+    Shapes: ● ○ ◆ ◇ ■ □<br>
+    Decorative: ❧ ☼ ✾ ❖ ※<br>
+    Misc: • · ‣ † ‡ § ¶<br><br>
+    <strong>My recommendation:</strong> Option B gives you visual variety without looking modern.
+    The symbols are from the same era as 90s websites and render consistently across all browsers.
+  </div>
+
+</body>
+
+</html>

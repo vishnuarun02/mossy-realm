@@ -32,6 +32,13 @@ export default function RootLayout({
         <div className="site-wrapper">
           {children}
         </div>
+
+        {/* 
+          GLOBAL GRAIN OVERLAY
+          One overlay. Above everything. No component awareness.
+          The entire page is one scanned artifact.
+        */}
+        <div id="grain-overlay" aria-hidden="true" />
       </body>
     </html>
   );

@@ -1,10 +1,11 @@
 import RetroBox from './RetroBox';
+import Link from 'next/link';
 
 export default function SidebarRight() {
   return (
     <aside className="flex flex-col gap-4">
       {/* Radio/Music Section */}
-      <RetroBox title="🎵 realm radio">
+      <RetroBox title="-= realm radio =-">
         <div className="text-center">
           <div
             className="
@@ -16,7 +17,7 @@ export default function SidebarRight() {
               mb-2
             "
           >
-            📻 ♪♫♪
+            -=[ music ]=-
           </div>
           <p className="text-mossy-text-muted text-sm italic font-body">
             Music player coming soon~
@@ -25,9 +26,9 @@ export default function SidebarRight() {
       </RetroBox>
 
       {/* Random Fact Section */}
-      <RetroBox title="🌿 nature fact!">
+      <RetroBox title="{ nature fact! }">
         <div className="text-center font-body">
-          <div className="text-3xl mb-2">🌱</div>
+          <div className="text-3xl mb-2">~</div>
           <p className="text-mossy-text">
             Moss can hold up to <span className="text-mossy-accent font-bold">20 times</span> its weight in water! That&apos;s why forests stay so cool and misty~
           </p>
@@ -51,13 +52,13 @@ export default function SidebarRight() {
       </RetroBox>
 
       {/* Poll Section */}
-      <RetroBox title="📊 monthly poll">
+      <RetroBox title="[ monthly poll ]">
         <div className="font-body">
           <p className="text-mossy-header mb-3 text-center font-heading">
             What&apos;s your favorite season?
           </p>
           <div className="space-y-2">
-            {['🌸 Spring', '☀️ Summer', '🍂 Autumn', '❄️ Winter'].map((option) => (
+            {['Spring', 'Summer', 'Autumn', 'Winter'].map((option) => (
               <label
                 key={option}
                 className="
@@ -114,7 +115,7 @@ export default function SidebarRight() {
       </RetroBox>
 
       {/* Web Badges placeholder */}
-      <RetroBox title="🏷️ badges">
+      <RetroBox title="[ badges ]">
         <div className="flex flex-wrap gap-2 justify-center">
           <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
             [badge 1]
@@ -126,6 +127,33 @@ export default function SidebarRight() {
             [badge 3]
           </div>
         </div>
+      </RetroBox>
+
+      {/* Latest Art - moved from MainPanel */}
+      <RetroBox title="[ latest art ]">
+        <Link href="/gallery" className="block no-underline group">
+          <div
+            className="
+              w-full h-32
+              bg-mossy-bg-box 
+              border-2 border-dashed border-mossy-border
+              flex items-center justify-center
+              mb-2
+              group-hover:border-mossy-link
+              transition-colors
+            "
+          >
+            <div className="text-center text-mossy-text-muted">
+              <div className="text-xl mb-1 font-body">[ img ]</div>
+              <p className="text-sm italic font-body">
+                [art preview]
+              </p>
+            </div>
+          </div>
+          <span className="text-mossy-link underline group-hover:text-mossy-link-hover">
+            view gallery →
+          </span>
+        </Link>
       </RetroBox>
     </aside>
   );

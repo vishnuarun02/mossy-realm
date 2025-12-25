@@ -28,7 +28,7 @@ export default function NavBar() {
             drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]
           "
         >
-          ☀️ welcome to mossyrealm ☀️
+          ~* welcome to mossyrealm *~
         </h1>
       </div>
 
