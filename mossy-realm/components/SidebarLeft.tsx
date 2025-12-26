@@ -7,9 +7,9 @@ export default function SidebarLeft() {
     <aside className="flex flex-col gap-4">
       {/* Updates Section - Now with scrolling */}
       <ScrollBox title="[ updates ]" maxHeight="200px">
-        <div className="space-y-4 font-body">
+        <div className="space-y-4 font-body text-sm">
           <div>
-            <p className="text-mossy-header text-sm mb-1 font-heading">
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 25th, 2025
             </p>
             <p className="text-mossy-text">
@@ -17,7 +17,7 @@ export default function SidebarLeft() {
             </p>
           </div>
           <div>
-            <p className="text-mossy-header text-sm mb-1 font-heading">
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 13th, 2025
             </p>
             <p className="text-mossy-text">
@@ -25,7 +25,7 @@ export default function SidebarLeft() {
             </p>
           </div>
           <div>
-            <p className="text-mossy-header text-sm mb-1 font-heading">
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 12th, 2025
             </p>
             <p className="text-mossy-text">
@@ -33,7 +33,7 @@ export default function SidebarLeft() {
             </p>
           </div>
           <div>
-            <p className="text-mossy-header text-sm mb-1 font-heading">
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 11th, 2025
             </p>
             <p className="text-mossy-text">
@@ -41,7 +41,7 @@ export default function SidebarLeft() {
             </p>
           </div>
           <div>
-            <p className="text-mossy-header text-sm mb-1 font-heading">
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 10th, 2025
             </p>
             <p className="text-mossy-text">
@@ -53,7 +53,7 @@ export default function SidebarLeft() {
 
       {/* To Do Section - Now with scrolling */}
       <ScrollBox title="[ to do ]" maxHeight="200px">
-        <ul className="list-disc list-inside space-y-1 text-mossy-text marker:text-mossy-accent font-body">
+        <ul className="list-disc list-inside space-y-1 text-mossy-text marker:text-mossy-accent font-body text-sm">
           <li>Add more pages</li>
           <li>Draw site mascot</li>
           <li>Make a guestbook</li>
@@ -77,12 +77,12 @@ export default function SidebarLeft() {
               bg-mossy-bg-box-alt 
               border-2 border-dashed border-mossy-border
               flex items-center justify-center
-              text-4xl
+              text-3xl
             "
           >
             ?
           </div>
-          <p className="text-mossy-text-muted text-sm mt-2 italic font-body">
+          <p className="text-mossy-text-muted text-xs mt-2 italic font-body">
             A friendly mushroom watches over the realm
           </p>
         </div>
@@ -94,14 +94,14 @@ export default function SidebarLeft() {
           <h3 className="text-mossy-header font-bold mb-1 group-hover:text-mossy-link transition-colors font-heading">
             A Look Back and a Look Forward
           </h3>
-          <p className="text-mossy-header-alt text-sm italic mb-2 font-body">
+          <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
             December 13th, 2025
           </p>
-          <p className="text-mossy-text mb-3 font-body">
+          <p className="text-mossy-text mb-3 font-body text-sm">
             Whew, what a year it&apos;s been! I finally decided to make my own
             little corner of the internet and here we are...
           </p>
-          <span className="text-mossy-link underline group-hover:text-mossy-link-hover">
+          <span className="text-mossy-link underline group-hover:text-mossy-link-hover text-sm">
             read more →
           </span>
         </Link>

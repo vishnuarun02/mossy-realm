@@ -13,13 +13,13 @@ export default function SidebarRight() {
               bg-mossy-bg-box-alt 
               border-2 border-dashed border-mossy-border
               flex items-center justify-center
-              text-2xl
+              text-lg
               mb-2
             "
           >
             -=[ music ]=-
           </div>
-          <p className="text-mossy-text-muted text-sm italic font-body">
+          <p className="text-mossy-text-muted text-xs italic font-body">
             Music player coming soon~
           </p>
         </div>
@@ -27,8 +27,8 @@ export default function SidebarRight() {
 
       {/* Random Fact Section */}
       <RetroBox title="{ nature fact! }">
-        <div className="text-center font-body">
-          <div className="text-3xl mb-2">~</div>
+        <div className="text-center font-body text-sm">
+          <div className="text-2xl mb-2">~</div>
           <p className="text-mossy-text">
             Moss can hold up to <span className="text-mossy-accent font-bold">20 times</span> its weight in water! That&apos;s why forests stay so cool and misty~
           </p>
@@ -43,7 +43,7 @@ export default function SidebarRight() {
               hover:bg-mossy-border
               hover:text-mossy-bg-box
               transition-colors
-              text-sm
+              text-xs
             "
           >
             new fact
@@ -53,7 +53,7 @@ export default function SidebarRight() {
 
       {/* Poll Section */}
       <RetroBox title="[ monthly poll ]">
-        <div className="font-body">
+        <div className="font-body text-sm">
           <p className="text-mossy-header mb-3 text-center font-heading">
             What&apos;s your favorite season?
           </p>
@@ -89,7 +89,7 @@ export default function SidebarRight() {
                 font-bold
                 hover:bg-mossy-border-glow
                 transition-colors
-                text-sm
+                text-xs
               "
             >
               Vote
@@ -105,7 +105,7 @@ export default function SidebarRight() {
                 hover:bg-mossy-border
                 hover:text-mossy-bg-box
                 transition-colors
-                text-sm
+                text-xs
               "
             >
               View
@@ -144,13 +144,13 @@ export default function SidebarRight() {
             "
           >
             <div className="text-center text-mossy-text-muted">
-              <div className="text-xl mb-1 font-body">[ img ]</div>
-              <p className="text-sm italic font-body">
+              <div className="text-base mb-1 font-body">[ img ]</div>
+              <p className="text-xs italic font-body">
                 [art preview]
               </p>
             </div>
           </div>
-          <span className="text-mossy-link underline group-hover:text-mossy-link-hover">
+          <span className="text-mossy-link underline group-hover:text-mossy-link-hover text-sm">
             view gallery →
           </span>
         </Link>
