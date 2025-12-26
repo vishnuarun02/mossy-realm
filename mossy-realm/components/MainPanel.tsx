@@ -36,7 +36,7 @@ export default function MainPanel() {
           <p className="text-mossy-header text-lg text-center py-2 font-accent">
             ~ a cozy place for wandering souls ~
           </p>
-          <p>
+          <p style={{ textAlign: 'left' }}>
             This realm exists at a crossroads between dimensions, with visitors from all
             sorts of worlds coming and going, some lost, some simply wandering. Whether
             you&apos;re one of the lost ones or not, I hope you enjoy exploring this strange
