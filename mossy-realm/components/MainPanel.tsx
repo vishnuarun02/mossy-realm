@@ -1,27 +1,29 @@
 import RetroBox from './RetroBox';
+import Image from 'next/image';
 
 export default function MainPanel() {
   return (
     <main className="flex flex-col gap-4">
       {/* Main Welcome Box */}
       <RetroBox title="{ what's going on here? }" variant="alt">
-        {/* Hero Art Placeholder */}
+        {/* Hero Art */}
         <div
           className="
             w-full h-40 md:h-52
             bg-mossy-bg-box 
-            border-2 border-dashed border-mossy-border
-            flex items-center justify-center
+            border-2 border-mossy-border
             mb-4
-            text-mossy-text-muted
+            overflow-hidden
+            relative
           "
         >
-          <div className="text-center">
-            <div className="text-xl mb-2 font-body">[ cabin art placeholder ]</div>
-            <p className="text-sm italic font-body">
-              [cozy cabin art coming soon]
-            </p>
-          </div>
+          <Image
+            src="/forest-fox.png"
+            alt="A fox crossing a snowy log bridge in a dark winter forest"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
         {/* Welcome Text */}

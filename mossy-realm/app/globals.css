@@ -306,3 +306,130 @@ a:hover {
 .font-accent {
   font-family: var(--font-accent), 'Mystery Quest', cursive;
 }
+
+/* ============================================ */
+/* MARQUEE STYLES - 90s Flowing Text           */
+/* ============================================ */
+
+.marquee-container {
+  background: var(--mossy-bg-box);
+  border-bottom: 2px solid var(--mossy-border);
+  padding: 10px 0;
+  overflow: hidden;
+  /* Prevent text selection for cleaner UX */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.marquee-content {
+  color: var(--mossy-border);
+  font-family: var(--font-nav), 'Cormorant', serif;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  /* Slow, gentle animation - 30s per cycle */
+  animation: marquee-scroll 30s linear infinite;
+  /* Pause on hover - very 90s */
+  animation-play-state: running;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Right-to-left variant (for footer) */
+.marquee-content-rtl {
+  animation-name: marquee-scroll-rtl !important;
+}
+
+@keyframes marquee-scroll-rtl {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Mobile: Slightly faster for shorter viewport */
+@media (max-width: 768px) {
+  .marquee-content {
+    animation-duration: 25s;
+    font-size: 1rem;
+  }
+
+  .marquee-container {
+    padding: 8px 0;
+  }
+}
+
+/* ============================================ */
+/* SCROLLBOX STYLES - 90s Independent Scrolling */
+/* ============================================ */
+
+.scrollbox-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Force visible scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--mossy-border) var(--mossy-bg-box);
+}
+
+/* Webkit (Chrome, Safari, Edge) scrollbar styling */
+.scrollbox-content::-webkit-scrollbar {
+  width: 14px;
+}
+
+.scrollbox-content::-webkit-scrollbar-track {
+  background: var(--mossy-bg-box);
+  border: 1px solid var(--mossy-bg-box-alt);
+}
+
+.scrollbox-content::-webkit-scrollbar-thumb {
+  background: var(--mossy-bg-box-alt);
+  border: 2px solid var(--mossy-border);
+}
+
+.scrollbox-content::-webkit-scrollbar-thumb:hover {
+  background: var(--mossy-border);
+}
+
+/* Scroll indicator label */
+.scroll-indicator {
+  text-align: center;
+  font-family: var(--font-nav), 'Cormorant', serif;
+  font-size: 0.75rem;
+  color: var(--mossy-text-muted);
+  padding: 4px 0;
+  background: var(--mossy-bg-box);
+  border-top: 1px solid var(--mossy-bg-box-alt);
+  letter-spacing: 2px;
+}
+
+/* Mobile: Adjust scrollbox for touch */
+@media (max-width: 768px) {
+  .scrollbox-content {
+    /* Slightly taller on mobile for better touch scrolling */
+    max-height: 220px !important;
+    /* Enable momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrollbox-content::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scroll-indicator {
+    font-size: 0.7rem;
+  }
+}

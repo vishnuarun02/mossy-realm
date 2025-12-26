@@ -1,12 +1,21 @@
 import RetroBox from './RetroBox';
+import ScrollBox from './ScrollBox';
 import Link from 'next/link';
 
 export default function SidebarLeft() {
   return (
     <aside className="flex flex-col gap-4">
-      {/* Updates Section */}
-      <RetroBox title="[ updates ]">
+      {/* Updates Section - Now with scrolling */}
+      <ScrollBox title="[ updates ]" maxHeight="200px">
         <div className="space-y-4 font-body">
+          <div>
+            <p className="text-mossy-header text-sm mb-1 font-heading">
+              December 25th, 2025
+            </p>
+            <p className="text-mossy-text">
+              Added flowing marquee text and scrollable boxes! The site is coming alive~
+            </p>
+          </div>
           <div>
             <p className="text-mossy-header text-sm mb-1 font-heading">
               December 13th, 2025
@@ -23,11 +32,27 @@ export default function SidebarLeft() {
               Working on the site design. It&apos;s going to be cozy!
             </p>
           </div>
+          <div>
+            <p className="text-mossy-header text-sm mb-1 font-heading">
+              December 11th, 2025
+            </p>
+            <p className="text-mossy-text">
+              Started planning the layout. Thinking about what pages to add first.
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-sm mb-1 font-heading">
+              December 10th, 2025
+            </p>
+            <p className="text-mossy-text">
+              Gathering inspiration from old websites. The 90s aesthetic is calling to me.
+            </p>
+          </div>
         </div>
-      </RetroBox>
+      </ScrollBox>
 
-      {/* To Do Section */}
-      <RetroBox title="[ to do ]">
+      {/* To Do Section - Now with scrolling */}
+      <ScrollBox title="[ to do ]" maxHeight="200px">
         <ul className="list-disc list-inside space-y-1 text-mossy-text marker:text-mossy-accent font-body">
           <li>Add more pages</li>
           <li>Draw site mascot</li>
@@ -35,8 +60,12 @@ export default function SidebarLeft() {
           <li>Create pixel art buttons</li>
           <li>Find cool web badges</li>
           <li>Add background music</li>
+          <li>Write about favorite books</li>
+          <li>Create a links page</li>
+          <li>Design a 404 page</li>
+          <li>Add more nature facts</li>
         </ul>
-      </RetroBox>
+      </ScrollBox>
 
       {/* Little decoration box */}
       <RetroBox title="<< realm guardian >>">
