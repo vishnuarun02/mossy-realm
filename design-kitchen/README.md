@@ -15,6 +15,9 @@ Think of it like a Figma workspace - but in HTML files you can open in any brows
 | `all-explored-palettes.html` | Archive of all 6 color palettes explored |
 | `warm-palettes-comparison.html` | Side-by-side comparison of warm options |
 | `font-options-preview.html` | Comparison of all 3 font options |
+| `flowing-text-mockup.html` | ✅ Marquee text exploration |
+| `emoji-replacement-mockup.html` | Emoji styling experiments |
+| `emoji-variations-mockup.html` | More emoji variations |
 
 ---
 
@@ -96,11 +99,16 @@ mossy-realm/
 │   ├── globals.css   ← Colors + font classes
 │   ├── layout.tsx    ← Font variables applied to body
 │   └── page.tsx      ← Home page
-└── components/
-    ├── NavBar.tsx    ← Uses font-display, font-nav
-    ├── RetroBox.tsx  ← Uses font-heading, font-body
-    ├── MainPanel.tsx ← Uses all font classes
-    └── ...
+├── components/
+│   ├── NavBar.tsx       ← Uses font-display, font-nav
+│   ├── RetroBox.tsx     ← Uses font-heading, font-body
+│   ├── ScrollBox.tsx    ← Scrollable content container
+│   ├── Marquee.tsx      ← Flowing header text
+│   ├── SidebarLeft.tsx  ← Updates & Question of the Day
+│   ├── SidebarRight.tsx ← Polls & Radio
+│   └── MainPanel.tsx    ← Main content area
+├── lib/
+│   └── buildDate.ts     ← Build utilities
 ```
 
 ---
