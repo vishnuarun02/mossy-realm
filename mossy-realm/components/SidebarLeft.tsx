@@ -10,6 +10,14 @@ export default function SidebarLeft() {
         <div className="space-y-4 font-body text-sm">
           <div>
             <p className="text-mossy-header text-xs mb-1 font-heading">
+              December 29th, 2025
+            </p>
+            <p className="text-mossy-text">
+              Replaced the to-do list with a daily thought. Making things cozier one pixel at a time~
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 25th, 2025
             </p>
             <p className="text-mossy-text">
@@ -51,21 +59,17 @@ export default function SidebarLeft() {
         </div>
       </ScrollBox>
 
-      {/* To Do Section - Now with scrolling */}
-      <ScrollBox title="[ to do ]" maxHeight="200px">
-        <ul className="list-disc list-inside space-y-1 text-mossy-text marker:text-mossy-accent font-body text-sm">
-          <li>Add more pages</li>
-          <li>Draw site mascot</li>
-          <li>Make a guestbook</li>
-          <li>Create pixel art buttons</li>
-          <li>Find cool web badges</li>
-          <li>Add background music</li>
-          <li>Write about favorite books</li>
-          <li>Create a links page</li>
-          <li>Design a 404 page</li>
-          <li>Add more nature facts</li>
-        </ul>
-      </ScrollBox>
+      {/* Question of the Day Section */}
+      <RetroBox title="[ question of the day ]">
+        <div className="text-center font-body text-sm px-1">
+          <p className="text-mossy-text italic leading-relaxed">
+            &quot;Would you climb The Mount Everest, if no one else in the world knew that you did?&quot;
+          </p>
+          <div className="mt-3 text-mossy-accent text-xs">
+            ~ food for thought ~
+          </div>
+        </div>
+      </RetroBox>
 
       {/* Little decoration box */}
       <RetroBox title="<< realm guardian >>">
