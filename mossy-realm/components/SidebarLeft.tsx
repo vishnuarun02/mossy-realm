@@ -13,7 +13,7 @@ export default function SidebarLeft() {
               December 29th, 2025
             </p>
             <p className="text-mossy-text">
-              Replaced the to-do list with a daily thought. Making things cozier one pixel at a time~
+              Replaced the to-do list with a daily thought.
             </p>
           </div>
           <div>
