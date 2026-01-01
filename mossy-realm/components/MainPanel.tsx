@@ -29,14 +29,14 @@ export default function MainPanel() {
         {/* Welcome Text */}
         <div className="text-mossy-text space-y-3 font-body">
           <p>
-            Hello, dear traveler! Welcome to <span className="text-mossy-header font-bold">MossyRealm</span>,
-            my little home on the internet where I share my thoughts, art, projects,
+            Oh, little traveler! Welcome to <span className="text-mossy-header font-bold">MossyRealm</span>,
+            a magical kingdom on the internet where I share my thoughts, art, projects,
             and whatever else I feel like putting here!
           </p>
           <p className="text-mossy-header text-lg text-center py-2 font-accent">
             ~ a cozy place for wandering souls ~
           </p>
-          <p style={{ textAlign: 'left' }}>
+          <p>
             This realm exists at a crossroads between dimensions, with visitors from all
             sorts of worlds coming and going, some lost, some simply wandering. Whether
             you&apos;re one of the lost ones or not, I hope you enjoy exploring this strange
@@ -44,7 +44,7 @@ export default function MainPanel() {
           </p>
           <p className="text-mossy-accent">
             <strong>Realm warnings:</strong> some pages may contain bright colors and
-            cozy vibes that could cause excessive relaxation~
+            cozy vibes that could cause overstimulation~
           </p>
         </div>
 

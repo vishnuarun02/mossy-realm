@@ -14,7 +14,7 @@ export default function Home() {
       <main className="site-main">
         {/* 
           Three-column layout:
-          - Desktop: Left Sidebar (220px) | Main (1fr) | Right Sidebar (220px)
+          - Desktop: Left Sidebar (190px) | Main (1fr) | Right Sidebar (190px)
           - Tablet: Two columns
           - Mobile: Single column, stacked
         */}
@@ -22,7 +22,7 @@ export default function Home() {
         {/* Desktop Layout (lg and up) */}
         <div
           className="hidden lg:grid gap-4"
-          style={{ gridTemplateColumns: '220px 1fr 220px' }}
+          style={{ gridTemplateColumns: '190px 1fr 190px' }}
         >
           <SidebarLeft />
           <MainPanel />
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
 
         {/* Tablet Layout (md to lg) */}
-        <div className="hidden md:grid lg:hidden gap-4 grid-cols-[220px_1fr]">
+        <div className="hidden md:grid lg:hidden gap-4 grid-cols-[190px_1fr]">
           <div className="space-y-4">
             <SidebarLeft />
             <SidebarRight />
