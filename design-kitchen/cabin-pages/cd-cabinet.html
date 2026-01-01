@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Vault — MossyRealm Design Kitchen</title>
+  <link rel="stylesheet" href="cabin-demo.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="site-container">
+      
+      <!-- Header -->
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link active">The Cabin</a>
+          <a href="#" class="nav-link">Swamp Treasures</a>
+          <a href="#" class="nav-link">Pressed Flowers</a>
+          <a href="#" class="nav-link">Guestbook</a>
+          <a href="#" class="nav-link">Rabbit Holes</a>
+        </nav>
+      </header>
+
+      <!-- Cabin Sub-navigation -->
+      <nav class="cabin-subnav">
+        <a href="about-me.html">About Me</a>
+        <a href="library.html">Library</a>
+        <a href="cd-cabinet.html" class="active">Video Vault</a>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="site-main">
+        <div class="two-col">
+          
+          <!-- LEFT SIDEBAR -->
+          <aside class="sidebar">
+            
+            <!-- Now Watching -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ now watching ]</div>
+              <div class="retro-box-content">
+                <div class="now-playing">
+                  <div class="now-playing-poster">🎬</div>
+                  <div class="now-playing-title">Severance</div>
+                  <div class="now-playing-meta">S2 • 2025 • Thriller</div>
+                  <div class="progress-bar mt-1">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                  </div>
+                  <div class="text-muted text-xs mt-1">4 / 10 episodes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recently Rewatched -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ recently rewatched ]</div>
+              <div class="retro-box-content">
+                <div class="vhs-shelf">
+                  <div class="vhs-spine">
+                    🎞️ The Grand Budapest Hotel
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    🎞️ Spirited Away
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    🎞️ Before Sunrise
+                    <span class="rating">★★★★☆</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Watch Stats -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ 2025 stats ]</div>
+              <div class="retro-box-content text-sm text-center">
+                <div class="text-header font-heading" style="font-size: 2rem;">47</div>
+                <div class="text-muted text-xs">films watched</div>
+                <div style="border-top: 1px solid var(--mossy-bg-box-alt); margin: 10px 0;"></div>
+                <div class="text-header font-heading" style="font-size: 1.5rem;">12</div>
+                <div class="text-muted text-xs">TV seasons</div>
+              </div>
+            </div>
+
+            <!-- Letterboxd -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ find my diary ]</div>
+              <div class="retro-box-content text-center">
+                <a href="#" style="display: block; text-decoration: none;">
+                  <div style="
+                    background: var(--mossy-bg-box-alt);
+                    border: 2px solid var(--mossy-border);
+                    padding: 12px;
+                    transition: all 0.2s ease;
+                  " onmouseover="this.style.background='var(--mossy-border)'; this.style.color='var(--mossy-bg-box)'" 
+                     onmouseout="this.style.background='var(--mossy-bg-box-alt)'; this.style.color='var(--mossy-link)'">
+                    <div style="font-size: 1.5rem; margin-bottom: 4px;">🎬</div>
+                    <div class="text-sm">letterboxd</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- MAIN PANEL - Video Vault -->
+          <div class="main-panel">
+            
+            <!-- Header with filters -->
+            <div class="retro-box alt">
+              <div class="retro-box-title">[ the video vault ]</div>
+              <div class="retro-box-content">
+                <p class="text-muted text-sm mb-2">
+                  Films and shows I've watched and loved — click to see my thoughts~
+                </p>
+                
+                <!-- Filter Tags -->
+                <div class="filter-tags">
+                  <button class="filter-tag active" data-filter="all">all</button>
+                  <button class="filter-tag" data-filter="favorites">★ favorites</button>
+                  <button class="filter-tag" data-filter="comfort">comfort films</button>
+                  <button class="filter-tag" data-filter="recent">recent watches</button>
+                </div>
+                
+                <!-- Mood/Genre Filters -->
+                <div class="filter-tags mt-1">
+                  <span class="text-muted text-xs" style="margin-right: 4px;">mood:</span>
+                  <button class="filter-tag" data-filter="cozy">🌧 cozy</button>
+                  <button class="filter-tag" data-filter="thrilling">⚡ thrilling</button>
+                  <button class="filter-tag" data-filter="emotional">💧 emotional</button>
+                  <button class="filter-tag" data-filter="fun">☀️ fun</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Movie Grid -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ the collection ]</div>
+              <div class="retro-box-content">
+                <div class="movie-grid">
+                  
+                  <!-- Movie 1 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites cozy">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">The Grand Budapest Hotel</div>
+                      <div class="movie-year">2014 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 2 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites emotional">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Spirited Away</div>
+                      <div class="movie-year">2001 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 3 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites comfort cozy">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">When Harry Met Sally</div>
+                      <div class="movie-year">1989 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 4 -->
+                  <div class="movie-card" tabindex="0" data-tags="recent thrilling">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Dune: Part Two</div>
+                      <div class="movie-year">2024 • <span class="stars">★★★★☆</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 5 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites cozy">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Amélie</div>
+                      <div class="movie-year">2001 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 6 -->
+                  <div class="movie-card" tabindex="0" data-tags="comfort emotional">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Pride & Prejudice</div>
+                      <div class="movie-year">2005 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 7 -->
+                  <div class="movie-card" tabindex="0" data-tags="recent fun">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Everything Everywhere</div>
+                      <div class="movie-year">2022 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 8 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites thrilling">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Parasite</div>
+                      <div class="movie-year">2019 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 9 -->
+                  <div class="movie-card" tabindex="0" data-tags="comfort cozy">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Howl's Moving Castle</div>
+                      <div class="movie-year">2004 • <span class="stars">★★★★☆</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 10 -->
+                  <div class="movie-card" tabindex="0" data-tags="favorites emotional">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Lost in Translation</div>
+                      <div class="movie-year">2003 • <span class="stars">★★★★★</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 11 -->
+                  <div class="movie-card" tabindex="0" data-tags="recent">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Past Lives</div>
+                      <div class="movie-year">2023 • <span class="stars">★★★★☆</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Movie 12 -->
+                  <div class="movie-card" tabindex="0" data-tags="comfort fun">
+                    <div class="movie-poster">🎬</div>
+                    <div class="movie-info">
+                      <div class="movie-title">Moonrise Kingdom</div>
+                      <div class="movie-year">2012 • <span class="stars">★★★★☆</span></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- TV Shows Section -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ tv corner ]</div>
+              <div class="retro-box-content">
+                <p class="text-muted text-sm mb-2">Shows I'm watching or have loved~</p>
+                
+                <div class="vhs-shelf">
+                  <div class="vhs-spine">
+                    📺 Severance
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    📺 The Bear
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    📺 Fleabag
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    📺 Ted Lasso
+                    <span class="rating">★★★★☆</span>
+                  </div>
+                  <div class="vhs-spine">
+                    📺 Arcane
+                    <span class="rating">★★★★★</span>
+                  </div>
+                  <div class="vhs-spine">
+                    📺 Better Call Saul
+                    <span class="rating">★★★★★</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p class="footer-text">☆ thanks for visiting! come back soon~ ☆</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Simple filter JS -->
+  <script src="cabin-demo.js"></script>
+</body>
+</html>
+

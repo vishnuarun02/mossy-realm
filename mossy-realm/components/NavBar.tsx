@@ -5,12 +5,12 @@ import Link from 'next/link';
 import Marquee from './Marquee';
 
 const navLinks = [
-  { href: '/', label: 'Trailhead' },
+  { href: '/', label: 'Outpost' },
   { href: '/cabin', label: 'The Cabin' },
-  { href: '/garden', label: 'Garden' },
-  { href: '/gallery', label: 'Gallery' },
+  { href: '/garden', label: 'Swamp Treasures' },
+  { href: '/gallery', label: 'Pressed Flowers' },
   { href: '/guestbook', label: 'Guestbook' },
-  { href: '/links', label: 'Links' },
+  { href: '/links', label: 'Rabbit Holes' },
 ];
 
 export default function NavBar() {

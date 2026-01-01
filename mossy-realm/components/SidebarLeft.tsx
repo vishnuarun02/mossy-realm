@@ -1,6 +1,7 @@
 import RetroBox from './RetroBox';
 import ScrollBox from './ScrollBox';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SidebarLeft() {
   return (
@@ -72,22 +73,18 @@ export default function SidebarLeft() {
       </RetroBox>
 
       {/* Little decoration box */}
-      <RetroBox title="<< realm guardian >>">
+      <RetroBox title="< realm guardian >">
         <div className="text-center">
-          <div
-            className="
-              w-24 h-24 
-              mx-auto 
-              bg-mossy-bg-box-alt 
-              border-2 border-dashed border-mossy-border
-              flex items-center justify-center
-              text-3xl
-            "
-          >
-            ?
-          </div>
+          <Image
+            src="/realm-guardian.gif"
+            alt="Once a humble booger. Now the realm's fiercest protector."
+            width={100}
+            height={100}
+            className="mx-auto border-2 border-dashed border-mossy-border rounded-sm"
+            unoptimized
+          />
           <p className="text-mossy-text-muted text-xs mt-2 italic font-body">
-            A friendly mushroom watches over the realm
+            Once a humble booger. Now the realm&apos;s fiercest protector.
           </p>
         </div>
       </RetroBox>

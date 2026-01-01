@@ -1,0 +1,809 @@
+/* ============================================ */
+/* MOSSYREALM CABIN PAGES - DESIGN KITCHEN CSS */
+/* ============================================ */
+
+/* Import Google Fonts - same as production */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mystery+Quest&display=swap');
+
+/* ============================================ */
+/* DESIGN TOKENS - Sunlit Glade Palette        */
+/* ============================================ */
+
+:root {
+    /* Backgrounds */
+    --mossy-bg-main: #2a3f35;
+    --mossy-bg-box: #1e3028;
+    --mossy-bg-box-alt: #355a45;
+
+    /* Borders */
+    --mossy-border: #e8a54b;
+    --mossy-border-glow: #ffc857;
+
+    /* Text */
+    --mossy-header: #ffeaa7;
+    --mossy-header-alt: #fff3c4;
+    --mossy-text: #f5f0e1;
+    --mossy-text-muted: #c5c0a8;
+
+    /* Interactive */
+    --mossy-link: #90ee90;
+    --mossy-link-hover: #b8ffb8;
+    --mossy-accent: #ff8c42;
+
+    /* Fonts */
+    --font-display: 'Cinzel Decorative', serif;
+    --font-heading: 'Cinzel', serif;
+    --font-nav: 'Cormorant', serif;
+    --font-body: 'Lora', serif;
+    --font-accent: 'Mystery Quest', cursive;
+}
+
+/* ============================================ */
+/* RESET & BASE                                */
+/* ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--mossy-bg-main);
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--mossy-text);
+    min-height: 100vh;
+
+    /* Wallpaper simulation */
+    background:
+        linear-gradient(to bottom,
+            rgba(30, 48, 40, 0.85) 0%,
+            rgba(42, 63, 53, 0.80) 50%,
+            rgba(30, 48, 40, 0.85) 100%),
+        linear-gradient(135deg, #1a2e24 0%, #2a4a3a 50%, #1a2e24 100%);
+    background-attachment: fixed;
+}
+
+/* ============================================ */
+/* SITE STRUCTURE                              */
+/* ============================================ */
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 30px 40px;
+}
+
+.site-container {
+    width: 100%;
+    max-width: 980px;
+    background: rgba(30, 48, 40, 0.95);
+    border: 4px solid var(--mossy-border);
+    box-shadow:
+        0 0 0 2px var(--mossy-bg-box),
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 60px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================ */
+/* HEADER & NAVIGATION                         */
+/* ============================================ */
+
+.site-header {
+    background: var(--mossy-bg-box);
+    border-bottom: 3px solid var(--mossy-border);
+    padding: 16px;
+    text-align: center;
+}
+
+.site-title {
+    font-family: var(--font-display);
+    color: var(--mossy-header);
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nav-link {
+    font-family: var(--font-nav);
+    background: var(--mossy-bg-box-alt);
+    border: 2px solid var(--mossy-border);
+    padding: 8px 16px;
+    color: var(--mossy-link);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+    outline: none;
+}
+
+.nav-link.active {
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+}
+
+/* Sub-navigation for cabin pages */
+.cabin-subnav {
+    background: var(--mossy-bg-box-alt);
+    border-bottom: 2px solid var(--mossy-border);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cabin-subnav a {
+    font-family: var(--font-nav);
+    color: var(--mossy-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 4px 12px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.cabin-subnav a:hover,
+.cabin-subnav a:focus {
+    color: var(--mossy-header);
+    border-bottom-color: var(--mossy-border);
+}
+
+.cabin-subnav a.active {
+    color: var(--mossy-header);
+    border-bottom-color: var(--mossy-accent);
+}
+
+/* ============================================ */
+/* MAIN CONTENT AREA                           */
+/* ============================================ */
+
+.site-main {
+    padding: 16px;
+}
+
+/* 3-Column Layout */
+.three-col {
+    display: grid;
+    grid-template-columns: 180px 1fr 180px;
+    gap: 16px;
+}
+
+/* 2-Column Layout */
+.two-col {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+}
+
+/* Single Column */
+.single-col {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Main Panel */
+.main-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ============================================ */
+/* RETRO BOX - Panel Component                 */
+/* ============================================ */
+
+.retro-box {
+    background: var(--mossy-bg-box);
+    border: 3px solid var(--mossy-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.retro-box.alt {
+    background: var(--mossy-bg-box-alt);
+}
+
+.retro-box-title {
+    font-family: var(--font-heading);
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    letter-spacing: 0.15em;
+}
+
+.retro-box-content {
+    padding: 12px;
+}
+
+/* ============================================ */
+/* SCROLL BOX - Scrollable Panel               */
+/* ============================================ */
+
+.scroll-box {
+    background: var(--mossy-bg-box);
+    border: 3px solid var(--mossy-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.scroll-box-title {
+    font-family: var(--font-heading);
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    letter-spacing: 0.15em;
+}
+
+.scroll-box-content {
+    padding: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mossy-border) var(--mossy-bg-box);
+}
+
+.scroll-box-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-box-content::-webkit-scrollbar-track {
+    background: var(--mossy-bg-box);
+    border: 1px solid var(--mossy-bg-box-alt);
+}
+
+.scroll-box-content::-webkit-scrollbar-thumb {
+    background: var(--mossy-bg-box-alt);
+    border: 2px solid var(--mossy-border);
+}
+
+.scroll-box-indicator {
+    text-align: center;
+    font-family: var(--font-nav);
+    font-size: 0.75rem;
+    color: var(--mossy-text-muted);
+    padding: 4px;
+    background: var(--mossy-bg-box);
+    border-top: 1px solid var(--mossy-bg-box-alt);
+    letter-spacing: 2px;
+}
+
+/* ============================================ */
+/* TYPOGRAPHY                                  */
+/* ============================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--mossy-header);
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--mossy-link);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--mossy-link-hover);
+    text-shadow: 0 0 8px var(--mossy-link);
+}
+
+/* Text utilities */
+.text-muted {
+    color: var(--mossy-text-muted);
+}
+
+.text-header {
+    color: var(--mossy-header);
+}
+
+.text-accent {
+    color: var(--mossy-accent);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-sm {
+    font-size: 0.9rem;
+}
+
+.text-xs {
+    font-size: 0.8rem;
+}
+
+.font-accent {
+    font-family: var(--font-accent);
+}
+
+.font-heading {
+    font-family: var(--font-heading);
+}
+
+.font-nav {
+    font-family: var(--font-nav);
+}
+
+/* ============================================ */
+/* LISTS                                       */
+/* ============================================ */
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.bullet-list li::before {
+    content: "•";
+    color: var(--mossy-accent);
+    position: absolute;
+    left: 0;
+}
+
+/* ============================================ */
+/* TAGS / CHIPS                                */
+/* ============================================ */
+
+.tag {
+    display: inline-block;
+    font-family: var(--font-nav);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    background: var(--mossy-bg-box-alt);
+    border: 1px solid var(--mossy-border);
+    color: var(--mossy-text-muted);
+    border-radius: 2px;
+    margin: 2px;
+}
+
+.tag.active {
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.filter-tag {
+    font-family: var(--font-nav);
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    background: var(--mossy-bg-box-alt);
+    border: 2px solid var(--mossy-border);
+    color: var(--mossy-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-tag:hover,
+.filter-tag:focus,
+.filter-tag.active {
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+    outline: none;
+}
+
+/* ============================================ */
+/* PROGRESS BAR                                */
+/* ============================================ */
+
+.progress-bar {
+    height: 8px;
+    background: var(--mossy-bg-box-alt);
+    border: 1px solid var(--mossy-border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mossy-link), var(--mossy-accent));
+    transition: width 0.3s ease;
+}
+
+/* ============================================ */
+/* STAR RATING                                 */
+/* ============================================ */
+
+.stars {
+    color: var(--mossy-border);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.stars .empty {
+    opacity: 0.4;
+}
+
+/* ============================================ */
+/* TWO COLUMN GRID                             */
+/* ============================================ */
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* ============================================ */
+/* CARDS                                       */
+/* ============================================ */
+
+.card {
+    background: var(--mossy-bg-box-alt);
+    border: 2px solid var(--mossy-border);
+    padding: 10px;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    border-color: var(--mossy-border-glow);
+    box-shadow: 0 0 10px rgba(232, 165, 75, 0.3);
+}
+
+/* ============================================ */
+/* TIMELINE / JOURNAL STYLES                   */
+/* ============================================ */
+
+.timeline-section {
+    margin-bottom: 24px;
+}
+
+.timeline-header {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--mossy-header-alt);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--mossy-border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timeline-header::before {
+    content: "──";
+    color: var(--mossy-border);
+}
+
+.timeline-header::after {
+    content: "──────────────────";
+    color: var(--mossy-border);
+    flex: 1;
+    overflow: hidden;
+}
+
+.timeline-entry {
+    background: var(--mossy-bg-box);
+    border: 2px solid var(--mossy-bg-box-alt);
+    border-left: 4px solid var(--mossy-border);
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.timeline-entry:hover {
+    border-left-color: var(--mossy-accent);
+    background: var(--mossy-bg-box-alt);
+}
+
+.timeline-entry-title {
+    font-family: var(--font-heading);
+    color: var(--mossy-header);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.timeline-entry-meta {
+    font-size: 0.85rem;
+    color: var(--mossy-text-muted);
+    margin-bottom: 6px;
+}
+
+.timeline-entry-note {
+    font-style: italic;
+    color: var(--mossy-text);
+    font-size: 0.9rem;
+    border-left: 2px solid var(--mossy-accent);
+    padding-left: 10px;
+    margin-top: 8px;
+}
+
+/* ============================================ */
+/* MOVIE / VHS STYLES                          */
+/* ============================================ */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.movie-card {
+    background: var(--mossy-bg-box);
+    border: 3px solid var(--mossy-border);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover,
+.movie-card:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: var(--mossy-border-glow);
+}
+
+.movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: var(--mossy-bg-box-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--mossy-border);
+}
+
+.movie-info {
+    padding: 8px;
+}
+
+.movie-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--mossy-header);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.movie-year {
+    font-size: 0.75rem;
+    color: var(--mossy-text-muted);
+}
+
+/* VHS Spine Style */
+.vhs-shelf {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vhs-spine {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg,
+            var(--mossy-bg-box) 0%,
+            var(--mossy-bg-box-alt) 3%,
+            var(--mossy-bg-box-alt) 97%,
+            var(--mossy-bg-box) 100%);
+    border: 2px solid var(--mossy-border);
+    padding: 8px 12px;
+    font-family: var(--font-nav);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.vhs-spine:hover {
+    background: var(--mossy-border);
+    color: var(--mossy-bg-box);
+}
+
+.vhs-spine .rating {
+    margin-left: auto;
+    color: var(--mossy-accent);
+}
+
+/* Now Playing - Feature Display */
+.now-playing {
+    text-align: center;
+}
+
+.now-playing-poster {
+    width: 100%;
+    max-width: 120px;
+    aspect-ratio: 2/3;
+    background: var(--mossy-bg-box-alt);
+    border: 3px solid var(--mossy-border);
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.now-playing-title {
+    font-family: var(--font-heading);
+    color: var(--mossy-header);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.now-playing-meta {
+    font-size: 0.8rem;
+    color: var(--mossy-text-muted);
+}
+
+/* ============================================ */
+/* FOOTER                                      */
+/* ============================================ */
+
+.site-footer {
+    background: var(--mossy-bg-box);
+    border-top: 3px solid var(--mossy-border);
+    padding: 16px;
+    text-align: center;
+}
+
+.footer-text {
+    font-family: var(--font-accent);
+    color: var(--mossy-text-muted);
+    font-size: 0.9rem;
+}
+
+/* ============================================ */
+/* FOCUS STYLES - Accessibility                */
+/* ============================================ */
+
+*:focus-visible {
+    outline: 2px solid var(--mossy-border-glow);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+.filter-tag:focus-visible,
+.nav-link:focus-visible {
+    outline: 2px solid var(--mossy-border-glow);
+    outline-offset: 2px;
+}
+
+/* ============================================ */
+/* RESPONSIVE - Mobile                         */
+/* ============================================ */
+
+@media (max-width: 900px) {
+    .three-col {
+        grid-template-columns: 1fr;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-wrapper {
+        padding: 15px 8px;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .two-col-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cabin-subnav {
+        gap: 8px;
+    }
+
+    .cabin-subnav a {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+}
+
+/* ============================================ */
+/* UTILITY                                     */
+/* ============================================ */
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-1 {
+    margin-bottom: 8px;
+}
+
+.mb-2 {
+    margin-bottom: 16px;
+}
+
+.mt-1 {
+    margin-top: 8px;
+}
+
+.mt-2 {
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}

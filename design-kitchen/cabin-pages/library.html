@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library — MossyRealm Design Kitchen</title>
+  <link rel="stylesheet" href="cabin-demo.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <div class="site-container">
+      
+      <!-- Header -->
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link active">The Cabin</a>
+          <a href="#" class="nav-link">Swamp Treasures</a>
+          <a href="#" class="nav-link">Pressed Flowers</a>
+          <a href="#" class="nav-link">Guestbook</a>
+          <a href="#" class="nav-link">Rabbit Holes</a>
+        </nav>
+      </header>
+
+      <!-- Cabin Sub-navigation -->
+      <nav class="cabin-subnav">
+        <a href="about-me.html">About Me</a>
+        <a href="library.html" class="active">Library</a>
+        <a href="cd-cabinet.html">Video Vault</a>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="site-main">
+        <div class="two-col">
+          
+          <!-- LEFT SIDEBAR -->
+          <aside class="sidebar">
+            
+            <!-- Currently Reading -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ currently reading ]</div>
+              <div class="retro-box-content text-center">
+                <!-- Book cover placeholder -->
+                <div style="
+                  width: 100px;
+                  height: 150px;
+                  background: var(--mossy-bg-box-alt);
+                  border: 3px solid var(--mossy-border);
+                  margin: 0 auto 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 2rem;
+                ">
+                  📖
+                </div>
+                <div class="text-header font-heading text-sm">Piranesi</div>
+                <div class="text-muted text-xs">Susanna Clarke</div>
+                <div class="progress-bar mt-1">
+                  <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+                <div class="text-muted text-xs mt-1">65% complete</div>
+              </div>
+            </div>
+
+            <!-- On Deck -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ on deck ]</div>
+              <div class="retro-box-content">
+                <ul class="bullet-list text-sm">
+                  <li>The House in the Cerulean Sea</li>
+                  <li>Project Hail Mary</li>
+                  <li>Kafka on the Shore</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Reading Stats -->
+            <div class="retro-box">
+              <div class="retro-box-title">[ 2025 stats ]</div>
+              <div class="retro-box-content text-sm text-center">
+                <div class="text-header font-heading" style="font-size: 2rem;">12</div>
+                <div class="text-muted text-xs">books read</div>
+                <div style="border-top: 1px solid var(--mossy-bg-box-alt); margin: 10px 0;"></div>
+                <div class="text-header font-heading" style="font-size: 1.5rem;">4,521</div>
+                <div class="text-muted text-xs">pages turned</div>
+              </div>
+            </div>
+
+            <!-- Favorite Quotes -->
+            <div class="scroll-box">
+              <div class="scroll-box-title">[ favorite quotes ]</div>
+              <div class="scroll-box-content" style="max-height: 180px;">
+                <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--mossy-bg-box-alt);">
+                  <p class="text-sm" style="font-style: italic;">
+                    "The world is indeed full of peril, and in it there are many dark places; 
+                    but still there is much that is fair."
+                  </p>
+                  <p class="text-muted text-xs mt-1">— Tolkien, The Fellowship of the Ring</p>
+                </div>
+                <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--mossy-bg-box-alt);">
+                  <p class="text-sm" style="font-style: italic;">
+                    "We accept the love we think we deserve."
+                  </p>
+                  <p class="text-muted text-xs mt-1">— Chbosky, Perks of Being a Wallflower</p>
+                </div>
+                <div>
+                  <p class="text-sm" style="font-style: italic;">
+                    "So we beat on, boats against the current, borne back ceaselessly into the past."
+                  </p>
+                  <p class="text-muted text-xs mt-1">— Fitzgerald, The Great Gatsby</p>
+                </div>
+              </div>
+              <div class="scroll-box-indicator">[ scroll ↓ ]</div>
+            </div>
+
+          </aside>
+
+          <!-- MAIN PANEL - Reading Journal -->
+          <div class="main-panel">
+            
+            <!-- Header with filters -->
+            <div class="retro-box alt">
+              <div class="retro-box-title">[ reading journal ]</div>
+              <div class="retro-box-content">
+                <p class="text-muted text-sm mb-2">
+                  A log of books I've read, with mini thoughts and ratings~
+                </p>
+                
+                <!-- Filter Tags -->
+                <div class="filter-tags">
+                  <button class="filter-tag active" data-filter="all">all</button>
+                  <button class="filter-tag" data-filter="fiction">fiction</button>
+                  <button class="filter-tag" data-filter="non-fiction">non-fiction</button>
+                  <button class="filter-tag" data-filter="favorites">★ favorites</button>
+                  <button class="filter-tag" data-filter="2025">2025</button>
+                  <button class="filter-tag" data-filter="2024">2024</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline: December 2025 -->
+            <div class="timeline-section">
+              <div class="timeline-header">December 2025</div>
+              
+              <div class="timeline-entry" data-tags="fiction 2025 favorites">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★★</span> Piranesi
+                </div>
+                <div class="timeline-entry-meta">
+                  Susanna Clarke • Fiction • Fantasy
+                </div>
+                <div class="timeline-entry-note">
+                  "A hauntingly beautiful meditation on memory, identity, and the nature of 
+                  reality. The House is unforgettable."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="non-fiction 2025">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★<span class="empty">★</span></span> Four Thousand Weeks
+                </div>
+                <div class="timeline-entry-meta">
+                  Oliver Burkeman • Non-Fiction • Philosophy
+                </div>
+                <div class="timeline-entry-note">
+                  "Made me rethink my relationship with time and productivity. 
+                  The finite life is the meaningful life."
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline: November 2025 -->
+            <div class="timeline-section">
+              <div class="timeline-header">November 2025</div>
+              
+              <div class="timeline-entry" data-tags="fiction 2025 favorites">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★★</span> The Midnight Library
+                </div>
+                <div class="timeline-entry-meta">
+                  Matt Haig • Fiction • Contemporary
+                </div>
+                <div class="timeline-entry-note">
+                  "A comforting reminder that the life you're living might be 
+                  more valuable than the ones you imagine."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="fiction 2025">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★<span class="empty">★★</span></span> Tomorrow, and Tomorrow, and Tomorrow
+                </div>
+                <div class="timeline-entry-meta">
+                  Gabrielle Zevin • Fiction • Literary
+                </div>
+                <div class="timeline-entry-note">
+                  "Beautiful prose about friendship, creativity, and love. 
+                  Some pacing issues but the characters stayed with me."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="non-fiction 2025">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★<span class="empty">★</span></span> Stolen Focus
+                </div>
+                <div class="timeline-entry-meta">
+                  Johann Hari • Non-Fiction • Technology
+                </div>
+                <div class="timeline-entry-note">
+                  "Eye-opening look at attention in the modern age. 
+                  Made me delete several apps."
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline: October 2025 -->
+            <div class="timeline-section">
+              <div class="timeline-header">October 2025</div>
+              
+              <div class="timeline-entry" data-tags="fiction 2025 favorites">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★★</span> Project Hail Mary
+                </div>
+                <div class="timeline-entry-meta">
+                  Andy Weir • Fiction • Sci-Fi
+                </div>
+                <div class="timeline-entry-note">
+                  "ROCKY! This book made me cry, laugh, and fall in love with 
+                  science all over again. An instant favorite."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="fiction 2025">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★<span class="empty">★</span></span> Anxious People
+                </div>
+                <div class="timeline-entry-meta">
+                  Fredrik Backman • Fiction • Contemporary
+                </div>
+                <div class="timeline-entry-note">
+                  "Quirky and heartwarming. Backman has a gift for making 
+                  you care about deeply flawed people."
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline: 2024 -->
+            <div class="timeline-section">
+              <div class="timeline-header">2024 Highlights</div>
+              
+              <div class="timeline-entry" data-tags="fiction 2024 favorites">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★★</span> Circe
+                </div>
+                <div class="timeline-entry-meta">
+                  Madeline Miller • Fiction • Mythology
+                </div>
+                <div class="timeline-entry-note">
+                  "A feminist retelling that gave voice to a silenced goddess. 
+                  Miller's prose is absolute poetry."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="non-fiction 2024">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★<span class="empty">★</span></span> The Anthropocene Reviewed
+                </div>
+                <div class="timeline-entry-meta">
+                  John Green • Non-Fiction • Essays
+                </div>
+                <div class="timeline-entry-note">
+                  "John Green reviewing the human experience on a five-star scale. 
+                  Made me cry on a plane."
+                </div>
+              </div>
+
+              <div class="timeline-entry" data-tags="fiction 2024">
+                <div class="timeline-entry-title">
+                  <span class="stars">★★★★<span class="empty">★</span></span> A Wizard of Earthsea
+                </div>
+                <div class="timeline-entry-meta">
+                  Ursula K. Le Guin • Fiction • Fantasy
+                </div>
+                <div class="timeline-entry-note">
+                  "Finally read this classic. Le Guin's wisdom shines through 
+                  every page. Why did I wait so long?"
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p class="footer-text">☆ thanks for visiting! come back soon~ ☆</p>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Simple filter JS -->
+  <script src="cabin-demo.js"></script>
+</body>
+</html>
+
