@@ -11,6 +11,22 @@ export default function SidebarLeft() {
         <div className="space-y-4 font-body text-sm">
           <div>
             <p className="text-mossy-header text-xs mb-1 font-heading">
+              December 31st, 2025
+            </p>
+            <p className="text-mossy-text">
+              The realm has a guardian now. His name is Sir Mucus McSniff. He&apos;s a booger.
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-xs mb-1 font-heading">
+              December 30th, 2025
+            </p>
+            <p className="text-mossy-text">
+              Renamed some nav links. &quot;Rabbit Holes&quot; sounds better than &quot;Links&quot;, etc.
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 29th, 2025
             </p>
             <p className="text-mossy-text">
@@ -83,7 +99,10 @@ export default function SidebarLeft() {
             className="mx-auto border-2 border-dashed border-mossy-border rounded-sm"
             unoptimized
           />
-          <p className="text-mossy-text-muted text-xs mt-2 italic font-body">
+          <p className="text-mossy-header text-xs mt-2 italic font-body font-bold uppercase">
+            Sir Mucus McSniff
+          </p>
+          <p className="text-mossy-text-muted text-xs italic font-body">
             Once a humble booger. Now the realm&apos;s fiercest protector.
           </p>
         </div>
