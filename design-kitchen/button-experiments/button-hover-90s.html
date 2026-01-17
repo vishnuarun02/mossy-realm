@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90s Button Hovers - MossyRealm Design Kitchen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mossy-bg-main: #2a3f35;
+      --mossy-bg-box: #1e3028;
+      --mossy-bg-box-alt: #355a45;
+      --mossy-border: #e8a54b;
+      --mossy-border-glow: #ffc857;
+      --mossy-header: #ffeaa7;
+      --mossy-text: #f5f0e1;
+      --mossy-link: #90ee90;
+      --mossy-link-hover: #b8ffb8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--mossy-bg-main);
+      color: var(--mossy-text);
+      font-family: 'Lora', Georgia, serif;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--mossy-text);
+      opacity: 0.8;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-border);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--mossy-text);
+      opacity: 0.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Base button style - NO TRANSITIONS (90s authentic!) */
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--mossy-bg-box-alt);
+      border: 2px solid var(--mossy-border);
+      padding: 10px 20px;
+      color: var(--mossy-link);
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      /* NO TRANSITION - 90s was instant! */
+    }
+
+    /* ============================================ */
+    /* 1. INSTANT COLOR SWAP - Classic 90s         */
+    /* ============================================ */
+    .btn-instant:hover {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+    }
+    .btn-instant:active {
+      background: var(--mossy-border-glow);
+    }
+
+    /* ============================================ */
+    /* 2. WINDOWS 95 BEVEL - That classic 3D look  */
+    /* ============================================ */
+    .btn-bevel {
+      border: none;
+      border-style: outset;
+      border-width: 3px;
+      border-color: #6b8c5a #2a4a35 #2a4a35 #6b8c5a;
+      background: linear-gradient(180deg, #4a6b4a 0%, #355a45 100%);
+      box-shadow: 1px 1px 0 #1a2a20;
+    }
+    .btn-bevel:hover {
+      background: linear-gradient(180deg, #5a7b5a 0%, #456b55 100%);
+      color: var(--mossy-header);
+    }
+    .btn-bevel:active {
+      border-style: inset;
+      border-color: #2a4a35 #6b8c5a #6b8c5a #2a4a35;
+      background: linear-gradient(180deg, #2a4a35 0%, #355a45 100%);
+      box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* ============================================ */
+    /* 3. UNDERLINE ONLY - Simple & classic        */
+    /* ============================================ */
+    .btn-underline-90s {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+    }
+    .btn-underline-90s:hover {
+      text-decoration: underline;
+      color: var(--mossy-header);
+    }
+    .btn-underline-90s:active {
+      color: var(--mossy-border);
+    }
+
+    /* ============================================ */
+    /* 4. DOTTED BORDER - Border style change      */
+    /* ============================================ */
+    .btn-dotted:hover {
+      border-style: dotted;
+      color: var(--mossy-header);
+    }
+    .btn-dotted:active {
+      border-style: dashed;
+      background: var(--mossy-bg-box);
+    }
+
+    /* ============================================ */
+    /* 5. DASHED BORDER - Another variation        */
+    /* ============================================ */
+    .btn-dashed:hover {
+      border-style: dashed;
+      border-color: var(--mossy-border-glow);
+      color: var(--mossy-header);
+    }
+    .btn-dashed:active {
+      border-width: 3px;
+    }
+
+    /* ============================================ */
+    /* 6. INVERSE - Text/BG swap                   */
+    /* ============================================ */
+    .btn-inverse:hover {
+      background: var(--mossy-link);
+      color: var(--mossy-bg-box);
+      border-color: var(--mossy-link);
+    }
+    .btn-inverse:active {
+      background: var(--mossy-link-hover);
+    }
+
+    /* ============================================ */
+    /* 7. DOUBLE BORDER - Chunky 90s frame         */
+    /* ============================================ */
+    .btn-double {
+      border: 3px double var(--mossy-border);
+    }
+    .btn-double:hover {
+      border-width: 4px;
+      color: var(--mossy-header);
+      background: var(--mossy-bg-box);
+    }
+    .btn-double:active {
+      border-color: var(--mossy-border-glow);
+    }
+
+    /* ============================================ */
+    /* 8. RIDGE/GROOVE - More 3D border styles     */
+    /* ============================================ */
+    .btn-ridge {
+      border: 3px ridge var(--mossy-border);
+    }
+    .btn-ridge:hover {
+      border-style: groove;
+      color: var(--mossy-header);
+    }
+    .btn-ridge:active {
+      border-style: inset;
+      background: var(--mossy-bg-box);
+    }
+
+    /* ============================================ */
+    /* 9. TILED BACKGROUND - Pattern swap          */
+    /* ============================================ */
+    .btn-tiled:hover {
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 3px,
+          rgba(232, 165, 75, 0.15) 3px,
+          rgba(232, 165, 75, 0.15) 6px
+        );
+      color: var(--mossy-header);
+    }
+    .btn-tiled:active {
+      background-image: 
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 3px,
+          rgba(232, 165, 75, 0.25) 3px,
+          rgba(232, 165, 75, 0.25) 6px
+        );
+    }
+
+    /* ============================================ */
+    /* 10. GLOW TEXT ONLY - Simple text highlight  */
+    /* ============================================ */
+    .btn-text-glow:hover {
+      color: var(--mossy-header);
+      text-shadow: 0 0 8px var(--mossy-border);
+    }
+    .btn-text-glow:active {
+      text-shadow: 0 0 12px var(--mossy-border-glow);
+    }
+
+    /* Recommendation box */
+    .recommendation {
+      margin-top: 50px;
+      padding: 25px;
+      background: var(--mossy-bg-box);
+      border: 4px double var(--mossy-border);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .recommendation h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .recommendation ul {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    .recommendation li {
+      margin-bottom: 8px;
+    }
+    .recommendation code {
+      background: var(--mossy-bg-box-alt);
+      padding: 2px 6px;
+      font-size: 0.85rem;
+      color: var(--mossy-link);
+    }
+    .recommendation strong {
+      color: var(--mossy-border);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⚡ Authentic 90s Button Hovers</h1>
+  <p class="subtitle">No transitions, no easing - just instant, clunky charm!</p>
+
+  <div class="grid">
+
+    <!-- Instant Color Swap -->
+    <div class="card">
+      <h2>1. Instant Color Swap</h2>
+      <p>Classic - BAM different color</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-instant">Outpost</a>
+        <a href="#" class="btn btn-instant">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Windows 95 Bevel -->
+    <div class="card">
+      <h2>2. Windows 95 Bevel</h2>
+      <p>Raised 3D look, sinks on click!</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-bevel">Outpost</a>
+        <a href="#" class="btn btn-bevel">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Underline Only -->
+    <div class="card">
+      <h2>3. Underline Only</h2>
+      <p>Simple text links, very classic</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-underline-90s">Outpost</a>
+        <a href="#" class="btn btn-underline-90s">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Dotted Border -->
+    <div class="card">
+      <h2>4. Dotted Border</h2>
+      <p>Solid → dotted on hover</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-dotted">Outpost</a>
+        <a href="#" class="btn btn-dotted">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Dashed Border -->
+    <div class="card">
+      <h2>5. Dashed Border</h2>
+      <p>Solid → dashed with glow color</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-dashed">Outpost</a>
+        <a href="#" class="btn btn-dashed">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Inverse -->
+    <div class="card">
+      <h2>6. Full Inverse</h2>
+      <p>Green text → green background</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-inverse">Outpost</a>
+        <a href="#" class="btn btn-inverse">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Double Border -->
+    <div class="card">
+      <h2>7. Double Border</h2>
+      <p>Chunky double-line frame</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-double">Outpost</a>
+        <a href="#" class="btn btn-double">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Ridge/Groove -->
+    <div class="card">
+      <h2>8. Ridge ↔ Groove</h2>
+      <p>3D border style swap</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-ridge">Outpost</a>
+        <a href="#" class="btn btn-ridge">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Tiled Pattern -->
+    <div class="card">
+      <h2>9. Tiled Pattern</h2>
+      <p>Subtle diagonal stripes appear</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-tiled">Outpost</a>
+        <a href="#" class="btn btn-tiled">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Text Glow Only -->
+    <div class="card">
+      <h2>10. Text Glow Only</h2>
+      <p>Just the text gets a warm glow</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-text-glow">Outpost</a>
+        <a href="#" class="btn btn-text-glow">The Cabin</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="recommendation">
+    <h3>🌿 My Picks for MossyRealm</h3>
+    <ul>
+      <li><strong>Most 90s authentic:</strong> <code>#2 Windows 95 Bevel</code> - that satisfying click!</li>
+      <li><strong>Clean & classic:</strong> <code>#1 Instant Color Swap</code> - what you have, just remove transitions</li>
+      <li><strong>Subtle & elegant:</strong> <code>#10 Text Glow Only</code> - matches fireflies, minimal change</li>
+      <li><strong>Playful:</strong> <code>#9 Tiled Pattern</code> - adds texture without being loud</li>
+    </ul>
+  </div>
+
+</body>
+</html>
+

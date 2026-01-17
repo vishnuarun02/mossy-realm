@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effects Preview ~ MossyRealm</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mystery+Quest&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --mossy-bg-main: #2a3f35;
+            --mossy-bg-box: #1e3028;
+            --mossy-bg-box-alt: #355a45;
+            --mossy-border: #e8a54b;
+            --mossy-border-glow: #ffc857;
+            --mossy-header: #ffeaa7;
+            --mossy-header-alt: #fff3c4;
+            --mossy-text: #f5f0e1;
+            --mossy-text-muted: #c5c0a8;
+            --mossy-link: #90ee90;
+            --mossy-link-hover: #b8ffb8;
+            --mossy-accent: #ff8c42;
+            --font-display: 'Cinzel Decorative', serif;
+            --font-heading: 'Cinzel', serif;
+            --font-nav: 'Cormorant', serif;
+            --font-body: 'Lora', serif;
+            --font-accent: 'Mystery Quest', cursive;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--mossy-text);
+            min-height: 100vh;
+            background: linear-gradient(to bottom,
+                rgba(30, 48, 40, 0.95) 0%,
+                rgba(42, 63, 53, 0.90) 50%,
+                rgba(30, 48, 40, 0.95) 100%),
+                linear-gradient(135deg, #1a2e24 0%, #2a4a3a 50%, #1a2e24 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .site-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 30px 40px;
+        }
+
+        .site-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(30, 48, 40, 0.95);
+            border: 4px solid var(--mossy-border);
+            box-shadow: 0 0 0 2px var(--mossy-bg-box), 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-header {
+            background: var(--mossy-bg-box);
+            border-bottom: 3px solid var(--mossy-border);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .site-title {
+            font-family: var(--font-display);
+            color: var(--mossy-header);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .site-subtitle {
+            font-family: var(--font-accent);
+            color: var(--mossy-accent);
+            font-size: 1.1rem;
+        }
+
+        .site-main {
+            padding: 20px;
+        }
+
+        .instructions {
+            background: var(--mossy-bg-box);
+            border: 3px solid var(--mossy-border);
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .instructions h2 {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 0.15em;
+        }
+
+        .instructions p {
+            color: var(--mossy-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--mossy-link);
+            font-weight: 600;
+        }
+
+        /* Effect Toggle Cards */
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .effect-card {
+            background: var(--mossy-bg-box);
+            border: 3px solid var(--mossy-border);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .effect-card.active {
+            border-color: var(--mossy-link);
+            box-shadow: 0 0 20px rgba(144, 238, 144, 0.3);
+        }
+
+        .effect-header {
+            background: var(--mossy-border);
+            color: var(--mossy-bg-box);
+            padding: 10px 16px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .effect-toggle {
+            background: var(--mossy-bg-box);
+            border: 2px solid var(--mossy-bg-box-alt);
+            color: var(--mossy-text-muted);
+            padding: 4px 12px;
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .effect-toggle:hover {
+            background: var(--mossy-bg-box-alt);
+            color: var(--mossy-text);
+        }
+
+        .effect-toggle.on {
+            background: var(--mossy-link);
+            color: var(--mossy-bg-box);
+            border-color: var(--mossy-link);
+        }
+
+        .effect-content {
+            padding: 16px;
+        }
+
+        .effect-emoji {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .effect-name {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .effect-vibe {
+            color: var(--mossy-accent);
+            font-family: var(--font-accent);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .effect-desc {
+            color: var(--mossy-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Demo Area */
+        .demo-area {
+            background: var(--mossy-bg-box-alt);
+            border: 3px solid var(--mossy-border);
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .demo-content h3 {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            margin-bottom: 12px;
+        }
+
+        .demo-content p {
+            color: var(--mossy-text-muted);
+            margin-bottom: 16px;
+        }
+
+        .demo-link {
+            display: inline-block;
+            background: var(--mossy-bg-box);
+            border: 2px solid var(--mossy-border);
+            color: var(--mossy-link);
+            padding: 10px 24px;
+            text-decoration: none;
+            font-family: var(--font-nav);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 8px;
+        }
+
+        .demo-link:hover {
+            background: var(--mossy-border);
+            color: var(--mossy-bg-box);
+        }
+
+        .site-footer {
+            background: var(--mossy-bg-box);
+            border-top: 3px solid var(--mossy-border);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-family: var(--font-accent);
+            color: var(--mossy-text-muted);
+        }
+
+        /* ============================================ */
+        /* EFFECT 1: SPARKLE TRAIL                     */
+        /* ============================================ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--mossy-border-glow) 0%, var(--mossy-border) 40%, transparent 70%);
+            animation: sparkle-fade 0.6s ease-out forwards;
+        }
+
+        @keyframes sparkle-fade {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3) rotate(180deg) translateY(-10px);
+            }
+        }
+
+        /* ============================================ */
+        /* EFFECT 2: FIREFLIES                         */
+        /* ============================================ */
+        .firefly {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffaa 0%, #ffee77 30%, transparent 70%);
+            box-shadow: 0 0 10px 2px rgba(255, 238, 119, 0.5);
+            animation: firefly-float var(--duration, 8s) ease-in-out infinite, 
+                       firefly-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes firefly-float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(var(--dx1, 50px), var(--dy1, -30px));
+            }
+            50% {
+                transform: translate(var(--dx2, 20px), var(--dy2, 40px));
+            }
+            75% {
+                transform: translate(var(--dx3, -30px), var(--dy3, 10px));
+            }
+        }
+
+        @keyframes firefly-glow {
+            0%, 100% {
+                opacity: 0.3;
+                box-shadow: 0 0 6px 1px rgba(255, 238, 119, 0.3);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 15px 4px rgba(255, 238, 119, 0.6);
+            }
+        }
+
+        /* ============================================ */
+        /* EFFECT 3: DUST MOTES                        */
+        /* ============================================ */
+        .dust-mote {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9997;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(245, 240, 225, 0.6);
+            animation: dust-drift var(--duration, 15s) linear infinite;
+        }
+
+        @keyframes dust-drift {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(var(--drift, 100px), -100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================ */
+        /* EFFECT 4: GLOW TRAIL                        */
+        /* ============================================ */
+        .glow-element {
+            transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .glow-element.glowing {
+            box-shadow: 0 0 20px rgba(232, 165, 75, 0.5), 
+                        0 0 40px rgba(232, 165, 75, 0.3),
+                        inset 0 0 20px rgba(232, 165, 75, 0.1);
+        }
+
+        /* ============================================ */
+        /* EFFECT 5: INK SPLATTER                      */
+        /* ============================================ */
+        .ink-splat {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, 
+                rgba(30, 48, 40, 0.9) 0%, 
+                rgba(30, 48, 40, 0.7) 40%, 
+                transparent 70%);
+            animation: ink-splash 0.5s ease-out forwards;
+        }
+
+        @keyframes ink-splash {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Status indicator */
+        .status-bar {
+            background: var(--mossy-bg-box);
+            border: 2px solid var(--mossy-border);
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            font-family: var(--font-nav);
+            font-size: 0.9rem;
+            color: var(--mossy-text-muted);
+        }
+
+        .status-bar strong {
+            color: var(--mossy-link);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-container">
+            <header class="site-header">
+                <h1 class="site-title">effects preview gallery</h1>
+                <p class="site-subtitle">~ test the magic before adding it ~</p>
+            </header>
+
+            <main class="site-main">
+                <div class="instructions">
+                    <h2>[ how to use ]</h2>
+                    <p>Click the <span class="highlight">toggle buttons</span> to turn effects on/off.</p>
+                    <p>Move your mouse around and click in the demo area below to see them in action!</p>
+                </div>
+
+                <div class="status-bar">
+                    Active effects: <strong id="active-effects">None</strong>
+                </div>
+
+                <!-- Effect Toggle Cards -->
+                <div class="effects-grid">
+                    <!-- Sparkle Trail -->
+                    <div class="effect-card" id="card-sparkle">
+                        <div class="effect-header">
+                            <span>✨ Sparkle Trail</span>
+                            <button class="effect-toggle" data-effect="sparkle">OFF</button>
+                        </div>
+                        <div class="effect-content">
+                            <div class="effect-vibe">Classic 90s magic</div>
+                            <p class="effect-desc">Tiny golden sparkles follow your cursor and fade away like fairy dust</p>
+                        </div>
+                    </div>
+
+                    <!-- Fireflies -->
+                    <div class="effect-card" id="card-fireflies">
+                        <div class="effect-header">
+                            <span>🪻 Fireflies</span>
+                            <button class="effect-toggle" data-effect="fireflies">OFF</button>
+                        </div>
+                        <div class="effect-content">
+                            <div class="effect-vibe">Forest night</div>
+                            <p class="effect-desc">Soft glowing orbs float randomly across the page, pulsing gently</p>
+                        </div>
+                    </div>
+
+                    <!-- Dust Motes -->
+                    <div class="effect-card" id="card-dust">
+                        <div class="effect-header">
+                            <span>☀️ Dust Motes</span>
+                            <button class="effect-toggle" data-effect="dust">OFF</button>
+                        </div>
+                        <div class="effect-content">
+                            <div class="effect-vibe">Sunlit cabin</div>
+                            <p class="effect-desc">Tiny particles float upward like sunlight streaming through trees</p>
+                        </div>
+                    </div>
+
+                    <!-- Glow Trail -->
+                    <div class="effect-card" id="card-glow">
+                        <div class="effect-header">
+                            <span>🕯️ Glow Trail</span>
+                            <button class="effect-toggle" data-effect="glow">OFF</button>
+                        </div>
+                        <div class="effect-content">
+                            <div class="effect-vibe">Warm candlelight</div>
+                            <p class="effect-desc">Elements softly glow with warm amber light as your mouse passes nearby</p>
+                        </div>
+                    </div>
+
+                    <!-- Ink Splatter -->
+                    <div class="effect-card" id="card-ink">
+                        <div class="effect-header">
+                            <span>📜 Ink Splatter</span>
+                            <button class="effect-toggle" data-effect="ink">OFF</button>
+                        </div>
+                        <div class="effect-content">
+                            <div class="effect-vibe">Vintage quill</div>
+                            <p class="effect-desc">Small ink spots appear on click - matches the wax seal aesthetic!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo Area -->
+                <div class="demo-area" id="demo-area">
+                    <div class="demo-content">
+                        <h3>~ Demo Area ~</h3>
+                        <p>Move your mouse around here and click to test effects!</p>
+                        <a href="#" class="demo-link glow-element">Hover Me</a>
+                        <a href="#" class="demo-link glow-element">Click Me</a>
+                        <a href="#" class="demo-link glow-element">Test Link</a>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="site-footer">
+                <p class="footer-text">~ tell me which effects you like! ~</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Effect state
+        const effects = {
+            sparkle: false,
+            fireflies: false,
+            dust: false,
+            glow: false,
+            ink: false
+        };
+
+        // Firefly and dust containers
+        let fireflies = [];
+        let dustMotes = [];
+
+        // Update status bar
+        function updateStatus() {
+            const active = Object.entries(effects)
+                .filter(([_, v]) => v)
+                .map(([k, _]) => k.charAt(0).toUpperCase() + k.slice(1));
+            document.getElementById('active-effects').textContent = 
+                active.length ? active.join(', ') : 'None';
+        }
+
+        // Toggle buttons
+        document.querySelectorAll('.effect-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const effect = btn.dataset.effect;
+                effects[effect] = !effects[effect];
+                
+                btn.textContent = effects[effect] ? 'ON' : 'OFF';
+                btn.classList.toggle('on', effects[effect]);
+                document.getElementById(`card-${effect}`).classList.toggle('active', effects[effect]);
+                
+                // Handle fireflies
+                if (effect === 'fireflies') {
+                    if (effects.fireflies) {
+                        createFireflies();
+                    } else {
+                        removeFireflies();
+                    }
+                }
+                
+                // Handle dust motes
+                if (effect === 'dust') {
+                    if (effects.dust) {
+                        createDustMotes();
+                    } else {
+                        removeDustMotes();
+                    }
+                }
+                
+                // Handle glow
+                if (effect === 'glow') {
+                    document.querySelectorAll('.glow-element').forEach(el => {
+                        el.classList.toggle('glowing', effects.glow);
+                    });
+                }
+                
+                updateStatus();
+            });
+        });
+
+        // SPARKLE TRAIL
+        let lastSparkleTime = 0;
+        document.addEventListener('mousemove', (e) => {
+            if (!effects.sparkle) return;
+            
+            const now = Date.now();
+            if (now - lastSparkleTime < 30) return; // Throttle
+            lastSparkleTime = now;
+            
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = (e.clientX - 4 + (Math.random() - 0.5) * 10) + 'px';
+            sparkle.style.top = (e.clientY - 4 + (Math.random() - 0.5) * 10) + 'px';
+            
+            // Random size
+            const size = 4 + Math.random() * 6;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 600);
+        });
+
+        // FIREFLIES
+        function createFireflies() {
+            for (let i = 0; i < 12; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                
+                // Random position
+                firefly.style.left = Math.random() * window.innerWidth + 'px';
+                firefly.style.top = Math.random() * window.innerHeight + 'px';
+                
+                // Random movement
+                firefly.style.setProperty('--dx1', (Math.random() - 0.5) * 100 + 'px');
+                firefly.style.setProperty('--dy1', (Math.random() - 0.5) * 80 + 'px');
+                firefly.style.setProperty('--dx2', (Math.random() - 0.5) * 100 + 'px');
+                firefly.style.setProperty('--dy2', (Math.random() - 0.5) * 80 + 'px');
+                firefly.style.setProperty('--dx3', (Math.random() - 0.5) * 100 + 'px');
+                firefly.style.setProperty('--dy3', (Math.random() - 0.5) * 80 + 'px');
+                firefly.style.setProperty('--duration', (6 + Math.random() * 6) + 's');
+                
+                // Random animation delay
+                firefly.style.animationDelay = Math.random() * 5 + 's';
+                
+                document.body.appendChild(firefly);
+                fireflies.push(firefly);
+            }
+        }
+
+        function removeFireflies() {
+            fireflies.forEach(f => f.remove());
+            fireflies = [];
+        }
+
+        // DUST MOTES
+        function createDustMotes() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    if (!effects.dust) return;
+                    
+                    const mote = document.createElement('div');
+                    mote.className = 'dust-mote';
+                    
+                    // Random position
+                    mote.style.left = Math.random() * window.innerWidth + 'px';
+                    mote.style.setProperty('--drift', (Math.random() - 0.5) * 200 + 'px');
+                    mote.style.setProperty('--duration', (10 + Math.random() * 10) + 's');
+                    mote.style.animationDelay = Math.random() * 5 + 's';
+                    
+                    document.body.appendChild(mote);
+                    dustMotes.push(mote);
+                    
+                    // Remove and recreate
+                    const duration = parseFloat(mote.style.getPropertyValue('--duration')) * 1000;
+                    setTimeout(() => {
+                        mote.remove();
+                        dustMotes = dustMotes.filter(m => m !== mote);
+                        if (effects.dust) {
+                            createSingleDustMote();
+                        }
+                    }, duration);
+                }, i * 200);
+            }
+        }
+
+        function createSingleDustMote() {
+            const mote = document.createElement('div');
+            mote.className = 'dust-mote';
+            mote.style.left = Math.random() * window.innerWidth + 'px';
+            mote.style.setProperty('--drift', (Math.random() - 0.5) * 200 + 'px');
+            mote.style.setProperty('--duration', (10 + Math.random() * 10) + 's');
+            
+            document.body.appendChild(mote);
+            dustMotes.push(mote);
+            
+            const duration = parseFloat(mote.style.getPropertyValue('--duration')) * 1000;
+            setTimeout(() => {
+                mote.remove();
+                dustMotes = dustMotes.filter(m => m !== mote);
+                if (effects.dust) {
+                    createSingleDustMote();
+                }
+            }, duration);
+        }
+
+        function removeDustMotes() {
+            dustMotes.forEach(m => m.remove());
+            dustMotes = [];
+        }
+
+        // GLOW TRAIL
+        document.querySelectorAll('.glow-element').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (effects.glow) {
+                    el.classList.add('glowing');
+                }
+            });
+            el.addEventListener('mouseleave', () => {
+                if (!effects.glow) {
+                    el.classList.remove('glowing');
+                }
+            });
+        });
+
+        // INK SPLATTER
+        document.addEventListener('click', (e) => {
+            if (!effects.ink) return;
+            
+            // Create 2-4 ink spots
+            const count = 2 + Math.floor(Math.random() * 3);
+            for (let i = 0; i < count; i++) {
+                const ink = document.createElement('div');
+                ink.className = 'ink-splat';
+                
+                // Random offset from click
+                const offsetX = (Math.random() - 0.5) * 30;
+                const offsetY = (Math.random() - 0.5) * 30;
+                
+                // Random size
+                const size = 8 + Math.random() * 16;
+                ink.style.width = size + 'px';
+                ink.style.height = size * (0.8 + Math.random() * 0.4) + 'px';
+                
+                ink.style.left = (e.clientX - size/2 + offsetX) + 'px';
+                ink.style.top = (e.clientY - size/2 + offsetY) + 'px';
+                
+                // Slight delay for stagger
+                ink.style.animationDelay = (i * 50) + 'ms';
+                
+                document.body.appendChild(ink);
+                setTimeout(() => ink.remove(), 600);
+            }
+        });
+
+        // Prevent link navigation in demo
+        document.querySelectorAll('.demo-link').forEach(link => {
+            link.addEventListener('click', (e) => e.preventDefault());
+        });
+    </script>
+</body>
+
+</html>
+

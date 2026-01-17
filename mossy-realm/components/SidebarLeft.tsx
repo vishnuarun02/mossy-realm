@@ -11,6 +11,14 @@ export default function SidebarLeft() {
         <div className="space-y-4 font-body text-sm">
           <div>
             <p className="text-mossy-header text-xs mb-1 font-heading">
+              January 16th, 2026
+            </p>
+            <p className="text-mossy-text">
+              Added the Swamp Treasures section with a learnings page.
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-xs mb-1 font-heading">
               December 31st, 2025
             </p>
             <p className="text-mossy-text">

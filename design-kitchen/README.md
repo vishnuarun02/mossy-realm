@@ -4,6 +4,42 @@ This folder contains all the design exploration and references for **MossyRealm*
 
 Think of it like a Figma workspace - but in HTML files you can open in any browser!
 
+> 📓 **New!** Check out [`DESIGN-JOURNAL.md`](./DESIGN-JOURNAL.md) for lessons learned, failed experiments, and ideas for the future!
+
+---
+
+## 📁 Folder Structure
+
+```
+design-kitchen/
+├── DESIGN-JOURNAL.md         # 📓 Lessons learned, ideas, experiments log
+├── cabin-pages/              # Page designs for The Cabin section
+├── swamp-treasures/          # Page designs for Swamp Treasures section
+│   └── learnings-option*.html # Learnings page layout options
+├── cursor-experiments/       # Custom cursor exploration
+│   ├── scripts/              # Python conversion tools
+│   ├── previews/             # HTML preview pages
+│   ├── converted/            # ANI→GIF, CUR→PNG conversions
+│   └── cursors-archive/      # Cursor assets (flower, wax seal, etc.)
+├── effects-experiments/      # Particle effects (fireflies, sparkles, etc.)
+├── button-experiments/       # Button hover style explorations
+└── [other files]             # Palette, font, emoji explorations
+```
+
+---
+
+## 📓 Design Journal
+
+**[`DESIGN-JOURNAL.md`](./DESIGN-JOURNAL.md)** - The story of building MossyRealm!
+
+Contains:
+- 🧪 **Experiments** - What I tried and what happened
+- 📚 **Lessons Learned** - Why things didn't work (so you don't repeat my mistakes)
+- 💡 **Ideas & TODOs** - Things to explore later
+- 💭 **Random Thoughts** - Quick notes and observations
+
+*Future plan: Turn this into a public `/learnings` page on the site!*
+
 ---
 
 ## 📁 Files
@@ -18,6 +54,47 @@ Think of it like a Figma workspace - but in HTML files you can open in any brows
 | `flowing-text-mockup.html` | ✅ Marquee text exploration |
 | `emoji-replacement-mockup.html` | Emoji styling experiments |
 | `emoji-variations-mockup.html` | More emoji variations |
+
+---
+
+## 🖱️ Cursor Experiments
+
+Located in `cursor-experiments/`:
+
+| Folder | Contents |
+|--------|----------|
+| `scripts/` | Python tools for ANI→GIF, CUR→PNG conversion |
+| `previews/` | HTML pages to preview cursor collections |
+| `converted/` | Original .ani/.cur files + converted .gif/.png |
+| `cursors-archive/` | Final cursor assets (pressed flower, wax seal) |
+
+### Explored Cursors:
+- **Pressed Flower** - Opens on hover, botanical style
+- **Wax Seal Stamp** - Stamp impression on click
+
+---
+
+## ✨ Effects Experiments
+
+Located in `effects-experiments/`:
+
+| Effect | Description |
+|--------|-------------|
+| Sparkle Trail | Golden sparkles follow cursor |
+| Fireflies | Ambient floating lights |
+| Dust Motes | Sunlit particle effect |
+| Stamp Impression | Wax seal click animation |
+
+---
+
+## 🔘 Button Experiments
+
+Located in `button-experiments/`:
+
+| File | Description |
+|------|-------------|
+| `button-hover-preview.html` | Modern hover styles (glow, lift, sweep, etc.) |
+| `button-hover-90s.html` | Authentic 90s styles (bevel, instant swap, etc.) |
 
 ---
 
@@ -78,6 +155,12 @@ CSS classes defined in `globals.css`:
 
 Just double-click any `.html` file to open it in your browser!
 
+Or run a local server from this folder:
+```bash
+python3 -m http.server 8888
+```
+Then visit `http://localhost:8888`
+
 ---
 
 ## 📝 Design Notes
@@ -113,4 +196,4 @@ mossy-realm/
 
 ---
 
-*Created December 13 2025*
+*Created December 13 2025 • Updated January 2026*

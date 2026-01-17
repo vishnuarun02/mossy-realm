@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnings (Option B: Cards) — MossyRealm Design Kitchen</title>
+    <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+    <style>
+        /* Card grid styles */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .lesson-card {
+            background: var(--mossy-bg-box);
+            border: 2px solid var(--mossy-border);
+            padding: 20px;
+            text-align: center;
+            transition: none; /* 90s style - no transitions! */
+        }
+
+        .lesson-card:hover {
+            background: var(--mossy-bg-box-alt);
+            border-color: var(--mossy-border-glow);
+        }
+
+        .lesson-card .emoji {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .lesson-card h3 {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .lesson-card .insight {
+            font-size: 0.85rem;
+            color: var(--mossy-text-muted);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .lesson-card .source {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--mossy-link);
+            font-family: var(--font-nav);
+        }
+
+        .intro-text {
+            font-style: italic;
+            color: var(--mossy-text-muted);
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+
+        .category-label {
+            font-family: var(--font-heading);
+            color: var(--mossy-border);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 24px 0 16px;
+            text-align: center;
+        }
+
+        .category-label:first-of-type {
+            margin-top: 0;
+        }
+
+        hr.divider {
+            border: none;
+            border-top: 1px dashed var(--mossy-border);
+            margin: 24px 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-container">
+
+            <!-- Header -->
+            <header class="site-header">
+                <h1 class="site-title">welcome to mossyrealm</h1>
+                <nav class="site-nav">
+                    <a href="#" class="nav-link">Outpost</a>
+                    <a href="#" class="nav-link">The Cabin</a>
+                    <a href="#" class="nav-link active">Swamp Treasures</a>
+                    <a href="#" class="nav-link">Pressed Flowers</a>
+                    <a href="#" class="nav-link">Guestbook</a>
+                    <a href="#" class="nav-link">Rabbit Holes</a>
+                </nav>
+            </header>
+
+            <!-- Sub-navigation -->
+            <nav class="cabin-subnav">
+                <a href="#" class="active">Learnings</a>
+                <a href="#">Resources</a>
+                <a href="#">Finds</a>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="site-main" style="padding: 20px;">
+
+                <div class="retro-box alt">
+                    <div class="retro-box-title">[ learnings from the swamp ]</div>
+                    <div class="retro-box-content">
+
+                        <p class="intro-text">
+                            ~ wisdom dug up through trial and error ~<br>
+                            <span style="font-size: 0.85rem;">click any card to read the full story</span>
+                        </p>
+
+                        <div class="category-label">— Design & Aesthetics —</div>
+
+                        <div class="lessons-grid">
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🎨</span>
+                                <h3>Less Is More</h3>
+                                <p class="insight">Dense layouts need simple interactions. You can't max out both.</p>
+                                <p class="source">from: cursor experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">✨</span>
+                                <h3>Match Your Vibe</h3>
+                                <p class="insight">New elements must blend with existing aesthetic, not fight it.</p>
+                                <p class="source">from: firefly experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🌡️</span>
+                                <h3>Warm > Cool</h3>
+                                <p class="insight">Amber + forest green = cozy. Blue + green = clinical.</p>
+                                <p class="source">from: palette exploration</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">📜</span>
+                                <h3>Serifs = Old Book</h3>
+                                <p class="insight">Serif fonts carry the vintage vibe better than sans-serif.</p>
+                                <p class="source">from: font selection</p>
+                            </a>
+
+                        </div>
+
+                        <hr class="divider">
+
+                        <div class="category-label">— Technical & Web Dev —</div>
+
+                        <div class="lessons-grid">
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🖱️</span>
+                                <h3>Cursors Are Hard</h3>
+                                <p class="insight">.ani files don't work in browsers. Keep cursors small (32px).</p>
+                                <p class="source">from: cursor experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🔮</span>
+                                <h3>Blend Modes Help</h3>
+                                <p class="insight">mix-blend-mode: screen makes effects blend with grain filters.</p>
+                                <p class="source">from: firefly experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">📱</span>
+                                <h3>Mobile Is Different</h3>
+                                <p class="insight">No cursors on touch. Reduce particles. Simplify animations.</p>
+                                <p class="source">from: effects experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">⚡</span>
+                                <h3>90s = No Transitions</h3>
+                                <p class="insight">Authentic retro means instant hover changes. That's the charm.</p>
+                                <p class="source">from: button experiment</p>
+                            </a>
+
+                        </div>
+
+                        <hr class="divider">
+
+                        <div class="category-label">— Philosophy —</div>
+
+                        <div class="lessons-grid">
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🧠</span>
+                                <h3>Why 90s Sites Work</h3>
+                                <p class="insight">Complexity in layout, not behavior. Modern sites flip this.</p>
+                                <p class="source">from: cursor experiment</p>
+                            </a>
+
+                            <a href="#" class="lesson-card" style="text-decoration: none; color: inherit;">
+                                <span class="emoji">🌱</span>
+                                <h3>Try → Learn → Revert</h3>
+                                <p class="insight">It's okay to experiment and undo. That's how you understand.</p>
+                                <p class="source">from: everything</p>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p>OPTION B: Lesson Cards Grid</p>
+            </footer>
+
+        </div>
+    </div>
+</body>
+
+</html>
+

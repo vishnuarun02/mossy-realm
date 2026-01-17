@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Preview ~ MossyRealm</title>
+
+    <!-- Google Fonts - MossyRealm fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mystery+Quest&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ============================================ */
+        /* DESIGN TOKENS - Sunlit Glade Palette        */
+        /* ============================================ */
+
+        :root {
+            /* Backgrounds */
+            --mossy-bg-main: #2a3f35;
+            --mossy-bg-box: #1e3028;
+            --mossy-bg-box-alt: #355a45;
+
+            /* Borders */
+            --mossy-border: #e8a54b;
+            --mossy-border-glow: #ffc857;
+
+            /* Text */
+            --mossy-header: #ffeaa7;
+            --mossy-header-alt: #fff3c4;
+            --mossy-text: #f5f0e1;
+            --mossy-text-muted: #c5c0a8;
+
+            /* Interactive */
+            --mossy-link: #90ee90;
+            --mossy-link-hover: #b8ffb8;
+            --mossy-accent: #ff8c42;
+
+            /* Fonts */
+            --font-display: 'Cinzel Decorative', serif;
+            --font-heading: 'Cinzel', serif;
+            --font-nav: 'Cormorant', serif;
+            --font-body: 'Lora', serif;
+            --font-accent: 'Mystery Quest', cursive;
+        }
+
+        /* ============================================ */
+        /* RESET & BASE                                */
+        /* ============================================ */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: var(--mossy-bg-main);
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--mossy-text);
+            min-height: 100vh;
+            background:
+                linear-gradient(to bottom,
+                    rgba(30, 48, 40, 0.85) 0%,
+                    rgba(42, 63, 53, 0.80) 50%,
+                    rgba(30, 48, 40, 0.85) 100%),
+                linear-gradient(135deg, #1a2e24 0%, #2a4a3a 50%, #1a2e24 100%);
+            background-attachment: fixed;
+        }
+
+        /* ============================================ */
+        /* SITE STRUCTURE                              */
+        /* ============================================ */
+
+        .site-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 30px 40px;
+        }
+
+        .site-container {
+            width: 100%;
+            max-width: 980px;
+            background: rgba(30, 48, 40, 0.95);
+            border: 4px solid var(--mossy-border);
+            box-shadow:
+                0 0 0 2px var(--mossy-bg-box),
+                0 0 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================ */
+        /* HEADER                                      */
+        /* ============================================ */
+
+        .site-header {
+            background: var(--mossy-bg-box);
+            border-bottom: 3px solid var(--mossy-border);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .site-title {
+            font-family: var(--font-display);
+            color: var(--mossy-header);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        .site-subtitle {
+            font-family: var(--font-accent);
+            color: var(--mossy-accent);
+            font-size: 1.1rem;
+        }
+
+        /* ============================================ */
+        /* MAIN CONTENT                                */
+        /* ============================================ */
+
+        .site-main {
+            padding: 20px;
+        }
+
+        .instructions {
+            background: var(--mossy-bg-box);
+            border: 3px solid var(--mossy-border);
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .instructions h2 {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            text-transform: lowercase;
+            letter-spacing: 0.15em;
+        }
+
+        .instructions p {
+            color: var(--mossy-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .instructions .highlight {
+            color: var(--mossy-link);
+            font-weight: 600;
+        }
+
+        /* ============================================ */
+        /* CURSOR SECTIONS                             */
+        /* ============================================ */
+
+        .section-title {
+            font-family: var(--font-heading);
+            background: var(--mossy-border);
+            color: var(--mossy-bg-box);
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: lowercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .cursor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        /* ============================================ */
+        /* CURSOR BOX                                  */
+        /* ============================================ */
+
+        .cursor-box {
+            background: var(--mossy-bg-box);
+            border: 3px solid var(--mossy-border);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .cursor-box:hover {
+            border-color: var(--mossy-border-glow);
+            box-shadow: 0 0 20px rgba(232, 165, 75, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cursor-preview {
+            width: 100%;
+            height: 100px;
+            background: var(--mossy-bg-box-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid var(--mossy-border);
+            position: relative;
+        }
+
+        .cursor-preview img {
+            width: 64px;
+            height: 64px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        .cursor-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .cursor-name {
+            font-family: var(--font-heading);
+            color: var(--mossy-header);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+
+        .cursor-type {
+            font-family: var(--font-nav);
+            color: var(--mossy-accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cursor-type.animated {
+            color: var(--mossy-link);
+        }
+
+        /* ============================================ */
+        /* FOOTER                                      */
+        /* ============================================ */
+
+        .site-footer {
+            background: var(--mossy-bg-box);
+            border-top: 3px solid var(--mossy-border);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-family: var(--font-accent);
+            color: var(--mossy-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================ */
+        /* INDIVIDUAL CURSOR STYLES (for hover test)   */
+        /* ============================================ */
+
+        /* Static Cursors (.cur) */
+        .cursor-too384 {
+            cursor: url('./cursors/too384.cur'), auto;
+        }
+
+        .cursor-gam558 {
+            cursor: url('./cursors/gam558.cur'), auto;
+        }
+
+        .cursor-nat996 {
+            cursor: url('./cursors/nat996.cur'), auto;
+        }
+
+        .cursor-foo647 {
+            cursor: url('./cursors/foo647.cur'), auto;
+        }
+
+        .cursor-nat981 {
+            cursor: url('./cursors/nat981.cur'), auto;
+        }
+
+        .cursor-mec480 {
+            cursor: url('./cursors/mec480.cur'), auto;
+        }
+
+        .cursor-foo634 {
+            cursor: url('./cursors/foo634.cur'), auto;
+        }
+
+        .cursor-smi8 {
+            cursor: url('./cursors/smi8.cur'), auto;
+        }
+
+        .cursor-sym451 {
+            cursor: url('./cursors/sym451.cur'), auto;
+        }
+
+        .cursor-foo429 {
+            cursor: url('./cursors/foo429.cur'), auto;
+        }
+
+        .cursor-spo713 {
+            cursor: url('./cursors/spo713.cur'), auto;
+        }
+
+        .cursor-foo175 {
+            cursor: url('./cursors/foo175.cur'), auto;
+        }
+
+        .cursor-mec11 {
+            cursor: url('./cursors/mec11.cur'), auto;
+        }
+
+        /* Animated Cursors - use GIF for cursor */
+        .cursor-cur28 {
+            cursor: url('./cursors/cur28.gif'), auto;
+        }
+
+        .cursor-hol248 {
+            cursor: url('./cursors/hol248.gif'), auto;
+        }
+
+        .cursor-oth1127 {
+            cursor: url('./cursors/oth1127.gif'), auto;
+        }
+
+        .cursor-nat354 {
+            cursor: url('./cursors/nat354.gif'), auto;
+        }
+
+        .cursor-too1009 {
+            cursor: url('./cursors/too1009.gif'), auto;
+        }
+
+        .cursor-hol246 {
+            cursor: url('./cursors/hol246.gif'), auto;
+        }
+
+        /* ============================================ */
+        /* RESPONSIVE                                  */
+        /* ============================================ */
+
+        @media (max-width: 600px) {
+            .site-wrapper {
+                padding: 15px 8px;
+            }
+
+            .site-title {
+                font-size: 1.4rem;
+            }
+
+            .cursor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ============================================ */
+        /* NOTE BOX                                    */
+        /* ============================================ */
+
+        .note-box {
+            background: var(--mossy-bg-box-alt);
+            border: 2px dashed var(--mossy-accent);
+            padding: 12px 16px;
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+
+        .note-box strong {
+            color: var(--mossy-accent);
+        }
+
+        .note-box code {
+            background: var(--mossy-bg-box);
+            padding: 2px 6px;
+            font-size: 0.85rem;
+            color: var(--mossy-link);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="site-container">
+            <!-- Header -->
+            <header class="site-header">
+                <h1 class="site-title">cursor preview gallery</h1>
+                <p class="site-subtitle">~ pick your favorite for mossyrealm ~</p>
+            </header>
+
+            <!-- Main Content -->
+            <main class="site-main">
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h2>[ how to use ]</h2>
+                    <p>The cursor images are shown in each box - <span class="highlight">animated ones will
+                            animate!</span></p>
+                    <p>You can also hover over boxes to test the cursor as your actual cursor.</p>
+                </div>
+
+                <!-- Animated Cursors Section -->
+                <div class="section-title">✨ animated cursors (6)</div>
+                <div class="cursor-grid">
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-cur28">
+                            <img src="./cursors/cur28.gif" alt="cur28 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">cur28</div>
+                            <div class="cursor-type animated">7 frames</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-hol248">
+                            <img src="./cursors/hol248.gif" alt="hol248 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">hol248</div>
+                            <div class="cursor-type animated">4 frames</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-hol246">
+                            <img src="./cursors/hol246.gif" alt="hol246 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">hol246</div>
+                            <div class="cursor-type animated">12 frames</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-nat354">
+                            <img src="./cursors/nat354.gif" alt="nat354 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">nat354</div>
+                            <div class="cursor-type animated">2 frames</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-too1009">
+                            <img src="./cursors/too1009.gif" alt="too1009 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">too1009</div>
+                            <div class="cursor-type animated">2 frames</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-oth1127">
+                            <img src="./cursors/oth1127.gif" alt="oth1127 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">oth1127</div>
+                            <div class="cursor-type animated">2 frames</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Static Cursors Section -->
+                <div class="section-title">🍄 static cursors (13)</div>
+                <div class="cursor-grid">
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-too384">
+                            <img src="./cursors/too384.png" alt="too384 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">too384</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-gam558">
+                            <img src="./cursors/gam558.png" alt="gam558 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">gam558</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-nat996">
+                            <img src="./cursors/nat996.png" alt="nat996 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">nat996</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-foo647">
+                            <img src="./cursors/foo647.png" alt="foo647 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">foo647</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-nat981">
+                            <img src="./cursors/nat981.png" alt="nat981 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">nat981</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-mec480">
+                            <img src="./cursors/mec480.png" alt="mec480 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">mec480</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-foo634">
+                            <img src="./cursors/foo634.png" alt="foo634 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">foo634</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-smi8">
+                            <img src="./cursors/smi8.png" alt="smi8 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">smi8</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-sym451">
+                            <img src="./cursors/sym451.png" alt="sym451 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">sym451</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-foo429">
+                            <img src="./cursors/foo429.png" alt="foo429 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">foo429</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-spo713">
+                            <img src="./cursors/spo713.png" alt="spo713 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">spo713</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-foo175">
+                            <img src="./cursors/foo175.png" alt="foo175 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">foo175</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+
+                    <div class="cursor-box">
+                        <div class="cursor-preview cursor-mec11">
+                            <img src="./cursors/mec11.png" alt="mec11 cursor">
+                        </div>
+                        <div class="cursor-info">
+                            <div class="cursor-name">mec11</div>
+                            <div class="cursor-type">static</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="note-box">
+                    <strong>Ready to pick?</strong> Just tell me which cursor(s) you like and I'll add them to your
+                    website!
+                    I can set up different cursors for different states (default, hover over links, etc.)
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <p class="footer-text">~ tell me which one you like! ~</p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

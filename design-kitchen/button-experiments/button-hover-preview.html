@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Hover Styles - MossyRealm Design Kitchen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mossy-bg-main: #2a3f35;
+      --mossy-bg-box: #1e3028;
+      --mossy-bg-box-alt: #355a45;
+      --mossy-border: #e8a54b;
+      --mossy-border-glow: #ffc857;
+      --mossy-header: #ffeaa7;
+      --mossy-text: #f5f0e1;
+      --mossy-link: #90ee90;
+      --mossy-link-hover: #b8ffb8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--mossy-bg-main);
+      color: var(--mossy-text);
+      font-family: 'Lora', Georgia, serif;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--mossy-text);
+      opacity: 0.8;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-border);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--mossy-text);
+      opacity: 0.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Base button style (same as current site) */
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: var(--mossy-bg-box-alt);
+      border: 2px solid var(--mossy-border);
+      padding: 10px 20px;
+      color: var(--mossy-link);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* ============================================ */
+    /* 0. CURRENT (Color Flip) - What you have now */
+    /* ============================================ */
+    .btn-current {
+      transition: background-color 0.15s, color 0.15s;
+    }
+    .btn-current:hover {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+    }
+
+    /* ============================================ */
+    /* 1. SOFT GLOW - Magical candlelight effect   */
+    /* ============================================ */
+    .btn-glow {
+      transition: all 0.3s ease;
+    }
+    .btn-glow:hover {
+      color: var(--mossy-header);
+      text-shadow: 0 0 12px var(--mossy-border-glow);
+      box-shadow: 
+        0 0 15px rgba(232, 165, 75, 0.4),
+        0 0 30px rgba(232, 165, 75, 0.2),
+        inset 0 0 20px rgba(232, 165, 75, 0.1);
+      border-color: var(--mossy-border-glow);
+    }
+
+    /* ============================================ */
+    /* 2. GENTLE LIFT - Leaf catching wind         */
+    /* ============================================ */
+    .btn-lift {
+      transition: all 0.25s ease;
+    }
+    .btn-lift:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 0 1px var(--mossy-border-glow);
+      color: var(--mossy-header);
+      border-color: var(--mossy-border-glow);
+    }
+
+    /* ============================================ */
+    /* 3. BORDER PULSE - Enchanted runes           */
+    /* ============================================ */
+    .btn-pulse {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .btn-pulse::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid var(--mossy-border-glow);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-pulse:hover {
+      color: var(--mossy-header);
+      text-shadow: 0 0 8px var(--mossy-border);
+    }
+    .btn-pulse:hover::before {
+      opacity: 1;
+      animation: pulse-border 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-border {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ============================================ */
+    /* 4. FILL SWEEP - Water/forest fill           */
+    /* ============================================ */
+    .btn-sweep {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: color 0.4s ease, border-color 0.3s ease;
+    }
+    .btn-sweep::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to top, var(--mossy-border), var(--mossy-border-glow));
+      z-index: -1;
+      transition: height 0.4s ease;
+    }
+    .btn-sweep:hover {
+      color: var(--mossy-bg-box);
+      border-color: var(--mossy-border-glow);
+    }
+    .btn-sweep:hover::before {
+      height: 100%;
+    }
+
+    /* ============================================ */
+    /* 5. UNDERLINE GROW - Vintage book/scroll     */
+    /* ============================================ */
+    .btn-underline {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .btn-underline::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--mossy-border-glow);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .btn-underline:hover {
+      color: var(--mossy-header);
+    }
+    .btn-underline:hover::after {
+      width: calc(100% - 24px);
+    }
+
+    /* ============================================ */
+    /* 6. SUBTLE SCALE - Curious invitation        */
+    /* ============================================ */
+    .btn-scale {
+      transition: all 0.25s ease;
+    }
+    .btn-scale:hover {
+      transform: scale(1.05);
+      color: var(--mossy-header);
+      box-shadow: 
+        0 0 20px rgba(232, 165, 75, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.3);
+      border-color: var(--mossy-border-glow);
+    }
+
+    /* ============================================ */
+    /* BONUS: GLOW + LIFT COMBO                    */
+    /* ============================================ */
+    .btn-combo {
+      transition: all 0.3s ease;
+    }
+    .btn-combo:hover {
+      transform: translateY(-2px);
+      color: var(--mossy-header);
+      text-shadow: 0 0 10px var(--mossy-border-glow);
+      box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(232, 165, 75, 0.25);
+      border-color: var(--mossy-border-glow);
+    }
+
+    /* Footer note */
+    .note {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .note h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-border);
+      margin-bottom: 10px;
+    }
+    .note p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .note code {
+      background: var(--mossy-bg-box-alt);
+      padding: 2px 6px;
+      font-size: 0.85rem;
+      color: var(--mossy-link);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌿 Button Hover Styles</h1>
+  <p class="subtitle">Hover over each button to preview the effect</p>
+
+  <div class="grid">
+
+    <!-- Current -->
+    <div class="card">
+      <h2>0. Current (Color Flip)</h2>
+      <p>What you have now - harsh swap</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-current">Outpost</a>
+        <a href="#" class="btn btn-current">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Soft Glow -->
+    <div class="card">
+      <h2>1. ✨ Soft Glow</h2>
+      <p>Magical candlelight - matches fireflies!</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-glow">Outpost</a>
+        <a href="#" class="btn btn-glow">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Gentle Lift -->
+    <div class="card">
+      <h2>2. 🍃 Gentle Lift</h2>
+      <p>Like a leaf catching wind</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-lift">Outpost</a>
+        <a href="#" class="btn btn-lift">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Border Pulse -->
+    <div class="card">
+      <h2>3. 💫 Border Pulse</h2>
+      <p>Enchanted runes glow effect</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-pulse">Outpost</a>
+        <a href="#" class="btn btn-pulse">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Fill Sweep -->
+    <div class="card">
+      <h2>4. 🌊 Fill Sweep</h2>
+      <p>Color rises like water/forest</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-sweep">Outpost</a>
+        <a href="#" class="btn btn-sweep">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Underline Grow -->
+    <div class="card">
+      <h2>5. 📜 Underline Grow</h2>
+      <p>Vintage book / scroll vibes</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-underline">Outpost</a>
+        <a href="#" class="btn btn-underline">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Subtle Scale -->
+    <div class="card">
+      <h2>6. 🔮 Subtle Scale</h2>
+      <p>Curious, inviting attention</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-scale">Outpost</a>
+        <a href="#" class="btn btn-scale">The Cabin</a>
+      </div>
+    </div>
+
+    <!-- Combo -->
+    <div class="card">
+      <h2>7. 🌙 Glow + Lift Combo</h2>
+      <p>Best of both worlds!</p>
+      <div class="button-row">
+        <a href="#" class="btn btn-combo">Outpost</a>
+        <a href="#" class="btn btn-combo">The Cabin</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <h3>💡 Recommendation</h3>
+    <p>
+      For MossyRealm's cozy forest vibe, I suggest <code>Soft Glow</code> or <code>Glow + Lift Combo</code>.
+      They match the fireflies effect and feel warm & magical without being distracting.
+    </p>
+  </div>
+
+</body>
+</html>
+
