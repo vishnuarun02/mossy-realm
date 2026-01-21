@@ -14,7 +14,7 @@ export default function SidebarLeft() {
               January 21st, 2026
             </p>
             <p className="text-mossy-text">
-              The realm now counts its visitors anoymously. Also, new poll dropped!
+              The realm now counts its visitors redis upstash. Also, a brand new poll dropped!
             </p>
           </div>
           <div>
