@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Marquee from './Marquee';
+import VisitorCounter from './VisitorCounter';
 
 export default function Footer() {
   return (
@@ -47,9 +48,7 @@ export default function Footer() {
 
           {/* Visitor Counter + Copyright in one line */}
           <div className="flex flex-wrap justify-center items-center gap-3 text-sm">
-            <span className="text-mossy-text-muted font-body">
-              ● visitors: <span className="text-mossy-header font-bold">000001</span>
-            </span>
+            <VisitorCounter />
             <span className="text-mossy-border">|</span>
             <span className="text-mossy-text-muted font-body">
               ♥ MossyRealm 2025
