@@ -55,10 +55,10 @@ export default function SidebarRight() {
       <RetroBox title="[ monthly poll ]">
         <div className="font-body text-sm">
           <p className="text-mossy-header mb-3 text-center font-heading">
-            What&apos;s your favorite season?
+            Which unlived life do you wonder about most?
           </p>
           <div className="space-y-2">
-            {['Spring', 'Summer', 'Autumn', 'Winter'].map((option) => (
+            {['The career you almost chose', 'The place you almost moved to', 'The person you almost became', 'The risk you never took, but should have'].map((option) => (
               <label
                 key={option}
                 className="
