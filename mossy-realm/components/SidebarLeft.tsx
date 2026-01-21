@@ -116,23 +116,23 @@ export default function SidebarLeft() {
         </div>
       </RetroBox>
 
-      {/* Latest Blog Post - moved from MainPanel */}
-      <RetroBox title="[ latest blog post ]">
-        <Link href="/blog" className="block no-underline group">
-          <h3 className="text-mossy-header font-bold mb-1 group-hover:text-mossy-link transition-colors font-heading">
-            A Look Back and a Look Forward
+      {/* Latest Post */}
+      <RetroBox title="[ latest post ]">
+        <div>
+          <h3 className="text-mossy-header font-bold mb-1 font-heading">
+            The Great Cursor & Effects Experiment
           </h3>
           <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
-            December 13th, 2025
+            January 16th, 2026
           </p>
           <p className="text-mossy-text mb-3 font-body text-sm">
-            Whew, what a year it&apos;s been! I finally decided to make my own
-            little corner of the internet and here we are...
+            Tried adding fancy cursors, sparkle trails, and fireflies.
+            Learned why 90s sites kept interactions simple...
           </p>
-          <span className="text-mossy-link underline group-hover:text-mossy-link-hover text-sm">
+          <Link href="/garden/learnings" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
             read more →
-          </span>
-        </Link>
+          </Link>
+        </div>
       </RetroBox>
     </aside>
   );
