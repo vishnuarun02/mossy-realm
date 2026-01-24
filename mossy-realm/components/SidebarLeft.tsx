@@ -2,101 +2,25 @@ import RetroBox from './RetroBox';
 import ScrollBox from './ScrollBox';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getUpdates } from '@/lib/updates';
 
 export default function SidebarLeft() {
+  const updates = getUpdates(10); // Latest 10 updates
+
   return (
     <aside className="flex flex-col gap-4">
       {/* Updates Section - Now with scrolling */}
       <ScrollBox title="[ updates ]" maxHeight="200px">
         <div className="space-y-4 font-body text-sm">
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              January 24th, 2026 <span className="text-mossy-text-muted font-body">· 11:42pm</span>
-            </p>
-            <p className="text-mossy-text">
-              Fixed &quot;last updated&quot; showing wrong dates. Now tracks actual commits, not builds.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              January 21st, 2026 <span className="text-mossy-text-muted font-body">· 9:15pm</span>
-            </p>
-            <p className="text-mossy-text">
-              Visitor counter is live. New poll dropped~
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              January 16th, 2026 <span className="text-mossy-text-muted font-body">· 3:30pm</span>
-            </p>
-            <p className="text-mossy-text">
-              Added the Swamp Treasures section with a learnings page.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 31st, 2025
-            </p>
-            <p className="text-mossy-text">
-              The realm has a guardian now. His name is Sir Mucus McSniff. He&apos;s a booger.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 30th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Renamed some nav links. &quot;Rabbit Holes&quot; sounds better than &quot;Links&quot;, etc.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 29th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Replaced the to-do list with a daily thought.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 25th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Added flowing marquee text and scrollable boxes! The site is coming alive~
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 13th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Welcome to the realm! Just planted the first seeds of this little corner of the web~
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 12th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Working on the site design. It&apos;s going to be cozy!
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 11th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Started planning the layout. Thinking about what pages to add first.
-            </p>
-          </div>
-          <div>
-            <p className="text-mossy-header text-xs mb-1 font-heading">
-              December 10th, 2025
-            </p>
-            <p className="text-mossy-text">
-              Gathering inspiration from old websites. The 90s aesthetic is calling to me.
-            </p>
-          </div>
+          {updates.map((update, index) => (
+            <div key={`${update.formattedDate}-${index}`}>
+              <p className="text-mossy-header text-xs mb-1 font-heading">
+                {update.formattedDate}
+                <span className="text-mossy-text-muted font-body"> · {update.formattedTime}</span>
+              </p>
+              <p className="text-mossy-text">{update.message}</p>
+            </div>
+          ))}
         </div>
       </ScrollBox>
 
