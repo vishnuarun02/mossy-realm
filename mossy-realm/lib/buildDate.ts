@@ -1,5 +1,8 @@
-// This runs at build time, so the date updates on each deployment
-const BUILD_DATE = new Date();
+// Get the last commit date from Vercel's environment variable
+// This only changes when you actually push code, not on every build
+const COMMIT_DATE = process.env.VERCEL_GIT_COMMIT_AUTHOR_DATE 
+  ? new Date(process.env.VERCEL_GIT_COMMIT_AUTHOR_DATE)
+  : new Date();
 
 export function getFormattedBuildDate(): string {
   const months = [
@@ -7,14 +10,13 @@ export function getFormattedBuildDate(): string {
     'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
   ];
   
-  const month = months[BUILD_DATE.getMonth()];
-  const day = BUILD_DATE.getDate();
-  const year = BUILD_DATE.getFullYear();
+  const month = months[COMMIT_DATE.getMonth()];
+  const day = COMMIT_DATE.getDate();
+  const year = COMMIT_DATE.getFullYear();
   
   return `${month} ${day}, ${year}`;
 }
 
 export function getBuildDate(): Date {
-  return BUILD_DATE;
+  return COMMIT_DATE;
 }
-

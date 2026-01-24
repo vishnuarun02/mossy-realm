@@ -11,15 +11,23 @@ export default function SidebarLeft() {
         <div className="space-y-4 font-body text-sm">
           <div>
             <p className="text-mossy-header text-xs mb-1 font-heading">
-              January 21st, 2026
+              January 24th, 2026 <span className="text-mossy-text-muted font-body">· 11:42pm</span>
             </p>
             <p className="text-mossy-text">
-              The realm now counts its visitors with redis upstash. Also, a brand new poll dropped!
+              Fixed &quot;last updated&quot; showing wrong dates. Now tracks actual commits, not builds.
             </p>
           </div>
           <div>
             <p className="text-mossy-header text-xs mb-1 font-heading">
-              January 16th, 2026
+              January 21st, 2026 <span className="text-mossy-text-muted font-body">· 9:15pm</span>
+            </p>
+            <p className="text-mossy-text">
+              Visitor counter is live. New poll dropped~
+            </p>
+          </div>
+          <div>
+            <p className="text-mossy-header text-xs mb-1 font-heading">
+              January 16th, 2026 <span className="text-mossy-text-muted font-body">· 3:30pm</span>
             </p>
             <p className="text-mossy-text">
               Added the Swamp Treasures section with a learnings page.
