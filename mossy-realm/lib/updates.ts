@@ -11,7 +11,7 @@ export interface Update {
 const UPDATES_DIR = path.join(process.cwd(), 'content/updates');
 const MONTHLY_FILE_REGEX = /^\d{4}-\d{2}\.md$/;
 const LINE_REGEX = /^\s*-?\s*(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z))\s*\|\s*(.+)\s*$/;
-const MAX_UPDATES = 10;
+const MAX_UPDATES = 15;
 
 /**
  * Format date as "January 24, 2026"
