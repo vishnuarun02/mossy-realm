@@ -14,23 +14,6 @@ const LINE_REGEX = /^\s*-?\s*(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d
 const MAX_UPDATES = 15;
 
 /**
- * Format date as "January 24, 2026"
- */
-function formatDate(date: Date): string {
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-
-  const day = date.getDate();
-  const suffix = getDaySuffix(day);
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-
-  return `${month} ${day}${suffix}, ${year}`;
-}
-
-/**
  * Get ordinal suffix for day (1st, 2nd, 3rd, 4th, etc.)
  */
 function getDaySuffix(day: number): string {
@@ -44,18 +27,39 @@ function getDaySuffix(day: number): string {
 }
 
 /**
- * Format time as "1:05pm"
+ * Parse ISO timestamp and format date/time WITHOUT timezone conversion
+ * This ensures "2026-01-24T13:05:00-08:00" always shows as "January 24th, 2026 · 1:05pm"
+ * regardless of what timezone the server is in.
  */
-function formatTime(date: Date): string {
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? 'pm' : 'am';
+function parseTimestamp(timestamp: string): { date: Date; formattedDate: string; formattedTime: string } | null {
+  // Parse: 2026-01-24T13:05:00-08:00
+  const match = timestamp.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
+  if (!match) return null;
 
-  hours = hours % 12;
-  hours = hours ? hours : 12; // 0 should be 12
+  const [, yearStr, monthStr, dayStr, hourStr, minuteStr] = match;
+  const year = parseInt(yearStr, 10);
+  const month = parseInt(monthStr, 10); // 1-12
+  const day = parseInt(dayStr, 10);
+  const hour = parseInt(hourStr, 10);
+  const minute = parseInt(minuteStr, 10);
 
-  const formattedMinutes = minutes.toString().padStart(2, '0');
-  return `${hours}:${formattedMinutes}${ampm}`;
+  // Create Date object for sorting (this will be in UTC, but we only use it for sorting)
+  const date = new Date(timestamp);
+  if (isNaN(date.getTime())) return null;
+
+  // Format date as "January 24th, 2026"
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  const formattedDate = `${months[month - 1]} ${day}${getDaySuffix(day)}, ${year}`;
+
+  // Format time as "1:05pm"
+  const ampm = hour >= 12 ? 'pm' : 'am';
+  const hour12 = hour % 12 || 12;
+  const formattedTime = `${hour12}:${minuteStr}${ampm}`;
+
+  return { date, formattedDate, formattedTime };
 }
 
 /**
@@ -66,15 +70,14 @@ function parseLine(line: string): Update | null {
   if (!match) return null;
 
   const [, timestamp, message] = match;
-  const date = new Date(timestamp);
-
-  if (isNaN(date.getTime())) return null;
+  const parsed = parseTimestamp(timestamp);
+  if (!parsed) return null;
 
   return {
-    date,
+    date: parsed.date,
     message: message.trim(),
-    formattedDate: formatDate(date),
-    formattedTime: formatTime(date),
+    formattedDate: parsed.formattedDate,
+    formattedTime: parsed.formattedTime,
   };
 }
 
