@@ -1,0 +1,4 @@
+#!/bin/sh
+# Generate a MossyRealm update digest before pushing (optional - failures don't block push)
+cd mossy-realm && npm run -s update:digest 2>/dev/null || true
+

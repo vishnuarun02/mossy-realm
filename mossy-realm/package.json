@@ -12,7 +12,8 @@
     "update": "npx ts-node scripts/new-update.ts",
     "vault:generate": "npx tsx scripts/generate-vault.ts",
     "vault:dry-run": "npx tsx scripts/generate-vault.ts --dry-run",
-    "vault:curate": "npx tsx scripts/generate-vault.ts --curate"
+    "vault:curate": "npx tsx scripts/generate-vault.ts --curate",
+    "update:digest": "npx tsx scripts/update-digest.ts"
   },
   "dependencies": {
     "@upstash/redis": "^1.36.1",
