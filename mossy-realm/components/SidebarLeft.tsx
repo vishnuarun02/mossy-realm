@@ -3,6 +3,7 @@ import ScrollBox from './ScrollBox';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getUpdates } from '@/lib/updates';
+import { QuestionOfDayWidget } from './VaultWidgets';
 
 export default function SidebarLeft() {
   const updates = getUpdates(10); // Latest 10 updates
@@ -24,17 +25,8 @@ export default function SidebarLeft() {
         </div>
       </ScrollBox>
 
-      {/* Question of the Day Section */}
-      <RetroBox title="[ question of the day ]">
-        <div className="text-center font-body text-sm px-1">
-          <p className="text-mossy-text italic leading-relaxed">
-            &quot;Would you climb The Mount Everest, if no one else in the world knew that you did?&quot;
-          </p>
-          <div className="mt-3 text-mossy-accent text-xs">
-            ~ food for thought ~
-          </div>
-        </div>
-      </RetroBox>
+      {/* Question of the Day - now powered by vault */}
+      <QuestionOfDayWidget />
 
       {/* Little decoration box */}
       <RetroBox title="< realm guardian >">

@@ -1,0 +1,2700 @@
+{
+  "version": 1,
+  "generated_at": "2026-01-25T02:37:09.460Z",
+  "items": [
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The oldest oak keeps a diary in bark rings, but only reads it backwards.",
+      "tags": [
+        "tree",
+        "time"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_002",
+      "type": "oddity",
+      "text": "Fern shadows move three seconds before the ferns themselves.",
+      "tags": [
+        "shadow",
+        "plant"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_003",
+      "type": "oddity",
+      "text": "Moss grows thicker where squirrels have whispered secrets.",
+      "tags": [
+        "moss",
+        "animal"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_004",
+      "type": "oddity",
+      "text": "Pinecones here only fall when no one is looking directly at them.",
+      "tags": [
+        "pinecone",
+        "observation"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_005",
+      "type": "oddity",
+      "text": "The stream hums a tune that changes if you try to remember it.",
+      "tags": [
+        "water",
+        "memory"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_006",
+      "type": "oddity",
+      "text": "Certain mushrooms glow faintly when they hear a good joke.",
+      "tags": [
+        "mushroom",
+        "light"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_007",
+      "type": "oddity",
+      "text": "Deer tracks sometimes lead in perfect circles for no reason.",
+      "tags": [
+        "animal",
+        "track"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_008",
+      "type": "oddity",
+      "text": "The wind here carries echoes of conversations from last Tuesday.",
+      "tags": [
+        "wind",
+        "time"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_009",
+      "type": "oddity",
+      "text": "Bark patterns on birches shift slightly during full moons.",
+      "tags": [
+        "tree",
+        "moon"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_010",
+      "type": "oddity",
+      "text": "Fallen leaves occasionally arrange themselves into tiny maps.",
+      "tags": [
+        "leaf",
+        "map"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The northernmost fern keeps a small ledger of squirrel debts.",
+      "tags": [
+        "fern",
+        "squirrel"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_002",
+      "type": "oddity",
+      "text": "Moss on the western rocks hums a forgotten lullaby after midnight.",
+      "tags": [
+        "moss",
+        "rock"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_003",
+      "type": "oddity",
+      "text": "The oldest tree stump claims to have witnessed three different Tuesdays.",
+      "tags": [
+        "tree",
+        "time"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_004",
+      "type": "oddity",
+      "text": "Pine cones near the creek are known to roll themselves into odd patterns.",
+      "tags": [
+        "pine",
+        "creek"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_005",
+      "type": "oddity",
+      "text": "A particular toadstool refuses to acknowledge the existence of Wednesdays.",
+      "tags": [
+        "toadstool",
+        "day"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_006",
+      "type": "oddity",
+      "text": "The stream's pebbles sometimes whisper secrets in reverse alphabetical order.",
+      "tags": [
+        "stream",
+        "pebble"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_007",
+      "type": "oddity",
+      "text": "Bark on the eastern oaks develops faint maps of imaginary continents.",
+      "tags": [
+        "oak",
+        "bark"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_008",
+      "type": "oddity",
+      "text": "Morning dew on spiderwebs occasionally spells out cryptic one-word messages.",
+      "tags": [
+        "dew",
+        "spiderweb"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_009",
+      "type": "oddity",
+      "text": "Fallen leaves in the clearing arrange themselves into perplexing riddles.",
+      "tags": [
+        "leaf",
+        "clearing"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_010",
+      "type": "oddity",
+      "text": "The hollow log by the path hums a tune that changes with the moon's phase.",
+      "tags": [
+        "log",
+        "moon"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The oldest tree here whispers only in palindromes after midnight.",
+      "tags": [
+        "tree",
+        "whisper"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_002",
+      "type": "oddity",
+      "text": "Ferns in this clearing vote on the weather each morning.",
+      "tags": [
+        "fern",
+        "weather"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_003",
+      "type": "oddity",
+      "text": "Squirrels here collect only buttons that have lost their holes.",
+      "tags": [
+        "squirrel",
+        "button"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_004",
+      "type": "oddity",
+      "text": "Moss grows thicker where secrets were buried but never told.",
+      "tags": [
+        "moss",
+        "secret"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_005",
+      "type": "oddity",
+      "text": "The creek's third bend hums tunes from forgotten music boxes.",
+      "tags": [
+        "creek",
+        "hum"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_006",
+      "type": "oddity",
+      "text": "Owls here debate the merits of various shades of twilight.",
+      "tags": [
+        "owl",
+        "debate"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_007",
+      "type": "oddity",
+      "text": "Certain toadstools glow only when someone nearby is fibbing.",
+      "tags": [
+        "toadstool",
+        "glow"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_008",
+      "type": "oddity",
+      "text": "The wind here carries snippets of conversations from 1923.",
+      "tags": [
+        "wind",
+        "conversation"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_009",
+      "type": "oddity",
+      "text": "Rocks in this patch get bored and swap places when unobserved.",
+      "tags": [
+        "rock",
+        "bored"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_010",
+      "type": "oddity",
+      "text": "Deer tracks here sometimes spell out obscure Latin phrases.",
+      "tags": [
+        "deer",
+        "track"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The oldest tree here keeps a diary in lichen script, but only on Tuesdays.",
+      "tags": [
+        "tree",
+        "lichen"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_002",
+      "type": "oddity",
+      "text": "Fern shadows cast at noon tell fortunes no one wants to hear.",
+      "tags": [
+        "fern",
+        "shadows"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_003",
+      "type": "oddity",
+      "text": "Acorns falling after dusk are actually tiny, grumpy messengers.",
+      "tags": [
+        "acorns",
+        "dusk"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_005",
+      "type": "oddity",
+      "text": "The creek's babble is just old water arguing with itself.",
+      "tags": [
+        "creek",
+        "water"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_006",
+      "type": "oddity",
+      "text": "Pine cones at the forest's edge are spies for the deeper woods.",
+      "tags": [
+        "pine cones",
+        "edge"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_007",
+      "type": "oddity",
+      "text": "Morning dew on spiderwebs holds forgotten lullabies.",
+      "tags": [
+        "dew",
+        "spiderwebs"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_008",
+      "type": "oddity",
+      "text": "Fallen leaves rustle not from wind, but from petty grievances.",
+      "tags": [
+        "leaves",
+        "wind"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_009",
+      "type": "oddity",
+      "text": "The hollow log hums a tune only beetles can appreciate.",
+      "tags": [
+        "log",
+        "beetles"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_010",
+      "type": "oddity",
+      "text": "Frog croaks after rain are actually weather critiques.",
+      "tags": [
+        "frogs",
+        "rain"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The northernmost oak hums a tune only the wind remembers.",
+      "tags": [
+        "tree",
+        "music"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_002",
+      "type": "oddity",
+      "text": "Ferns whisper secrets backward when no one's looking.",
+      "tags": [
+        "fern",
+        "secrets"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_003",
+      "type": "oddity",
+      "text": "A particular stone near the creek counts raindrops as they fall.",
+      "tags": [
+        "stone",
+        "water"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_004",
+      "type": "oddity",
+      "text": "The oldest pine keeps a ledger of all the shadows it's cast.",
+      "tags": [
+        "tree",
+        "record-keeping"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_005",
+      "type": "oddity",
+      "text": "Moss grows in patterns that spell out forgotten names.",
+      "tags": [
+        "moss",
+        "patterns"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_006",
+      "type": "oddity",
+      "text": "At midnight, the brook tells jokes only the frogs understand.",
+      "tags": [
+        "water",
+        "humor"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_007",
+      "type": "oddity",
+      "text": "Certain leaves curl up to hide from the moon's gaze.",
+      "tags": [
+        "leaf",
+        "moon"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_008",
+      "type": "oddity",
+      "text": "The forest floor has a pocket that holds yesterday's echoes.",
+      "tags": [
+        "ground",
+        "echo"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_009",
+      "type": "oddity",
+      "text": "A squirrel's stash includes one acorn that never ripens.",
+      "tags": [
+        "squirrel",
+        "acorn"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_010",
+      "type": "oddity",
+      "text": "The morning dew on spiderwebs spells out tiny riddles.",
+      "tags": [
+        "dew",
+        "spiderweb"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_01",
+      "type": "oddity",
+      "text": "The oldest tree here whispers only in palindrome.",
+      "tags": [
+        "tree",
+        "whisper"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_02",
+      "type": "oddity",
+      "text": "Moss grows faster on Thursdays, if you're counting.",
+      "tags": [
+        "moss",
+        "growth"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_03",
+      "type": "oddity",
+      "text": "That rock has been in the same spot since Tuesday last week.",
+      "tags": [
+        "rock",
+        "time"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_04",
+      "type": "oddity",
+      "text": "The stream hums a tune only the ferns can hear.",
+      "tags": [
+        "stream",
+        "fern"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_05",
+      "type": "oddity",
+      "text": "Squirrels here bury acorns in alphabetical order.",
+      "tags": [
+        "squirrel",
+        "acorn"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_06",
+      "type": "oddity",
+      "text": "The north wind carries gossip from the pine needles.",
+      "tags": [
+        "wind",
+        "pine"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_07",
+      "type": "oddity",
+      "text": "This patch of clover has never seen a four-leaf.",
+      "tags": [
+        "clover",
+        "luck"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "oddity_08",
+      "type": "oddity",
+      "text": "The moon's reflection in the pond is always upside-down.",
+      "tags": [
+        "moon",
+        "pond"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_09",
+      "type": "oddity",
+      "text": "Fallen leaves here rustle in iambic pentameter.",
+      "tags": [
+        "leaves",
+        "poetry"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "oddity_10",
+      "type": "oddity",
+      "text": "The toadstools hold a council at midnight, sharp.",
+      "tags": [
+        "toadstool",
+        "council"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "oddity_001",
+      "type": "oddity",
+      "text": "The northernmost fern keeps a diary in dew-drops. It's mostly complaints about the weather.",
+      "tags": [
+        "fern",
+        "diary",
+        "weather"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss001",
+      "type": "prompt",
+      "text": "What secret do the oldest tree rings whisper to the youngest sapling?",
+      "tags": [
+        "forest",
+        "trees",
+        "secrets"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss002",
+      "type": "prompt",
+      "text": "If a mushroom kept a diary, what would its most scandalous entry be?",
+      "tags": [
+        "mushrooms",
+        "diary",
+        "scandal"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss003",
+      "type": "prompt",
+      "text": "What forgotten recipe might a squirrel scribble on acorn parchment?",
+      "tags": [
+        "squirrels",
+        "recipes",
+        "forgotten"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss004",
+      "type": "prompt",
+      "text": "How does a brook apologize to the stones it has polished smooth?",
+      "tags": [
+        "brook",
+        "stones",
+        "apology"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss005",
+      "type": "prompt",
+      "text": "What three-word motto would a wise old owl carve into bark?",
+      "tags": [
+        "owl",
+        "motto",
+        "wisdom"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 5,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss006",
+      "type": "prompt",
+      "text": "If moss could vote, what peculiar law would it enact for the forest?",
+      "tags": [
+        "moss",
+        "vote",
+        "law"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss007",
+      "type": "prompt",
+      "text": "What cryptic message might a spider weave into its web at dawn?",
+      "tags": [
+        "spider",
+        "web",
+        "cryptic"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss008",
+      "type": "prompt",
+      "text": "How would a grumpy badger describe the perfect afternoon nap?",
+      "tags": [
+        "badger",
+        "nap",
+        "grumpy"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss009",
+      "type": "prompt",
+      "text": "What tune do the wind-chimes of ivy play when no one is listening?",
+      "tags": [
+        "ivy",
+        "wind",
+        "tune"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss010",
+      "type": "prompt",
+      "text": "If a fox wrote a love letter, what forest scent would it spray as perfume?",
+      "tags": [
+        "fox",
+        "love",
+        "scent"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss001",
+      "type": "prompt",
+      "text": "If your umbrella could whisper secrets, what would it confess about rainy days?",
+      "tags": [
+        "whimsical",
+        "objects"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss002",
+      "type": "prompt",
+      "text": "What forgotten language might the roots of an ancient oak still murmur?",
+      "tags": [
+        "forest",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss003",
+      "type": "prompt",
+      "text": "If a snail could keep a diary, what profound thoughts would fill its pages?",
+      "tags": [
+        "animals",
+        "philosophy"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss004",
+      "type": "prompt",
+      "text": "What cryptic messages might the wind etch upon a spider's web at dawn?",
+      "tags": [
+        "nature",
+        "secrets"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss005",
+      "type": "prompt",
+      "text": "If your favorite book could sigh, what would it lament about its readers?",
+      "tags": [
+        "literary",
+        "objects"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss006",
+      "type": "prompt",
+      "text": "What forgotten recipes might a mushroom scribble in its spore-dusted ledger?",
+      "tags": [
+        "forest",
+        "culinary"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss008",
+      "type": "prompt",
+      "text": "What silent debates occur between the moss and the stones it blankets?",
+      "tags": [
+        "forest",
+        "dialogue"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss009",
+      "type": "prompt",
+      "text": "If a teapot could hold a grudge, what would it simmer about over the years?",
+      "tags": [
+        "objects",
+        "humor"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss010",
+      "type": "prompt",
+      "text": "What arcane symbols might a fallen leaf trace as it tumbles through autumn?",
+      "tags": [
+        "nature",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mr001",
+      "type": "prompt",
+      "text": "What secret does the oldest tree in the forest keep in its hollow heart?",
+      "tags": [
+        "forest",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr002",
+      "type": "prompt",
+      "text": "If mushrooms could gossip, what scandal would they whisper about the oak?",
+      "tags": [
+        "whimsical",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr003",
+      "type": "prompt",
+      "text": "What forgotten melody do the wind-chimes of moss play at midnight?",
+      "tags": [
+        "atmospheric",
+        "sound"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mr004",
+      "type": "prompt",
+      "text": "If a squirrel kept a diary, what would its most dramatic entry reveal?",
+      "tags": [
+        "animal",
+        "humor"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mr005",
+      "type": "prompt",
+      "text": "What do the ferns dream about during the longest winter nights?",
+      "tags": [
+        "dreams",
+        "plants"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr006",
+      "type": "prompt",
+      "text": "If raindrops could write poetry, what would they rhyme about the soil?",
+      "tags": [
+        "poetic",
+        "weather"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mr007",
+      "type": "prompt",
+      "text": "What cryptic message might a spiderweb convey to the morning dew?",
+      "tags": [
+        "cryptic",
+        "insects"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr008",
+      "type": "prompt",
+      "text": "If stones could tell time, how would they describe a century's passing?",
+      "tags": [
+        "time",
+        "geology"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "mr009",
+      "type": "prompt",
+      "text": "What bargain would a fox strike with the moon on a frosty evening?",
+      "tags": [
+        "animal",
+        "folklore"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr010",
+      "type": "prompt",
+      "text": "If shadows in the glade held a council, what would they debate?",
+      "tags": [
+        "shadows",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_001",
+      "type": "prompt",
+      "text": "If you could whisper to the oldest tree in the forest, what secret would you confess?",
+      "tags": [
+        "forest",
+        "secrets",
+        "trees"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_002",
+      "type": "prompt",
+      "text": "What forgotten melody do the morning dewdrops hum before the sun rises?",
+      "tags": [
+        "morning",
+        "music",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_003",
+      "type": "prompt",
+      "text": "If mushrooms kept diaries, what would today's entry be titled?",
+      "tags": [
+        "mushrooms",
+        "writing",
+        "whimsy"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_004",
+      "type": "prompt",
+      "text": "What does the wind say when it thinks no one is listening?",
+      "tags": [
+        "wind",
+        "secrets",
+        "atmosphere"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_005",
+      "type": "prompt",
+      "text": "If a squirrel could write a recipe, what would its signature dish be?",
+      "tags": [
+        "squirrel",
+        "food",
+        "creativity"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "prompt_006",
+      "type": "prompt",
+      "text": "What message would you leave in a bottle for the forest gnomes?",
+      "tags": [
+        "gnomes",
+        "messages",
+        "fantasy"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_007",
+      "type": "prompt",
+      "text": "If shadows had a favorite time of day, when would it be and why?",
+      "tags": [
+        "shadows",
+        "time",
+        "personification"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_008",
+      "type": "prompt",
+      "text": "What would a spider's web say if it could spin words instead of silk?",
+      "tags": [
+        "spiders",
+        "writing",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_009",
+      "type": "prompt",
+      "text": "If you could ask the moon one question about the forest, what would it be?",
+      "tags": [
+        "moon",
+        "questions",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_010",
+      "type": "prompt",
+      "text": "What forgotten language do the fallen leaves speak as they rustle?",
+      "tags": [
+        "leaves",
+        "language",
+        "autumn"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_001",
+      "type": "prompt",
+      "text": "What song would a moss-covered phonograph play at twilight?",
+      "tags": [
+        "music",
+        "moss"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_002",
+      "type": "prompt",
+      "text": "If tree rings were diaries, what secret would the oldest page hold?",
+      "tags": [
+        "trees",
+        "secrets"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_003",
+      "type": "prompt",
+      "text": "What complaint does a squirrel lodge about acorn storage regulations?",
+      "tags": [
+        "squirrels",
+        "humor"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_004",
+      "type": "prompt",
+      "text": "Describe the scent of a forgotten forest path after rain.",
+      "tags": [
+        "senses",
+        "rain"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 5,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_005",
+      "type": "prompt",
+      "text": "What wisdom would a talking mushroom whisper to a lost traveler?",
+      "tags": [
+        "mushrooms",
+        "wisdom"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_006",
+      "type": "prompt",
+      "text": "If leaves could gossip, what scandal would they spread in autumn?",
+      "tags": [
+        "leaves",
+        "gossip"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_007",
+      "type": "prompt",
+      "text": "What recipe would a gnome scribble in a bark-bound cookbook?",
+      "tags": [
+        "gnomes",
+        "recipes"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_008",
+      "type": "prompt",
+      "text": "How does a brook complain about the stones in its bed?",
+      "tags": [
+        "water",
+        "complaints"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "prompt_009",
+      "type": "prompt",
+      "text": "If ferns kept journals, what would yesterday's entry confess?",
+      "tags": [
+        "ferns",
+        "journaling"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_010",
+      "type": "prompt",
+      "text": "What bargain would a fox strike with the moon at midnight?",
+      "tags": [
+        "foxes",
+        "moon"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "prompt_001",
+      "type": "prompt",
+      "text": "What whispered secret would a particularly talkative patch of moss share over afternoon tea?",
+      "tags": [
+        "moss",
+        "whispers"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr_riddle_001",
+      "type": "riddle",
+      "riddle": {
+        "question": "I sleep in a bed of moss, wake with the dew, and carry my house wherever I go. What am I?",
+        "answer": "A snail"
+      },
+      "tags": [
+        "forest",
+        "creature"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mr_riddle_002",
+      "type": "riddle",
+      "riddle": {
+        "question": "I speak without a mouth, run without feet, and am heard in the deepest woods. What am I?",
+        "answer": "An echo"
+      },
+      "tags": [
+        "sound",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mr_riddle_003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am taken from a mine and shut in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?",
+        "answer": "Pencil lead"
+      },
+      "tags": [
+        "object",
+        "mineral"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "mr_riddle_004",
+      "type": "riddle",
+      "riddle": {
+        "question": "The more you take, the more you leave behind. What are they?",
+        "answer": "Footsteps"
+      },
+      "tags": [
+        "paradox",
+        "walking"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 5,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss_riddle_001",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am woven from shadows and whispers, holding memories that never were. You find me in hollows where mushrooms keep council, but I vanish when touched by the sun.",
+        "answer": "A forgotten dream"
+      },
+      "tags": [
+        "forest",
+        "dream"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss_riddle_002",
+      "type": "riddle",
+      "riddle": {
+        "question": "I wear a coat of bark and speak in rustles, yet have no mouth. I count the years in rings but never age. What am I, standing sentinel in the glade?",
+        "answer": "An ancient tree"
+      },
+      "tags": [
+        "tree",
+        "time"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss_riddle_003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I flow without water, map paths without trails, and carry secrets from root to canopy. Squirrels gossip along me, but I am not a branch.",
+        "answer": "A squirrel highway"
+      },
+      "tags": [
+        "animals",
+        "path"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 9,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss_riddle_004",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am a library with pages of lichen, stories written in dew. Open me at dawn, and I recite tales of the night's hidden congress.",
+        "answer": "A mossy log"
+      },
+      "tags": [
+        "book",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss_riddle_005",
+      "type": "riddle",
+      "riddle": {
+        "question": "I dance without feet, wearing a cap of whimsy. I appear after rain, holding a tiny umbrella, and vanish before you can name me.",
+        "answer": "A mushroom fairy"
+      },
+      "tags": [
+        "fungi",
+        "magic"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "riddle003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+        "answer": "An echo"
+      },
+      "tags": [
+        "sound",
+        "nature"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "riddle004",
+      "type": "riddle",
+      "riddle": {
+        "question": "What has keys but can't open locks, space but no room, and you can enter but not go inside?",
+        "answer": "A keyboard"
+      },
+      "tags": [
+        "object",
+        "wordplay"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "riddle005",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am always hungry, I must always be fed. The finger I touch will soon turn red. What am I?",
+        "answer": "Fire"
+      },
+      "tags": [
+        "element",
+        "danger"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss001",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am woven from whispers and shadows, a tapestry hung between branches. Though I have no threads, I catch the morning dew. What am I?",
+        "answer": "A spiderweb"
+      },
+      "tags": [
+        "forest",
+        "creepy-crawly"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss002",
+      "type": "riddle",
+      "riddle": {
+        "question": "I have a thousand eyes but cannot see, a thousand mouths but never speak. I watch the forest floor in silence, crumbling with age. What am I?",
+        "answer": "A decaying log"
+      },
+      "tags": [
+        "woodland",
+        "cryptic"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am the forest's memory, etched in rings. I hold stories of droughts and floods, yet I never speak a word. What am I?",
+        "answer": "A tree stump"
+      },
+      "tags": [
+        "arboreal",
+        "mysterious"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss004",
+      "type": "riddle",
+      "riddle": {
+        "question": "I dance without feet, sing without voice, and paint the sky with invisible ink. The trees bow as I pass. What am I?",
+        "answer": "The wind"
+      },
+      "tags": [
+        "ethereal",
+        "whimsical"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "riddle_004",
+      "type": "riddle",
+      "riddle": {
+        "question": "What has keys but can't open locks, space but no room, and you can enter but not go in?",
+        "answer": "A keyboard"
+      },
+      "tags": [
+        "technology",
+        "wordplay"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss_001",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am carried by many but used by none, I can be measured but not seen. What am I?",
+        "answer": "Time"
+      },
+      "tags": [
+        "abstract"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss_002",
+      "type": "riddle",
+      "riddle": {
+        "question": "The more you take away, the larger I become. The more you add, the smaller I grow. What am I?",
+        "answer": "A hole"
+      },
+      "tags": [
+        "paradox"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss002",
+      "type": "riddle",
+      "riddle": {
+        "question": "The more you take, the more you leave behind. I'm made by feet but never walk. What am I?",
+        "answer": "Footsteps"
+      },
+      "tags": [
+        "path",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 5,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I have a spine but no bones, pages but no paper. I tell tales of the woods but never speak. What am I?",
+        "answer": "A fallen log"
+      },
+      "tags": [
+        "nature",
+        "book"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss004",
+      "type": "riddle",
+      "riddle": {
+        "question": "I run but never walk, have a mouth but never talk. I have a bed but never sleep, and a head but never weep. What am I?",
+        "answer": "A river"
+      },
+      "tags": [
+        "water",
+        "flow"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 4,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss_realm_001",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am a clock that never ticks, a calendar without dates, yet I mark the seasons' turn. What am I?",
+        "answer": "A tree's rings"
+      },
+      "tags": [
+        "forest",
+        "time"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss_realm_002",
+      "type": "riddle",
+      "riddle": {
+        "question": "I speak without a mouth, run without feet, and can be found in every glade and grove. What am I?",
+        "answer": "An echo"
+      },
+      "tags": [
+        "sound",
+        "woods"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 5,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss_realm_003",
+      "type": "riddle",
+      "riddle": {
+        "question": "I am a key that cannot turn a lock, yet I open doors to hidden worlds. Look for me under damp logs.",
+        "answer": "A mushroom"
+      },
+      "tags": [
+        "fungus",
+        "secret"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_01",
+      "type": "whisper",
+      "text": "Ferns dream in shades of forgotten green.",
+      "tags": [
+        "fern",
+        "dream"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_02",
+      "type": "whisper",
+      "text": "The oldest tree hums a lullaby to stones.",
+      "tags": [
+        "tree",
+        "lullaby"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_03",
+      "type": "whisper",
+      "text": "Mushrooms keep secrets in spore-script.",
+      "tags": [
+        "mushroom",
+        "secret"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_04",
+      "type": "whisper",
+      "text": "Pine needles stitch the silence together.",
+      "tags": [
+        "pine",
+        "silence"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_05",
+      "type": "whisper",
+      "text": "The creek mutters old gossip to pebbles.",
+      "tags": [
+        "creek",
+        "gossip"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_06",
+      "type": "whisper",
+      "text": "Lichens write slow poems on bark.",
+      "tags": [
+        "lichen",
+        "poem"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_07",
+      "type": "whisper",
+      "text": "Spiders weave maps of forgotten paths.",
+      "tags": [
+        "spider",
+        "map"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_08",
+      "type": "whisper",
+      "text": "Fog carries whispers from yesterday's rain.",
+      "tags": [
+        "fog",
+        "whisper"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_09",
+      "type": "whisper",
+      "text": "Roots hum forgotten tunes to the dark.",
+      "tags": [
+        "root",
+        "tune"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_10",
+      "type": "whisper",
+      "text": "The wind leaves notes in hollow logs.",
+      "tags": [
+        "wind",
+        "note"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_001",
+      "type": "whisper",
+      "text": "The toadstools keep the forest's secrets under their caps.",
+      "tags": [
+        "cryptic",
+        "fungal"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 6,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_002",
+      "type": "whisper",
+      "text": "Bark whispers to the wind in a language of slow creaks.",
+      "tags": [
+        "arboreal",
+        "sound"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 5,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_003",
+      "type": "whisper",
+      "text": "A spider's web holds more than flies—it catches moonlight too.",
+      "tags": [
+        "insect",
+        "nocturnal"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_004",
+      "type": "whisper",
+      "text": "The oldest tree counts its rings backward on rainy days.",
+      "tags": [
+        "temporal",
+        "arboreal"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_005",
+      "type": "whisper",
+      "text": "Ferns uncurl their thoughts at dawn, then forget them by noon.",
+      "tags": [
+        "botanical",
+        "memory"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "whisper_006",
+      "type": "whisper",
+      "text": "Mushrooms dream in colors humans cannot pronounce.",
+      "tags": [
+        "fungal",
+        "vision"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_007",
+      "type": "whisper",
+      "text": "The creek's song is older than the stones it polishes.",
+      "tags": [
+        "aquatic",
+        "sound"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 4,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_008",
+      "type": "whisper",
+      "text": "Acorns plot their great escape into future forests.",
+      "tags": [
+        "seed",
+        "ambition"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "whisper_009",
+      "type": "whisper",
+      "text": "Foxglove bells ring only for bees and the deaf earth.",
+      "tags": [
+        "botanical",
+        "sound"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "whisper_010",
+      "type": "whisper",
+      "text": "A snail's trail is a map to places that never were.",
+      "tags": [
+        "mollusk",
+        "cartographic"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 7,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "frn_001",
+      "type": "fortune",
+      "text": "A misplaced sock will find its purpose by noon.",
+      "tags": [
+        "domestic",
+        "odd"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "frn_002",
+      "type": "fortune",
+      "text": "The third cloud from the left holds a secret.",
+      "tags": [
+        "sky",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "frn_003",
+      "type": "fortune",
+      "text": "Your shadow will briefly disagree with you tomorrow.",
+      "tags": [
+        "self",
+        "whimsy"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 8,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "frn_004",
+      "type": "fortune",
+      "text": "A forgotten tune returns with new lyrics.",
+      "tags": [
+        "music",
+        "memory"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "frn_005",
+      "type": "fortune",
+      "text": "The teapot's whistle speaks a truth you already know.",
+      "tags": [
+        "domestic",
+        "wisdom"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "frn_006",
+      "type": "fortune",
+      "text": "Wednesday's rain carries a message in Morse code.",
+      "tags": [
+        "weather",
+        "communication"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "frn_007",
+      "type": "fortune",
+      "text": "A squirrel will leave you a cryptic gift by the oak.",
+      "tags": [
+        "forest",
+        "animal"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "frn_008",
+      "type": "fortune",
+      "text": "The next left turn holds a minor revelation.",
+      "tags": [
+        "travel",
+        "insight"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "frn_009",
+      "type": "fortune",
+      "text": "Your reflection will wink when you least expect it.",
+      "tags": [
+        "self",
+        "surprise"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "frn_010",
+      "type": "fortune",
+      "text": "A passing breeze carries yesterday's forgotten thought.",
+      "tags": [
+        "weather",
+        "memory"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "fortune_001",
+      "type": "fortune",
+      "text": "The third mushroom you encounter today holds a secret.",
+      "tags": [
+        "forest",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "fortune_002",
+      "type": "fortune",
+      "text": "A squirrel will deliver unexpected news on Tuesday.",
+      "tags": [
+        "animals",
+        "future"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "fortune_003",
+      "type": "fortune",
+      "text": "Your left shoelace knows something you don't.",
+      "tags": [
+        "whimsy",
+        "clothing"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "fortune_004",
+      "type": "fortune",
+      "text": "The next puddle you see will reflect a forgotten memory.",
+      "tags": [
+        "water",
+        "reflection"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "fortune_005",
+      "type": "fortune",
+      "text": "A misplaced key will lead to an interesting conversation.",
+      "tags": [
+        "objects",
+        "social"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "mossy_001",
+      "type": "poll_seed",
+      "poll": {
+        "question": "If trees could whisper, what would they gossip about?",
+        "options": [
+          "Squirrel love affairs",
+          "The price of acorns",
+          "Root network politics",
+          "That one noisy owl"
+        ]
+      },
+      "tags": [
+        "forest",
+        "whimsy"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "mossy_002",
+      "type": "poll_seed",
+      "poll": {
+        "question": "Which forest creature makes the worst neighbor?",
+        "options": [
+          "Chatty magpie",
+          "Loud woodpecker",
+          "Messy raccoon",
+          "Nosy hedgehog"
+        ]
+      },
+      "tags": [
+        "creatures",
+        "humor"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 6,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "mossy_003",
+      "type": "poll_seed",
+      "poll": {
+        "question": "What do mushrooms discuss at midnight?",
+        "options": [
+          "Spore market trends",
+          "Decomposition gossip",
+          "Fairy real estate",
+          "The dampness index"
+        ]
+      },
+      "tags": [
+        "fungi",
+        "mystery"
+      ],
+      "scores": {
+        "vibe": 10,
+        "weird": 9,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "poll_001",
+      "type": "poll_seed",
+      "poll": {
+        "question": "Which mushroom would make the best librarian?",
+        "options": [
+          "Shelf fungus",
+          "Shaggy mane",
+          "Inky cap",
+          "False morel"
+        ]
+      },
+      "tags": [
+        "fungi",
+        "whimsy"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "poll_002",
+      "type": "poll_seed",
+      "poll": {
+        "question": "What should a squirrel hoard for winter?",
+        "options": [
+          "Acorns",
+          "Lost buttons",
+          "Pocket lint",
+          "Forgotten secrets"
+        ]
+      },
+      "tags": [
+        "rodents",
+        "collection"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 7,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "poll_003",
+      "type": "poll_seed",
+      "poll": {
+        "question": "How to appease a grumpy badger?",
+        "options": [
+          "Leave berries",
+          "Tell a joke",
+          "Offer a comb",
+          "Feign ignorance"
+        ]
+      },
+      "tags": [
+        "wildlife",
+        "etiquette"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 6,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "moss001",
+      "type": "poll_seed",
+      "poll": {
+        "question": "What would a mushroom mayor campaign on?",
+        "options": [
+          "Spore-based taxation",
+          "Root network expansion",
+          "Fungal zoning laws",
+          "Cap-and-trade for decay"
+        ]
+      },
+      "tags": [
+        "political",
+        "fungi"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    },
+    {
+      "id": "moss002",
+      "type": "poll_seed",
+      "poll": {
+        "question": "Which forest sound most befuddles cartographers?",
+        "options": [
+          "Whispering bark",
+          "Maple-leaf rustle code",
+          "Fern uncurling sigh",
+          "Lost compass hum"
+        ]
+      },
+      "tags": [
+        "cartography",
+        "sounds"
+      ],
+      "scores": {
+        "vibe": 8,
+        "weird": 9,
+        "cringe": 2
+      }
+    },
+    {
+      "id": "moss003",
+      "type": "poll_seed",
+      "poll": {
+        "question": "Preferred method for squirrel diplomacy?",
+        "options": [
+          "Acorn tribute",
+          "Tail-sign language",
+          "Bark-scroll treaties",
+          "Nut-based sanctions"
+        ]
+      },
+      "tags": [
+        "diplomacy",
+        "squirrels"
+      ],
+      "scores": {
+        "vibe": 7,
+        "weird": 7,
+        "cringe": 3
+      }
+    },
+    {
+      "id": "mossy_001",
+      "type": "poll_seed",
+      "poll": {
+        "question": "What do snails whisper about?",
+        "options": [
+          "Garden gossip",
+          "Shell maintenance",
+          "The great salt war",
+          "Moonlit migrations"
+        ]
+      },
+      "tags": [
+        "snails",
+        "whispers"
+      ],
+      "scores": {
+        "vibe": 9,
+        "weird": 8,
+        "cringe": 1
+      }
+    }
+  ]
+}

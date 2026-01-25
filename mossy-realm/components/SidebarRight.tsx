@@ -1,5 +1,6 @@
 import RetroBox from './RetroBox';
 import Link from 'next/link';
+import { NatureFactWidget } from './VaultWidgets';
 
 export default function SidebarRight() {
   return (
@@ -25,31 +26,8 @@ export default function SidebarRight() {
         </div>
       </RetroBox>
 
-      {/* Random Fact Section */}
-      <RetroBox title="{ nature fact! }">
-        <div className="text-center font-body text-sm">
-          <div className="text-2xl mb-2">~</div>
-          <p className="text-mossy-text">
-            Moss can hold up to <span className="text-mossy-accent font-bold">20 times</span> its weight in water! That&apos;s why forests stay so cool and misty
-          </p>
-          <button
-            className="
-              font-nav
-              mt-3
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              px-3 py-1
-              text-mossy-link
-              hover:bg-mossy-border
-              hover:text-mossy-bg-box
-              transition-colors
-              text-xs
-            "
-          >
-            new fact
-          </button>
-        </div>
-      </RetroBox>
+      {/* Nature Fact - now powered by vault */}
+      <NatureFactWidget />
 
       {/* Poll Section */}
       <RetroBox title="[ monthly poll ]">
