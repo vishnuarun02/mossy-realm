@@ -63,12 +63,21 @@ mossy-realm/content/updates/
 - 2026-01-21T21:15:00-08:00 | Visitor counter is live. New poll dropped~
 ```
 
-**Adding an update:**
+**Adding an update manually:**
 
 ```bash
 npm run update "Your message here"
 git add . && git commit -m "update" && git push
 ```
+
+**AI-generated update (summarizes recent commits):**
+
+```bash
+npm run update:digest
+git add . && git commit -m "update" && git push
+```
+
+This calls DeepSeek to generate one short MossyRealm-style update line from your recent commit messages.
 
 ### Content Vault (AI-Generated)
 
@@ -94,9 +103,31 @@ This calls DeepSeek API to generate ~180 quirky micro-content items with old com
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run update "msg"` | Add a new site update |
+| `npm run check` | Run TypeScript + ESLint checks |
+| `npm run update "msg"` | Add a manual site update |
+| `npm run update:digest` | AI-generate update from recent commits |
 | `npm run vault:generate` | Regenerate content vault via DeepSeek |
+| `npm run vault:dry-run` | Preview vault generation without API calls |
+
+## Development
+
+**Pre-commit hooks** are enabled via Husky:
+- `npm run check` runs automatically before every commit
+- Blocks commits if TypeScript or ESLint errors are found
+
+**Workflow:**
+```bash
+# Make changes
+git add .
+git commit -m "feat: add something cool"  # pre-commit runs check
+
+# Optionally generate an AI update
+npm run update:digest
+git add . && git commit -m "chore: add update"
+
+# Push
+git push
+```
 
 ## Deployment
 
@@ -138,7 +169,8 @@ mossyrealm/
 │   │   ├── vault.ts              # Vault loader + picker
 │   │   └── buildDate.ts          # Commit date helper
 │   ├── scripts/
-│   │   ├── new-update.ts         # Update generator
+│   │   ├── new-update.ts         # Manual update generator
+│   │   ├── update-digest.ts      # AI update digest (DeepSeek)
 │   │   └── generate-vault.ts     # Vault generator (DeepSeek)
 │   └── public/                   # Static assets
 └── design-kitchen/               # Design docs & experiments
@@ -152,6 +184,8 @@ mossyrealm/
 - Retro aesthetic with warm color palette
 - Visitor counter (Upstash Redis)
 - AI-generated content vault (DeepSeek)
+- AI update digest (summarizes commits into MossyRealm voice)
+- Pre-commit checks (TypeScript + ESLint via Husky)
 - Monthly poll
 - Scrollable update feed
 - "Question of the day" with riddle support
