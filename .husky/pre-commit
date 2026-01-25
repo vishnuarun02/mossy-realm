@@ -1,0 +1,2 @@
+#!/bin/sh
+cd mossy-realm && npm run typecheck && npm run lint

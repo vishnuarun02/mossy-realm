@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint",
     "update": "npx ts-node scripts/new-update.ts",
     "vault:generate": "npx tsx scripts/generate-vault.ts",
     "vault:dry-run": "npx tsx scripts/generate-vault.ts --dry-run",
@@ -25,7 +27,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "tailwindcss": "^4",
+    "tsc-files": "^1.1.4",
     "typescript": "^5"
   }
 }
