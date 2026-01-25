@@ -1,4 +1,8 @@
 #!/bin/sh
-# Generate a MossyRealm update digest before pushing (optional - failures don't block push)
-cd mossy-realm && npm run -s update:digest 2>/dev/null || true
+# Optional: Run update digest before push
+# Disabled by default to avoid recursive commits
+# To enable: uncomment the line below
+# cd mossy-realm && npm run -s update:digest 2>/dev/null || true
 
+# For now, just a reminder:
+echo "💡 Tip: Run 'npm run update:digest' to generate an AI update before pushing"
