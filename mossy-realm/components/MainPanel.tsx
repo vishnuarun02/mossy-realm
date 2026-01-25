@@ -69,16 +69,6 @@ export default function MainPanel() {
       </RetroBox>
 
       {/* Center bottom intentionally empty - exposes wallpaper */}
-
-      {/* Random Nature Fact - Mobile Only (appears in main on mobile) */}
-      <div className="md:hidden">
-        <RetroBox title="{ quick fact }">
-          <p className="text-mossy-text text-center font-body">
-            Did you know? The oldest known moss fossil is over
-            <span className="text-mossy-accent font-bold"> 470 million years old!</span>
-          </p>
-        </RetroBox>
-      </div>
     </main>
   );
 }

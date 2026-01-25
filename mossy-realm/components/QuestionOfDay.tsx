@@ -25,9 +25,10 @@ interface QuestionOfDayProps {
 }
 
 export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
-    const [items, setItems] = useState<VaultItem[]>(initialItems || FALLBACK_QUESTIONS);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [items] = useState<VaultItem[]>(initialItems || FALLBACK_QUESTIONS);
+    const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
     // Pick a "random" starting index based on date
     useEffect(() => {
@@ -36,9 +37,10 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
         // Offset by 42 so it's different from NatureFact
         const startIndex = (seed + 42) % items.length;
         setCurrentIndex(startIndex);
+        setMounted(true);
     }, [items.length]);
 
-    const currentItem = items[currentIndex];
+    const currentItem = currentIndex !== null ? items[currentIndex] : null;
     const isRiddle = currentItem?.type === 'riddle';
 
     const handleNewQuestion = () => {
@@ -47,8 +49,21 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
     };
 
     const questionText = isRiddle
-        ? currentItem.riddle?.question
+        ? currentItem?.riddle?.question
         : currentItem?.text;
+
+    // Show placeholder during hydration to avoid mismatch
+    if (!mounted) {
+        return (
+            <RetroBox title="[ question of the day ]">
+                <div className="text-center font-body text-sm px-1">
+                    <p className="text-mossy-text-muted italic leading-relaxed">
+                        pondering...
+                    </p>
+                </div>
+            </RetroBox>
+        );
+    }
 
     return (
         <RetroBox title="[ question of the day ]">
@@ -62,16 +77,16 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
                     <div className="mt-2">
                         {showAnswer ? (
                             <p className="text-mossy-accent text-xs">
-                                Answer: {currentItem.riddle?.answer}
+                                Answer: {currentItem?.riddle?.answer}
                             </p>
                         ) : (
                             <button
                                 onClick={() => setShowAnswer(true)}
                                 className="
-                  text-mossy-text-muted text-xs
-                  underline hover:text-mossy-link
-                  cursor-pointer
-                "
+                                    text-mossy-text-muted text-xs
+                                    underline hover:text-mossy-link
+                                    cursor-pointer
+                                "
                             >
                                 peek answer
                             </button>
@@ -86,18 +101,18 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
                 <button
                     onClick={handleNewQuestion}
                     className="
-            font-nav
-            mt-2
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            px-3 py-1
-            text-mossy-link
-            hover:bg-mossy-border
-            hover:text-mossy-bg-box
-            transition-colors
-            text-xs
-            cursor-pointer
-          "
+                        font-nav
+                        mt-2
+                        bg-mossy-bg-box-alt
+                        border-2 border-mossy-border
+                        px-3 py-1
+                        text-mossy-link
+                        hover:bg-mossy-border
+                        hover:text-mossy-bg-box
+                        transition-colors
+                        text-xs
+                        cursor-pointer
+                    "
                 >
                     new question
                 </button>

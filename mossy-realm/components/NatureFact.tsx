@@ -25,8 +25,9 @@ interface NatureFactProps {
 }
 
 export default function NatureFact({ initialItems }: NatureFactProps) {
-    const [items, setItems] = useState<VaultItem[]>(initialItems || FALLBACK_FACTS);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [items] = useState<VaultItem[]>(initialItems || FALLBACK_FACTS);
+    const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+    const [mounted, setMounted] = useState(false);
 
     // Pick a "random" starting index based on date (consistent for the day)
     useEffect(() => {
@@ -34,9 +35,10 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
         const startIndex = seed % items.length;
         setCurrentIndex(startIndex);
+        setMounted(true);
     }, [items.length]);
 
-    const currentItem = items[currentIndex];
+    const currentItem = currentIndex !== null ? items[currentIndex] : null;
 
     const handleNewFact = () => {
         setCurrentIndex((prev) => (prev + 1) % items.length);
@@ -52,6 +54,20 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
         }
     };
 
+    // Show placeholder during hydration to avoid mismatch
+    if (!mounted) {
+        return (
+            <RetroBox title="{ nature fact! }">
+                <div className="text-center font-body text-sm">
+                    <div className="text-2xl mb-2">~</div>
+                    <p className="text-mossy-text-muted italic">
+                        consulting the forest...
+                    </p>
+                </div>
+            </RetroBox>
+        );
+    }
+
     return (
         <RetroBox title="{ nature fact! }">
             <div className="text-center font-body text-sm">
@@ -62,18 +78,18 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
                 <button
                     onClick={handleNewFact}
                     className="
-            font-nav
-            mt-3
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            px-3 py-1
-            text-mossy-link
-            hover:bg-mossy-border
-            hover:text-mossy-bg-box
-            transition-colors
-            text-xs
-            cursor-pointer
-          "
+                        font-nav
+                        mt-3
+                        bg-mossy-bg-box-alt
+                        border-2 border-mossy-border
+                        px-3 py-1
+                        text-mossy-link
+                        hover:bg-mossy-border
+                        hover:text-mossy-bg-box
+                        transition-colors
+                        text-xs
+                        cursor-pointer
+                    "
                 >
                     new fact
                 </button>
