@@ -44,7 +44,7 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
     const isRiddle = currentItem?.type === 'riddle';
 
     const handleNewQuestion = () => {
-        setCurrentIndex((prev) => (prev + 1) % items.length);
+        setCurrentIndex((prev) => ((prev ?? 0) + 1) % items.length);
         setShowAnswer(false);
     };
 

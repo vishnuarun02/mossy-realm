@@ -41,7 +41,7 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
     const currentItem = currentIndex !== null ? items[currentIndex] : null;
 
     const handleNewFact = () => {
-        setCurrentIndex((prev) => (prev + 1) % items.length);
+        setCurrentIndex((prev) => ((prev ?? 0) + 1) % items.length);
     };
 
     // Determine display based on type
