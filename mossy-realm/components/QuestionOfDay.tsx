@@ -36,7 +36,6 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
         // Offset by 42 so it's different from NatureFact
         const startIndex = (seed + 42) % items.length;
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional for hydration
         setCurrentIndex(startIndex);
         setMounted(true);
     }, [items.length]);

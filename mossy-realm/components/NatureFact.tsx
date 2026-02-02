@@ -34,7 +34,6 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
         const today = new Date();
         const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
         const startIndex = seed % items.length;
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional for hydration
         setCurrentIndex(startIndex);
         setMounted(true);
     }, [items.length]);

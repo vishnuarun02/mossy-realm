@@ -8,6 +8,8 @@ A tiny moss-covered corner of the internet. A cozy, retro-themed personal websit
 - **Styling:** Tailwind CSS 4
 - **Database:** Upstash Redis (visitor counter)
 - **AI Content:** DeepSeek API (content vault generation)
+- **Audio:** Zustand + Howler.js (global audio engine)
+- **Music Player:** Webamp (Winamp 2.x HTML5 clone)
 - **Fonts:** Google Fonts (Cinzel, Lora, Cormorant, Mystery Quest)
 - **Deployment:** Vercel
 - **Content:** Markdown files with inline timestamps
@@ -63,21 +65,12 @@ mossy-realm/content/updates/
 - 2026-01-21T21:15:00-08:00 | Visitor counter is live. New poll dropped~
 ```
 
-**Adding an update manually:**
+**Adding an update:**
 
 ```bash
 npm run update "Your message here"
 git add . && git commit -m "update" && git push
 ```
-
-**AI-generated update (summarizes recent commits):**
-
-```bash
-npm run update:digest
-git add . && git commit -m "update" && git push
-```
-
-This calls DeepSeek to generate one short MossyRealm-style update line from your recent commit messages.
 
 ### Content Vault (AI-Generated)
 
@@ -103,31 +96,9 @@ This calls DeepSeek API to generate ~180 quirky micro-content items with old com
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
-| `npm run check` | Run TypeScript + ESLint checks |
-| `npm run update "msg"` | Add a manual site update |
-| `npm run update:digest` | AI-generate update from recent commits |
+| `npm run start` | Start production server |
+| `npm run update "msg"` | Add a new site update |
 | `npm run vault:generate` | Regenerate content vault via DeepSeek |
-| `npm run vault:dry-run` | Preview vault generation without API calls |
-
-## Development
-
-**Pre-commit hooks** are enabled via Husky:
-- `npm run check` runs automatically before every commit
-- Blocks commits if TypeScript or ESLint errors are found
-
-**Workflow:**
-```bash
-# Make changes
-git add .
-git commit -m "feat: add something cool"  # pre-commit runs check
-
-# Optionally generate an AI update
-npm run update:digest
-git add . && git commit -m "chore: add update"
-
-# Push
-git push
-```
 
 ## Deployment
 
@@ -146,10 +117,13 @@ mossyrealm/
 │   ├── app/
 │   │   ├── api/visitors/         # Visitor counter API
 │   │   ├── garden/               # Swamp Treasures section
+│   │   ├── player/               # Webamp player page
 │   │   ├── fonts.ts
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   └── page.tsx
+│   ├── data/
+│   │   └── tracks.ts             # Track list with R2 URLs
 │   ├── components/
 │   │   ├── RetroBox.tsx          # Card container
 │   │   ├── ScrollBox.tsx         # Scrollable container
@@ -160,17 +134,24 @@ mossyrealm/
 │   │   ├── VisitorCounter.tsx    # Redis counter
 │   │   ├── SidebarLeft.tsx       # Updates, question, guardian, posts
 │   │   ├── SidebarRight.tsx      # Radio, facts, polls
-│   │   └── ...
+│   │   └── player/               # Music player components
+│   │       ├── WebampPlayer.tsx      # Webamp integration
+│   │       ├── RealmRadioWidget.tsx  # Homepage sidebar player
+│   │       ├── RealmRadioDock.tsx    # Floating mini dock
+│   │       ├── RealmRadioMobileBar.tsx
+│   │       └── RealmRadioMobileSheet.tsx
 │   ├── content/
 │   │   ├── updates/              # Monthly update files
 │   │   └── vault/                # Pre-generated content vault
 │   ├── lib/
 │   │   ├── updates.ts            # Updates loader
 │   │   ├── vault.ts              # Vault loader + picker
-│   │   └── buildDate.ts          # Commit date helper
+│   │   ├── buildDate.ts          # Commit date helper
+│   │   └── player/               # Audio engine + Zustand store
+│   │       ├── store.ts              # Player state (Zustand)
+│   │       └── AudioEngine.tsx       # Howler.js wrapper
 │   ├── scripts/
-│   │   ├── new-update.ts         # Manual update generator
-│   │   ├── update-digest.ts      # AI update digest (DeepSeek)
+│   │   ├── new-update.ts         # Update generator
 │   │   └── generate-vault.ts     # Vault generator (DeepSeek)
 │   └── public/                   # Static assets
 └── design-kitchen/               # Design docs & experiments
@@ -184,8 +165,6 @@ mossyrealm/
 - Retro aesthetic with warm color palette
 - Visitor counter (Upstash Redis)
 - AI-generated content vault (DeepSeek)
-- AI update digest (summarizes commits into MossyRealm voice)
-- Pre-commit checks (TypeScript + ESLint via Husky)
 - Monthly poll
 - Scrollable update feed
 - "Question of the day" with riddle support
@@ -193,6 +172,12 @@ mossyrealm/
 - Responsive layout (3-col → 2-col → 1-col)
 - Grain overlay for scanned-page feel
 - "Last updated" banner from git commit date
+- **Realm Radio** — Embedded Webamp player with authentic Winamp 2.x experience
+  - Full player page at `/player` with Main + EQ + Playlist windows
+  - Homepage sidebar widget (desktop)
+  - Floating mini-dock on other routes (desktop)
+  - Bottom bar/sheet on mobile
+  - Audio persists across navigation
 
 ## Design Tokens
 

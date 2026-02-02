@@ -6,20 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run lint",
+    "lint": "eslint",
     "update": "npx ts-node scripts/new-update.ts",
     "vault:generate": "npx tsx scripts/generate-vault.ts",
     "vault:dry-run": "npx tsx scripts/generate-vault.ts --dry-run",
-    "vault:curate": "npx tsx scripts/generate-vault.ts --curate",
-    "update:digest": "npx tsx scripts/update-digest.ts"
+    "vault:curate": "npx tsx scripts/generate-vault.ts --curate"
   },
   "dependencies": {
+    "@types/howler": "^2.2.12",
     "@upstash/redis": "^1.36.1",
+    "howler": "^2.2.4",
     "next": "16.0.10",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "webamp": "^2.2.0",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -28,10 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "tailwindcss": "^4",
-    "tsc-files": "^1.1.4",
     "typescript": "^5"
   }
 }

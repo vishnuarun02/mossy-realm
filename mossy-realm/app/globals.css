@@ -433,3 +433,123 @@ a:hover {
     font-size: 0.7rem;
   }
 }
+
+/* ============================================ */
+/* REALM RADIO PLAYER STYLES                    */
+/* ============================================ */
+
+/* Visualizer bar animation */
+@keyframes visualizer-bounce {
+  0% {
+    transform: scaleY(0.3);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Mobile sheet slide up animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+/* Pulse animation for status dot */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: var(--mossy-bg-box);
+  border: 2px solid var(--mossy-border);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--mossy-border);
+  border: 2px solid var(--mossy-border-glow);
+  margin-top: -6px;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--mossy-border-glow);
+  box-shadow: 0 0 8px var(--mossy-border-glow);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: var(--mossy-bg-box);
+  border: 2px solid var(--mossy-border);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--mossy-border);
+  border: 2px solid var(--mossy-border-glow);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--mossy-border-glow);
+  box-shadow: 0 0 8px var(--mossy-border-glow);
+}
+
+/* Mobile bar height utility */
+.h-15 {
+  height: 60px;
+}
+
+/* Border width utilities */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Mobile bottom padding to account for player bar */
+@media (max-width: 768px) {
+  .site-wrapper {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* ============================================ */
+/* WEBAMP STYLES                                */
+/* ============================================ */
+
+/* Ensure Webamp renders above other content but below grain overlay */
+#webamp {
+  z-index: 100 !important;
+}

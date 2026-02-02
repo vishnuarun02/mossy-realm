@@ -495,7 +495,7 @@ async function generateVault() {
     console.log(`Model: ${MODEL} | Temp: ${TEMPERATURE} | Retries: ${MAX_RETRIES}`);
     console.log(`Timeouts: default ${TIMEOUT_MS.default / 1000}s, riddle/poll ${TIMEOUT_MS.riddle / 1000}s`);
 
-    const vault = loadVault();
+    let vault = loadVault();
     const totalTarget = Object.values(TARGET_COUNTS).reduce((a, b) => a + b, 0);
 
     // Initialize dedupe set from existing items

@@ -1,8 +1,6 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-// SubNav removed - using card buttons on page instead
-
 export default function GardenLayout({
   children,
 }: {

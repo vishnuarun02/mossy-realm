@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realm Radio - Design Mockups</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Mystery+Quest&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* MossyRealm - Sunlit Glade Palette */
+      --mossy-bg-main: #2a3f35;
+      --mossy-bg-box: #1e3028;
+      --mossy-bg-box-alt: #355a45;
+      --mossy-border: #e8a54b;
+      --mossy-border-glow: #ffc857;
+      --mossy-header: #ffeaa7;
+      --mossy-header-alt: #fff3c4;
+      --mossy-text: #f5f0e1;
+      --mossy-text-muted: #c5c0a8;
+      --mossy-link: #90ee90;
+      --mossy-link-hover: #b8ffb8;
+      --mossy-accent: #ff8c42;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--mossy-bg-main);
+      color: var(--mossy-text);
+      padding: 40px;
+      line-height: 1.6;
+    }
+    
+    .font-display { font-family: 'Cinzel Decorative', serif; }
+    .font-heading { font-family: 'Cinzel', serif; }
+    .font-nav { font-family: 'Cormorant', serif; }
+    .font-body { font-family: 'Lora', serif; }
+    .font-accent { font-family: 'Mystery Quest', cursive; }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--mossy-header);
+    }
+    
+    /* Page structure */
+    .section {
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--mossy-border);
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .section-desc {
+      color: var(--mossy-text-muted);
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+    
+    .variants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .variant {
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      padding: 20px;
+    }
+    
+    .variant-label {
+      font-family: 'Cormorant', serif;
+      font-size: 0.85rem;
+      color: var(--mossy-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    
+    /* ============================================ */
+    /* RETRO BOX BASE COMPONENT                     */
+    /* ============================================ */
+    .retro-box {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .retro-box-title {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+      padding: 8px 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+    }
+    
+    .retro-box-content {
+      padding: 12px;
+    }
+    
+    /* ============================================ */
+    /* BUTTONS                                       */
+    /* ============================================ */
+    .btn {
+      border: 2px solid var(--mossy-border);
+      background: var(--mossy-bg-box-alt);
+      color: var(--mossy-text);
+      padding: 8px 16px;
+      font-family: 'Cormorant', serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn:hover {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+    }
+    
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      padding: 0;
+    }
+    
+    .btn-small {
+      padding: 4px 10px;
+      font-size: 0.85rem;
+    }
+    
+    .btn-primary {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+    }
+    
+    .btn-primary:hover {
+      background: var(--mossy-border-glow);
+      box-shadow: 0 0 10px var(--mossy-border-glow);
+    }
+    
+    /* ============================================ */
+    /* MARQUEE TEXT ANIMATION                        */
+    /* ============================================ */
+    .marquee-wrapper {
+      overflow: hidden;
+      background: var(--mossy-bg-box);
+      border: 1px solid var(--mossy-bg-box-alt);
+      padding: 4px 0;
+    }
+    
+    .marquee-text {
+      white-space: nowrap;
+      animation: marquee 15s linear infinite;
+      color: var(--mossy-header);
+      font-family: 'Mystery Quest', cursive;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    /* ============================================ */
+    /* VOLUME SLIDER                                 */
+    /* ============================================ */
+    .volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      cursor: pointer;
+    }
+    
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--mossy-border);
+      border: 2px solid var(--mossy-border-glow);
+      cursor: pointer;
+    }
+    
+    .volume-slider::-webkit-slider-thumb:hover {
+      background: var(--mossy-border-glow);
+      box-shadow: 0 0 8px var(--mossy-border-glow);
+    }
+    
+    /* ============================================ */
+    /* STATUS INDICATOR                              */
+    /* ============================================ */
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    
+    .status-dot.playing {
+      background: var(--mossy-link);
+      box-shadow: 0 0 6px var(--mossy-link);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    .status-dot.paused {
+      background: var(--mossy-text-muted);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Mock sidebar context */
+    .sidebar-context {
+      width: 190px;
+      background: rgba(30, 48, 40, 0.92);
+      padding: 15px;
+      border: 2px solid var(--mossy-border);
+    }
+    
+    /* Mobile context */
+    .mobile-context {
+      max-width: 375px;
+      background: var(--mossy-bg-main);
+      min-height: 300px;
+      position: relative;
+      border: 2px solid var(--mossy-border);
+      overflow: hidden;
+    }
+    
+    /* Floating context */
+    .floating-context {
+      background: var(--mossy-bg-main);
+      min-height: 200px;
+      position: relative;
+      border: 2px solid var(--mossy-border);
+      padding: 20px;
+    }
+    
+    /* Link styles */
+    a {
+      color: var(--mossy-link);
+      text-decoration: underline;
+    }
+    
+    a:hover {
+      color: var(--mossy-link-hover);
+      text-shadow: 0 0 8px var(--mossy-link);
+    }
+    
+    /* ============================================ */
+    /* DESIGN A: CLASSIC 90s WINAMP INSPIRED         */
+    /* ============================================ */
+    .design-a .player-widget {
+      background: linear-gradient(180deg, var(--mossy-bg-box-alt) 0%, var(--mossy-bg-box) 100%);
+    }
+    
+    .design-a .visualizer {
+      height: 40px;
+      background: var(--mossy-bg-box);
+      border: 2px inset var(--mossy-bg-box-alt);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      padding: 4px;
+      margin-bottom: 10px;
+    }
+    
+    .design-a .visualizer-bar {
+      width: 6px;
+      background: linear-gradient(to top, var(--mossy-link) 0%, var(--mossy-border-glow) 50%, var(--mossy-accent) 100%);
+      animation: viz-bounce 0.5s ease-in-out infinite alternate;
+    }
+    
+    .design-a .visualizer-bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .design-a .visualizer-bar:nth-child(2) { height: 80%; animation-delay: 0.1s; }
+    .design-a .visualizer-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
+    .design-a .visualizer-bar:nth-child(4) { height: 90%; animation-delay: 0.15s; }
+    .design-a .visualizer-bar:nth-child(5) { height: 50%; animation-delay: 0.25s; }
+    .design-a .visualizer-bar:nth-child(6) { height: 70%; animation-delay: 0.05s; }
+    .design-a .visualizer-bar:nth-child(7) { height: 45%; animation-delay: 0.3s; }
+    
+    @keyframes viz-bounce {
+      0% { transform: scaleY(0.3); }
+      100% { transform: scaleY(1); }
+    }
+    
+    .design-a .track-info {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    .design-a .now-playing {
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .design-a .track-title {
+      font-family: 'Mystery Quest', cursive;
+      color: var(--mossy-header);
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+    
+    .design-a .controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .design-a .volume-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+    }
+    
+    /* ============================================ */
+    /* DESIGN B: COZY CASSETTE TAPE                  */
+    /* ============================================ */
+    .design-b .cassette {
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      padding: 10px;
+      position: relative;
+    }
+    
+    .design-b .cassette::before {
+      content: '◉ REALM RADIO ◉';
+      display: block;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    
+    .design-b .tape-window {
+      background: #0d1a14;
+      border: 2px inset var(--mossy-bg-box-alt);
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 10px;
+    }
+    
+    .design-b .reel {
+      width: 35px;
+      height: 35px;
+      background: var(--mossy-bg-box-alt);
+      border: 3px solid var(--mossy-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .design-b .reel.spinning {
+      animation: spin 2s linear infinite;
+    }
+    
+    .design-b .reel-inner {
+      width: 12px;
+      height: 12px;
+      background: var(--mossy-bg-box);
+      border-radius: 50%;
+      border: 2px solid var(--mossy-border);
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .design-b .tape-label {
+      flex: 1;
+      margin: 0 10px;
+      text-align: center;
+    }
+    
+    .design-b .tape-label-text {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 0.85rem;
+      color: var(--mossy-header);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .design-b .controls {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .design-b .btn-tape {
+      background: var(--mossy-bg-box-alt);
+      border: 2px outset var(--mossy-border);
+      color: var(--mossy-border);
+      width: 36px;
+      height: 28px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    
+    .design-b .btn-tape:active {
+      border-style: inset;
+    }
+    
+    /* ============================================ */
+    /* DESIGN C: MINIMAL FOREST SPIRIT               */
+    /* ============================================ */
+    .design-c .spirit-player {
+      text-align: center;
+      padding: 10px;
+    }
+    
+    .design-c .spirit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .design-c .spirit-title {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 0.9rem;
+      color: var(--mossy-header);
+      margin-bottom: 4px;
+    }
+    
+    .design-c .spirit-status {
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+      margin-bottom: 12px;
+    }
+    
+    .design-c .spirit-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    
+    .design-c .btn-spirit {
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 2px solid var(--mossy-border);
+      color: var(--mossy-border);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .design-c .btn-spirit:hover {
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+      box-shadow: 0 0 15px rgba(232, 165, 75, 0.4);
+    }
+    
+    .design-c .btn-spirit.play-main {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+    }
+    
+    /* ============================================ */
+    /* DESIGN D: VINTAGE RADIO DIAL                  */
+    /* ============================================ */
+    .design-d .radio-dial {
+      background: linear-gradient(180deg, #2d4a3a 0%, var(--mossy-bg-box) 100%);
+      border: 4px double var(--mossy-border);
+      padding: 12px;
+    }
+    
+    .design-d .dial-display {
+      background: #0d1a14;
+      border: 2px inset var(--mossy-bg-box-alt);
+      padding: 8px;
+      text-align: center;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    .design-d .frequency {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.3rem;
+      color: var(--mossy-link);
+      text-shadow: 0 0 10px var(--mossy-link);
+      letter-spacing: 2px;
+    }
+    
+    .design-d .station-name {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 0.8rem;
+      color: var(--mossy-header);
+      margin-top: 4px;
+    }
+    
+    .design-d .dial-knobs {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    
+    .design-d .knob {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 30% 30%, var(--mossy-border-glow), var(--mossy-border) 50%, #8b6914 100%);
+      border-radius: 50%;
+      border: 2px solid var(--mossy-bg-box);
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .design-d .knob::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 12px;
+      background: var(--mossy-bg-box);
+    }
+    
+    .design-d .knob-label {
+      font-size: 0.65rem;
+      color: var(--mossy-text-muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+      text-align: center;
+    }
+    
+    /* ============================================ */
+    /* FLOATING DOCK DESIGNS                         */
+    /* ============================================ */
+    .floating-dock {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: var(--mossy-bg-box);
+      border: 3px solid var(--mossy-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .dock-a {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .dock-a .dock-title {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 0.8rem;
+      color: var(--mossy-header);
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .dock-b {
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 160px;
+    }
+    
+    .dock-b .dock-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+    }
+    
+    .dock-b .dock-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dock-c {
+      width: 60px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .dock-c .dock-icon {
+      font-size: 1.2rem;
+    }
+    
+    /* ============================================ */
+    /* MOBILE BOTTOM BAR                             */
+    /* ============================================ */
+    .mobile-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--mossy-bg-box);
+      border-top: 3px solid var(--mossy-border);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 10px;
+    }
+    
+    .mobile-bar .bar-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .mobile-bar .bar-title {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 0.9rem;
+      color: var(--mossy-header);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .mobile-bar .bar-status {
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+    }
+    
+    .mobile-bar .bar-controls {
+      display: flex;
+      gap: 8px;
+    }
+    
+    /* ============================================ */
+    /* MOBILE EXPANDED SHEET                         */
+    /* ============================================ */
+    .mobile-sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--mossy-bg-box);
+      border-top: 4px solid var(--mossy-border);
+      border-radius: 16px 16px 0 0;
+      padding: 16px;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    .sheet-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--mossy-border);
+      border-radius: 2px;
+      margin: 0 auto 16px;
+    }
+    
+    .sheet-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    
+    .sheet-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.2rem;
+      color: var(--mossy-header);
+    }
+    
+    .sheet-now-playing {
+      font-size: 0.75rem;
+      color: var(--mossy-text-muted);
+      margin-top: 4px;
+    }
+    
+    .sheet-track {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 1.1rem;
+      color: var(--mossy-header);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .sheet-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .sheet-volume {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .sheet-volume label {
+      font-size: 0.75rem;
+      color: var(--mossy-text-muted);
+      min-width: 50px;
+    }
+    
+    .sheet-playlist {
+      border-top: 2px solid var(--mossy-border);
+      padding-top: 16px;
+    }
+    
+    .sheet-playlist h4 {
+      font-size: 0.8rem;
+      color: var(--mossy-border);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .playlist-item {
+      padding: 10px;
+      border: 1px solid var(--mossy-bg-box-alt);
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .playlist-item:hover {
+      background: var(--mossy-bg-box-alt);
+      border-color: var(--mossy-border);
+    }
+    
+    .playlist-item.active {
+      background: var(--mossy-bg-box-alt);
+      border-color: var(--mossy-border);
+      border-left: 3px solid var(--mossy-link);
+    }
+    
+    .playlist-item .track-name {
+      font-size: 0.85rem;
+      color: var(--mossy-text);
+    }
+    
+    .playlist-item .track-artist {
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+    }
+    
+    /* ============================================ */
+    /* FULL PLAYER PAGE                              */
+    /* ============================================ */
+    .player-page-preview {
+      background: rgba(30, 48, 40, 0.95);
+      border: 3px solid var(--mossy-border);
+      padding: 20px;
+      max-width: 600px;
+    }
+    
+    .player-page-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .player-page-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.8rem;
+      color: var(--mossy-header);
+      margin-bottom: 8px;
+    }
+    
+    .player-page-subtitle {
+      font-family: 'Mystery Quest', cursive;
+      color: var(--mossy-text-muted);
+      font-size: 1rem;
+    }
+    
+    .player-page-art {
+      width: 200px;
+      height: 200px;
+      background: var(--mossy-bg-box);
+      border: 4px solid var(--mossy-border);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    
+    .player-page-track {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .player-page-track-title {
+      font-family: 'Mystery Quest', cursive;
+      font-size: 1.4rem;
+      color: var(--mossy-header);
+    }
+    
+    .player-page-track-artist {
+      font-size: 0.9rem;
+      color: var(--mossy-text-muted);
+    }
+    
+    .player-page-progress {
+      margin-bottom: 20px;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      position: relative;
+      margin-bottom: 8px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(90deg, var(--mossy-link), var(--mossy-border));
+    }
+    
+    .progress-times {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--mossy-text-muted);
+      font-family: 'Cormorant', serif;
+    }
+    
+    .player-page-controls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .player-page-volume {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    
+    .player-page-volume span {
+      font-size: 1.2rem;
+    }
+    
+    .player-page-playlist {
+      border-top: 3px solid var(--mossy-border);
+      padding-top: 20px;
+    }
+    
+    .player-page-playlist h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--mossy-border);
+      text-transform: lowercase;
+      letter-spacing: 2px;
+    }
+    
+    /* ============================================ */
+    /* UTILITY CLASSES                               */
+    /* ============================================ */
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 8px; }
+    .mt-4 { margin-top: 16px; }
+    .mb-2 { margin-bottom: 8px; }
+    .mb-4 { margin-bottom: 16px; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .gap-2 { gap: 8px; }
+    .gap-3 { gap: 12px; }
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    
+    /* Note styling */
+    .design-note {
+      background: rgba(144, 238, 144, 0.1);
+      border-left: 3px solid var(--mossy-link);
+      padding: 10px 15px;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: var(--mossy-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <h1 class="font-display" style="text-align: center; font-size: 2.5rem; margin-bottom: 10px;">
+    ✧ Realm Radio Design Mockups ✧
+  </h1>
+  <p style="text-align: center; color: var(--mossy-text-muted); margin-bottom: 50px;">
+    Preview different designs for your music player across all states
+  </p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: HOMEPAGE SIDEBAR WIDGETS          -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">1. Homepage Sidebar Widget (Right Column)</h2>
+    <p class="section-desc">
+      These fit inside a 190px sidebar. Click interactions open /player page.
+    </p>
+    
+    <div class="variants">
+      <!-- Design A: Winamp Style -->
+      <div class="variant design-a">
+        <div class="variant-label">Design A: Winamp Visualizer</div>
+        <div class="sidebar-context">
+          <div class="retro-box player-widget">
+            <div class="retro-box-title">-= realm radio =-</div>
+            <div class="retro-box-content">
+              <div class="visualizer">
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+              </div>
+              <div class="track-info">
+                <div class="now-playing">♪ now playing</div>
+                <div class="track-title">Forest Lullaby</div>
+              </div>
+              <div class="controls">
+                <button class="btn btn-icon btn-small">⏮</button>
+                <button class="btn btn-icon btn-primary btn-small">▶</button>
+                <button class="btn btn-icon btn-small">⏭</button>
+                <button class="btn btn-icon btn-small" title="Mute">🔊</button>
+              </div>
+              <div class="volume-section mt-2">
+                <span>Vol</span>
+                <input type="range" class="volume-slider" value="70" style="flex: 1;">
+              </div>
+              <div class="text-center mt-2">
+                <a href="#" class="text-xs font-nav">open player ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design-note">
+          ✓ Animated visualizer bars<br>
+          ✓ Clear transport controls<br>
+          ✓ Volume visible by default
+        </div>
+      </div>
+      
+      <!-- Design B: Cassette Style -->
+      <div class="variant design-b">
+        <div class="variant-label">Design B: Cassette Tape</div>
+        <div class="sidebar-context">
+          <div class="retro-box">
+            <div class="retro-box-title">-= realm radio =-</div>
+            <div class="retro-box-content">
+              <div class="cassette">
+                <div class="tape-window">
+                  <div class="reel spinning">
+                    <div class="reel-inner"></div>
+                  </div>
+                  <div class="tape-label">
+                    <div class="tape-label-text">Forest Lullaby</div>
+                  </div>
+                  <div class="reel spinning">
+                    <div class="reel-inner"></div>
+                  </div>
+                </div>
+                <div class="controls">
+                  <button class="btn-tape">⏪</button>
+                  <button class="btn-tape">⏹</button>
+                  <button class="btn-tape" style="background: var(--mossy-border); color: var(--mossy-bg-box);">▶</button>
+                  <button class="btn-tape">⏩</button>
+                  <button class="btn-tape">🔊</button>
+                </div>
+              </div>
+              <div class="text-center mt-2">
+                <a href="#" class="text-xs font-nav">open player ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design-note">
+          ✓ Nostalgic cassette aesthetic<br>
+          ✓ Spinning reels when playing<br>
+          ✓ Compact but charming
+        </div>
+      </div>
+      
+      <!-- Design C: Minimal Spirit -->
+      <div class="variant design-c">
+        <div class="variant-label">Design C: Forest Spirit (Minimal)</div>
+        <div class="sidebar-context">
+          <div class="retro-box">
+            <div class="retro-box-title">-= realm radio =-</div>
+            <div class="retro-box-content">
+              <div class="spirit-player">
+                <span class="spirit-icon">🌿</span>
+                <div class="spirit-title">Forest Lullaby</div>
+                <div class="spirit-status">
+                  <span class="status-dot playing"></span> listening...
+                </div>
+                <div class="spirit-controls">
+                  <button class="btn-spirit">🔊</button>
+                  <button class="btn-spirit play-main">▶</button>
+                  <button class="btn-spirit">↗</button>
+                </div>
+                <input type="range" class="volume-slider mt-2" value="70">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design-note">
+          ✓ Clean and mystical<br>
+          ✓ Large touch-friendly buttons<br>
+          ✓ Breathing/pulsing status indicator
+        </div>
+      </div>
+      
+      <!-- Design D: Radio Dial -->
+      <div class="variant design-d">
+        <div class="variant-label">Design D: Vintage Radio</div>
+        <div class="sidebar-context">
+          <div class="retro-box">
+            <div class="retro-box-title">-= realm radio =-</div>
+            <div class="retro-box-content">
+              <div class="radio-dial">
+                <div class="dial-display">
+                  <div class="frequency">98.7 FM</div>
+                  <div class="station-name">~ Forest Lullaby ~</div>
+                </div>
+                <div class="dial-knobs">
+                  <div>
+                    <div class="knob"></div>
+                    <div class="knob-label">tune</div>
+                  </div>
+                  <button class="btn btn-primary" style="padding: 10px 20px;">▶ PLAY</button>
+                  <div>
+                    <div class="knob"></div>
+                    <div class="knob-label">vol</div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center mt-2">
+                <a href="#" class="text-xs font-nav">open player ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design-note">
+          ✓ Authentic vintage radio feel<br>
+          ✓ Skeuomorphic knobs<br>
+          ✓ Glowing frequency display
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: FLOATING DOCKS (Other Pages)      -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">2. Floating Mini Dock (Non-Homepage Desktop)</h2>
+    <p class="section-desc">
+      When user navigates away from homepage, the sidebar widget becomes a floating dock.
+      Clicking it opens /player page.
+    </p>
+    
+    <div class="variants">
+      <!-- Dock A: Horizontal Compact -->
+      <div class="variant">
+        <div class="variant-label">Dock A: Horizontal Bar</div>
+        <div class="floating-context" style="min-height: 150px;">
+          <p style="color: var(--mossy-text-muted); font-size: 0.8rem;">[page content here]</p>
+          <div class="floating-dock dock-a">
+            <span class="status-dot playing"></span>
+            <span class="dock-title">Forest Lullaby</span>
+            <button class="btn btn-icon btn-small">▶</button>
+            <button class="btn btn-icon btn-small">🔊</button>
+            <button class="btn btn-icon btn-small">↗</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dock B: Vertical Mini -->
+      <div class="variant">
+        <div class="variant-label">Dock B: Mini Panel</div>
+        <div class="floating-context" style="min-height: 150px;">
+          <p style="color: var(--mossy-text-muted); font-size: 0.8rem;">[page content here]</p>
+          <div class="floating-dock dock-b">
+            <div class="dock-header">
+              <span class="status-dot playing"></span>
+              <span>realm radio</span>
+            </div>
+            <div style="font-family: 'Mystery Quest', cursive; font-size: 0.85rem; color: var(--mossy-header);">
+              Forest Lullaby
+            </div>
+            <div class="dock-controls">
+              <div style="display: flex; gap: 4px;">
+                <button class="btn btn-icon btn-small btn-primary">▶</button>
+                <button class="btn btn-icon btn-small">🔊</button>
+              </div>
+              <button class="btn btn-small">↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dock C: Pill Button -->
+      <div class="variant">
+        <div class="variant-label">Dock C: Pill Button (Ultra Minimal)</div>
+        <div class="floating-context" style="min-height: 150px;">
+          <p style="color: var(--mossy-text-muted); font-size: 0.8rem;">[page content here]</p>
+          <div class="floating-dock dock-c">
+            <span class="dock-icon">🎵</span>
+            <button class="btn btn-icon btn-small btn-primary">▶</button>
+            <button class="btn btn-icon btn-small">🔊</button>
+          </div>
+        </div>
+        <div class="design-note">
+          Hover/click expands to show track title
+        </div>
+      </div>
+      
+      <!-- Dock D: Expandable -->
+      <div class="variant">
+        <div class="variant-label">Dock D: Expandable (Hover)</div>
+        <div class="floating-context" style="min-height: 150px;">
+          <p style="color: var(--mossy-text-muted); font-size: 0.8rem;">[page content here]</p>
+          <div class="floating-dock" style="padding: 12px; min-width: 200px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="status-dot playing"></span>
+              <span style="font-size: 0.7rem; color: var(--mossy-text-muted); text-transform: uppercase; letter-spacing: 1px;">realm radio</span>
+            </div>
+            <div style="font-family: 'Mystery Quest', cursive; color: var(--mossy-header); margin-bottom: 8px;">
+              Forest Lullaby
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-icon btn-small btn-primary">▶</button>
+              <button class="btn btn-icon btn-small">⏭</button>
+              <button class="btn btn-icon btn-small">🔊</button>
+              <button class="btn btn-small" style="margin-left: auto;">open ↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: MOBILE BOTTOM BAR                 -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">3. Mobile Bottom Bar (All Routes)</h2>
+    <p class="section-desc">
+      Sticky bar at the bottom on mobile. Tap to expand into a sheet.
+    </p>
+    
+    <div class="variants">
+      <!-- Mobile Bar A -->
+      <div class="variant">
+        <div class="variant-label">Mobile Bar A: Standard</div>
+        <div class="mobile-context">
+          <div style="padding: 20px; color: var(--mossy-text-muted); font-size: 0.8rem;">
+            [page content scrolls here]
+          </div>
+          <div class="mobile-bar">
+            <span style="font-size: 1.5rem;">🎵</span>
+            <div class="bar-info">
+              <div class="bar-title">Forest Lullaby</div>
+              <div class="bar-status"><span class="status-dot playing"></span> playing</div>
+            </div>
+            <div class="bar-controls">
+              <button class="btn btn-icon btn-small btn-primary">▶</button>
+              <button class="btn btn-icon btn-small">🔊</button>
+              <button class="btn btn-icon btn-small">↑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Bar B -->
+      <div class="variant">
+        <div class="variant-label">Mobile Bar B: Progress Preview</div>
+        <div class="mobile-context">
+          <div style="padding: 20px; color: var(--mossy-text-muted); font-size: 0.8rem;">
+            [page content scrolls here]
+          </div>
+          <div class="mobile-bar" style="flex-direction: column; height: 70px; padding: 8px 12px; gap: 4px;">
+            <div style="width: 100%; height: 3px; background: var(--mossy-bg-box-alt);">
+              <div style="width: 35%; height: 100%; background: var(--mossy-link);"></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+              <span style="font-size: 1.2rem;">🌿</span>
+              <div class="bar-info">
+                <div class="bar-title">Forest Lullaby</div>
+              </div>
+              <div class="bar-controls">
+                <button class="btn btn-icon btn-small btn-primary">▶</button>
+                <button class="btn btn-icon btn-small">🔊</button>
+                <button class="btn btn-icon btn-small">↑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Bar C -->
+      <div class="variant">
+        <div class="variant-label">Mobile Bar C: Cassette Mini</div>
+        <div class="mobile-context">
+          <div style="padding: 20px; color: var(--mossy-text-muted); font-size: 0.8rem;">
+            [page content scrolls here]
+          </div>
+          <div class="mobile-bar" style="background: linear-gradient(180deg, var(--mossy-bg-box-alt) 0%, var(--mossy-bg-box) 100%);">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 20px; height: 20px; border: 2px solid var(--mossy-border); border-radius: 50%; animation: spin 2s linear infinite;"></div>
+              <div style="width: 20px; height: 20px; border: 2px solid var(--mossy-border); border-radius: 50%; animation: spin 2s linear infinite;"></div>
+            </div>
+            <div class="bar-info" style="margin-left: 8px;">
+              <div class="bar-title">Forest Lullaby</div>
+            </div>
+            <div class="bar-controls">
+              <button class="btn btn-icon btn-small btn-primary">▶</button>
+              <button class="btn btn-icon btn-small">🔊</button>
+              <button class="btn btn-icon btn-small">↑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: MOBILE EXPANDED SHEET             -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">4. Mobile Expanded Sheet</h2>
+    <p class="section-desc">
+      When user taps the "↑" button on mobile bar, this sheet slides up.
+    </p>
+    
+    <div class="variants">
+      <!-- Sheet A -->
+      <div class="variant">
+        <div class="variant-label">Sheet A: Full Controls</div>
+        <div class="mobile-context" style="min-height: 500px;">
+          <div class="mobile-sheet" style="top: 60px;">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div class="sheet-title">✧ Realm Radio ✧</div>
+              <div class="sheet-now-playing">vishnu is listening to:</div>
+            </div>
+            <div class="sheet-track">🌿 Forest Lullaby</div>
+            <div class="sheet-controls">
+              <button class="btn btn-icon">⏮</button>
+              <button class="btn btn-icon btn-primary" style="width: 60px; height: 60px; font-size: 1.5rem;">▶</button>
+              <button class="btn btn-icon">⏭</button>
+            </div>
+            <div class="sheet-volume">
+              <span>🔇</span>
+              <input type="range" class="volume-slider" value="70" style="flex: 1;">
+              <span>🔊</span>
+            </div>
+            <div class="sheet-playlist">
+              <h4>playlist</h4>
+              <div class="playlist-item active">
+                <div class="track-name">Forest Lullaby</div>
+                <div class="track-artist">by realm keeper</div>
+              </div>
+              <div class="playlist-item">
+                <div class="track-name">Midnight Moss</div>
+                <div class="track-artist">by realm keeper</div>
+              </div>
+              <div class="playlist-item">
+                <div class="track-name">Dewdrop Dance</div>
+                <div class="track-artist">by realm keeper</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sheet B -->
+      <div class="variant">
+        <div class="variant-label">Sheet B: Album Art Focus</div>
+        <div class="mobile-context" style="min-height: 500px;">
+          <div class="mobile-sheet" style="top: 40px;">
+            <div class="sheet-handle"></div>
+            <div style="text-align: center; margin-bottom: 16px;">
+              <div style="width: 120px; height: 120px; background: var(--mossy-bg-box); border: 3px solid var(--mossy-border); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                🌲
+              </div>
+              <div class="sheet-track" style="margin-bottom: 4px;">Forest Lullaby</div>
+              <div style="font-size: 0.75rem; color: var(--mossy-text-muted);">realm keeper</div>
+            </div>
+            <div style="margin-bottom: 16px;">
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+              <div class="progress-times">
+                <span>1:24</span>
+                <span>4:02</span>
+              </div>
+            </div>
+            <div class="sheet-controls">
+              <button class="btn btn-icon btn-small">🔀</button>
+              <button class="btn btn-icon">⏮</button>
+              <button class="btn btn-icon btn-primary" style="width: 56px; height: 56px; font-size: 1.4rem;">▶</button>
+              <button class="btn btn-icon">⏭</button>
+              <button class="btn btn-icon btn-small">🔊</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: FULL PLAYER PAGE                  -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">5. Full Player Page (/player)</h2>
+    <p class="section-desc">
+      When user clicks "open player ↗" from any widget, they land here.
+      This is where all tracks are listed.
+    </p>
+    
+    <div class="variants" style="grid-template-columns: 1fr;">
+      <div class="variant" style="max-width: 100%;">
+        <div class="variant-label">Full Player Page Layout</div>
+        <div class="player-page-preview">
+          <div class="player-page-header">
+            <h1 class="player-page-title">✧ Realm Radio ✧</h1>
+            <p class="player-page-subtitle">~ tunes from the mossy depths ~</p>
+          </div>
+          
+          <div class="player-page-art">
+            🌲
+          </div>
+          
+          <div class="player-page-track">
+            <div class="player-page-track-title">Forest Lullaby</div>
+            <div class="player-page-track-artist">by realm keeper</div>
+          </div>
+          
+          <div class="player-page-progress">
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="progress-times">
+              <span>1:24</span>
+              <span>4:02</span>
+            </div>
+          </div>
+          
+          <div class="player-page-controls">
+            <button class="btn btn-icon">🔀</button>
+            <button class="btn btn-icon">⏮</button>
+            <button class="btn btn-icon btn-primary" style="width: 64px; height: 64px; font-size: 1.8rem;">▶</button>
+            <button class="btn btn-icon">⏭</button>
+            <button class="btn btn-icon">🔁</button>
+          </div>
+          
+          <div class="player-page-volume">
+            <span>🔇</span>
+            <input type="range" class="volume-slider" value="70" style="width: 200px;">
+            <span>🔊</span>
+          </div>
+          
+          <div class="player-page-playlist">
+            <h3>[ all tracks ]</h3>
+            <div class="playlist-item active">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div class="track-name">Forest Lullaby</div>
+                  <div class="track-artist">by realm keeper</div>
+                </div>
+                <span style="color: var(--mossy-link);">4:02</span>
+              </div>
+            </div>
+            <div class="playlist-item">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div class="track-name">Midnight Moss</div>
+                  <div class="track-artist">by realm keeper</div>
+                </div>
+                <span style="color: var(--mossy-text-muted);">3:45</span>
+              </div>
+            </div>
+            <div class="playlist-item">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div class="track-name">Dewdrop Dance</div>
+                  <div class="track-artist">by realm keeper</div>
+                </div>
+                <span style="color: var(--mossy-text-muted);">5:21</span>
+              </div>
+            </div>
+            <div class="playlist-item">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div class="track-name">Mushroom Kingdom</div>
+                  <div class="track-artist">by realm keeper</div>
+                </div>
+                <span style="color: var(--mossy-text-muted);">2:58</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="font-nav">← back to realm</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: INTERACTION FLOW DIAGRAM          -->
+  <!-- ============================================ -->
+  <section class="section">
+    <h2 class="section-title">6. Interaction Flow Summary</h2>
+    <div style="background: var(--mossy-bg-box); border: 3px solid var(--mossy-border); padding: 24px; max-width: 700px;">
+      <div style="font-family: 'Cormorant', serif; line-height: 2;">
+        <p><strong style="color: var(--mossy-header);">Homepage (Desktop):</strong></p>
+        <p style="padding-left: 20px; color: var(--mossy-text-muted);">
+          → Sidebar Widget visible in right column<br>
+          → Click "open player ↗" → goes to /player<br>
+          → Play/Pause/Mute controls work inline
+        </p>
+        
+        <p style="margin-top: 16px;"><strong style="color: var(--mossy-header);">Other Pages (Desktop):</strong></p>
+        <p style="padding-left: 20px; color: var(--mossy-text-muted);">
+          → Floating Dock appears bottom-right<br>
+          → Click dock → goes to /player<br>
+          → Play/Pause/Mute on dock itself
+        </p>
+        
+        <p style="margin-top: 16px;"><strong style="color: var(--mossy-header);">Mobile (All Routes):</strong></p>
+        <p style="padding-left: 20px; color: var(--mossy-text-muted);">
+          → Bottom Bar sticky at bottom<br>
+          → Tap "↑" → Sheet expands up<br>
+          → Tap "↗" in sheet → goes to /player
+        </p>
+        
+        <p style="margin-top: 16px;"><strong style="color: var(--mossy-header);">/player Page:</strong></p>
+        <p style="padding-left: 20px; color: var(--mossy-text-muted);">
+          → Full track list + all controls<br>
+          → Works same on desktop/mobile<br>
+          → "Back to realm" returns to previous page
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 2px solid var(--mossy-border);">
+    <p class="font-accent" style="color: var(--mossy-text-muted);">
+      ✧ pick your favorites and let me know! ✧
+    </p>
+  </footer>
+</body>
+</html>

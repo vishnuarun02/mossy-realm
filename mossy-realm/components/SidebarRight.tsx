@@ -1,30 +1,13 @@
 import RetroBox from './RetroBox';
 import Link from 'next/link';
 import { NatureFactWidget } from './VaultWidgets';
+import { RealmRadioWidget } from './player';
 
 export default function SidebarRight() {
   return (
     <aside className="flex flex-col gap-4">
-      {/* Radio/Music Section */}
-      <RetroBox title="-= realm radio =-">
-        <div className="text-center">
-          <div
-            className="
-              w-full h-20
-              bg-mossy-bg-box-alt 
-              border-2 border-dashed border-mossy-border
-              flex items-center justify-center
-              text-lg
-              mb-2
-            "
-          >
-            -=[ music ]=-
-          </div>
-          <p className="text-mossy-text-muted text-xs italic font-body">
-            Music player coming soon~
-          </p>
-        </div>
-      </RetroBox>
+      {/* Radio/Music Section - Now a working player! */}
+      <RealmRadioWidget />
 
       {/* Nature Fact - now powered by vault */}
       <NatureFactWidget />

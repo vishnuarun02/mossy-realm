@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cinzelDecorative, cinzel, cormorant, lora, mysteryQuest } from "./fonts";
+import { RealmRadioProvider } from "@/components/player";
 
 export const metadata: Metadata = {
   title: "☀️ MossyRealm - A Cozy Corner of the Web",
@@ -32,6 +33,9 @@ export default function RootLayout({
         <div className="site-wrapper">
           {children}
         </div>
+
+        {/* Global Music Player - persists across navigation */}
+        <RealmRadioProvider />
 
         {/* 
           GLOBAL GRAIN OVERLAY
