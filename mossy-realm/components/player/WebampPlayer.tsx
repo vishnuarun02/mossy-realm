@@ -57,6 +57,9 @@ export function WebampPlayer() {
                         url: t.url,
                         duration: t.duration,
                     })),
+                    initialSkin: {
+                        url: '/skins/Tree_greens.wsz',
+                    },
                     enableHotkeys: true,
                     __initialWindowLayout: {
                         main: { position: { x: spawnX, y: spawnY } },
