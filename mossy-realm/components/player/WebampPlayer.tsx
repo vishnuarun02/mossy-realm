@@ -58,7 +58,7 @@ export function WebampPlayer() {
                         duration: t.duration,
                     })),
                     initialSkin: {
-                        url: '/skins/Tree_greens.wsz',
+                        url: '/skins/Zelda_Amp_3.wsz',
                     },
                     enableHotkeys: true,
                     __initialWindowLayout: {
