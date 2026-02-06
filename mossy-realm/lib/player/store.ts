@@ -38,9 +38,9 @@ interface PlayerState {
 export const usePlayerStore = create<PlayerState>()(
     persist(
         (set, get) => ({
-            // Initial state - paused and muted by default (autoplay rules)
+            // Initial state - paused by default (autoplay rules)
             isPlaying: false,
-            isMuted: true,
+            isMuted: false,
             volume: 0.7,
             currentTrackId: getFeaturedTrack().id,
             currentTime: 0,
