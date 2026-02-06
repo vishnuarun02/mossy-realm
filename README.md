@@ -9,10 +9,9 @@ A tiny moss-covered corner of the internet. A cozy, retro-themed personal websit
 - **Database:** Upstash Redis (visitor counter)
 - **AI Content:** DeepSeek API (content vault generation)
 - **Audio:** Zustand + Howler.js (global audio engine)
-- **Music Player:** Webamp (Winamp 2.x HTML5 clone)
+- **Media Storage:** Cloudflare R2 (media.mossyrealm.space)
 - **Fonts:** Google Fonts (Cinzel, Lora, Cormorant, Mystery Quest)
 - **Deployment:** Vercel
-- **Content:** Markdown files with inline timestamps
 
 ## Quick Start
 
@@ -52,6 +51,7 @@ Updates live in monthly markdown files:
 
 ```
 mossy-realm/content/updates/
+├── 2026-02.md
 ├── 2026-01.md
 └── 2025-12.md
 ```
@@ -59,10 +59,10 @@ mossy-realm/content/updates/
 **File format:**
 
 ```markdown
-# January 2026
+# February 2026
 
-- 2026-01-24T13:05:00-08:00 | Fixed "last updated" showing wrong dates.
-- 2026-01-21T21:15:00-08:00 | Visitor counter is live. New poll dropped~
+- 2026-02-05T22:00:00-08:00 | New post: wiring a personal site with Hostinger, Cloudflare, Vercel and R2
+- 2026-02-01T22:51:16-08:00 | Realm Radio is live. Custom player at /player
 ```
 
 **Adding an update:**
@@ -88,7 +88,7 @@ mossy-realm/content/vault/vault.json
 npm run vault:generate
 ```
 
-This calls DeepSeek API to generate ~180 quirky micro-content items with old comic-book / Reader's Digest marginalia vibe. The UI never calls the LLM — it only samples from the pre-generated vault.
+This calls DeepSeek API to generate quirky micro-content items with old comic-book / Reader's Digest marginalia vibe. The UI never calls the LLM — it only samples from the pre-generated vault.
 
 ## Scripts
 
@@ -117,7 +117,8 @@ mossyrealm/
 │   ├── app/
 │   │   ├── api/visitors/         # Visitor counter API
 │   │   ├── garden/               # Swamp Treasures section
-│   │   ├── player/               # Webamp player page
+│   │   │   └── learnings/        # Blog/learnings posts
+│   │   ├── player/               # Full player page
 │   │   ├── fonts.ts
 │   │   ├── globals.css
 │   │   ├── layout.tsx
@@ -135,11 +136,12 @@ mossyrealm/
 │   │   ├── SidebarLeft.tsx       # Updates, question, guardian, posts
 │   │   ├── SidebarRight.tsx      # Radio, facts, polls
 │   │   └── player/               # Music player components
-│   │       ├── WebampPlayer.tsx      # Webamp integration
 │   │       ├── RealmRadioWidget.tsx  # Homepage sidebar player
 │   │       ├── RealmRadioDock.tsx    # Floating mini dock
 │   │       ├── RealmRadioMobileBar.tsx
-│   │       └── RealmRadioMobileSheet.tsx
+│   │       ├── RealmRadioMobileSheet.tsx
+│   │       ├── Visualizer.tsx        # Canvas-based EQ visualizer
+│   │       └── PlayerIcons.tsx       # SVG/ASCII player icons
 │   ├── content/
 │   │   ├── updates/              # Monthly update files
 │   │   └── vault/                # Pre-generated content vault
@@ -148,12 +150,17 @@ mossyrealm/
 │   │   ├── vault.ts              # Vault loader + picker
 │   │   ├── buildDate.ts          # Commit date helper
 │   │   └── player/               # Audio engine + Zustand store
-│   │       ├── store.ts              # Player state (Zustand)
-│   │       └── AudioEngine.tsx       # Howler.js wrapper
+│   │       ├── store.ts              # Player state (Zustand + persist)
+│   │       ├── AudioEngine.tsx       # Howler.js controller
+│   │       ├── globalAudio.ts        # Global Howl singleton
+│   │       └── audioContext.ts       # Web Audio API context
 │   ├── scripts/
 │   │   ├── new-update.ts         # Update generator
 │   │   └── generate-vault.ts     # Vault generator (DeepSeek)
-│   └── public/                   # Static assets
+│   ├── public/
+│   │   ├── images/blog/          # Blog post images
+│   │   └── ...                   # Static assets
+│   └── CONTENT_STYLE.md          # Content writing guidelines
 └── design-kitchen/               # Design docs & experiments
     ├── DESIGN-JOURNAL.md         # Design decisions log
     ├── cabin-pages/              # Page templates
@@ -172,12 +179,14 @@ mossyrealm/
 - Responsive layout (3-col → 2-col → 1-col)
 - Grain overlay for scanned-page feel
 - "Last updated" banner from git commit date
-- **Realm Radio** — Embedded Webamp player with authentic Winamp 2.x experience
-  - Full player page at `/player` with Main + EQ + Playlist windows
+- **Realm Radio** — Custom unified audio player
+  - Global audio engine (Howler.js) persists across navigation
+  - Full player page at `/player` with playlist and visualizer
   - Homepage sidebar widget (desktop)
   - Floating mini-dock on other routes (desktop)
   - Bottom bar/sheet on mobile
-  - Audio persists across navigation
+  - Animated EQ visualizer (canvas-based)
+  - Track state synced across all UI components
 
 ## Design Tokens
 
@@ -196,7 +205,8 @@ Colors in `app/globals.css`:
 
 - **[design-kitchen/DESIGN-JOURNAL.md](./design-kitchen/DESIGN-JOURNAL.md)** — Design decisions & learnings
 - **[design-kitchen/cabin-pages/](./design-kitchen/cabin-pages/)** — Page templates
+- **[mossy-realm/CONTENT_STYLE.md](./mossy-realm/CONTENT_STYLE.md)** — Content writing guidelines
 
 ---
 
-🌿 *Built with love for the old web.*
+Built with love for the old web.
