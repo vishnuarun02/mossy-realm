@@ -2,7 +2,7 @@ import RetroBox from "@/components/RetroBox";
 
 export default function LearningsPage() {
   return (
-    <div className="grid gap-4 lg:grid-cols-[190px_1fr_190px] md:grid-cols-[190px_1fr]">
+    <div className="grid gap-4 lg:grid-cols-[160px_1fr_160px] md:grid-cols-[160px_1fr]">
       
       {/* LEFT SIDEBAR */}
       <aside className="flex flex-col gap-4 order-2 md:order-1">
@@ -74,9 +74,9 @@ export default function LearningsPage() {
               
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Figured out how to connect a custom domain to a frontend hosted on Vercel, 
-                  while serving media assets from Cloudflare R2. Using Cloudflare as the DNS 
-                  authority and Hostinger as the registrar.
+                  I wanted to understand how all the pieces of modern web hosting actually connect.
+                  Domain registrar, DNS, frontend hosting, media storage — everyone uses different
+                  services and I kept seeing the same names pop up. So I figured out how to wire them together.
                 </p>
 
                 {/* Diagram */}
@@ -89,12 +89,13 @@ export default function LearningsPage() {
                 </div>
 
                 <p>
-                  This setup cleanly separates responsibilities: domain ownership, DNS + security, 
-                  frontend hosting, and object storage. Each layer has a single job.
+                  The idea is simple: each service does one thing well. Hostinger just holds
+                  my domain registration. Cloudflare handles DNS and security. Vercel runs
+                  the actual website. R2 stores media files. No service tries to do everything.
                 </p>
 
                 <blockquote className="italic text-mossy-link border-l-[3px] border-mossy-border bg-mossy-bg-box/50 pl-4 py-3 my-4">
-                  &quot;Once nameservers are correctly set, most remaining steps are verification, not configuration.&quot;
+                  &quot;Most of the work is just waiting for nameservers to propagate. The rest is clicking buttons.&quot;
                 </blockquote>
 
                 {/* Architecture Summary */}
@@ -129,10 +130,25 @@ export default function LearningsPage() {
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
-                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">note on www vs apex:</h4>
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">why no www:</h4>
                   <p className="text-sm">
-                    This setup uses the apex domain (mossyrealm.space) directly. No functional 
-                    difference vs www — purely an aesthetic choice. Redirects can be added later.
+                    I didn&apos;t want www.mossyrealm.space. Just mossyrealm.space. Looked it up and
+                    turns out the www prefix is a relic from the early web when it helped distinguish
+                    web servers from mail or ftp servers on the same domain. These days it&apos;s unnecessary —
+                    modern DNS and hosting handle the apex domain (the &quot;naked&quot; domain without www) just fine.
+                  </p>
+                  <p className="text-sm mt-2">
+                    Both Cloudflare and Vercel support apex domains cleanly. It&apos;s purely a preference thing.
+                    I think mossyrealm.space looks cleaner in the address bar.
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the waiting game:</h4>
+                  <p className="text-sm">
+                    The annoying part is DNS propagation. You switch nameservers and then... wait.
+                    Cloudflare says &quot;checking&quot; for a while even when things already work.
+                    Don&apos;t panic if dashboards show &quot;pending&quot; — test the actual URL.
                   </p>
                 </div>
 

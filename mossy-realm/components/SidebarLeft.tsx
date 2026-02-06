@@ -52,16 +52,16 @@ export default function SidebarLeft() {
       <RetroBox title="[ latest post ]">
         <div>
           <h3 className="text-mossy-header font-bold mb-1 font-heading">
-            The Great Cursor & Effects Experiment
+            Wiring a Personal Site
           </h3>
           <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
-            January 16th, 2026
+            February 5th, 2026
           </p>
           <p className="text-mossy-text mb-3 font-body text-sm">
-            Tried adding fancy cursors, sparkle trails, and fireflies.
-            Learned why 90s sites kept interactions simple...
+            How I connected Hostinger, Cloudflare, Vercel, and R2
+            to build this site. Plus why I skipped the www...
           </p>
-          <Link href="/garden/learnings" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
+          <Link href="/garden/learnings#site-wiring" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
             read more →
           </Link>
         </div>
