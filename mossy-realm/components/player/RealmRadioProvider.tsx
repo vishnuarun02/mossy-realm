@@ -23,8 +23,8 @@ export function RealmRadioProvider() {
 
   return (
     <>
-      {/* Audio engine - always mounted */}
-      <AudioEngine />
+      {/* Audio engine - NOT on /player page (Webamp has its own audio) */}
+      {!isPlayerPage && <AudioEngine />}
 
       {/* Desktop: Show floating dock on non-homepage (excluding /player which has its own UI) */}
       {!isHomepage && !isPlayerPage && <RealmRadioDock />}
