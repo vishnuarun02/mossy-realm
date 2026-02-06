@@ -3,16 +3,16 @@ import RetroBox from "@/components/RetroBox";
 export default function LearningsPage() {
   return (
     <div className="grid gap-4 lg:grid-cols-[160px_1fr_160px] md:grid-cols-[160px_1fr]">
-      
+
       {/* LEFT SIDEBAR */}
       <aside className="flex flex-col gap-4 order-2 md:order-1">
-        
+
         {/* Why Share This */}
         <RetroBox title="[ why share this? ]">
           <div className="text-sm leading-relaxed">
             <p>
-              Building a personal site is a journey of trial and error. 
-              I&apos;m documenting my mistakes so other retro web builders 
+              Building a personal site is a journey of trial and error.
+              I&apos;m documenting my mistakes so other retro web builders
               don&apos;t have to repeat them.
             </p>
             <p className="mt-3 italic text-mossy-text-muted text-center">
@@ -46,7 +46,7 @@ export default function LearningsPage() {
       {/* MAIN CONTENT */}
       <main className="order-1 md:order-2">
         <RetroBox title="{ learnings from the swamp }" variant="alt">
-          
+
           {/* Intro */}
           <div className="text-center mb-6 pb-5 border-b-2 border-mossy-border">
             <p className="font-accent text-mossy-header text-lg">
@@ -64,14 +64,14 @@ export default function LearningsPage() {
             <article className="relative mb-8" id="site-wiring">
               {/* Timeline dot */}
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-link rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 February 5, 2026
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 Wiring a Personal Site with Hostinger, Cloudflare, Vercel & R2
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
                   First time I set up a custom domain was back in high school. Spent almost two days
@@ -79,15 +79,12 @@ export default function LearningsPage() {
                   undergrad I did it a few more times but it&apos;s been a while since I dealt with
                   frontend infrastructure from scratch.
                 </p>
-                <p>
-                  This time? Less than 30 minutes. Turns out having an AI that actually understands
-                  the flow makes a huge difference. Documenting it here so I don&apos;t forget.
-                </p>
+
 
                 {/* Diagram */}
                 <div className="my-4 border-2 border-mossy-border bg-mossy-bg-box p-2">
-                  <img 
-                    src="/images/blog/site-wiring-diagram.png" 
+                  <img
+                    src="/images/blog/site-wiring-diagram.png"
                     alt="Site wiring diagram showing Hostinger, Cloudflare, Vercel, and R2 connections"
                     className="w-full"
                   />
@@ -172,18 +169,18 @@ export default function LearningsPage() {
             <article className="relative mb-8" id="cursors">
               {/* Timeline dot */}
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 January 16, 2026
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 The Great Cursor & Effects Experiment
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Tried adding fancy cursors, sparkle trails, fireflies, and click 
-                  animations to make the site feel more magical. The result? 
+                  Tried adding fancy cursors, sparkle trails, fireflies, and click
+                  animations to make the site feel more magical. The result?
                   It turned into a circus.
                 </p>
 
@@ -193,14 +190,14 @@ export default function LearningsPage() {
                 </blockquote>
 
                 <p>
-                  I always thought old websites had simple interactions because of 
-                  technical limitations. But actually, when you have a visually dense 
-                  layout with lots of boxes, borders, and patterns, simple interactions 
+                  I always thought old websites had simple interactions because of
+                  technical limitations. But actually, when you have a visually dense
+                  layout with lots of boxes, borders, and patterns, simple interactions
                   make sense. The complexity is in the <em>layout</em>, not the <em>behavior</em>.
                 </p>
 
                 <p>
-                  Modern sites flip this. Minimal layouts but fancy animations. 
+                  Modern sites flip this. Minimal layouts but fancy animations.
                   You can&apos;t have both maxed out without it feeling overwhelming.
                 </p>
 
@@ -229,7 +226,7 @@ export default function LearningsPage() {
                 <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
                   <h4 className="font-heading text-mossy-header-alt text-sm mb-2">decision:</h4>
                   <p className="text-sm">
-                    Reverted everything. The site doesn&apos;t need fancy effects right now. 
+                    Reverted everything. The site doesn&apos;t need fancy effects right now.
                     Maybe later with a lighter touch.
                   </p>
                 </div>
@@ -247,17 +244,17 @@ export default function LearningsPage() {
             {/* Entry 2: Palette */}
             <article className="relative mb-8" id="palette">
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 December 2025
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 Finding the Right Color Palette
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Explored six different color palettes before landing on &quot;Sunlit Glade.&quot; 
+                  Explored six different color palettes before landing on &quot;Sunlit Glade.&quot;
                   The journey taught me a lot about what makes colors feel cozy versus clinical.
                 </p>
 
@@ -266,7 +263,7 @@ export default function LearningsPage() {
                 </blockquote>
 
                 <p>
-                  Cool-toned palettes looked nice in isolation but felt sterile when 
+                  Cool-toned palettes looked nice in isolation but felt sterile when
                   applied to the site. Warm amber accents made all the difference.
                   They added that &quot;sunlight through trees&quot; feeling I was going for.
                 </p>
@@ -282,17 +279,17 @@ export default function LearningsPage() {
             {/* Entry 3: Fonts */}
             <article className="relative mb-8" id="fonts">
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 December 2025
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 Choosing Fonts That Feel Right
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Tested multiple font combinations. Learned that serif fonts 
+                  Tested multiple font combinations. Learned that serif fonts
                   carry the &quot;old book&quot; vibe better than anything else.
                 </p>
 
@@ -324,7 +321,7 @@ export default function LearningsPage() {
 
       {/* RIGHT SIDEBAR - Hidden on mobile/tablet */}
       <aside className="hidden lg:flex flex-col gap-4 order-3">
-        
+
         {/* Topics */}
         <RetroBox title="[ topics ]">
           <div className="flex flex-wrap gap-2 justify-center">
