@@ -107,13 +107,8 @@ export default function LearningsPage() {
                 </ul>
 
                 <p>
-                  None of this was subtle. Debugging felt like fighting the framework instead of working with it.
-                </p>
-
-                <p>
-                  The breaking point: navigating from the homepage (with music playing) to /player started
-                  a second track instead of reusing the existing audio state. At that point, the architecture
-                  was clearly wrong.
+                  None of this was subtle. Debugging felt like someone tied my hands up and tossed a
+                  bucket of cement over my head.
                 </p>
 
                 <p>
