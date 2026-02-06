@@ -8,36 +8,50 @@ export interface Track {
 
 export const tracks: Track[] = [
     {
-        id: 'forest-lullaby',
-        title: 'Forest Lullaby',
-        artist: 'realm keeper',
-        duration: 242, // 4:02
-        url: 'https://media.mossyrealm.space/music/forest-lullaby.mp3',
+        id: 'fallen-down-reprise',
+        title: 'Fallen Down (Reprise)',
+        artist: 'Undertale OST',
+        duration: 217, // ~3:37
+        url: 'https://media.mossyrealm.space/music/fallen-down-reprise-undertale.mp3',
     },
     {
-        id: 'midnight-moss',
-        title: 'Midnight Moss',
-        artist: 'realm keeper',
-        duration: 225, // 3:45
-        url: 'https://media.mossyrealm.space/music/midnight-moss.mp3',
+        id: 'into-the-thick-of-it',
+        title: 'Into the Thick of It',
+        artist: 'Secret of Mana OST',
+        duration: 647, // ~10:47
+        url: 'https://media.mossyrealm.space/music/into-the-thick-of-it-secret-of-mana.mp3',
     },
     {
-        id: 'dewdrop-dance',
-        title: 'Dewdrop Dance',
-        artist: 'realm keeper',
-        duration: 321, // 5:21
-        url: 'https://media.mossyrealm.space/music/dewdrop-dance.mp3',
+        id: 'latikas-theme',
+        title: "Latika's Theme",
+        artist: 'Slumdog Millionaire OST',
+        duration: 445, // ~7:25
+        url: 'https://media.mossyrealm.space/music/latikas-theme-slumdog-millionaire.mp3',
     },
     {
-        id: 'mushroom-kingdom',
-        title: 'Mushroom Kingdom',
-        artist: 'realm keeper',
-        duration: 178, // 2:58
-        url: 'https://media.mossyrealm.space/music/mushroom-kingdom.mp3',
+        id: 'morning-folk-song',
+        title: 'Morning Folk Song No. 3',
+        artist: 'Unknown',
+        duration: 82, // ~1:22
+        url: 'https://media.mossyrealm.space/music/morning-folk-song-no-3.mp3',
+    },
+    {
+        id: 'pis-lullaby',
+        title: "Pi's Lullaby",
+        artist: 'Life of Pi OST',
+        duration: 319, // ~5:19
+        url: 'https://media.mossyrealm.space/music/pis-lullaby-life-of-pi.mp3',
+    },
+    {
+        id: 'undertale-main-theme',
+        title: 'Undertale (Main Theme)',
+        artist: 'Toby Fox',
+        duration: 556, // ~9:16
+        url: 'https://media.mossyrealm.space/music/undertale-main-theme-toby-fox.mp3',
     },
 ];
 
-export const featuredTrackId = 'forest-lullaby';
+export const featuredTrackId = 'fallen-down-reprise';
 
 export function formatDuration(seconds: number): string {
     const mins = Math.floor(seconds / 60);
@@ -52,4 +66,3 @@ export function getTrackById(id: string): Track | undefined {
 export function getFeaturedTrack(): Track {
     return getTrackById(featuredTrackId) || tracks[0];
 }
-
