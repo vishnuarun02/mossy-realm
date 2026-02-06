@@ -25,6 +25,9 @@ export default function LearningsPage() {
         <RetroBox title="[ quick jump ]">
           <ul className="text-sm space-y-2">
             <li className="border-b border-dashed border-mossy-border pb-2">
+              <a href="#site-wiring" className="hover:text-mossy-link-hover">site wiring guide</a>
+            </li>
+            <li className="border-b border-dashed border-mossy-border pb-2">
               <a href="#cursors" className="hover:text-mossy-link-hover">cursors & effects</a>
             </li>
             <li className="border-b border-dashed border-mossy-border pb-2">
@@ -57,7 +60,94 @@ export default function LearningsPage() {
           {/* Timeline */}
           <div className="relative pl-6 border-l-2 border-mossy-border/40">
 
-            {/* Entry 1: Cursors */}
+            {/* Entry: Site Wiring */}
+            <article className="relative mb-8" id="site-wiring">
+              {/* Timeline dot */}
+              <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-link rounded-full border-2 border-mossy-bg-box"></div>
+              
+              <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
+                February 5, 2026
+              </p>
+              <h3 className="font-heading text-mossy-header text-lg mb-3">
+                Wiring a Personal Site with Hostinger, Cloudflare, Vercel & R2
+              </h3>
+              
+              <div className="space-y-3 text-mossy-text">
+                <p>
+                  Figured out how to connect a custom domain to a frontend hosted on Vercel, 
+                  while serving media assets from Cloudflare R2. Using Cloudflare as the DNS 
+                  authority and Hostinger as the registrar.
+                </p>
+
+                {/* Diagram */}
+                <div className="my-4 border-2 border-mossy-border bg-mossy-bg-box p-2">
+                  <img 
+                    src="/images/blog/site-wiring-diagram.png" 
+                    alt="Site wiring diagram showing Hostinger, Cloudflare, Vercel, and R2 connections"
+                    className="w-full"
+                  />
+                </div>
+
+                <p>
+                  This setup cleanly separates responsibilities: domain ownership, DNS + security, 
+                  frontend hosting, and object storage. Each layer has a single job.
+                </p>
+
+                <blockquote className="italic text-mossy-link border-l-[3px] border-mossy-border bg-mossy-bg-box/50 pl-4 py-3 my-4">
+                  &quot;Once nameservers are correctly set, most remaining steps are verification, not configuration.&quot;
+                </blockquote>
+
+                {/* Architecture Summary */}
+                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the stack:</h4>
+                  <ul className="list-disc list-inside text-sm space-y-1 text-mossy-text-muted">
+                    <li><strong>Hostinger</strong> — registrar only, owns the domain record</li>
+                    <li><strong>Cloudflare</strong> — DNS, TLS, edge routing, R2 storage</li>
+                    <li><strong>Vercel</strong> — production hosting for the Next.js frontend</li>
+                    <li><strong>R2</strong> — object storage for static/media assets</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the flow:</h4>
+                  <div className="text-sm space-y-2 text-mossy-text-muted font-mono">
+                    <p>mossyrealm.space → cloudflare dns → vercel frontend</p>
+                    <p>media.mossyrealm.space → cloudflare dns → r2 storage</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">key steps:</h4>
+                  <ol className="list-decimal list-inside text-sm space-y-1 text-mossy-text-muted">
+                    <li>Register domain on Hostinger</li>
+                    <li>Add domain to Cloudflare, get new nameservers</li>
+                    <li>Switch nameservers at Hostinger to Cloudflare&apos;s</li>
+                    <li>Wait for DNS propagation (Cloudflare polls for it)</li>
+                    <li>Set up R2 bucket with custom subdomain (media.)</li>
+                    <li>Connect root domain to Vercel project</li>
+                  </ol>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
+                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">note on www vs apex:</h4>
+                  <p className="text-sm">
+                    This setup uses the apex domain (mossyrealm.space) directly. No functional 
+                    difference vs www — purely an aesthetic choice. Redirects can be added later.
+                  </p>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">dns</span>
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">cloudflare</span>
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">vercel</span>
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">r2</span>
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">infra</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Entry: Cursors */}
             <article className="relative mb-8" id="cursors">
               {/* Timeline dot */}
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
@@ -217,12 +307,14 @@ export default function LearningsPage() {
         {/* Topics */}
         <RetroBox title="[ topics ]">
           <div className="flex flex-wrap gap-2 justify-center">
+            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">dns</span>
+            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">cloudflare</span>
+            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">vercel</span>
+            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">infra</span>
             <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">cursors</span>
-            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">effects</span>
             <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">colors</span>
             <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">fonts</span>
             <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">90s web</span>
-            <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">layout</span>
           </div>
         </RetroBox>
 

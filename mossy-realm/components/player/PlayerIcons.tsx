@@ -135,12 +135,14 @@ export function StatusDot({
         inline-block w-2 h-2 rounded-full
         ${isPlaying 
           ? 'bg-mossy-link shadow-[0_0_6px_var(--mossy-link)]' 
-          : 'bg-mossy-accent shadow-[0_0_8px_var(--mossy-accent)] animate-pulse'
+          : 'bg-mossy-accent shadow-[0_0_8px_var(--mossy-accent)]'
         }
         ${className}
       `}
       style={{
-        animation: isPlaying ? 'none' : 'blink 1s ease-in-out infinite',
+        animation: isPlaying 
+          ? 'pulse 1.2s ease-in-out infinite' 
+          : 'blink 1s ease-in-out infinite',
       }}
       aria-label={isPlaying ? 'Playing' : 'Click to play'}
     />
