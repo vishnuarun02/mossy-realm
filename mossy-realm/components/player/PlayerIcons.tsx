@@ -47,24 +47,24 @@ export function NextIcon({ className = '' }: { className?: string }) {
 
 export function VolumeHighIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Volume">
-      ))) 
+    <span className={className} aria-label="Volume" style={{ fontFamily: 'monospace', letterSpacing: '-2px' }}>
+      ◀)))
     </span>
   );
 }
 
 export function VolumeMutedIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Muted">
-      --X
+    <span className={className} aria-label="Muted" style={{ fontFamily: 'monospace' }}>
+      ◀ ×
     </span>
   );
 }
 
 export function VolumeLowIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Volume Low">
-      )
+    <span className={className} aria-label="Volume Low" style={{ fontFamily: 'monospace', letterSpacing: '-2px' }}>
+      ◀)
     </span>
   );
 }
