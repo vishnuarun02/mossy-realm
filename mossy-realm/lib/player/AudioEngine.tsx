@@ -1,20 +1,27 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { Howl } from 'howler';
 import { usePlayerStore } from './store';
 import { tracks } from '@/data/tracks';
+import {
+  createHowl,
+  getHowl,
+  getCurrentTrackUrl,
+  playGlobal,
+  pauseGlobal,
+  setVolumeGlobal,
+  seekGlobal,
+} from './globalAudio';
 
 /**
- * AudioEngine - Global audio controller
+ * AudioEngine - Syncs React state with global audio singleton
  * 
- * This component manages the Howler.js instance and syncs it with the Zustand store.
- * Mount this ONCE in the root layout to persist audio across navigation.
+ * The actual Howl instance lives outside React (in globalAudio.ts)
+ * This component just syncs the Zustand store with that global instance
  */
 export function AudioEngine() {
-  const howlRef = useRef<Howl | null>(null);
   const rafRef = useRef<number | null>(null);
-  const initializedRef = useRef(false);
+  const lastTrackUrlRef = useRef<string | null>(null);
 
   const {
     isPlaying,
@@ -32,88 +39,73 @@ export function AudioEngine() {
 
   // Update playback position
   const updateTime = useCallback(() => {
-    if (howlRef.current && howlRef.current.playing()) {
-      const seek = howlRef.current.seek();
-      if (typeof seek === 'number') {
-        setCurrentTime(seek);
-      }
+    const seek = seekGlobal();
+    setCurrentTime(seek);
+    
+    if (getHowl()?.playing()) {
       rafRef.current = requestAnimationFrame(updateTime);
     }
   }, [setCurrentTime]);
 
   // Initialize or switch tracks
   useEffect(() => {
-    // Cleanup previous howl
-    if (howlRef.current) {
-      howlRef.current.unload();
-    }
-
     if (!trackUrl) return;
 
-    const shouldAutoPlay = isPlaying;
+    // Only create new Howl if track changed
+    if (trackUrl !== getCurrentTrackUrl()) {
+      const wasPlaying = isPlaying;
+      
+      createHowl(trackUrl, {
+        volume: isMuted ? 0 : volume,
+        onload: () => {
+          const howl = getHowl();
+          if (howl) {
+            setDuration(howl.duration());
+          }
+        },
+        onend: () => {
+          nextTrack();
+        },
+        onplay: () => {
+          rafRef.current = requestAnimationFrame(updateTime);
+        },
+        onpause: () => {
+          if (rafRef.current) {
+            cancelAnimationFrame(rafRef.current);
+          }
+        },
+      });
 
-    const howl = new Howl({
-      src: [trackUrl],
-      html5: true,
-      volume: isMuted ? 0 : volume,
-      onload: () => {
-        setDuration(howl.duration());
-        // Auto-play on load if we should be playing
-        if (shouldAutoPlay && !howl.playing()) {
-          howl.play();
-        }
-      },
-      onend: () => {
-        nextTrack();
-      },
-      onplay: () => {
-        rafRef.current = requestAnimationFrame(updateTime);
-      },
-      onpause: () => {
-        if (rafRef.current) {
-          cancelAnimationFrame(rafRef.current);
-        }
-      },
-      onstop: () => {
-        if (rafRef.current) {
-          cancelAnimationFrame(rafRef.current);
-        }
-      },
-    });
+      lastTrackUrlRef.current = trackUrl;
 
-    howlRef.current = howl;
-    initializedRef.current = true;
+      // Auto-play if we should be playing
+      if (wasPlaying) {
+        setTimeout(() => playGlobal(), 100);
+      }
+    }
+  }, [trackUrl, isMuted, volume, isPlaying, setDuration, nextTrack, updateTime]);
 
-    return () => {
+  // Sync play/pause state
+  useEffect(() => {
+    if (isPlaying) {
+      playGlobal();
+      rafRef.current = requestAnimationFrame(updateTime);
+    } else {
+      pauseGlobal();
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
-    };
-  }, [trackUrl, isMuted, volume, isPlaying, setDuration, nextTrack, updateTime]);
-
-  // Handle play/pause changes
-  useEffect(() => {
-    if (!howlRef.current || !initializedRef.current) return;
-
-    if (isPlaying && !howlRef.current.playing()) {
-      howlRef.current.play();
-    } else if (!isPlaying && howlRef.current.playing()) {
-      howlRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, updateTime]);
 
-  // Handle volume changes
+  // Sync volume
   useEffect(() => {
-    if (!howlRef.current) return;
-    howlRef.current.volume(isMuted ? 0 : volume);
+    setVolumeGlobal(isMuted ? 0 : volume);
   }, [volume, isMuted]);
 
-  // Cleanup on unmount
+  // Cleanup RAF on unmount (but NOT the Howl instance!)
   useEffect(() => {
     return () => {
-      if (howlRef.current) {
-        howlRef.current.unload();
-      }
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
