@@ -52,16 +52,16 @@ export default function SidebarLeft() {
       <RetroBox title="[ latest post ]">
         <div>
           <h3 className="text-mossy-header font-bold mb-1 font-heading">
-            Wiring a Personal Site
+            Why I Ditched Webamp
           </h3>
           <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
             February 5th, 2026
           </p>
           <p className="text-mossy-text mb-3 font-body text-sm">
-            How I connected Hostinger, Cloudflare, Vercel, and R2
-            to build this site. Plus why I skipped the www...
+            Tried to embed Webamp for that 90s nostalgia.
+            Ended up with two songs playing at once. Built my own.
           </p>
-          <Link href="/garden/learnings#site-wiring" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
+          <Link href="/garden/learnings#webamp-rip" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
             read more →
           </Link>
         </div>
