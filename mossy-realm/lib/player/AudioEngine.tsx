@@ -14,6 +14,7 @@ import { tracks } from '@/data/tracks';
 export function AudioEngine() {
   const howlRef = useRef<Howl | null>(null);
   const rafRef = useRef<number | null>(null);
+  const initializedRef = useRef(false);
 
   const {
     isPlaying,
@@ -49,12 +50,18 @@ export function AudioEngine() {
 
     if (!trackUrl) return;
 
+    const shouldAutoPlay = isPlaying;
+
     const howl = new Howl({
       src: [trackUrl],
-      html5: true, // Enable streaming for large files
+      html5: true,
       volume: isMuted ? 0 : volume,
       onload: () => {
         setDuration(howl.duration());
+        // Auto-play on load if we should be playing
+        if (shouldAutoPlay && !howl.playing()) {
+          howl.play();
+        }
       },
       onend: () => {
         nextTrack();
@@ -75,26 +82,22 @@ export function AudioEngine() {
     });
 
     howlRef.current = howl;
-
-    // If we were playing before track change, start playing new track
-    if (isPlaying) {
-      howl.play();
-    }
+    initializedRef.current = true;
 
     return () => {
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }
     };
-  }, [trackUrl]); // Only re-run when track URL changes
+  }, [trackUrl, isMuted, volume, isPlaying, setDuration, nextTrack, updateTime]);
 
-  // Handle play/pause
+  // Handle play/pause changes
   useEffect(() => {
-    if (!howlRef.current) return;
+    if (!howlRef.current || !initializedRef.current) return;
 
-    if (isPlaying) {
+    if (isPlaying && !howlRef.current.playing()) {
       howlRef.current.play();
-    } else {
+    } else if (!isPlaying && howlRef.current.playing()) {
       howlRef.current.pause();
     }
   }, [isPlaying]);
@@ -117,7 +120,5 @@ export function AudioEngine() {
     };
   }, []);
 
-  // This component doesn't render anything
   return null;
 }
-
