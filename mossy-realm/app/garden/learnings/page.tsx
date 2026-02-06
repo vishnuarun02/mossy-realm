@@ -3,16 +3,16 @@ import RetroBox from "@/components/RetroBox";
 export default function LearningsPage() {
   return (
     <div className="grid gap-4 lg:grid-cols-[160px_1fr_160px] md:grid-cols-[160px_1fr]">
-      
+
       {/* LEFT SIDEBAR */}
       <aside className="flex flex-col gap-4 order-2 md:order-1">
-        
+
         {/* Why Share This */}
         <RetroBox title="[ why share this? ]">
           <div className="text-sm leading-relaxed">
             <p>
-              Building a personal site is a journey of trial and error. 
-              I&apos;m documenting my mistakes so other retro web builders 
+              Building a personal site is a journey of trial and error.
+              I&apos;m documenting my mistakes so other retro web builders
               don&apos;t have to repeat them.
             </p>
             <p className="mt-3 italic text-mossy-text-muted text-center">
@@ -25,7 +25,7 @@ export default function LearningsPage() {
         <RetroBox title="[ quick jump ]">
           <ul className="text-sm space-y-2">
             <li className="border-b border-dashed border-mossy-border pb-2">
-              <a href="#webamp-rip" className="hover:text-mossy-link-hover">why I ditched Webamp</a>
+              <a href="#webamp-rip" className="hover:text-mossy-link-hover">audio player refactor</a>
             </li>
             <li className="border-b border-dashed border-mossy-border pb-2">
               <a href="#site-wiring" className="hover:text-mossy-link-hover">site wiring guide</a>
@@ -49,7 +49,7 @@ export default function LearningsPage() {
       {/* MAIN CONTENT */}
       <main className="order-1 md:order-2">
         <RetroBox title="{ learnings from the swamp }" variant="alt">
-          
+
           {/* Intro */}
           <div className="text-center mb-6 pb-5 border-b-2 border-mossy-border">
             <p className="font-accent text-mossy-header text-lg">
@@ -72,76 +72,77 @@ export default function LearningsPage() {
                 February 5, 2026
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
-                Why I Ditched Webamp (and Built My Own Player)
+                Audio Player Refactor
               </h3>
 
               <div className="space-y-3 text-mossy-text">
-                <p>
-                  I really wanted <a href="https://webamp.org" target="_blank" rel="noopener noreferrer" className="text-mossy-link hover:text-mossy-link-hover">Webamp</a> to
-                  work. The nostalgia hit of having an actual Winamp player embedded in the site?
-                  Perfect for the 90s aesthetic. Draggable windows, EQ visualizer, playlist.
-                  Chef&apos;s kiss.
+                <p className="text-sm text-mossy-text-muted">
+                  <strong>removed:</strong> <a href="https://github.com/captbaritone/webamp" target="_blank" rel="noopener noreferrer" className="text-mossy-link hover:text-mossy-link-hover">webamp</a><br />
+                  <strong>added:</strong> custom unified audio player
                 </p>
 
                 <p>
-                  Except it fought me at every step.
+                  Initially integrated <a href="https://webamp.org" target="_blank" rel="noopener noreferrer" className="text-mossy-link hover:text-mossy-link-hover">Webamp</a> because
+                  the UI matched the site aesthetic really well. Classic winamp-style player, playlists,
+                  visualizer. Looked great in isolation.
+                </p>
+
+                <p>
+                  Integration into a React SPA was the actual problem. Spent almost 5 days on this.
+                  Even tried building my own version using AI at some point. Honestly not worth my time.
+                </p>
+
+                <p>
+                  Issues I ran into:
+                </p>
+
+                <ul className="list-disc list-inside text-sm space-y-1 text-mossy-text-muted">
+                  <li>Webamp renders directly to document.body, which bypasses React entirely</li>
+                  <li>React StrictMode double-mounts in dev, resulting in orphaned DOM nodes</li>
+                  <li>Frequent removeChild errors during route changes</li>
+                  <li>Two independent audio engines existed at the same time: homepage player and webamp player</li>
+                  <li>Navigating between routes could cause both to play simultaneously</li>
+                  <li>R2 + CORS issues caused Webamp to skip tracks without playing audio</li>
+                  <li>Window positioning / centering required far more work than justified</li>
+                </ul>
+
+                <p>
+                  None of this was subtle. Debugging felt like fighting the framework instead of working with it.
+                </p>
+
+                <p>
+                  The breaking point: navigating from the homepage (with music playing) to /player started
+                  a second track instead of reusing the existing audio state. At that point, the architecture
+                  was clearly wrong.
+                </p>
+
+                <p>
+                  Removed Webamp entirely. Implemented a single global audio engine using Howler.js.
+                  One audio instance, one source of truth, shared across all routes. Playback persists
+                  through navigation. Track changes propagate everywhere. Simpler system, fewer edge cases,
+                  predictable behavior.
+                </p>
+
+                <p>
+                  Lost some visual flair. Gained stability, clarity, and sanity.
                 </p>
 
                 <blockquote className="italic text-mossy-link border-l-[3px] border-mossy-border bg-mossy-bg-box/50 pl-4 py-3 my-4">
-                  &quot;It works on my machine&quot; energy but the machine was from 2002.
+                  I read a while ago that &quot;working software beats clever software every time.&quot;
+                  This was one of those moments where that line applied very literally, I guess.
                 </blockquote>
 
-                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
-                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the problems:</h4>
-                  <ul className="list-disc list-inside text-sm space-y-1 text-mossy-text-muted">
-                    <li>Webamp renders to document.body. React said &quot;who dis?&quot;</li>
-                    <li>StrictMode double-mounts. Webamp creates orphan DOM nodes. Chaos.</li>
-                    <li>removeChild errors every time you navigate. Fun.</li>
-                    <li>Two audio engines running. Homepage player vs Webamp player. Both playing different songs simultaneously like a DJ battle nobody asked for.</li>
-                    <li>CORS issues with R2. Webamp would cycle through tracks without playing any.</li>
-                    <li>Centering Webamp windows? Three hours of my life I&apos;m not getting back.</li>
-                  </ul>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
-                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the breaking point:</h4>
-                  <p className="text-sm">
-                    When I had music playing from the homepage, navigated to /player, and heard
-                    TWO different songs playing at once. The homepage audio engine kept going.
-                    Webamp started its own thing. It was giving soundcloud comment section energy.
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
-                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the fix:</h4>
-                  <p className="text-sm">
-                    Deleted Webamp entirely. Built a custom player page that uses the same
-                    global audio engine as the homepage. One Howler.js instance, one source of truth,
-                    zero sync issues. Navigate anywhere, music keeps playing. Click a track on /player,
-                    it updates everywhere.
-                  </p>
-                  <p className="text-sm mt-2">
-                    Less cool looking? Maybe. But it actually works.
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
-                  <h4 className="font-heading text-mossy-header-alt text-sm mb-2">lesson:</h4>
-                  <p className="text-sm">
-                    Sometimes the nostalgic choice isn&apos;t the right choice. Webamp is cool tech
-                    but it was built for a different era. Trying to shove it into a React SPA
-                    with client-side navigation is like putting a CRT monitor on a standing desk.
-                    Aesthetic? Yes. Practical? Absolutely not.
-                  </p>
-                </div>
+                <p className="text-sm text-mossy-text-muted">
+                  Webamp is solid software. Just not designed for modern React routing, StrictMode,
+                  or shared application state. Forcing it into that shape created more complexity than it removed.
+                </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
                   <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">audio</span>
                   <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">webamp</span>
                   <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">react</span>
-                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">debugging</span>
-                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">rip</span>
+                  <span className="text-xs px-2 py-0.5 bg-mossy-bg-box-alt border border-mossy-border text-mossy-text-muted font-nav">refactor</span>
                 </div>
               </div>
             </article>
@@ -246,18 +247,18 @@ export default function LearningsPage() {
             <article className="relative mb-8" id="cursors">
               {/* Timeline dot */}
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 January 16, 2026
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 The Great Cursor & Effects Experiment
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Tried adding fancy cursors, sparkle trails, fireflies, and click 
-                  animations to make the site feel more magical. The result? 
+                  Tried adding fancy cursors, sparkle trails, fireflies, and click
+                  animations to make the site feel more magical. The result?
                   It turned into a circus.
                 </p>
 
@@ -267,9 +268,9 @@ export default function LearningsPage() {
                 </blockquote>
 
                 <p>
-                  I always thought old websites had simple interactions because of 
-                  technical limitations. But actually, when you have a visually dense 
-                  layout with lots of boxes, borders, and patterns, simple interactions 
+                  I always thought old websites had simple interactions because of
+                  technical limitations. But actually, when you have a visually dense
+                  layout with lots of boxes, borders, and patterns, simple interactions
                   make sense. The complexity is in the <em>layout</em>, not the <em>behavior</em>.
                 </p>
 
@@ -303,7 +304,7 @@ export default function LearningsPage() {
                 <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
                   <h4 className="font-heading text-mossy-header-alt text-sm mb-2">decision:</h4>
                   <p className="text-sm">
-                    Reverted everything. The site doesn&apos;t need fancy effects right now. 
+                    Reverted everything. The site doesn&apos;t need fancy effects right now.
                     Maybe later with a lighter touch.
                   </p>
                 </div>
@@ -321,17 +322,17 @@ export default function LearningsPage() {
             {/* Entry 2: Palette */}
             <article className="relative mb-8" id="palette">
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 December 2025
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 Finding the Right Color Palette
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Explored six different color palettes before landing on &quot;Sunlit Glade.&quot; 
+                  Explored six different color palettes before landing on &quot;Sunlit Glade.&quot;
                   The journey taught me a lot about what makes colors feel cozy versus clinical.
                 </p>
 
@@ -340,7 +341,7 @@ export default function LearningsPage() {
                 </blockquote>
 
                 <p>
-                  Cool-toned palettes looked nice in isolation but felt sterile when 
+                  Cool-toned palettes looked nice in isolation but felt sterile when
                   applied to the site. Warm amber accents made all the difference.
                   They added that &quot;sunlight through trees&quot; feeling I was going for.
                 </p>
@@ -356,17 +357,17 @@ export default function LearningsPage() {
             {/* Entry 3: Fonts */}
             <article className="relative mb-8" id="fonts">
               <div className="absolute -left-[29px] top-1 w-3 h-3 bg-mossy-border rounded-full border-2 border-mossy-bg-box"></div>
-              
+
               <p className="font-heading text-mossy-header text-xs uppercase tracking-wider mb-1">
                 December 2025
               </p>
               <h3 className="font-heading text-mossy-header text-lg mb-3">
                 Choosing Fonts That Feel Right
               </h3>
-              
+
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  Tested multiple font combinations. Learned that serif fonts 
+                  Tested multiple font combinations. Learned that serif fonts
                   carry the &quot;old book&quot; vibe better than anything else.
                 </p>
 
@@ -398,7 +399,7 @@ export default function LearningsPage() {
 
       {/* RIGHT SIDEBAR - Hidden on mobile/tablet */}
       <aside className="hidden lg:flex flex-col gap-4 order-3">
-        
+
         {/* Topics */}
         <RetroBox title="[ topics ]">
           <div className="flex flex-wrap gap-2 justify-center">
