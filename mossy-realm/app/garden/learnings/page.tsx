@@ -74,9 +74,14 @@ export default function LearningsPage() {
               
               <div className="space-y-3 text-mossy-text">
                 <p>
-                  I wanted to understand how all the pieces of modern web hosting actually connect.
-                  Domain registrar, DNS, frontend hosting, media storage — everyone uses different
-                  services and I kept seeing the same names pop up. So I figured out how to wire them together.
+                  First time I set up a custom domain was back in high school. Spent almost two days
+                  trying to figure out nameservers, DNS records, and why nothing was working. During
+                  undergrad I did it a few more times but it&apos;s been a while since I dealt with
+                  frontend infrastructure from scratch.
+                </p>
+                <p>
+                  This time? Less than 30 minutes. Turns out having an AI that actually understands
+                  the flow makes a huge difference. Documenting it here so I don&apos;t forget.
                 </p>
 
                 {/* Diagram */}
@@ -102,10 +107,10 @@ export default function LearningsPage() {
                 <div className="mt-4 pt-4 border-t border-dashed border-mossy-border">
                   <h4 className="font-heading text-mossy-header-alt text-sm mb-2">the stack:</h4>
                   <ul className="list-disc list-inside text-sm space-y-1 text-mossy-text-muted">
-                    <li><strong>Hostinger</strong> — registrar only, owns the domain record</li>
-                    <li><strong>Cloudflare</strong> — DNS, TLS, edge routing, R2 storage</li>
-                    <li><strong>Vercel</strong> — production hosting for the Next.js frontend</li>
-                    <li><strong>R2</strong> — object storage for static/media assets</li>
+                    <li><strong>Hostinger</strong>: registrar only, owns the domain record</li>
+                    <li><strong>Cloudflare</strong>: DNS, TLS, edge routing, R2 storage</li>
+                    <li><strong>Vercel</strong>: production hosting for the Next.js frontend</li>
+                    <li><strong>R2</strong>: object storage for static/media assets</li>
                   </ul>
                 </div>
 
@@ -134,8 +139,8 @@ export default function LearningsPage() {
                   <p className="text-sm">
                     I didn&apos;t want www.mossyrealm.space. Just mossyrealm.space. Looked it up and
                     turns out the www prefix is a relic from the early web when it helped distinguish
-                    web servers from mail or ftp servers on the same domain. These days it&apos;s unnecessary —
-                    modern DNS and hosting handle the apex domain (the &quot;naked&quot; domain without www) just fine.
+                    web servers from mail or ftp servers on the same domain. These days it&apos;s unnecessary.
+                    Modern DNS and hosting handle the apex domain (the &quot;naked&quot; domain without www) just fine.
                   </p>
                   <p className="text-sm mt-2">
                     Both Cloudflare and Vercel support apex domains cleanly. It&apos;s purely a preference thing.
@@ -148,7 +153,7 @@ export default function LearningsPage() {
                   <p className="text-sm">
                     The annoying part is DNS propagation. You switch nameservers and then... wait.
                     Cloudflare says &quot;checking&quot; for a while even when things already work.
-                    Don&apos;t panic if dashboards show &quot;pending&quot; — test the actual URL.
+                    Don&apos;t panic if dashboards show &quot;pending&quot;. Just test the actual URL.
                   </p>
                 </div>
 
@@ -195,7 +200,7 @@ export default function LearningsPage() {
                 </p>
 
                 <p>
-                  Modern sites flip this — minimal layouts but fancy animations. 
+                  Modern sites flip this. Minimal layouts but fancy animations. 
                   You can&apos;t have both maxed out without it feeling overwhelming.
                 </p>
 
@@ -215,7 +220,7 @@ export default function LearningsPage() {
                   <h4 className="font-heading text-mossy-header-alt text-sm mb-2">what I learned:</h4>
                   <ul className="list-disc list-inside text-sm space-y-1 text-mossy-text-muted">
                     <li>Animated cursors (.ani) don&apos;t work in most browsers</li>
-                    <li>Custom cursors need to be small — 32px max recommended</li>
+                    <li>Custom cursors need to be small (32px max recommended)</li>
                     <li>New effects need to match existing vibe, not fight against it</li>
                     <li>The satisfying click animation I imagined was actually distracting</li>
                   </ul>
@@ -262,8 +267,8 @@ export default function LearningsPage() {
 
                 <p>
                   Cool-toned palettes looked nice in isolation but felt sterile when 
-                  applied to the site. Warm amber accents made all the difference — 
-                  they added that &quot;sunlight through trees&quot; feeling I was going for.
+                  applied to the site. Warm amber accents made all the difference.
+                  They added that &quot;sunlight through trees&quot; feeling I was going for.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -341,7 +346,7 @@ export default function LearningsPage() {
               90s sites had complex layouts but simple interactions.
             </p>
             <p className="text-mossy-text-muted">
-              Modern sites flip this — minimal layouts, fancy animations.
+              Modern sites flip this. Minimal layouts, fancy animations.
             </p>
             <p className="text-mossy-accent font-semibold">
               You can&apos;t max out both.

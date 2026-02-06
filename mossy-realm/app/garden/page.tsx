@@ -10,7 +10,7 @@ export default function GardenPage() {
             ~ wisdom dug up through time and effort ~
           </p>
           <p className="text-mossy-text">
-            Welcome to the swamp! This is where I keep the treasures I&apos;ve collected — 
+            Welcome to the swamp! This is where I keep the treasures I&apos;ve collected:
             learnings from trial and error, resources I&apos;ve found useful, and interesting 
             discoveries along the way.
           </p>
