@@ -213,10 +213,9 @@ export default function PlayerPage() {
                     border-b border-mossy-bg-box-alt
                     transition-colors
                     flex items-center gap-2
-                    ${
-                      mounted && currentTrackId === track.id
-                        ? 'bg-mossy-bg-box-alt text-mossy-header'
-                        : 'hover:bg-mossy-bg-box-alt text-mossy-text'
+                    ${mounted && currentTrackId === track.id
+                      ? 'bg-mossy-bg-box-alt text-mossy-header'
+                      : 'hover:bg-mossy-bg-box-alt text-mossy-text'
                     }
                   `}
                 >

@@ -478,6 +478,18 @@ a:hover {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
+/* Blink animation for "click to play" indicator */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--mossy-accent);
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 2px var(--mossy-accent);
+  }
+}
+
 /* Custom range slider styling */
 input[type="range"] {
   -webkit-appearance: none;

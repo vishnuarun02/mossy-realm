@@ -51,7 +51,7 @@ export const tracks: Track[] = [
     },
 ];
 
-export const featuredTrackId = 'fallen-down-reprise';
+export const featuredTrackId = 'undertale-main-theme';
 
 export function formatDuration(seconds: number): string {
     const mins = Math.floor(seconds / 60);
