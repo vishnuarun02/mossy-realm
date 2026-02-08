@@ -19,6 +19,7 @@ const navItems: NavItem[] = [
       { href: '/cabin/about', label: 'about' },
       { href: '/cabin/now', label: 'now' },
       { href: '/cabin/crafting-table', label: 'crafting table' },
+      { href: '/cabin/recipes', label: 'recipes' },
     ],
   },
   {

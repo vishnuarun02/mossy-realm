@@ -126,7 +126,8 @@ Outpost (/)                      # Home
 My Cabin                         # Personal / Interior
 ├── /cabin/about                 # About me, background
 ├── /cabin/now                   # Currently reading/listening/working
-└── /cabin/crafting-table        # Projects, wins, proof of work
+├── /cabin/crafting-table        # Projects, wins, proof of work
+└── /cabin/recipes               # Things I cook
 Fieldwork                        # Thinking / Documenting
 ├── /fieldwork/learnings         # Long-form writing
 ├── /fieldwork/experiments       # Prototypes, half-baked ideas
@@ -153,7 +154,8 @@ mossyrealm/
 │   │   ├── cabin/                # My Cabin section
 │   │   │   ├── about/
 │   │   │   ├── now/
-│   │   │   └── crafting-table/
+│   │   │   ├── crafting-table/
+│   │   │   └── recipes/
 │   │   ├── fieldwork/            # Fieldwork section
 │   │   │   ├── learnings/
 │   │   │   ├── experiments/
