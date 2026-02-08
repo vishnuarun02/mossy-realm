@@ -140,6 +140,7 @@ Crossroads                       # Outward / Community
 └── /crossroads/credits          # Acknowledgements
 Archives                         # Condensed Collections
 ├── /archives/collected          # Pixel art, gifs, clippings
+├── /archives/changelog          # Site updates log
 └── /archives/sitemap            # Full site map
 ```
 
@@ -169,6 +170,7 @@ mossyrealm/
 │   │   │   └── credits/
 │   │   ├── archives/             # Archives section
 │   │   │   ├── collected/
+│   │   │   ├── changelog/
 │   │   │   └── sitemap/
 │   │   ├── player/               # Full player page
 │   │   ├── fonts.ts

@@ -92,7 +92,7 @@ export default function SidebarRight() {
 
       {/* Latest Art - moved from MainPanel */}
       <RetroBox title="[ latest art ]">
-        <Link href="/gallery" className="block no-underline group">
+        <Link href="/fieldwork/gallery" className="block no-underline group">
           <div
             className="
               w-full h-32

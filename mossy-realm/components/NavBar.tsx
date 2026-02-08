@@ -44,6 +44,7 @@ const navItems: NavItem[] = [
     label: 'Archives',
     children: [
       { href: '/archives/collected', label: 'collected' },
+      { href: '/archives/changelog', label: 'changelog' },
       { href: '/archives/sitemap', label: 'sitemap' },
     ],
   },
