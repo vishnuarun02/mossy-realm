@@ -127,7 +127,8 @@ My Cabin                         # Personal / Interior
 ├── /cabin/about                 # About me, background
 ├── /cabin/now                   # Currently reading/listening/working
 ├── /cabin/crafting-table        # Projects, wins, proof of work
-└── /cabin/recipes               # Things I cook
+├── /cabin/recipes               # Things I cook
+└── /cabin/contact               # Ways to reach me
 Fieldwork                        # Thinking / Documenting
 ├── /fieldwork/learnings         # Long-form writing
 ├── /fieldwork/experiments       # Prototypes, half-baked ideas
@@ -155,7 +156,8 @@ mossyrealm/
 │   │   │   ├── about/
 │   │   │   ├── now/
 │   │   │   ├── crafting-table/
-│   │   │   └── recipes/
+│   │   │   ├── recipes/
+│   │   │   └── contact/
 │   │   ├── fieldwork/            # Fieldwork section
 │   │   │   ├── learnings/
 │   │   │   ├── experiments/
