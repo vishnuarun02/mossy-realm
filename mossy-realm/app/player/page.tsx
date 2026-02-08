@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePlayerStore } from '@/lib/player/store';
-import { tracks, formatDuration } from '@/data/tracks';
+import { formatDuration } from '@/lib/tracks';
 import { Visualizer } from '@/components/player/Visualizer';
 import { AudioEngine } from '@/lib/player/AudioEngine';
 import {
@@ -20,6 +20,8 @@ export default function PlayerPage() {
   const [mounted, setMounted] = useState(false);
 
   const {
+    tracks,
+    tracksLoaded,
     isPlaying,
     isMuted,
     volume,
@@ -32,13 +34,14 @@ export default function PlayerPage() {
     setCurrentTrack,
     nextTrack,
     prevTrack,
+    getCurrentTrack,
   } = usePlayerStore();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const currentTrack = tracks.find((t) => t.id === currentTrackId) || tracks[0];
+  const currentTrack = getCurrentTrack();
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -101,9 +104,11 @@ export default function PlayerPage() {
             <div className="font-accent text-mossy-header text-xl mb-1 truncate">
               {currentTrack.title}
             </div>
-            <div className="text-mossy-text-muted text-sm">
-              {currentTrack.artist}
-            </div>
+            {currentTrack.artist && (
+              <div className="text-mossy-text-muted text-sm">
+                {currentTrack.artist}
+              </div>
+            )}
           </div>
 
           {/* Progress Bar */}
@@ -116,7 +121,7 @@ export default function PlayerPage() {
                   style={{ width: `${mounted ? progress : 0}%` }}
                 />
               </div>
-              <span>{formatTime(duration || currentTrack.duration)}</span>
+              <span>{formatTime(duration || currentTrack.duration || 0)}</span>
             </div>
           </div>
 
@@ -202,6 +207,7 @@ export default function PlayerPage() {
           <div className="border-t-2 border-mossy-border">
             <div className="bg-mossy-bg-box-alt px-3 py-2 text-xs text-mossy-border uppercase tracking-wider font-heading">
               Playlist ({tracks.length} tracks)
+              {!tracksLoaded && ' · loading...'}
             </div>
             <div className="max-h-48 overflow-y-auto">
               {tracks.map((track, index) => (
@@ -226,7 +232,7 @@ export default function PlayerPage() {
                   </span>
                   <span className="flex-1 truncate text-sm">{track.title}</span>
                   <span className="text-mossy-text-muted text-xs">
-                    {formatDuration(track.duration)}
+                    {track.duration ? formatDuration(track.duration) : ''}
                   </span>
                 </button>
               ))}

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import RetroBox from '@/components/RetroBox';
 import { usePlayerStore } from '@/lib/player/store';
-import { getFeaturedTrack } from '@/data/tracks';
+import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import { Visualizer } from './Visualizer';
 import { 
   PlayIcon, 
@@ -44,7 +44,7 @@ export function RealmRadioWidget() {
   }, []);
 
   // use featured track for SSR, current track after hydration
-  const track = mounted ? getCurrentTrack() : getFeaturedTrack();
+  const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
 
   return (
     <RetroBox title="-= realm radio =-">

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePlayerStore } from '@/lib/player/store';
-import { getFeaturedTrack } from '@/data/tracks';
+import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import { 
   PlayIcon, 
   PauseIcon, 
@@ -36,7 +36,7 @@ export function RealmRadioMobileBar() {
   }, []);
 
   // use featured track for SSR, current track after hydration
-  const track = mounted ? getCurrentTrack() : getFeaturedTrack();
+  const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
 
   return (
     <div

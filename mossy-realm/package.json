@@ -13,6 +13,7 @@
     "vault:curate": "npx tsx scripts/generate-vault.ts --curate"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.985.0",
     "@types/howler": "^2.2.12",
     "@upstash/redis": "^1.36.1",
     "howler": "^2.2.4",

@@ -3,29 +3,31 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePlayerStore } from '@/lib/player/store';
-import { tracks, formatDuration, getFeaturedTrack } from '@/data/tracks';
-import { 
-  PlayIcon, 
-  PauseIcon, 
-  PrevIcon, 
-  NextIcon, 
-  VolumeHighIcon, 
+import { formatDuration } from '@/lib/tracks';
+import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
+import {
+  PlayIcon,
+  PauseIcon,
+  PrevIcon,
+  NextIcon,
+  VolumeHighIcon,
   VolumeMutedIcon,
   VolumeLowIcon,
   CollapseIcon,
-  OpenIcon
+  OpenIcon,
 } from './PlayerIcons';
 
 /**
  * RealmRadioMobileSheet - Expanded bottom sheet for mobile
  * Design A: Full Controls
- * 
+ *
  * Slides up when user taps expand on mobile bar
  */
 export function RealmRadioMobileSheet() {
   const [mounted, setMounted] = useState(false);
 
   const {
+    tracks,
     isPlaying,
     isMuted,
     volume,
@@ -46,15 +48,16 @@ export function RealmRadioMobileSheet() {
   }, []);
 
   // use featured track for SSR, current track after hydration
-  const track = mounted ? getCurrentTrack() : getFeaturedTrack();
-  const activeTrackId = mounted ? currentTrackId : getFeaturedTrack().id;
+  const displayTracks = mounted ? tracks : fallbackTracks;
+  const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
+  const activeTrackId = mounted ? currentTrackId : getFeaturedTrack(fallbackTracks).id;
 
   if (!isMobileSheetOpen) return null;
 
   return (
     <>
       {/* Backdrop */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/50 z-50 md:hidden"
         onClick={closeMobileSheet}
       />
@@ -109,7 +112,7 @@ export function RealmRadioMobileSheet() {
         {/* Current Track */}
         <div className="text-center mb-5">
           <div className="font-accent text-mossy-header text-lg">
-            ~ {track.title} ~
+            {track.title}
           </div>
         </div>
 
@@ -195,10 +198,10 @@ export function RealmRadioMobileSheet() {
         {/* Playlist */}
         <div className="border-t-2 border-mossy-border pt-4">
           <h4 className="text-mossy-border text-xs uppercase tracking-wider mb-3 font-heading">
-            playlist
+            playlist ({displayTracks.length} tracks)
           </h4>
           <div className="space-y-2 max-h-48 overflow-y-auto scrollbox-content">
-            {tracks.map((t) => (
+            {displayTracks.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setCurrentTrack(t.id)}
@@ -206,16 +209,17 @@ export function RealmRadioMobileSheet() {
                   w-full text-left
                   p-3
                   border transition-colors
-                  ${activeTrackId === t.id 
-                    ? 'bg-mossy-bg-box-alt border-mossy-border border-l-4 border-l-mossy-link' 
-                    : 'border-mossy-bg-box-alt hover:bg-mossy-bg-box-alt hover:border-mossy-border'
+                  ${
+                    activeTrackId === t.id
+                      ? 'bg-mossy-bg-box-alt border-mossy-border border-l-4 border-l-mossy-link'
+                      : 'border-mossy-bg-box-alt hover:bg-mossy-bg-box-alt hover:border-mossy-border'
                   }
                 `}
               >
                 <div className="text-sm text-mossy-text">{t.title}</div>
                 <div className="text-xs text-mossy-text-muted flex justify-between">
-                  <span>by {t.artist}</span>
-                  <span>{formatDuration(t.duration)}</span>
+                  {t.artist && <span>by {t.artist}</span>}
+                  {t.duration && <span>{formatDuration(t.duration)}</span>}
                 </div>
               </button>
             ))}

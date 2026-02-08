@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import { usePlayerStore } from './store';
-import { tracks } from '@/data/tracks';
 import {
   createHowl,
   getHowl,
@@ -15,7 +14,7 @@ import {
 
 /**
  * AudioEngine - Syncs React state with global audio singleton
- * 
+ *
  * The actual Howl instance lives outside React (in globalAudio.ts)
  * This component just syncs the Zustand store with that global instance
  */
@@ -24,6 +23,9 @@ export function AudioEngine() {
   const lastTrackUrlRef = useRef<string | null>(null);
 
   const {
+    tracks,
+    tracksLoaded,
+    loadTracks,
     isPlaying,
     isMuted,
     volume,
@@ -33,7 +35,14 @@ export function AudioEngine() {
     nextTrack,
   } = usePlayerStore();
 
-  // Get current track URL
+  // Load tracks from API on mount
+  useEffect(() => {
+    if (!tracksLoaded) {
+      loadTracks();
+    }
+  }, [tracksLoaded, loadTracks]);
+
+  // Get current track URL from store tracks
   const currentTrack = tracks.find((t) => t.id === currentTrackId);
   const trackUrl = currentTrack?.url || '';
 
@@ -41,7 +50,7 @@ export function AudioEngine() {
   const updateTime = useCallback(() => {
     const seek = seekGlobal();
     setCurrentTime(seek);
-    
+
     if (getHowl()?.playing()) {
       rafRef.current = requestAnimationFrame(updateTime);
     }
@@ -54,7 +63,7 @@ export function AudioEngine() {
     // Only create new Howl if track changed
     if (trackUrl !== getCurrentTrackUrl()) {
       const wasPlaying = isPlaying;
-      
+
       createHowl(trackUrl, {
         volume: isMuted ? 0 : volume,
         onload: () => {
