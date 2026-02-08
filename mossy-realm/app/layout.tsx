@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cinzelDecorative, cinzel, cormorant, lora, mysteryQuest } from "./fonts";
 import { RealmRadioProvider } from "@/components/player";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "☀️ MossyRealm - A Cozy Corner of the Web",
@@ -43,6 +44,9 @@ export default function RootLayout({
           The entire page is one scanned artifact.
         */}
         <div id="grain-overlay" aria-hidden="true" />
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
