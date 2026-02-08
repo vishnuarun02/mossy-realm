@@ -24,6 +24,9 @@ design-kitchen/
 ├── effects-experiments/      # Particle effects (fireflies, sparkles, etc.)
 ├── button-experiments/       # Button hover style explorations
 └── [other files]             # Palette, font, emoji explorations
+
+mossy-realm/design-kitchen/   # Player-specific mockups
+└── player-mockups.html       # Realm Radio UI variations
 ```
 
 ---
@@ -95,6 +98,23 @@ Located in `button-experiments/`:
 |------|-------------|
 | `button-hover-preview.html` | Modern hover styles (glow, lift, sweep, etc.) |
 | `button-hover-90s.html` | Authentic 90s styles (bevel, instant swap, etc.) |
+
+---
+
+## 🎵 Player Mockups
+
+Located in `mossy-realm/design-kitchen/`:
+
+| File | Description |
+|------|-------------|
+| `player-mockups.html` | Realm Radio UI variations for all breakpoints |
+
+### Explored Designs:
+- **Homepage Sidebar Widget** — Winamp-style visualizer + status dot
+- **Floating Mini Dock** — Compact panel for non-homepage routes
+- **Mobile Bottom Bar** — Sticky bar with expand button
+- **Mobile Expanded Sheet** — Full controls + playlist
+- **Full Player Page** — `/player` with visualizer and playlist
 
 ---
 
@@ -196,4 +216,4 @@ mossy-realm/
 
 ---
 
-*Created December 13 2025 • Updated January 2026*
+*Created December 2025 • Updated February 2026*

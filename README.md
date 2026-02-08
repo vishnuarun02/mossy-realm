@@ -35,11 +35,21 @@ UPSTASH_REDIS_REST_TOKEN=your-token-here
 
 # DeepSeek API (for content vault generation - optional)
 DEEPSEEK_API_KEY=your-deepseek-key
+
+# Cloudflare R2 (for dynamic track loading)
+R2_ENDPOINT=https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com
+R2_ACCESS_KEY_ID=your-access-key
+R2_SECRET_ACCESS_KEY=your-secret-key
+R2_BUCKET_NAME=mossyrealm-media
+R2_PUBLIC_BASE=https://media.mossyrealm.space
+R2_PREFIX=music/
 ```
 
 Get Upstash credentials from [Upstash Console](https://console.upstash.com/) → Create Redis Database → REST API.
 
 Get DeepSeek API key from [DeepSeek Platform](https://platform.deepseek.com/).
+
+Get R2 credentials from Cloudflare Dashboard → R2 → Manage R2 API Tokens → Create API Token (with Object Read permission).
 
 **On Vercel:** Add these same variables in Dashboard → Project → Settings → Environment Variables.
 
@@ -115,7 +125,9 @@ This calls DeepSeek API to generate quirky micro-content items with old comic-bo
 mossyrealm/
 ├── mossy-realm/                  # Next.js application
 │   ├── app/
-│   │   ├── api/visitors/         # Visitor counter API
+│   │   ├── api/
+│   │   │   ├── tracks/           # Dynamic R2 track listing API
+│   │   │   └── visitors/         # Visitor counter API
 │   │   ├── garden/               # Swamp Treasures section
 │   │   │   └── learnings/        # Blog/learnings posts
 │   │   ├── player/               # Full player page
@@ -124,7 +136,7 @@ mossyrealm/
 │   │   ├── layout.tsx
 │   │   └── page.tsx
 │   ├── data/
-│   │   └── tracks.ts             # Track list with R2 URLs
+│   │   └── tracks.ts             # Fallback tracks + utils
 │   ├── components/
 │   │   ├── RetroBox.tsx          # Card container
 │   │   ├── ScrollBox.tsx         # Scrollable container
@@ -149,6 +161,7 @@ mossyrealm/
 │   │   ├── updates.ts            # Updates loader
 │   │   ├── vault.ts              # Vault loader + picker
 │   │   ├── buildDate.ts          # Commit date helper
+│   │   ├── tracks.ts             # Track types + API fetcher
 │   │   └── player/               # Audio engine + Zustand store
 │   │       ├── store.ts              # Player state (Zustand + persist)
 │   │       ├── AudioEngine.tsx       # Howler.js controller
@@ -181,6 +194,8 @@ mossyrealm/
 - "Last updated" banner from git commit date
 - **Realm Radio** — Custom unified audio player
   - Global audio engine (Howler.js) persists across navigation
+  - **Dynamic track loading** from R2 via `/api/tracks` (drop mp3s in bucket → auto-appear)
+  - Supports `.mp3`, `.m4a`, `.wav`, `.ogg`, `.flac`, `.aac`
   - Full player page at `/player` with playlist and visualizer
   - Homepage sidebar widget (desktop)
   - Floating mini-dock on other routes (desktop)
