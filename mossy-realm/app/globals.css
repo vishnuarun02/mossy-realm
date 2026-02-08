@@ -565,3 +565,55 @@ input[type="range"]::-moz-range-thumb:hover {
 #webamp {
   z-index: 100 !important;
 }
+
+/* ============================================ */
+/* NAVIGATION DROPDOWN STYLES                   */
+/* ============================================ */
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: var(--mossy-bg-box);
+  border: 2px solid var(--mossy-border);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-dropdown-item {
+  font-family: var(--font-nav), 'Cormorant', serif;
+  padding: 10px 16px;
+  color: var(--mossy-link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mossy-bg-box-alt);
+  transition: background 0.15s ease, color 0.15s ease;
+  font-size: 0.95rem;
+}
+
+.nav-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--mossy-border);
+  color: var(--mossy-bg-box);
+  text-decoration: none;
+}
+
+.nav-dropdown-item-active {
+  background: var(--mossy-bg-box-alt);
+  color: var(--mossy-header);
+  border-left: 3px solid var(--mossy-border);
+}
+
+/* Mobile adjustments for dropdowns */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    position: static;
+    box-shadow: none;
+    border-top: none;
+  }
+}
