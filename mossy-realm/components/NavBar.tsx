@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Marquee from './Marquee';
@@ -46,74 +46,6 @@ const navItems: NavItem[] = [
   },
 ];
 
-function NavDropdown({ item, onNavigate }: { item: NavItem; onNavigate?: () => void }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-
-  // Check if any child is active
-  const isChildActive = item.children?.some(child => pathname.startsWith(child.href));
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  return (
-    <div ref={dropdownRef} className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`
-          font-nav
-          bg-mossy-bg-box-alt
-          border-2 border-mossy-border
-          px-4 py-2
-          text-mossy-link
-          hover:bg-mossy-border
-          hover:text-mossy-bg-box
-          transition-colors
-          text-base
-          font-semibold
-          flex items-center gap-1
-          ${isChildActive ? 'bg-mossy-border text-mossy-bg-box' : ''}
-        `}
-      >
-        {item.label}
-        <span className="text-xs ml-1">{isOpen ? '▲' : '▼'}</span>
-      </button>
-      
-      {isOpen && item.children && (
-        <div className="nav-dropdown">
-          {item.children.map((child) => {
-            const isActive = pathname === child.href || pathname.startsWith(child.href + '/');
-            return (
-              <Link
-                key={child.href}
-                href={child.href}
-                onClick={() => {
-                  setIsOpen(false);
-                  onNavigate?.();
-                }}
-                className={`
-                  nav-dropdown-item
-                  ${isActive ? 'nav-dropdown-item-active' : ''}
-                `}
-              >
-                {child.label}
-              </Link>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function NavBar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
@@ -143,147 +75,115 @@ export default function NavBar() {
           </h1>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="site-nav hidden md:flex">
-          {navItems.map((item) =>
-            item.href ? (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`
-                  font-nav
-                  bg-mossy-bg-box-alt
-                  border-2 border-mossy-border
-                  px-4 py-2
-                  text-mossy-link
-                  no-underline
-                  hover:bg-mossy-border
-                  hover:text-mossy-bg-box
-                  hover:no-underline
-                  transition-colors
-                  text-base
-                  font-semibold
-                  ${pathname === item.href ? 'bg-mossy-border text-mossy-bg-box' : ''}
-                `}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <NavDropdown key={item.label} item={item} />
-            )
-          )}
+        {/* Desktop Navigation - Inset Panel Style */}
+        <nav className="nav-inset hidden md:block">
+          <div className="nav-inset-bar">
+            {navItems.map((item) => {
+              const isActive = item.href 
+                ? pathname === item.href 
+                : item.children?.some(c => pathname.startsWith(c.href));
+              
+              return (
+                <div key={item.label} className="nav-inset-item">
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      className={`nav-inset-label ${isActive ? 'nav-inset-label-active' : ''}`}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <>
+                      <span className={`nav-inset-label ${isActive ? 'nav-inset-label-active' : ''}`}>
+                        {item.label}
+                      </span>
+                      {item.children && (
+                        <div className="nav-inset-dropdown">
+                          {item.children.map((child) => {
+                            const childActive = pathname === child.href || pathname.startsWith(child.href + '/');
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className={`nav-inset-dropdown-item ${childActive ? 'nav-inset-dropdown-item-active' : ''}`}
+                              >
+                                {child.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </nav>
 
-        {/* Mobile Navigation Toggle */}
+        {/* Mobile Navigation */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="
-              font-nav
-              w-full
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              px-4 py-2
-              text-mossy-link
-              flex items-center justify-center gap-2
-              font-semibold
-            "
+            className="nav-mobile-toggle"
           >
-            Navigation {isMobileOpen ? '▲' : '▼'}
+            Navigation
+            <span className="nav-mobile-caret">{isMobileOpen ? '▲' : '▼'}</span>
           </button>
 
-          {/* Mobile Dropdown */}
           {isMobileOpen && (
-            <div className="mt-2 flex flex-col gap-1">
-              {navItems.map((item) =>
-                item.href ? (
+            <div className="nav-mobile-menu">
+              {navItems.map((item) => {
+                const isActive = item.href 
+                  ? pathname === item.href 
+                  : item.children?.some(c => pathname.startsWith(c.href));
+                const isExpanded = openMobileDropdown === item.label;
+
+                return item.href ? (
                   <Link
                     key={item.label}
                     href={item.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className={`
-                      font-nav
-                      bg-mossy-bg-box-alt
-                      border-2 border-mossy-border
-                      px-4 py-2
-                      text-mossy-link
-                      no-underline
-                      hover:bg-mossy-border
-                      hover:text-mossy-bg-box
-                      text-center
-                      font-semibold
-                      ${pathname === item.href ? 'bg-mossy-border text-mossy-bg-box' : ''}
-                    `}
+                    className={`nav-mobile-item ${isActive ? 'nav-mobile-item-active' : ''}`}
                   >
                     {item.label}
                   </Link>
                 ) : (
-                  <div key={item.label}>
+                  <div key={item.label} className="nav-mobile-group">
                     <button
-                      onClick={() =>
-                        setOpenMobileDropdown(
-                          openMobileDropdown === item.label ? null : item.label
-                        )
-                      }
-                      className={`
-                        font-nav
-                        w-full
-                        bg-mossy-bg-box-alt
-                        border-2 border-mossy-border
-                        px-4 py-2
-                        text-mossy-link
-                        flex items-center justify-center gap-2
-                        font-semibold
-                        ${item.children?.some(c => pathname.startsWith(c.href)) ? 'bg-mossy-border text-mossy-bg-box' : ''}
-                      `}
+                      onClick={() => setOpenMobileDropdown(isExpanded ? null : item.label)}
+                      className={`nav-mobile-item nav-mobile-item-parent ${isActive ? 'nav-mobile-item-active' : ''}`}
                     >
                       {item.label}
-                      <span className="text-xs">
-                        {openMobileDropdown === item.label ? '▲' : '▼'}
-                      </span>
+                      <span className={`nav-mobile-item-caret ${isExpanded ? 'nav-mobile-item-caret-open' : ''}`}>›</span>
                     </button>
                     
-                    {openMobileDropdown === item.label && item.children && (
-                      <div className="flex flex-col">
-                        {item.children.map((child) => {
-                          const isActive = pathname === child.href || pathname.startsWith(child.href + '/');
-                          return (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => {
-                                setIsMobileOpen(false);
-                                setOpenMobileDropdown(null);
-                              }}
-                              className={`
-                                font-nav
-                                bg-mossy-bg-box
-                                border-x-2 border-b-2 border-mossy-border
-                                px-6 py-2
-                                text-mossy-link
-                                no-underline
-                                hover:bg-mossy-border
-                                hover:text-mossy-bg-box
-                                text-center
-                                text-sm
-                                ${isActive ? 'bg-mossy-border text-mossy-bg-box' : ''}
-                              `}
-                            >
-                              {child.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
+                    <div className={`nav-mobile-children ${isExpanded ? 'nav-mobile-children-open' : ''}`}>
+                      {item.children?.map((child) => {
+                        const childActive = pathname === child.href || pathname.startsWith(child.href + '/');
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => {
+                              setIsMobileOpen(false);
+                              setOpenMobileDropdown(null);
+                            }}
+                            className={`nav-mobile-child ${childActive ? 'nav-mobile-child-active' : ''}`}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
-                )
-              )}
+                );
+              })}
             </div>
           )}
         </div>
       </header>
 
-      {/* Marquee - flows right below header */}
       <Marquee />
     </>
   );
