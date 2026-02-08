@@ -13,9 +13,10 @@ Think of it like a Figma workspace - but in HTML files you can open in any brows
 ```
 design-kitchen/
 ├── DESIGN-JOURNAL.md         # 📓 Lessons learned, ideas, experiments log
-├── cabin-pages/              # Page designs for The Cabin section
-├── swamp-treasures/          # Page designs for Swamp Treasures section
-│   └── learnings-option*.html # Learnings page layout options
+├── nav-dropdown-variants.html # Navigation dropdown style explorations
+├── cabin-pages/              # Page designs for My Cabin section
+├── github-profile/           # GitHub profile README designs
+│   └── pixel-readme.svg      # Pixel-art terminal style SVG
 ├── cursor-experiments/       # Custom cursor exploration
 │   ├── scripts/              # Python conversion tools
 │   ├── previews/             # HTML preview pages
@@ -24,9 +25,6 @@ design-kitchen/
 ├── effects-experiments/      # Particle effects (fireflies, sparkles, etc.)
 ├── button-experiments/       # Button hover style explorations
 └── [other files]             # Palette, font, emoji explorations
-
-mossy-realm/design-kitchen/   # Player-specific mockups
-└── player-mockups.html       # Realm Radio UI variations
 ```
 
 ---
@@ -101,13 +99,20 @@ Located in `button-experiments/`:
 
 ---
 
-## 🎵 Player Mockups
-
-Located in `mossy-realm/design-kitchen/`:
+## 🧭 Navigation Experiments
 
 | File | Description |
 |------|-------------|
-| `player-mockups.html` | Realm Radio UI variations for all breakpoints |
+| `nav-dropdown-variants.html` | Dropdown style explorations (Inset Panels chosen) |
+
+### Explored Styles:
+- **Frame-Based Nav** — Nav in horizontal frame/rail
+- **Dock/Shelf Metaphor** — Items on a "shelf" with hanging dropdowns
+- **Inset Panels** ✅ — Sunken dropdowns with inner shadows (chosen)
+
+---
+
+## 🎵 Player Mockups
 
 ### Explored Designs:
 - **Homepage Sidebar Widget** — Winamp-style visualizer + status dot
@@ -115,6 +120,16 @@ Located in `mossy-realm/design-kitchen/`:
 - **Mobile Bottom Bar** — Sticky bar with expand button
 - **Mobile Expanded Sheet** — Full controls + playlist
 - **Full Player Page** — `/player` with visualizer and playlist
+
+---
+
+## 👤 GitHub Profile
+
+Located in `github-profile/`:
+
+| File | Description |
+|------|-------------|
+| `pixel-readme.svg` | Retro terminal-style SVG for GitHub profile README |
 
 ---
 

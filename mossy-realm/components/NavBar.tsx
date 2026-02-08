@@ -14,17 +14,18 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Outpost', href: '/' },
   {
-    label: 'The Cabin',
+    label: 'My Cabin',
     children: [
       { href: '/cabin/about', label: 'about' },
       { href: '/cabin/now', label: 'now' },
-      { href: '/cabin/trophy-shelf', label: 'trophy shelf' },
+      { href: '/cabin/crafting-table', label: 'crafting table' },
     ],
   },
   {
     label: 'Fieldwork',
     children: [
       { href: '/fieldwork/learnings', label: 'learnings' },
+      { href: '/fieldwork/experiments', label: 'experiments' },
       { href: '/fieldwork/field-notes', label: 'field notes' },
       { href: '/fieldwork/gallery', label: 'gallery' },
     ],

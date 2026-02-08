@@ -123,12 +123,13 @@ This calls DeepSeek API to generate quirky micro-content items with old comic-bo
 
 ```
 Outpost (/)                      # Home
-The Cabin                        # Personal / Interior
+My Cabin                         # Personal / Interior
 ├── /cabin/about                 # About me, background
 ├── /cabin/now                   # Currently reading/listening/working
-└── /cabin/trophy-shelf          # Projects, wins, resume-lite
+└── /cabin/crafting-table        # Projects, wins, proof of work
 Fieldwork                        # Thinking / Documenting
 ├── /fieldwork/learnings         # Long-form writing
+├── /fieldwork/experiments       # Prototypes, half-baked ideas
 ├── /fieldwork/field-notes       # Shorter observations
 └── /fieldwork/gallery           # Visual field notes
 Crossroads                       # Outward / Community
@@ -149,12 +150,13 @@ mossyrealm/
 │   │   ├── api/
 │   │   │   ├── tracks/           # Dynamic R2 track listing API
 │   │   │   └── visitors/         # Visitor counter API
-│   │   ├── cabin/                # The Cabin section
+│   │   ├── cabin/                # My Cabin section
 │   │   │   ├── about/
 │   │   │   ├── now/
-│   │   │   └── trophy-shelf/
+│   │   │   └── crafting-table/
 │   │   ├── fieldwork/            # Fieldwork section
 │   │   │   ├── learnings/
+│   │   │   ├── experiments/
 │   │   │   ├── field-notes/
 │   │   │   └── gallery/
 │   │   ├── crossroads/           # Crossroads section

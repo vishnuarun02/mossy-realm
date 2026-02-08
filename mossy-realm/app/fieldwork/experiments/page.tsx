@@ -1,19 +1,19 @@
 import RetroBox from "@/components/RetroBox";
 
-export default function TrophyShelfPage() {
+export default function ExperimentsPage() {
   return (
     <div className="max-w-2xl mx-auto">
-      <RetroBox title="{ trophy shelf }" variant="alt">
+      <RetroBox title="{ experiments }" variant="alt">
         <div className="text-center space-y-4">
           <p className="font-accent text-mossy-header text-lg">
-            ~ projects, wins, and proof of work ~
+            ~ the lab, the sandbox, the playground ~
           </p>
           <p className="text-mossy-text">
-            A curated collection of things I&apos;ve built and shipped.
-            The highlights reel without the fluff.
+            Half-baked ideas, prototypes, and things that might break.
+            Where I tinker before things become real.
           </p>
           <p className="text-mossy-text-muted text-sm italic">
-            resume-lite, portfolio-adjacent
+            proceed with curiosity
           </p>
         </div>
 
@@ -21,7 +21,7 @@ export default function TrophyShelfPage() {
 
         <div className="space-y-4 text-center">
           <p className="text-mossy-text-muted">
-            trophies loading...
+            experiments loading...
           </p>
         </div>
       </RetroBox>
