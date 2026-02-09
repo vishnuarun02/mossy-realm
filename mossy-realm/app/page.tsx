@@ -8,24 +8,24 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="site-container relative">
-      {/* Dancing frog - top right, peeking in */}
-      <div className="hidden lg:block absolute top-2 right-4 z-20 -rotate-6">
+      {/* Welcome to internet - top left, tilted */}
+      <div className="hidden md:block absolute top-[70px] left-3 z-20 rotate-[-5deg]">
         <Image 
-          src="/images/frog-welcome.gif" 
-          alt="welcome frog" 
-          width={100} 
-          height={75}
+          src="/images/welcome-to-internet.gif" 
+          alt="welcome to the internet" 
+          width={85} 
+          height={28}
           unoptimized
         />
       </div>
 
-      {/* Welcome sign - bottom left corner, tilted */}
-      <div className="hidden md:block absolute bottom-24 left-2 z-20 rotate-[-8deg]">
+      {/* Hello tag - top right area, slight tilt */}
+      <div className="hidden md:block absolute top-[75px] right-4 z-20 rotate-3">
         <Image 
-          src="/images/welcome-to-internet.gif" 
-          alt="welcome to the internet" 
-          width={90} 
-          height={30}
+          src="/images/hellotags.gif" 
+          alt="hello" 
+          width={120} 
+          height={25}
           unoptimized
         />
       </div>
