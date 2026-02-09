@@ -58,12 +58,12 @@ export function AudioEngine() {
   const trackUrl = currentTrack?.url || '';
 
   // Update playback position
-  const updateTime = useCallback(() => {
+  const updateTime = useCallback(function tick() {
     const seek = seekGlobal();
     setCurrentTime(seek);
 
     if (getHowl()?.playing()) {
-      rafRef.current = requestAnimationFrame(updateTime);
+      rafRef.current = requestAnimationFrame(tick);
     } else {
       rafRef.current = null;
     }

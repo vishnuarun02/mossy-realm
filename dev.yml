@@ -1,0 +1,34 @@
+name: mossyrealm-dev-shortcuts
+workspaces:
+  - /Users/vishnuarun/Documents/projects_repository/mossyrealm/mossy-realm
+shortcuts:
+  - name: dev
+    cmd: npm run dev
+    description: Start the Next.js dev server
+  - name: build
+    cmd: npm run build
+    description: Build the production bundle
+  - name: start
+    cmd: npm run start
+    description: Run the production server
+  - name: lint
+    cmd: npm run lint
+    description: Run ESLint
+  - name: typecheck
+    cmd: npm run typecheck
+    description: Run TypeScript type checking
+  - name: test
+    cmd: npm test
+    description: Run unit tests (Vitest)
+  - name: test:watch
+    cmd: npm run test:watch
+    description: Run unit tests in watch mode
+  - name: vault:generate
+    cmd: npm run vault:generate
+    description: Generate content vault via DeepSeek
+  - name: vault:dry-run
+    cmd: npm run vault:dry-run
+    description: Preview vault generation without API calls
+  - name: vault:curate
+    cmd: npm run vault:curate
+    description: Curate existing vault content
