@@ -1,108 +1,164 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePlayerStore } from '@/lib/player/store';
+import { getFrequencyData } from '@/lib/player/audioContext';
+
+interface VisualizerProps {
+  variant?: 'compact' | 'full';
+}
+
+function average(data: Uint8Array): number {
+  let sum = 0;
+  for (let i = 0; i < data.length; i += 1) {
+    sum += data[i];
+  }
+  return data.length ? sum / data.length : 0;
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, value));
+}
 
 /**
- * Winamp-style visualizer bars
- * Animated bars that respond to play state
+ * Cassette-style audio visualizer (audio-synced)
+ * Uses analyser data from the shared audio context.
  */
-export function Visualizer() {
+export function Visualizer({ variant = 'compact' }: VisualizerProps) {
   const isPlaying = usePlayerStore((state) => state.isPlaying);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number | null>(null);
-  const barsRef = useRef<number[]>([]);
-  const [mounted, setMounted] = useState(false);
-
-  const BAR_COUNT = 12;
-  const BAR_GAP = 3;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const phaseRef = useRef(0);
+  const levelRef = useRef(0);
 
   useEffect(() => {
-    setMounted(true);
-    // Initialize bar heights
-    if (barsRef.current.length === 0) {
-      barsRef.current = Array(BAR_COUNT).fill(0.15);
-    }
-  }, []);
+    const container = containerRef.current;
+    const canvas = canvasRef.current;
+    if (!container || !canvas) return;
 
-  // Animation loop
+    const resize = () => {
+      const width = container.clientWidth;
+      const height = variant === 'full' ? 96 : 64;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.floor(width * dpr));
+      canvas.height = Math.max(1, Math.floor(height * dpr));
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+    };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(container);
+    resize();
+
+    return () => observer.disconnect();
+  }, [variant]);
+
   useEffect(() => {
-    if (!mounted) return;
-    
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const draw = () => {
-      const width = canvas.width;
-      const height = canvas.height;
-      const barWidth = (width - (BAR_COUNT - 1) * BAR_GAP) / BAR_COUNT;
+      const dpr = window.devicePixelRatio || 1;
+      const width = canvas.width / dpr;
+      const height = canvas.height / dpr;
 
-      // Clear canvas
-      ctx.fillStyle = '#1a2a22';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+
+      const data = getFrequencyData();
+      const avg = average(data);
+      const level = clamp(avg / 255, 0, 1);
+      levelRef.current += (level - levelRef.current) * 0.18;
+
+      const reelSpeed = isPlaying ? 0.08 + levelRef.current * 0.6 : 0.01;
+      phaseRef.current += reelSpeed;
+
+      // Background
+      ctx.fillStyle = '#0b120e';
       ctx.fillRect(0, 0, width, height);
 
-      // Create gradient
-      const gradient = ctx.createLinearGradient(0, height, 0, 0);
-      gradient.addColorStop(0, '#90ee90');
-      gradient.addColorStop(0.6, '#e8a54b');
-      gradient.addColorStop(1, '#ff8c42');
+      // Inner window
+      ctx.fillStyle = '#101a14';
+      ctx.strokeStyle = '#3a5a3b';
+      ctx.lineWidth = 2;
+      const pad = 6;
+      const winH = height - 12;
+      const winW = width - 12;
+      ctx.fillRect(pad, pad, winW, winH);
+      ctx.strokeRect(pad + 1, pad + 1, winW - 2, winH - 2);
 
-      // Update and draw each bar
-      for (let i = 0; i < BAR_COUNT; i++) {
-        let targetHeight: number;
-
-        if (isPlaying) {
-          // Animated random heights when playing
-          const baseHeight = 0.3 + Math.sin(Date.now() / 200 + i * 0.5) * 0.2;
-          const randomness = Math.random() * 0.4;
-          targetHeight = baseHeight + randomness;
-        } else {
-          // Low static bars when paused
-          targetHeight = 0.1 + Math.sin(i * 0.8) * 0.05;
-        }
-
-        // Smooth transition
-        barsRef.current[i] += (targetHeight - barsRef.current[i]) * 0.15;
-
-        const barHeight = Math.max(barsRef.current[i] * height, 2);
-        const x = i * (barWidth + BAR_GAP);
-        const y = height - barHeight;
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, y, barWidth, barHeight);
+      // LED strip
+      const ledCount = 10;
+      const lit = Math.round(levelRef.current * ledCount);
+      const ledW = (winW - 18) / ledCount;
+      const ledY = pad + 6;
+      for (let i = 0; i < ledCount; i += 1) {
+        const x = pad + 9 + i * ledW;
+        ctx.fillStyle = i < lit ? '#b7ff71' : '#1f3a25';
+        ctx.fillRect(x, ledY, ledW - 2, 6);
       }
 
-      animationRef.current = requestAnimationFrame(draw);
+      // Tape band
+      ctx.fillStyle = '#1a2b20';
+      ctx.fillRect(pad + 6, pad + winH / 2 - 6, winW - 12, 12);
+
+      // Reels
+      const reelY = pad + winH / 2;
+      const reelXLeft = pad + winW * 0.28;
+      const reelXRight = pad + winW * 0.72;
+      const reelRadius = Math.min(winH * 0.28, 18);
+
+      const drawReel = (cx: number, cy: number, angle: number) => {
+        ctx.strokeStyle = '#6a8a50';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, reelRadius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, reelRadius * 0.4, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#8fb86a';
+        for (let i = 0; i < 3; i += 1) {
+          const spokeAngle = angle + (i * Math.PI * 2) / 3;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(
+            cx + Math.cos(spokeAngle) * reelRadius,
+            cy + Math.sin(spokeAngle) * reelRadius
+          );
+          ctx.stroke();
+        }
+      };
+
+      drawReel(reelXLeft, reelY, phaseRef.current);
+      drawReel(reelXRight, reelY, -phaseRef.current * 0.9);
+
+      // Subtle scanlines
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+      for (let y = 0; y < height; y += 4) {
+        ctx.fillRect(0, y, width, 1);
+      }
+
+      rafRef.current = requestAnimationFrame(draw);
     };
 
     draw();
 
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
       }
     };
-  }, [isPlaying, mounted]);
-
-  if (!mounted) {
-    return (
-      <div
-        className="w-full h-10 bg-mossy-bg-box border-2 border-mossy-bg-box-alt mb-2"
-        style={{ borderStyle: 'inset' }}
-      />
-    );
-  }
+  }, [isPlaying]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={200}
-      height={40}
-      className="w-full h-10 bg-mossy-bg-box border-2 border-mossy-bg-box-alt mb-2"
-      style={{ borderStyle: 'inset' }}
-    />
+    <div ref={containerRef} className="w-full">
+      <canvas ref={canvasRef} className="w-full block" />
+    </div>
   );
 }

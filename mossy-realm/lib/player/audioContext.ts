@@ -3,7 +3,8 @@
 // Shared audio context and analyser for visualization
 let audioContext: AudioContext | null = null;
 let analyser: AnalyserNode | null = null;
-let sourceConnected = false;
+let connectedElement: HTMLAudioElement | null = null;
+let sourceNode: MediaElementAudioSourceNode | null = null;
 
 export function getAudioContext(): AudioContext {
   if (!audioContext) {
@@ -24,15 +25,18 @@ export function getAnalyser(): AnalyserNode {
 }
 
 export function connectSource(mediaElement: HTMLAudioElement): void {
-  if (sourceConnected) return;
-  
   try {
     const ctx = getAudioContext();
-    const source = ctx.createMediaElementSource(mediaElement);
-    source.connect(getAnalyser());
-    sourceConnected = true;
+    if (connectedElement === mediaElement) return;
+    if (sourceNode) {
+      sourceNode.disconnect();
+    }
+    sourceNode = ctx.createMediaElementSource(mediaElement);
+    sourceNode.connect(getAnalyser());
+    connectedElement = mediaElement;
   } catch {
     // Source may already be connected
+    connectedElement = mediaElement;
   }
 }
 
@@ -53,4 +57,3 @@ export async function resumeAudioContext(): Promise<void> {
     await ctx.resume();
   }
 }
-

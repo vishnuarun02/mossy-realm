@@ -6,27 +6,23 @@ import RetroBox from '@/components/RetroBox';
 import { usePlayerStore } from '@/lib/player/store';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import { Visualizer } from './Visualizer';
-import { 
-  PlayIcon, 
-  PauseIcon, 
-  PrevIcon, 
-  NextIcon, 
-  VolumeHighIcon, 
+import {
+  PlayIcon,
+  PauseIcon,
+  PrevIcon,
+  NextIcon,
+  VolumeHighIcon,
   VolumeMutedIcon,
   StatusDot,
-  OpenIcon
+  OpenIcon,
 } from './PlayerIcons';
 
 /**
- * RealmRadioWidget - Homepage sidebar player
- * Design A (Winamp visualizer) + Design C (status dot)
- * 
- * Fits in 190px sidebar
+ * RealmRadioWidget - Homepage sidebar player (Cassette Deck)
  */
 export function RealmRadioWidget() {
-  // use static default for SSR, then hydrate with store value
   const [mounted, setMounted] = useState(false);
-  
+
   const {
     isPlaying,
     isMuted,
@@ -43,104 +39,66 @@ export function RealmRadioWidget() {
     setMounted(true);
   }, []);
 
-  // use featured track for SSR, current track after hydration
   const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
 
   return (
     <RetroBox title="-= realm radio =-">
-      <div 
-        className="text-center"
-        style={{
-          background: 'linear-gradient(180deg, var(--mossy-bg-box-alt) 0%, var(--mossy-bg-box) 100%)',
-          margin: '-12px',
-          padding: '12px',
-        }}
-      >
-        {/* Visualizer */}
-        <Visualizer />
+      <div className="cassette-shell p-2 relative">
+        <div className="absolute top-2 left-2 cassette-screw" />
+        <div className="absolute top-2 right-2 cassette-screw" />
+        <div className="absolute bottom-2 left-2 cassette-screw" />
+        <div className="absolute bottom-2 right-2 cassette-screw" />
 
-        {/* Track Info with Status Dot */}
-        <div className="mb-3">
-          <div className="flex items-center justify-center gap-2 text-mossy-text-muted text-xs uppercase tracking-wider">
+        <div className="flex items-center justify-between text-[0.7rem] uppercase tracking-wider text-mossy-text-muted mb-2">
+          <div className="flex items-center gap-2">
             <StatusDot isPlaying={mounted && isPlaying} />
             <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
           </div>
-          <div className="font-accent text-mossy-header text-base mt-1 truncate">
+          <div className="cassette-led" />
+        </div>
+
+        <div className="cassette-window p-2">
+          <Visualizer variant="compact" />
+        </div>
+
+        <div className="cassette-label mt-2 px-2 py-2 text-center">
+          <div className="font-accent text-mossy-header text-sm truncate">
             {track.title}
           </div>
         </div>
 
-        {/* Transport Controls */}
-        <div className="flex justify-center gap-2 mb-3">
+        <div className="grid grid-cols-4 gap-2 mt-2">
           <button
             onClick={prevTrack}
-            className="
-              w-9 h-9
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              text-xs
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
+            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
             aria-label="Previous track"
           >
             <PrevIcon />
           </button>
           <button
             onClick={togglePlay}
-            className="
-              w-9 h-9
-              bg-mossy-border
-              border-2 border-mossy-border-glow
-              text-mossy-bg-box
-              text-sm font-bold
-              hover:bg-mossy-border-glow
-              hover:shadow-[0_0_10px_var(--mossy-border-glow)]
-              transition-all
-              flex items-center justify-center
-            "
+            className="h-8 bg-mossy-border border-2 border-mossy-border-glow text-mossy-bg-box hover:bg-mossy-border-glow transition-colors flex items-center justify-center"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
           </button>
           <button
             onClick={nextTrack}
-            className="
-              w-9 h-9
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              text-xs
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
+            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
             aria-label="Next track"
           >
             <NextIcon />
           </button>
           <button
             onClick={toggleMute}
-            className="
-              w-9 h-9
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              text-xs
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
+            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
             aria-label={isMuted ? 'Unmute' : 'Mute'}
           >
             {isMuted ? <VolumeMutedIcon /> : <VolumeHighIcon />}
           </button>
         </div>
 
-        {/* Volume Slider */}
-        <div className="flex items-center gap-2 text-xs mb-3">
+        <div className="flex items-center gap-2 text-xs mt-2">
           <span className="text-mossy-text-muted font-nav">Vol</span>
           <input
             type="range"
@@ -148,31 +106,18 @@ export function RealmRadioWidget() {
             max="100"
             value={volume * 100}
             onChange={(e) => setVolume(Number(e.target.value) / 100)}
-            className="
-              flex-1 h-2
-              bg-mossy-bg-box
-              border-2 border-mossy-border
-              cursor-pointer
-              accent-mossy-border
-            "
-            style={{
-              WebkitAppearance: 'none',
-              appearance: 'none',
-            }}
+            className="flex-1 h-2 bg-mossy-bg-box border-2 border-mossy-border cursor-pointer accent-mossy-border"
           />
         </div>
 
-        {/* Open Player Link */}
-        <Link 
-          href="/player"
-          className="
-            text-xs font-nav
-            text-mossy-link hover:text-mossy-link-hover
-            inline-flex items-center gap-1
-          "
-        >
-          open player <OpenIcon />
-        </Link>
+        <div className="mt-2 text-center">
+          <Link
+            href="/player"
+            className="text-xs font-nav text-mossy-link hover:text-mossy-link-hover inline-flex items-center gap-1"
+          >
+            open player <OpenIcon />
+          </Link>
+        </div>
       </div>
     </RetroBox>
   );

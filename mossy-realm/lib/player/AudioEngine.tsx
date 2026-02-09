@@ -6,11 +6,13 @@ import {
   createHowl,
   getHowl,
   getCurrentTrackUrl,
+  getAudioElement,
   playGlobal,
   pauseGlobal,
   setVolumeGlobal,
   seekGlobal,
 } from './globalAudio';
+import { connectSource, resumeAudioContext } from './audioContext';
 
 /**
  * AudioEngine - Syncs React state with global audio singleton
@@ -109,6 +111,11 @@ export function AudioEngine() {
         },
       });
 
+      const audioElement = getAudioElement();
+      if (audioElement) {
+        connectSource(audioElement);
+      }
+
       // Auto-play if we should be playing
       if (wasPlaying) {
         setTimeout(() => playGlobal(), 100);
@@ -120,6 +127,7 @@ export function AudioEngine() {
   useEffect(() => {
     if (isPlaying) {
       playGlobal();
+      resumeAudioContext().catch(() => {});
       startRaf();
     } else {
       pauseGlobal();

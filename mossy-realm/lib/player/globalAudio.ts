@@ -16,6 +16,14 @@ export function getCurrentTrackUrl(): string | null {
   return currentTrackUrl;
 }
 
+export function getAudioElement(): HTMLAudioElement | null {
+  const howl = howlInstance as unknown as {
+    _sounds?: Array<{ _node?: unknown }>;
+  } | null;
+  const node = howl?._sounds?.[0]?._node;
+  return node instanceof HTMLAudioElement ? node : null;
+}
+
 export function createHowl(
   url: string,
   options: {
@@ -85,4 +93,3 @@ export function seekGlobal(): number {
 export function durationGlobal(): number {
   return howlInstance?.duration() ?? 0;
 }
-

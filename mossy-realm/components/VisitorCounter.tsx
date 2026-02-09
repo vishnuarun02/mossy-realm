@@ -4,32 +4,27 @@ import { useEffect, useState } from 'react';
 
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
-  const [hasIncremented, setHasIncremented] = useState(false);
 
   useEffect(() => {
-    // Check if we've already counted this session
-    const hasVisited = sessionStorage.getItem('mossyrealm_visited');
+    const loadCount = async () => {
+      try {
+        const res = await fetch('/api/visitors', { method: 'POST' });
+        const data = await res.json();
+        setCount(data.count ?? 0);
+      } catch {
+        try {
+          const res = await fetch('/api/visitors');
+          const data = await res.json();
+          setCount(data.count ?? 0);
+        } catch {
+          setCount(0);
+        }
+      }
+    };
 
-    if (!hasVisited && !hasIncremented) {
-      // First visit this session - increment counter
-      fetch('/api/visitors', { method: 'POST' })
-        .then((res) => res.json())
-        .then((data) => {
-          setCount(data.count);
-          sessionStorage.setItem('mossyrealm_visited', 'true');
-          setHasIncremented(true);
-        })
-        .catch(() => setCount(0));
-    } else {
-      // Already visited - just get count
-      fetch('/api/visitors')
-        .then((res) => res.json())
-        .then((data) => setCount(data.count))
-        .catch(() => setCount(0));
-    }
-  }, [hasIncremented]);
+    loadCount();
+  }, []);
 
-  // Format number with leading zeros for that retro vibe
   const formatCount = (num: number) => {
     return num.toString().padStart(6, '0');
   };
@@ -43,4 +38,3 @@ export default function VisitorCounter() {
     </span>
   );
 }
-
