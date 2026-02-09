@@ -14,7 +14,12 @@ Think of it like a Figma workspace - but in HTML files you can open in any brows
 design-kitchen/
 ├── DESIGN-JOURNAL.md         # 📓 Lessons learned, ideas, experiments log
 ├── nav-dropdown-variants.html # Navigation dropdown style explorations
+├── led-color-options.html    # LED color comparison for player
 ├── cabin-pages/              # Page designs for My Cabin section
+├── realm-radio-mocks/        # 🎵 Cassette player mockups
+│   ├── realm-radio-cassette-mock.html  # ✅ Chosen design
+│   ├── realm-radio-90s-mock.html
+│   └── realm-radio-90s-variations.html
 ├── github-profile/           # GitHub profile README designs
 │   └── pixel-readme.svg      # Pixel-art terminal style SVG
 ├── cursor-experiments/       # Custom cursor exploration
@@ -114,12 +119,26 @@ Located in `button-experiments/`:
 
 ## 🎵 Player Mockups
 
+Located in `realm-radio-mocks/`:
+
+| File | Description |
+|------|-------------|
+| `realm-radio-90s-mock.html` | 90s hardware aesthetic exploration |
+| `realm-radio-90s-variations.html` | Color/shape variations |
+| `realm-radio-cassette-mock.html` | ✅ Chosen cassette deck design |
+| `led-color-options.html` | LED color comparison (green, cyan, amber) |
+
 ### Explored Designs:
-- **Homepage Sidebar Widget** — Winamp-style visualizer + status dot
+- **Cassette Deck** ✅ — Hardware aesthetic with tape reels, LEDs, inset panels (chosen)
+- **Homepage Sidebar Widget** — Compact deck in sidebar
 - **Floating Mini Dock** — Compact panel for non-homepage routes
 - **Mobile Bottom Bar** — Sticky bar with expand button
 - **Mobile Expanded Sheet** — Full controls + playlist
 - **Full Player Page** — `/player` with visualizer and playlist
+
+### LED States:
+- **Corner LEDs** — Always green (power indicator)
+- **Status LEDs** — Amber pulsing when paused, static green when playing
 
 ---
 

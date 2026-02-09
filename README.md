@@ -107,6 +107,10 @@ This calls DeepSeek API to generate quirky micro-content items with old comic-bo
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
 | `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run TypeScript type checking |
+| `npm run test` | Run unit tests (Vitest) |
+| `npm run test:watch` | Run tests in watch mode |
 | `npm run update "msg"` | Add a new site update |
 | `npm run vault:generate` | Regenerate content vault via DeepSeek |
 
@@ -202,13 +206,18 @@ mossyrealm/
 │   ├── lib/
 │   │   ├── updates.ts            # Updates loader
 │   │   ├── vault.ts              # Vault loader + picker
+│   │   ├── visitors.ts           # Visitor ID derivation + hashing
 │   │   ├── buildDate.ts          # Commit date helper
 │   │   ├── tracks.ts             # Track types + API fetcher
 │   │   └── player/               # Audio engine + Zustand store
 │   │       ├── store.ts              # Player state (Zustand + persist)
 │   │       ├── AudioEngine.tsx       # Howler.js controller
 │   │       ├── globalAudio.ts        # Global Howl singleton
-│   │       └── audioContext.ts       # Web Audio API context
+│   │       └── audioContext.ts       # Web Audio API (Howler integration)
+│   ├── __tests__/                # Unit tests (Vitest)
+│   │   ├── vault.test.ts             # Weighted random picker tests
+│   │   ├── store.test.ts             # Player store tests
+│   │   └── visitors.test.ts          # Visitor ID tests
 │   ├── scripts/
 │   │   ├── new-update.ts         # Update generator
 │   │   └── generate-vault.ts     # Vault generator (DeepSeek)
@@ -236,15 +245,18 @@ mossyrealm/
 - Grain overlay for scanned-page feel
 - "Last updated" banner from git commit date
 - **Realm Radio** — Custom unified audio player
-  - Global audio engine (Howler.js) persists across navigation
+  - **Cassette deck design** with 90s hardware aesthetic (LEDs, tape reels, inset panels)
+  - Global audio engine (Howler.js + Web Audio API) persists across navigation
   - **Dynamic track loading** from R2 via `/api/tracks` (drop mp3s in bucket → auto-appear)
   - Supports `.mp3`, `.m4a`, `.wav`, `.ogg`, `.flac`, `.aac`
   - Full player page at `/player` with playlist and visualizer
   - Homepage sidebar widget (desktop)
   - Floating mini-dock on other routes (desktop)
   - Bottom bar/sheet on mobile
-  - Animated EQ visualizer (canvas-based)
+  - **Audio-synced visualizer** with spinning tape reels and LED level meter
   - Track state synced across all UI components
+- **Visitor counter** with 12h cooldown (IP/UA hash + Redis deduplication)
+- **Unit tests** with Vitest
 
 ## Design Tokens
 
