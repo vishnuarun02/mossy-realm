@@ -113,6 +113,8 @@ This calls DeepSeek API to generate quirky micro-content items with old comic-bo
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run update "msg"` | Add a new site update |
 | `npm run vault:generate` | Regenerate content vault via DeepSeek |
+| `npm run vault:dry-run` | Preview vault generation without saving |
+| `npm run vault:curate` | Curate/filter vault content |
 
 ## Deployment
 
