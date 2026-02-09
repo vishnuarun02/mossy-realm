@@ -64,18 +64,20 @@ export default function NavBar() {
 
   return (
     <>
-      <header className="site-header">
-        {/* Site Title with flanking GIFs */}
-        <div className="site-title flex items-center justify-center gap-2 md:gap-4">
-          {/* Hello tag - left of title */}
+      <header className="site-header relative">
+        {/* Frog - sitting on the top border, right side */}
+        <div className="absolute -top-[28px] right-[20px] hidden sm:block z-10">
           <Image 
-            src="/images/hellotags.gif" 
+            src="/images/frog-eats-fly.gif" 
             alt="" 
-            width={80} 
-            height={18}
-            className="hidden sm:block"
+            width={55} 
+            height={45}
             unoptimized
           />
+        </div>
+
+        {/* Site Title */}
+        <div className="site-title">
           <h1
             className="
               font-display
@@ -87,15 +89,6 @@ export default function NavBar() {
           >
             welcome to mossyrealm
           </h1>
-          {/* Frog - right of title */}
-          <Image 
-            src="/images/frog-eats-fly.gif" 
-            alt="" 
-            width={55} 
-            height={45}
-            className="hidden sm:block"
-            unoptimized
-          />
         </div>
 
         {/* Desktop Navigation - Inset Panel Style */}
