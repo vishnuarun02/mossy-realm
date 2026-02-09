@@ -1,4 +1,5 @@
 import RetroBox from "@/components/RetroBox";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function ExperimentsPage() {
   return (
@@ -10,22 +11,13 @@ export default function ExperimentsPage() {
           </p>
           <p className="text-mossy-text">
             Half-baked ideas, prototypes, and things that might break.
-            Where I tinker before things become real.
-          </p>
-          <p className="text-mossy-text-muted text-sm italic">
-            proceed with curiosity
           </p>
         </div>
 
         <div className="border-t-2 border-mossy-border my-6"></div>
 
-        <div className="space-y-4 text-center">
-          <p className="text-mossy-text-muted">
-            experiments loading...
-          </p>
-        </div>
+        <UnderConstruction />
       </RetroBox>
     </div>
   );
 }
-

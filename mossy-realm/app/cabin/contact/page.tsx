@@ -1,4 +1,5 @@
 import RetroBox from "@/components/RetroBox";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function ContactPage() {
   return (
@@ -15,13 +16,8 @@ export default function ContactPage() {
 
         <div className="border-t-2 border-mossy-border my-6"></div>
 
-        <div className="space-y-4 text-center">
-          <p className="text-mossy-text-muted">
-            contact details loading...
-          </p>
-        </div>
+        <UnderConstruction />
       </RetroBox>
     </div>
   );
 }
-

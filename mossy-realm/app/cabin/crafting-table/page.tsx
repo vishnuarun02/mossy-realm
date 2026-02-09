@@ -1,4 +1,5 @@
 import RetroBox from "@/components/RetroBox";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function CraftingTablePage() {
   return (
@@ -10,22 +11,13 @@ export default function CraftingTablePage() {
           </p>
           <p className="text-mossy-text">
             A curated collection of things I&apos;ve built and shipped.
-            The highlights reel without the fluff.
-          </p>
-          <p className="text-mossy-text-muted text-sm italic">
-            resume-lite, portfolio-adjacent
           </p>
         </div>
 
         <div className="border-t-2 border-mossy-border my-6"></div>
 
-        <div className="space-y-4 text-center">
-          <p className="text-mossy-text-muted">
-            crafting in progress...
-          </p>
-        </div>
+        <UnderConstruction />
       </RetroBox>
     </div>
   );
 }
-

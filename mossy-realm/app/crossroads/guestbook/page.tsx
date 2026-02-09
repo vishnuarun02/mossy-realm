@@ -1,4 +1,5 @@
 import RetroBox from "@/components/RetroBox";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function GuestbookPage() {
   return (
@@ -6,26 +7,17 @@ export default function GuestbookPage() {
       <RetroBox title="{ guestbook }" variant="alt">
         <div className="text-center space-y-4">
           <p className="font-accent text-mossy-header text-lg">
-            ~ leave a mark on the moss ~
+            ~ leave your mark ~
           </p>
           <p className="text-mossy-text">
-            A classic guestbook for visitors to sign.
-            Say hi, leave a note, or just let me know you were here.
-          </p>
-          <p className="text-mossy-text-muted text-sm italic">
-            the most 90s feature of them all
+            Sign in, say hi, let me know you were here.
           </p>
         </div>
 
         <div className="border-t-2 border-mossy-border my-6"></div>
 
-        <div className="space-y-4 text-center">
-          <p className="text-mossy-text-muted">
-            guestbook widget coming soon...
-          </p>
-        </div>
+        <UnderConstruction />
       </RetroBox>
     </div>
   );
 }
-

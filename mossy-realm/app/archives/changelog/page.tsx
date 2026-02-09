@@ -1,4 +1,5 @@
 import RetroBox from "@/components/RetroBox";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function ChangelogPage() {
   return (
@@ -9,22 +10,14 @@ export default function ChangelogPage() {
             ~ what changed and when ~
           </p>
           <p className="text-mossy-text">
-            A log of updates, fixes, and new additions to MossyRealm.
-          </p>
-          <p className="text-mossy-text-muted text-sm italic">
-            for the curious and the completionists
+            A log of updates, fixes, and new additions.
           </p>
         </div>
 
         <div className="border-t-2 border-mossy-border my-6"></div>
 
-        <div className="space-y-4 text-center">
-          <p className="text-mossy-text-muted">
-            changelog loading...
-          </p>
-        </div>
+        <UnderConstruction />
       </RetroBox>
     </div>
   );
 }
-
