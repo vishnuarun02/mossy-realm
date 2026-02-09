@@ -16,26 +16,6 @@ export function getCurrentTrackUrl(): string | null {
   return currentTrackUrl;
 }
 
-/**
- * Get the underlying HTMLAudioElement from Howler for Web Audio API integration.
- * 
- * ⚠️ WARNING: This accesses Howler's private `_sounds` array which is not part
- * of the public API. This could break on Howler updates. If this stops working,
- * consider:
- * 1. Using Howler's official Web Audio API mode (requires more setup)
- * 2. Creating our own Audio element and syncing with Howler
- * 3. Checking if Howler has added a public API for this
- * 
- * @see https://github.com/goldfire/howler.js/issues/1082 for discussion
- */
-export function getAudioElement(): HTMLAudioElement | null {
-  const howl = howlInstance as unknown as {
-    _sounds?: Array<{ _node?: unknown }>;
-  } | null;
-  const node = howl?._sounds?.[0]?._node;
-  return node instanceof HTMLAudioElement ? node : null;
-}
-
 export function createHowl(
   url: string,
   options: {
@@ -57,9 +37,13 @@ export function createHowl(
   }
 
   currentTrackUrl = url;
+  
+  // Use Web Audio API mode (html5: false) for proper CORS handling
+  // This allows the visualizer to analyze audio without CORS issues
+  // Note: Web Audio mode buffers the entire file, so longer tracks may have a delay
   howlInstance = new Howl({
     src: [url],
-    html5: true,
+    html5: false,  // Use Web Audio API mode for visualizer compatibility
     volume: options.volume,
     onload: options.onload,
     onend: options.onend,

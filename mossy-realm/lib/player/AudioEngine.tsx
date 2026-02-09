@@ -6,13 +6,12 @@ import {
   createHowl,
   getHowl,
   getCurrentTrackUrl,
-  // getAudioElement,  // TODO: Re-enable with connectSource once CORS is set up on R2
   playGlobal,
   pauseGlobal,
   setVolumeGlobal,
   seekGlobal,
 } from './globalAudio';
-import { /* connectSource, */ resumeAudioContext } from './audioContext';
+import { connectToHowler, resumeAudioContext } from './audioContext';
 
 /**
  * AudioEngine - Syncs React state with global audio singleton
@@ -99,12 +98,8 @@ export function AudioEngine() {
           if (howl) {
             setDuration(howl.duration());
           }
-          // TODO: Re-enable once CORS headers are set on R2 audio files
-          // Connecting to Web Audio API without CORS causes audio to be muted
-          // const audioElement = getAudioElement();
-          // if (audioElement) {
-          //   connectSource(audioElement);
-          // }
+          // Connect analyser to Howler's audio graph for visualizer
+          connectToHowler();
         },
         onend: () => {
           nextTrack();

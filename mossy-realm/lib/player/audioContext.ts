@@ -1,63 +1,55 @@
 'use client';
 
-// Shared audio context and analyser for visualization
-let audioContext: AudioContext | null = null;
+import { Howler } from 'howler';
+
+// Analyser node for visualization - connects to Howler's Web Audio graph
 let analyser: AnalyserNode | null = null;
-let connectedElement: HTMLAudioElement | null = null;
-let sourceNode: MediaElementAudioSourceNode | null = null;
+let isConnected = false;
 
-export function getAudioContext(): AudioContext {
-  if (!audioContext) {
-    audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-  }
-  return audioContext;
-}
-
+/**
+ * Get or create the analyser node connected to Howler's audio graph.
+ * Uses Howler's built-in Web Audio context for seamless integration.
+ */
 export function getAnalyser(): AnalyserNode {
+  // Howler.ctx is the AudioContext used by Howler in Web Audio mode
+  const ctx = Howler.ctx;
+  if (!ctx) {
+    // Fallback: create a dummy analyser if Howler isn't ready
+    const fallbackCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    const fallbackAnalyser = fallbackCtx.createAnalyser();
+    fallbackAnalyser.fftSize = 64;
+    return fallbackAnalyser;
+  }
+
   if (!analyser) {
-    const ctx = getAudioContext();
     analyser = ctx.createAnalyser();
     analyser.fftSize = 64;
     analyser.smoothingTimeConstant = 0.8;
-    analyser.connect(ctx.destination);
   }
+
+  // Connect analyser to Howler's master gain if not already connected
+  if (!isConnected && Howler.masterGain) {
+    try {
+      // Insert analyser between master gain and destination
+      Howler.masterGain.disconnect();
+      Howler.masterGain.connect(analyser);
+      analyser.connect(ctx.destination);
+      isConnected = true;
+    } catch {
+      // May fail if already connected differently
+      analyser.connect(ctx.destination);
+    }
+  }
+
   return analyser;
 }
 
 /**
- * Connect an audio element to the Web Audio API for visualization.
- * 
- * ⚠️ NOTE: This requires CORS headers on the audio files. If CORS isn't set up,
- * the audio will be muted when routed through Web Audio API. To fix this:
- * 1. Add CORS headers to your R2 bucket: Access-Control-Allow-Origin: *
- * 2. Or set crossOrigin="anonymous" on the audio element
- * 
- * If connection fails, audio will play but visualizer won't have real data.
+ * Ensure analyser is connected to Howler's audio graph.
+ * Call this after audio starts playing.
  */
-export function connectSource(mediaElement: HTMLAudioElement): boolean {
-  try {
-    const ctx = getAudioContext();
-    if (connectedElement === mediaElement) return true;
-    
-    // Set crossOrigin to enable CORS - required for Web Audio API analysis
-    // This must be set BEFORE the audio starts loading
-    if (!mediaElement.crossOrigin) {
-      console.warn('[AudioContext] Audio element missing crossOrigin attribute. Visualizer may not work.');
-    }
-    
-    if (sourceNode) {
-      sourceNode.disconnect();
-    }
-    sourceNode = ctx.createMediaElementSource(mediaElement);
-    sourceNode.connect(getAnalyser());
-    connectedElement = mediaElement;
-    return true;
-  } catch (error) {
-    // Source may already be connected or CORS blocked
-    console.warn('[AudioContext] Failed to connect source:', error);
-    connectedElement = mediaElement;
-    return false;
-  }
+export function connectToHowler(): void {
+  getAnalyser(); // This will set up the connection
 }
 
 export function getFrequencyData(): Uint8Array {
@@ -68,12 +60,12 @@ export function getFrequencyData(): Uint8Array {
 }
 
 export function isAudioContextReady(): boolean {
-  return audioContext !== null && audioContext.state === 'running';
+  return Howler.ctx !== null && Howler.ctx?.state === 'running';
 }
 
 export async function resumeAudioContext(): Promise<void> {
-  const ctx = getAudioContext();
-  if (ctx.state === 'suspended') {
+  const ctx = Howler.ctx;
+  if (ctx && ctx.state === 'suspended') {
     await ctx.resume();
   }
 }
