@@ -49,9 +49,9 @@ export function RealmRadioWidget() {
         <div className="absolute bottom-2 right-2 cassette-led-amber" />
 
         <div className="flex items-center justify-center gap-2 text-[0.62rem] uppercase tracking-wider text-mossy-text-muted mb-2">
-          <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
+          <span className={mounted && isPlaying ? 'cassette-led-cyan cassette-led-blink' : 'cassette-led-amber'} />
           <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
-          <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
+          <span className={mounted && isPlaying ? 'cassette-led-cyan cassette-led-blink' : 'cassette-led-amber'} />
         </div>
 
         <div className="cassette-window p-2">

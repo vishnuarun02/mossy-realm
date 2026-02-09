@@ -594,13 +594,11 @@ input[type="range"]::-moz-range-thumb:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.08) 0,
-    rgba(0, 0, 0, 0.08) 1px,
-    transparent 1px,
-    transparent 4px
-  );
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.08) 0,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px,
+      transparent 4px);
   pointer-events: none;
 }
 
@@ -619,6 +617,13 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .cassette-led {
+  width: 7px;
+  height: 7px;
+  background: #b7ff71;
+  box-shadow: 0 0 8px rgba(183, 255, 113, 0.7);
+}
+
+.cassette-led-cyan {
   width: 7px;
   height: 7px;
   background: #00ffff;
