@@ -6,13 +6,13 @@ import {
   createHowl,
   getHowl,
   getCurrentTrackUrl,
-  getAudioElement,
+  // getAudioElement,  // TODO: Re-enable with connectSource once CORS is set up on R2
   playGlobal,
   pauseGlobal,
   setVolumeGlobal,
   seekGlobal,
 } from './globalAudio';
-import { connectSource, resumeAudioContext } from './audioContext';
+import { /* connectSource, */ resumeAudioContext } from './audioContext';
 
 /**
  * AudioEngine - Syncs React state with global audio singleton
