@@ -65,8 +65,8 @@ export default function NavBar() {
   return (
     <>
       <header className="site-header relative">
-        {/* Frog - sitting on the top border, right side */}
-        <div className="absolute -top-[28px] right-[20px] hidden sm:block z-10">
+        {/* Frog - top right corner inside the frame */}
+        <div className="absolute top-[8px] right-[8px] hidden sm:block z-10">
           <Image 
             src="/images/frog-eats-fly.gif" 
             alt="" 
