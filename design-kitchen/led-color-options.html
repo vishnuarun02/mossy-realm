@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Color Options - 90s Cassette Player</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #1a2a22;
+            font-family: 'Courier New', monospace;
+            padding: 40px;
+            color: #c4d4bc;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #e8a54b;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .options {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            background: linear-gradient(180deg, #2d3f31 0%, #233328 100%);
+            border: 3px solid #5a7a5a;
+            padding: 20px;
+            width: 280px;
+        }
+
+        .option h2 {
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #e8a54b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .state-label {
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #8a9a82;
+        }
+
+        .cassette-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            background: #1a2a20;
+            border: 2px inset #35563d;
+            margin-bottom: 15px;
+        }
+
+        .status-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a9a82;
+        }
+
+        /* Base LED style */
+        .led {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Amber LED (paused state) */
+        .led-amber {
+            background: #f0b15a;
+            box-shadow: 0 0 8px rgba(240, 177, 90, 0.7);
+        }
+
+        /* Option 1: Cyan/Teal (90s tech, LCD display vibes) */
+        .led-cyan {
+            background: #00ffff;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+            animation: blink-cyan 1.1s ease-in-out infinite;
+        }
+
+        @keyframes blink-cyan {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+            }
+
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+            }
+        }
+
+        /* Option 2: Hot Pink/Magenta (90s neon, Saved by the Bell vibes) */
+        .led-pink {
+            background: #ff1493;
+            box-shadow: 0 0 12px rgba(255, 20, 147, 0.8);
+            animation: blink-pink 1.1s ease-in-out infinite;
+        }
+
+        @keyframes blink-pink {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 12px rgba(255, 20, 147, 0.8);
+            }
+
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 6px rgba(255, 20, 147, 0.4);
+            }
+        }
+
+        /* Option 3: Red (classic hardware "active/recording" indicator) */
+        .led-red {
+            background: #ff3333;
+            box-shadow: 0 0 12px rgba(255, 51, 51, 0.8);
+            animation: blink-red 1.1s ease-in-out infinite;
+        }
+
+        @keyframes blink-red {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 12px rgba(255, 51, 51, 0.8);
+            }
+
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 6px rgba(255, 51, 51, 0.4);
+            }
+        }
+
+        .description {
+            font-size: 0.7rem;
+            color: #6a8a62;
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        /* Corner LEDs for cassette */
+        .cassette-box {
+            position: relative;
+            background: linear-gradient(180deg, #2d3f31 0%, #233328 100%);
+            border: 2px solid #5a7a5a;
+            padding: 30px 15px 15px;
+            margin-top: 20px;
+        }
+
+        .corner-led {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+
+        .corner-led.top-left {
+            top: 8px;
+            left: 8px;
+        }
+
+        .corner-led.top-right {
+            top: 8px;
+            right: 8px;
+        }
+
+        .corner-led.bottom-left {
+            bottom: 8px;
+            left: 8px;
+        }
+
+        .corner-led.bottom-right {
+            bottom: 8px;
+            right: 8px;
+        }
+
+        .tape-window {
+            background: #0b120e;
+            border: 2px inset #35563d;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a6a42;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎛️ LED Color Options for "Playing" State</h1>
+
+    <div class="options">
+        <!-- Option 1: Cyan -->
+        <div class="option">
+            <h2>Option 1: Cyan</h2>
+
+            <div class="state-label">⏸ Paused State</div>
+            <div class="cassette-row">
+                <div class="led led-amber"></div>
+                <span class="status-text">paused</span>
+                <div class="led led-amber"></div>
+            </div>
+
+            <div class="state-label">▶ Playing State</div>
+            <div class="cassette-row">
+                <div class="led led-cyan"></div>
+                <span class="status-text">listening</span>
+                <div class="led led-cyan"></div>
+            </div>
+
+            <div class="cassette-box">
+                <div class="corner-led top-left led led-cyan"></div>
+                <div class="corner-led top-right led led-cyan"></div>
+                <div class="corner-led bottom-left led led-amber"></div>
+                <div class="corner-led bottom-right led led-amber"></div>
+                <div class="tape-window">[ TAPE WINDOW ]</div>
+            </div>
+
+            <p class="description">
+                90s tech vibes • LCD display aesthetic<br>
+                Reminds of old Walkmans & CD players
+            </p>
+        </div>
+
+        <!-- Option 2: Hot Pink -->
+        <div class="option">
+            <h2>Option 2: Hot Pink</h2>
+
+            <div class="state-label">⏸ Paused State</div>
+            <div class="cassette-row">
+                <div class="led led-amber"></div>
+                <span class="status-text">paused</span>
+                <div class="led led-amber"></div>
+            </div>
+
+            <div class="state-label">▶ Playing State</div>
+            <div class="cassette-row">
+                <div class="led led-pink"></div>
+                <span class="status-text">listening</span>
+                <div class="led led-pink"></div>
+            </div>
+
+            <div class="cassette-box">
+                <div class="corner-led top-left led led-pink"></div>
+                <div class="corner-led top-right led led-pink"></div>
+                <div class="corner-led bottom-left led led-amber"></div>
+                <div class="corner-led bottom-right led led-amber"></div>
+                <div class="tape-window">[ TAPE WINDOW ]</div>
+            </div>
+
+            <p class="description">
+                90s neon aesthetic • Saved by the Bell<br>
+                Bold contrast with forest green
+            </p>
+        </div>
+
+        <!-- Option 3: Red -->
+        <div class="option">
+            <h2>Option 3: Red</h2>
+
+            <div class="state-label">⏸ Paused State</div>
+            <div class="cassette-row">
+                <div class="led led-amber"></div>
+                <span class="status-text">paused</span>
+                <div class="led led-amber"></div>
+            </div>
+
+            <div class="state-label">▶ Playing State</div>
+            <div class="cassette-row">
+                <div class="led led-red"></div>
+                <span class="status-text">listening</span>
+                <div class="led led-red"></div>
+            </div>
+
+            <div class="cassette-box">
+                <div class="corner-led top-left led led-red"></div>
+                <div class="corner-led top-right led led-red"></div>
+                <div class="corner-led bottom-left led led-amber"></div>
+                <div class="corner-led bottom-right led led-amber"></div>
+                <div class="tape-window">[ TAPE WINDOW ]</div>
+            </div>
+
+            <p class="description">
+                Classic hardware "recording" indicator<br>
+                VCR / tape deck authenticity
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -621,8 +621,8 @@ input[type="range"]::-moz-range-thumb:hover {
 .cassette-led {
   width: 7px;
   height: 7px;
-  background: #b7ff71;
-  box-shadow: 0 0 8px rgba(183, 255, 113, 0.7);
+  background: #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
 }
 
 .cassette-led-amber {
