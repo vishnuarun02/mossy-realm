@@ -623,13 +623,6 @@ input[type="range"]::-moz-range-thumb:hover {
   box-shadow: 0 0 8px rgba(183, 255, 113, 0.7);
 }
 
-.cassette-led-cyan {
-  width: 7px;
-  height: 7px;
-  background: #00ffff;
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
-}
-
 .cassette-led-amber {
   width: 7px;
   height: 7px;
