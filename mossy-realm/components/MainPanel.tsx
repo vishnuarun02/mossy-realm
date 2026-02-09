@@ -68,10 +68,10 @@ export default function MainPanel() {
             current status:
           </p>
           <p className="text-mossy-header font-body">
-            realm keeper * <span className="text-mossy-text-muted">just now</span>
+            status: deep work
           </p>
           <p className="text-mossy-text font-body">
-            feeling bright today! ~ working on making this place cozy~
+            quiet notes, careful edits, steady progress
           </p>
         </div>
 

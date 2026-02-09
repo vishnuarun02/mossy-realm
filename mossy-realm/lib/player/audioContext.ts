@@ -4,6 +4,8 @@ import { Howler } from 'howler';
 
 // Analyser node for visualization - connects to Howler's Web Audio graph
 let analyser: AnalyserNode | null = null;
+let fallbackCtx: AudioContext | null = null;
+let fallbackAnalyser: AnalyserNode | null = null;
 let isConnected = false;
 
 /**
@@ -14,10 +16,14 @@ export function getAnalyser(): AnalyserNode {
   // Howler.ctx is the AudioContext used by Howler in Web Audio mode
   const ctx = Howler.ctx;
   if (!ctx) {
-    // Fallback: create a dummy analyser if Howler isn't ready
-    const fallbackCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-    const fallbackAnalyser = fallbackCtx.createAnalyser();
-    fallbackAnalyser.fftSize = 64;
+    // Fallback: reuse a single analyser if Howler isn't ready
+    if (!fallbackCtx) {
+      fallbackCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    }
+    if (!fallbackAnalyser) {
+      fallbackAnalyser = fallbackCtx.createAnalyser();
+      fallbackAnalyser.fftSize = 64;
+    }
     return fallbackAnalyser;
   }
 

@@ -56,7 +56,7 @@ function parseTimestamp(timestamp: string): { date: Date; formattedDate: string;
   // Format time as "1:05pm"
   const ampm = hour >= 12 ? 'pm' : 'am';
   const hour12 = hour % 12 || 12;
-  const formattedTime = `${hour12}:${minuteStr}${ampm}`;
+  const formattedTime = `${hour12}:${minuteStr} ${ampm}`;
 
   return { date, formattedDate, formattedTime };
 }

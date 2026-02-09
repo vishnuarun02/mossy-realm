@@ -1,5 +1,6 @@
 import RetroBox from './RetroBox';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NatureFactWidget } from './VaultWidgets';
 import { RealmRadioWidget } from './player';
 
@@ -75,18 +76,33 @@ export default function SidebarRight() {
         </div>
       </RetroBox>
 
-      {/* Web Badges placeholder */}
+      {/* Web Badges */}
       <RetroBox title="[ badges ]">
         <div className="flex flex-wrap gap-2 justify-center">
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 1]
-          </div>
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 2]
-          </div>
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 3]
-          </div>
+          <Image
+            src="/images/badges/license-pd-88x31.png"
+            alt="Public Domain"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
+          <Image
+            src="/images/badges/license-copyleft-88x31.png"
+            alt="Copyleft"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
+          <Image
+            src="/images/badges/license-copyright-88x31.png"
+            alt="Copyright"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
         </div>
       </RetroBox>
 

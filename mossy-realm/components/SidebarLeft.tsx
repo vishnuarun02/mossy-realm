@@ -28,6 +28,19 @@ export default function SidebarLeft() {
       {/* Question of the Day - now powered by vault */}
       <QuestionOfDayWidget />
 
+      {/* Now Reading / Now Learning */}
+      <RetroBox title="[ now reading ]">
+        <div className="text-sm font-body space-y-2">
+          <p className="text-mossy-text">
+            <span className="text-mossy-text-muted">now reading:</span>{' '}
+            <span className="text-mossy-header">Is This Anything?</span> — Jerry Seinfeld
+          </p>
+          <p className="text-mossy-text-muted">
+            now learning: note-taking systems
+          </p>
+        </div>
+      </RetroBox>
+
       {/* Little decoration box */}
       <RetroBox title="< realm guardian >">
         <div className="text-center">
@@ -54,6 +67,9 @@ export default function SidebarLeft() {
           <h3 className="text-mossy-header font-bold mb-1 font-heading">
             Audio Player Refactor
           </h3>
+          <p className="text-mossy-text-muted text-[0.7rem] uppercase tracking-wider mb-1 font-heading">
+            topic: audio systems
+          </p>
           <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
             February 5th, 2026
           </p>
