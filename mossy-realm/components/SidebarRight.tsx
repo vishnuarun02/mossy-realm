@@ -80,24 +80,24 @@ export default function SidebarRight() {
       <RetroBox title="[ badges ]">
         <div className="flex flex-wrap gap-2 justify-center">
           <Image
-            src="/images/badges/license-pd-88x31.png"
-            alt="Public Domain"
+            src="/images/badges/valid-html401.png"
+            alt="Valid HTML 4.01"
             width={88}
             height={31}
             className="border border-mossy-border"
             unoptimized
           />
           <Image
-            src="/images/badges/license-copyleft-88x31.png"
-            alt="Copyleft"
+            src="/images/badges/valid-css.png"
+            alt="Valid CSS"
             width={88}
             height={31}
             className="border border-mossy-border"
             unoptimized
           />
           <Image
-            src="/images/badges/license-copyright-88x31.png"
-            alt="Copyright"
+            src="/images/badges/valid-xhtml11.png"
+            alt="Valid XHTML 1.1"
             width={88}
             height={31}
             className="border border-mossy-border"

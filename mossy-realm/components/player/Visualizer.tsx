@@ -69,9 +69,14 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
       ctx.clearRect(0, 0, width, height);
 
       const data = getFrequencyData();
+      let peak = 0;
+      for (let i = 0; i < data.length; i += 1) {
+        if (data[i] > peak) peak = data[i];
+      }
       const avg = average(data);
-      const level = clamp(avg / 255, 0, 1);
-      levelRef.current += (level - levelRef.current) * 0.18;
+      const rawLevel = (avg * 0.6 + peak * 0.4) / 255;
+      const level = clamp(Math.pow(rawLevel * 1.8, 0.65), 0, 1);
+      levelRef.current += (level - levelRef.current) * 0.25;
 
       const reelSpeed = isPlaying ? 0.08 + levelRef.current * 0.6 : 0.01;
       phaseRef.current += reelSpeed;
@@ -92,12 +97,23 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
 
       // LED strip
       const ledCount = 10;
-      const lit = Math.round(levelRef.current * ledCount);
+      const lit = Math.max(1, Math.round(levelRef.current * ledCount));
       const ledW = (winW - 18) / ledCount;
       const ledY = pad + 6;
       for (let i = 0; i < ledCount; i += 1) {
         const x = pad + 9 + i * ledW;
-        ctx.fillStyle = i < lit ? '#b7ff71' : '#1f3a25';
+        if (i < lit) {
+          const ratio = i / (ledCount - 1);
+          if (ratio > 0.75) {
+            ctx.fillStyle = '#f0b15a';
+          } else if (ratio > 0.45) {
+            ctx.fillStyle = '#cfe97c';
+          } else {
+            ctx.fillStyle = '#b7ff71';
+          }
+        } else {
+          ctx.fillStyle = '#1f3a25';
+        }
         ctx.fillRect(x, ledY, ledW - 2, 6);
       }
 
