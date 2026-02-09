@@ -20,11 +20,12 @@ import {
  */
 export function AudioEngine() {
   const rafRef = useRef<number | null>(null);
-  const lastTrackUrlRef = useRef<string | null>(null);
 
   const {
     tracks,
     tracksLoaded,
+    tracksLoading,
+    nextRetryAt,
     loadTracks,
     isPlaying,
     isMuted,
@@ -42,19 +43,44 @@ export function AudioEngine() {
     }
   }, [tracksLoaded, loadTracks]);
 
+  // Retry track loading after backoff
+  useEffect(() => {
+    if (tracksLoaded || tracksLoading || !nextRetryAt) return;
+    const delay = Math.max(0, nextRetryAt - Date.now());
+    const timeoutId = setTimeout(() => {
+      loadTracks(true);
+    }, delay);
+    return () => clearTimeout(timeoutId);
+  }, [tracksLoaded, tracksLoading, nextRetryAt, loadTracks]);
+
   // Get current track URL from store tracks
   const currentTrack = tracks.find((t) => t.id === currentTrackId);
   const trackUrl = currentTrack?.url || '';
 
   // Update playback position
-  const updateTime = useCallback(() => {
+  const updateTime = useCallback(function tick() {
     const seek = seekGlobal();
     setCurrentTime(seek);
 
     if (getHowl()?.playing()) {
-      rafRef.current = requestAnimationFrame(updateTime);
+      rafRef.current = requestAnimationFrame(tick);
+    } else {
+      rafRef.current = null;
     }
   }, [setCurrentTime]);
+
+  const startRaf = useCallback(() => {
+    if (rafRef.current === null) {
+      rafRef.current = requestAnimationFrame(updateTime);
+    }
+  }, [updateTime]);
+
+  const stopRaf = useCallback(() => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+  }, []);
 
   // Initialize or switch tracks
   useEffect(() => {
@@ -76,36 +102,30 @@ export function AudioEngine() {
           nextTrack();
         },
         onplay: () => {
-          rafRef.current = requestAnimationFrame(updateTime);
+          startRaf();
         },
         onpause: () => {
-          if (rafRef.current) {
-            cancelAnimationFrame(rafRef.current);
-          }
+          stopRaf();
         },
       });
-
-      lastTrackUrlRef.current = trackUrl;
 
       // Auto-play if we should be playing
       if (wasPlaying) {
         setTimeout(() => playGlobal(), 100);
       }
     }
-  }, [trackUrl, isMuted, volume, isPlaying, setDuration, nextTrack, updateTime]);
+  }, [trackUrl, isMuted, volume, isPlaying, setDuration, nextTrack, startRaf, stopRaf]);
 
   // Sync play/pause state
   useEffect(() => {
     if (isPlaying) {
       playGlobal();
-      rafRef.current = requestAnimationFrame(updateTime);
+      startRaf();
     } else {
       pauseGlobal();
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      stopRaf();
     }
-  }, [isPlaying, updateTime]);
+  }, [isPlaying, startRaf, stopRaf]);
 
   // Sync volume
   useEffect(() => {
@@ -115,11 +135,9 @@ export function AudioEngine() {
   // Cleanup RAF on unmount (but NOT the Howl instance!)
   useEffect(() => {
     return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      stopRaf();
     };
-  }, []);
+  }, [stopRaf]);
 
   return null;
 }

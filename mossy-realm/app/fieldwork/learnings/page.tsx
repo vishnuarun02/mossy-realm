@@ -1,3 +1,4 @@
+import Image from "next/image";
 import RetroBox from "@/components/RetroBox";
 
 export default function LearningsPage() {
@@ -165,10 +166,13 @@ export default function LearningsPage() {
 
                 {/* Diagram */}
                 <div className="my-4 border-2 border-mossy-border bg-mossy-bg-box p-2">
-                  <img
+                  <Image
                     src="/images/blog/site-wiring-diagram.png"
                     alt="Site wiring diagram showing Hostinger, Cloudflare, Vercel, and R2 connections"
-                    className="w-full"
+                    width={1200}
+                    height={700}
+                    className="w-full h-auto"
+                    sizes="100vw"
                   />
                 </div>
 
@@ -428,4 +432,3 @@ export default function LearningsPage() {
     </div>
   );
 }
-

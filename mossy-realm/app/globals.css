@@ -566,15 +566,6 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 /* ============================================ */
-/* WEBAMP STYLES                                */
-/* ============================================ */
-
-/* Ensure Webamp renders above other content but below grain overlay */
-#webamp {
-  z-index: 100 !important;
-}
-
-/* ============================================ */
 /* NAVIGATION — INSET PANEL STYLE               */
 /* Desktop: hover reveals inset dropdown        */
 /* Mobile: tap accordion with subtle caret      */
