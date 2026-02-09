@@ -24,19 +24,39 @@ export function getAnalyser(): AnalyserNode {
   return analyser;
 }
 
-export function connectSource(mediaElement: HTMLAudioElement): void {
+/**
+ * Connect an audio element to the Web Audio API for visualization.
+ * 
+ * ⚠️ NOTE: This requires CORS headers on the audio files. If CORS isn't set up,
+ * the audio will be muted when routed through Web Audio API. To fix this:
+ * 1. Add CORS headers to your R2 bucket: Access-Control-Allow-Origin: *
+ * 2. Or set crossOrigin="anonymous" on the audio element
+ * 
+ * If connection fails, audio will play but visualizer won't have real data.
+ */
+export function connectSource(mediaElement: HTMLAudioElement): boolean {
   try {
     const ctx = getAudioContext();
-    if (connectedElement === mediaElement) return;
+    if (connectedElement === mediaElement) return true;
+    
+    // Set crossOrigin to enable CORS - required for Web Audio API analysis
+    // This must be set BEFORE the audio starts loading
+    if (!mediaElement.crossOrigin) {
+      console.warn('[AudioContext] Audio element missing crossOrigin attribute. Visualizer may not work.');
+    }
+    
     if (sourceNode) {
       sourceNode.disconnect();
     }
     sourceNode = ctx.createMediaElementSource(mediaElement);
     sourceNode.connect(getAnalyser());
     connectedElement = mediaElement;
-  } catch {
-    // Source may already be connected
+    return true;
+  } catch (error) {
+    // Source may already be connected or CORS blocked
+    console.warn('[AudioContext] Failed to connect source:', error);
     connectedElement = mediaElement;
+    return false;
   }
 }
 

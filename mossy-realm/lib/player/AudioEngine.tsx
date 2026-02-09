@@ -99,11 +99,12 @@ export function AudioEngine() {
           if (howl) {
             setDuration(howl.duration());
           }
-          // Connect to audio context for visualizer after audio element is ready
-          const audioElement = getAudioElement();
-          if (audioElement) {
-            connectSource(audioElement);
-          }
+          // TODO: Re-enable once CORS headers are set on R2 audio files
+          // Connecting to Web Audio API without CORS causes audio to be muted
+          // const audioElement = getAudioElement();
+          // if (audioElement) {
+          //   connectSource(audioElement);
+          // }
         },
         onend: () => {
           nextTrack();
