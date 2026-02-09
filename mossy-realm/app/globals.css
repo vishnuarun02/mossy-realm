@@ -556,12 +556,3 @@ input[type="range"]::-moz-range-thumb:hover {
     padding-bottom: 80px !important;
   }
 }
-
-/* ============================================ */
-/* WEBAMP STYLES                                */
-/* ============================================ */
-
-/* Ensure Webamp renders above other content but below grain overlay */
-#webamp {
-  z-index: 100 !important;
-}

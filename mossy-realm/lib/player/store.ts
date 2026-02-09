@@ -9,6 +9,9 @@ interface PlayerState {
   // Track list (dynamic from API)
   tracks: Track[];
   tracksLoaded: boolean;
+  tracksLoading: boolean;
+  loadError: string | null;
+  nextRetryAt: number | null;
 
   // Playback state
   isPlaying: boolean;
@@ -22,7 +25,8 @@ interface PlayerState {
   isMobileSheetOpen: boolean;
 
   // Actions
-  loadTracks: () => Promise<void>;
+  loadTracks: (force?: boolean) => Promise<void>;
+  retryLoadTracks: () => Promise<void>;
   play: () => void;
   pause: () => void;
   togglePlay: () => void;
@@ -47,6 +51,9 @@ export const usePlayerStore = create<PlayerState>()(
       // Initial state
       tracks: fallbackTracks,
       tracksLoaded: false,
+      tracksLoading: false,
+      loadError: null,
+      nextRetryAt: null,
       isPlaying: false,
       isMuted: false,
       volume: 0.7,
@@ -56,10 +63,13 @@ export const usePlayerStore = create<PlayerState>()(
       isMobileSheetOpen: false,
 
       // Load tracks from API
-      loadTracks: async () => {
-        if (get().tracksLoaded) return; // Already loaded
+      loadTracks: async (force = false) => {
+        const { tracksLoaded, tracksLoading, nextRetryAt } = get();
+        if (tracksLoaded || tracksLoading) return; // Already loaded or in-flight
+        if (!force && nextRetryAt && Date.now() < nextRetryAt) return; // Respect backoff
 
         try {
+          set({ tracksLoading: true, loadError: null });
           const tracks = await fetchTracks();
           if (tracks.length > 0) {
             const currentId = get().currentTrackId;
@@ -68,17 +78,36 @@ export const usePlayerStore = create<PlayerState>()(
             set({
               tracks,
               tracksLoaded: true,
+              tracksLoading: false,
+              loadError: null,
+              nextRetryAt: null,
               // If current track doesn't exist in new list, use featured
               currentTrackId: trackExists ? currentId : getFeaturedTrack(tracks).id,
             });
           } else {
             // API returned empty, use fallbacks
-            set({ tracksLoaded: true });
+            set({
+              tracksLoaded: true,
+              tracksLoading: false,
+              loadError: null,
+              nextRetryAt: null,
+            });
           }
         } catch (error) {
+          const retryMs = 15000;
+          const message = error instanceof Error ? error.message : 'Unknown error';
           console.error('Failed to load tracks:', error);
-          set({ tracksLoaded: true }); // Mark as loaded to prevent retries
+          set({
+            tracksLoaded: false,
+            tracksLoading: false,
+            loadError: message,
+            nextRetryAt: Date.now() + retryMs,
+          });
         }
+      },
+      retryLoadTracks: async () => {
+        set({ nextRetryAt: null });
+        await get().loadTracks(true);
       },
 
       // Actions

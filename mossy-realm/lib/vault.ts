@@ -218,7 +218,9 @@ export function getWeightedRandomItem(
     seed?: number
 ): VaultItem | null {
     const entries = Object.entries(weights) as [VaultItemType, number][];
+    if (entries.length === 0) return null;
     const totalWeight = entries.reduce((sum, [, w]) => sum + w, 0);
+    if (totalWeight <= 0) return null;
 
     const rand = seed !== undefined
         ? (Math.abs(seed) % 100) / 100
@@ -255,4 +257,3 @@ export function getVaultInfo(): { itemCount: number; generatedAt: string; versio
         version: vault.version,
     };
 }
-
