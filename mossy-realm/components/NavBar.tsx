@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import Marquee from './Marquee';
 
 interface NavItem {
@@ -64,8 +65,17 @@ export default function NavBar() {
   return (
     <>
       <header className="site-header">
-        {/* Site Title */}
-        <div className="site-title">
+        {/* Site Title with flanking GIFs */}
+        <div className="site-title flex items-center justify-center gap-2 md:gap-4">
+          {/* Hello tag - left of title */}
+          <Image 
+            src="/images/hellotags.gif" 
+            alt="" 
+            width={80} 
+            height={18}
+            className="hidden sm:block"
+            unoptimized
+          />
           <h1
             className="
               font-display
@@ -77,6 +87,15 @@ export default function NavBar() {
           >
             welcome to mossyrealm
           </h1>
+          {/* Frog - right of title */}
+          <Image 
+            src="/images/frog-eats-fly.gif" 
+            alt="" 
+            width={55} 
+            height={45}
+            className="hidden sm:block"
+            unoptimized
+          />
         </div>
 
         {/* Desktop Navigation - Inset Panel Style */}
