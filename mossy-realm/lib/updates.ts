@@ -41,7 +41,6 @@ function parseTimestamp(timestamp: string): { date: Date; formattedDate: string;
   const month = parseInt(monthStr, 10); // 1-12
   const day = parseInt(dayStr, 10);
   const hour = parseInt(hourStr, 10);
-  const minute = parseInt(minuteStr, 10);
 
   // Create Date object for sorting (this will be in UTC, but we only use it for sorting)
   const date = new Date(timestamp);
