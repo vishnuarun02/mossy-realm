@@ -623,7 +623,51 @@ input[type="range"]::-moz-range-thumb:hover {
   height: 7px;
   background: #b7ff71;
   box-shadow: 0 0 8px rgba(183, 255, 113, 0.7);
+}
+
+.cassette-led-amber {
+  width: 7px;
+  height: 7px;
+  background: #f0b15a;
+  box-shadow: 0 0 8px rgba(240, 177, 90, 0.7);
+}
+
+.cassette-led-blink {
   animation: blink 1.1s ease-in-out infinite;
+}
+
+.cassette-slider {
+  appearance: none;
+  height: 8px;
+  background: #1a2a20;
+  border: 2px solid var(--mossy-border);
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.cassette-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #f0b15a;
+  border: 2px solid var(--mossy-border);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cassette-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #f0b15a;
+  border: 2px solid var(--mossy-border);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cassette-slider::-webkit-slider-runnable-track {
+  height: 8px;
+}
+
+.cassette-slider::-moz-range-track {
+  height: 8px;
 }
 
 /* Desktop Nav Bar */

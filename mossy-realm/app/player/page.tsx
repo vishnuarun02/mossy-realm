@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePlayerStore } from '@/lib/player/store';
 import { formatDuration } from '@/lib/tracks';
 import { Visualizer } from '@/components/player/Visualizer';
-import { AudioEngine } from '@/lib/player/AudioEngine';
 import {
   PlayIcon,
   PauseIcon,
@@ -14,7 +13,6 @@ import {
   VolumeHighIcon,
   VolumeMutedIcon,
   VolumeLowIcon,
-  StatusDot,
 } from '@/components/player/PlayerIcons';
 
 export default function PlayerPage() {
@@ -54,22 +52,18 @@ export default function PlayerPage() {
 
   return (
     <>
-      <AudioEngine />
-
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-xl">
           <div className="cassette-shell p-4 relative">
-            <div className="absolute top-3 left-3 cassette-screw" />
-            <div className="absolute top-3 right-3 cassette-screw" />
-            <div className="absolute bottom-3 left-3 cassette-screw" />
-            <div className="absolute bottom-3 right-3 cassette-screw" />
+            <div className="absolute top-3 left-3 cassette-led" />
+            <div className="absolute top-3 right-3 cassette-led" />
+            <div className="absolute bottom-3 left-3 cassette-led-amber" />
+            <div className="absolute bottom-3 right-3 cassette-led-amber" />
 
-            <div className="flex items-center justify-between text-xs uppercase tracking-wider text-mossy-text-muted mb-3">
-              <div className="flex items-center gap-2">
-                <StatusDot isPlaying={mounted && isPlaying} />
-                <span>realm radio · cassette</span>
-              </div>
-              <div className="cassette-led" />
+            <div className="flex items-center justify-center gap-2 text-[0.7rem] uppercase tracking-wider text-mossy-text-muted mb-3">
+              <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
+              <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
+              <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
             </div>
 
             <div className="cassette-window p-2">
@@ -80,7 +74,7 @@ export default function PlayerPage() {
               <div className="text-mossy-text-muted text-[0.7rem] uppercase tracking-wider">
                 {mounted && isPlaying ? 'now playing' : 'paused'}
               </div>
-              <div className="font-accent text-mossy-header text-xl truncate">
+              <div className="font-accent text-mossy-header text-base leading-tight break-words">
                 {currentTrack.title}
               </div>
               {currentTrack.artist && (
@@ -127,7 +121,7 @@ export default function PlayerPage() {
               </button>
             </div>
 
-            <div className="flex items-center gap-3 px-2 pb-4">
+            <div className="flex items-center gap-3 px-2 pb-4 overflow-hidden">
               <button
                 onClick={toggleMute}
                 className="text-mossy-border w-6"
@@ -147,7 +141,7 @@ export default function PlayerPage() {
                 max="100"
                 value={mounted ? volume * 100 : 70}
                 onChange={(e) => setVolume(Number(e.target.value) / 100)}
-                className="flex-1 h-2 accent-mossy-border cursor-pointer"
+                className="cassette-slider flex-1 min-w-0 cursor-pointer w-full"
               />
             </div>
           </div>

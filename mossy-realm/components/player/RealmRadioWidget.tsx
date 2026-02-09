@@ -13,7 +13,6 @@ import {
   NextIcon,
   VolumeHighIcon,
   VolumeMutedIcon,
-  StatusDot,
   OpenIcon,
 } from './PlayerIcons';
 
@@ -44,17 +43,15 @@ export function RealmRadioWidget() {
   return (
     <RetroBox title="-= realm radio =-">
       <div className="cassette-shell p-2 relative">
-        <div className="absolute top-2 left-2 cassette-screw" />
-        <div className="absolute top-2 right-2 cassette-screw" />
-        <div className="absolute bottom-2 left-2 cassette-screw" />
-        <div className="absolute bottom-2 right-2 cassette-screw" />
+        <div className="absolute top-2 left-2 cassette-led" />
+        <div className="absolute top-2 right-2 cassette-led" />
+        <div className="absolute bottom-2 left-2 cassette-led-amber" />
+        <div className="absolute bottom-2 right-2 cassette-led-amber" />
 
-        <div className="flex items-center justify-between text-[0.7rem] uppercase tracking-wider text-mossy-text-muted mb-2">
-          <div className="flex items-center gap-2">
-            <StatusDot isPlaying={mounted && isPlaying} />
-            <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
-          </div>
-          <div className="cassette-led" />
+        <div className="flex items-center justify-center gap-2 text-[0.62rem] uppercase tracking-wider text-mossy-text-muted mb-2">
+          <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
+          <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
+          <span className={`cassette-led ${mounted && isPlaying ? 'cassette-led-blink' : ''}`} />
         </div>
 
         <div className="cassette-window p-2">
@@ -62,7 +59,7 @@ export function RealmRadioWidget() {
         </div>
 
         <div className="cassette-label mt-2 px-2 py-2 text-center">
-          <div className="font-accent text-mossy-header text-sm truncate">
+          <div className="font-accent text-mossy-header text-[0.7rem] leading-tight break-words">
             {track.title}
           </div>
         </div>
@@ -98,7 +95,7 @@ export function RealmRadioWidget() {
           </button>
         </div>
 
-        <div className="flex items-center gap-2 text-xs mt-2">
+        <div className="flex items-center gap-2 text-xs mt-2 overflow-hidden">
           <span className="text-mossy-text-muted font-nav">Vol</span>
           <input
             type="range"
@@ -106,16 +103,16 @@ export function RealmRadioWidget() {
             max="100"
             value={volume * 100}
             onChange={(e) => setVolume(Number(e.target.value) / 100)}
-            className="flex-1 h-2 bg-mossy-bg-box border-2 border-mossy-border cursor-pointer accent-mossy-border"
+            className="cassette-slider flex-1 min-w-0 cursor-pointer w-full"
           />
         </div>
 
         <div className="mt-2 text-center">
           <Link
             href="/player"
-            className="text-xs font-nav text-mossy-link hover:text-mossy-link-hover inline-flex items-center gap-1"
+            className="text-xs font-nav text-mossy-link hover:text-mossy-link-hover inline-flex items-center gap-1 justify-center w-full"
           >
-            open player <OpenIcon />
+            open player <OpenIcon className="inline-block" />
           </Link>
         </div>
       </div>

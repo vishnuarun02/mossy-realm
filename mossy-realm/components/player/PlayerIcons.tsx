@@ -121,7 +121,9 @@ export function CollapseIcon({ className = '' }: { className?: string }) {
 export function OpenIcon({ className = '' }: { className?: string }) {
   return (
     <IconBase className={className} label="Open">
-      <path d="M3 6h7V3h3v7h-3V7H3z" />
+      <polyline points="6,2 14,2 14,10" fill="none" stroke="currentColor" strokeWidth="1.4" />
+      <line x1="14" y1="2" x2="5" y2="11" stroke="currentColor" strokeWidth="1.4" />
+      <rect x="2" y="6" width="7" height="7" fill="none" stroke="currentColor" strokeWidth="1.4" />
     </IconBase>
   );
 }
