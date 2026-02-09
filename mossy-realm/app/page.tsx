@@ -8,24 +8,32 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="site-container relative">
-      {/* Welcome to internet - top left, tilted */}
-      <div className="hidden md:block absolute top-[70px] left-3 z-20 rotate-[-5deg]">
+      {/* 
+        Header frame decorations - anchored to corners
+        Macro symmetry: left/right balance
+        Micro asymmetry: different gifs, slight offsets
+      */}
+      
+      {/* Top-left corner of frame - welcome sign, snapped to edge */}
+      <div className="absolute top-[8px] left-[8px] z-30 rotate-[-3deg]">
         <Image 
           src="/images/welcome-to-internet.gif" 
-          alt="welcome to the internet" 
-          width={85} 
-          height={28}
+          alt="" 
+          width={75} 
+          height={24}
+          className="md:w-[90px]"
           unoptimized
         />
       </div>
 
-      {/* Hello tag - top right area, slight tilt */}
-      <div className="hidden md:block absolute top-[75px] right-4 z-20 rotate-3">
+      {/* Top-right corner of frame - construction button for balance */}
+      <div className="absolute top-[8px] right-[8px] z-30 rotate-[2deg]">
         <Image 
-          src="/images/hellotags.gif" 
-          alt="hello" 
-          width={120} 
-          height={25}
+          src="/images/construction/underconstruction-button.gif" 
+          alt="" 
+          width={70} 
+          height={14}
+          className="md:w-[90px]"
           unoptimized
         />
       </div>
@@ -35,13 +43,6 @@ export default function Home() {
 
       {/* Main content area */}
       <main className="site-main">
-        {/* 
-          Three-column layout:
-          - Desktop: Left Sidebar (190px) | Main (1fr) | Right Sidebar (190px)
-          - Tablet: Two columns
-          - Mobile: Single column, stacked
-        */}
-
         {/* Desktop Layout (lg and up) */}
         <div
           className="hidden lg:grid gap-4"
