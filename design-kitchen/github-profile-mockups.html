@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile README Mockups - Vishnu Arun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #58a6ff;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+
+        .option {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .option-header {
+            background: #21262d;
+            padding: 16px 20px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-header h2 {
+            color: #f0f6fc;
+            font-size: 1.1rem;
+        }
+
+        .option-header .tag {
+            background: #238636;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .option-content {
+            padding: 30px;
+        }
+
+        /* GitHub README simulation */
+        .readme-preview {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 30px;
+        }
+
+        /* ==================== OPTION A: RETRO TERMINAL ==================== */
+        .terminal-header {
+            background: linear-gradient(180deg, #1a2f23 0%, #0f1a14 100%);
+            border: 3px solid #e8a54b;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow:
+                inset 0 0 50px rgba(144, 238, 144, 0.05),
+                0 0 20px rgba(232, 165, 75, 0.2);
+        }
+
+        .terminal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.1) 2px,
+                    rgba(0, 0, 0, 0.1) 4px);
+            pointer-events: none;
+            border-radius: 5px;
+        }
+
+        .terminal-title {
+            color: #ffeaa7;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dots .red {
+            background: #ff5f56;
+        }
+
+        .terminal-dots .yellow {
+            background: #ffbd2e;
+        }
+
+        .terminal-dots .green {
+            background: #27ca40;
+        }
+
+        .terminal-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .terminal-line {
+            color: #90ee90;
+            margin-bottom: 5px;
+        }
+
+        .terminal-prompt {
+            color: #e8a54b;
+        }
+
+        .terminal-name {
+            color: #ffeaa7;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 234, 167, 0.5);
+        }
+
+        .terminal-subtitle {
+            color: #90ee90;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .terminal-ascii {
+            color: #4a7c59;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            margin-top: 15px;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .retro-section {
+            background: #1a2f23;
+            border: 2px solid #4a7c59;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .retro-section h3 {
+            color: #ffeaa7;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #4a7c59;
+            padding-bottom: 5px;
+        }
+
+        .retro-list {
+            color: #90ee90;
+            font-size: 0.85rem;
+        }
+
+        .retro-list li {
+            margin: 5px 0;
+            list-style: none;
+        }
+
+        .retro-list li::before {
+            content: '▸ ';
+            color: #e8a54b;
+        }
+
+        /* ==================== OPTION B: MODERN FOREST ==================== */
+        .modern-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2a3f35 0%, #1e3028 100%);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #4a7c59;
+        }
+
+        .modern-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #e8a54b;
+            margin-bottom: 15px;
+            background: #355a45;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 3rem;
+        }
+
+        .modern-name {
+            color: #ffeaa7;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .modern-tagline {
+            color: #90ee90;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .modern-location {
+            color: #8b949e;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .modern-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .modern-badge {
+            background: #238636;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .modern-badge.amber {
+            background: #e8a54b;
+            color: #1a2f23;
+        }
+
+        .modern-badge.forest {
+            background: #4a7c59;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .bento-card {
+            background: #1e3028;
+            border: 1px solid #4a7c59;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .bento-card h4 {
+            color: #ffeaa7;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bento-card p {
+            color: #c9d1d9;
+            font-size: 0.9rem;
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-pill {
+            background: #2a3f35;
+            color: #90ee90;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid #4a7c59;
+        }
+
+        /* ==================== OPTION C: PIXEL ART / ASCII ==================== */
+        .pixel-container {
+            background: #000;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            border: 4px solid #333;
+            image-rendering: pixelated;
+        }
+
+        .pixel-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pixel-art {
+            color: #90ee90;
+            font-size: 0.6rem;
+            line-height: 1;
+            white-space: pre;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .pixel-name {
+            color: #ffeaa7;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 15px 0;
+            text-shadow:
+                2px 2px 0 #e8a54b,
+                4px 4px 0 #4a7c59;
+        }
+
+        .pixel-subtitle {
+            color: #90ee90;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .pixel-section {
+            background: #111;
+            border: 2px solid #333;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .pixel-section h3 {
+            color: #e8a54b;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .pixel-section::before {
+            content: '┌─────────────────────────────────────────┐';
+            display: block;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .pixel-section::after {
+            content: '└─────────────────────────────────────────┘';
+            display: block;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .pixel-list {
+            color: #c9d1d9;
+            font-size: 0.85rem;
+        }
+
+        .pixel-list li {
+            margin: 8px 0;
+            list-style: none;
+        }
+
+        .pixel-list li::before {
+            content: '► ';
+            color: #90ee90;
+        }
+
+        .pixel-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            border: 2px solid #4a7c59;
+        }
+
+        .pixel-stat {
+            text-align: center;
+        }
+
+        .pixel-stat-value {
+            color: #ffeaa7;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .pixel-stat-label {
+            color: #90ee90;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scanlines {
+            position: relative;
+        }
+
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(0, 0, 0, 0.3) 1px,
+                    rgba(0, 0, 0, 0.3) 2px);
+            pointer-events: none;
+        }
+
+        /* Code blocks for markdown */
+        .markdown-code {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.8rem;
+            color: #c9d1d9;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .markdown-code pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .copy-note {
+            background: #1f6feb20;
+            border: 1px solid #1f6feb;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #58a6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌲 GitHub Profile README Mockups</h1>
+        <p class="subtitle">Three design options for Vishnu Arun's profile - MossyRealm vibes</p>
+
+        <!-- ==================== OPTION A ==================== -->
+        <div class="option">
+            <div class="option-header">
+                <h2>Option A: Retro Terminal</h2>
+                <span class="tag">RECOMMENDED</span>
+            </div>
+            <div class="option-content">
+                <div class="readme-preview">
+
+                    <!-- Terminal Header -->
+                    <div class="terminal-header">
+                        <div class="terminal-title">
+                            <div class="terminal-dots">
+                                <span class="red"></span>
+                                <span class="yellow"></span>
+                                <span class="green"></span>
+                            </div>
+                            <span>visitor@mossyrealm:~</span>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="terminal-line"><span class="terminal-prompt">$</span> whoami</div>
+                            <div class="terminal-name">Vishnu Arun</div>
+                            <div class="terminal-subtitle">data engineer · web builder · dc vibes</div>
+                            <div class="terminal-line" style="margin-top: 15px;">
+                                <span class="terminal-prompt">$</span> cat location.txt
+                            </div>
+                            <div class="terminal-line">📍 Washington DC, USA</div>
+                            <div class="terminal-line" style="margin-top: 10px;">
+                                <span class="terminal-prompt">$</span> <span class="blink">_</span>
+                            </div>
+                            <pre class="terminal-ascii">
+    🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲
+   /  ==================  \
+  |   welcome to my realm  |
+   \  ==================  /
+    🍄  🌿  🍄  🌿  🍄  🌿
+              </pre>
+                        </div>
+                    </div>
+
+                    <!-- About Section -->
+                    <div class="retro-section">
+                        <h3>📡 // CURRENT STATUS</h3>
+                        <ul class="retro-list">
+                            <li>Building <strong>Docflix</strong> - a streaming platform for docs</li>
+                            <li>Looking for fulltime Data roles</li>
+                            <li>Maintaining <a href="https://mossyrealm.space"
+                                    style="color: #90ee90;">mossyrealm.space</a> - my digital forest cabin</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="retro-section">
+                        <h3>🛠️ // LOADED MODULES</h3>
+                        <ul class="retro-list">
+                            <li><span style="color: #ffeaa7;">data:</span> Python, SQL, Pandas, PyTorch, Jupyter</li>
+                            <li><span style="color: #ffeaa7;">web:</span> Next.js, React, TypeScript, Tailwind</li>
+                            <li><span style="color: #ffeaa7;">infra:</span> AWS, Cloudflare, Vercel, Redis</li>
+                            <li><span style="color: #ffeaa7;">tools:</span> Git, Docker, Selenium</li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="retro-section">
+                        <h3>📬 // PING ME</h3>
+                        <ul class="retro-list">
+                            <li>Email: vishnuarun218@gmail.com</li>
+                            <li>LinkedIn: /in/vishnu-arun22</li>
+                            <li>Blog: medium.com/@vishnuarun</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="copy-note">
+                    💡 This uses custom HTML/CSS. For GitHub, we'll convert to markdown + SVG banner.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== OPTION B ==================== -->
+        <div class="option">
+            <div class="option-header">
+                <h2>Option B: Modern Forest</h2>
+                <span class="tag" style="background: #e8a54b; color: #1a2f23;">CLEAN</span>
+            </div>
+            <div class="option-content">
+                <div class="readme-preview">
+
+                    <!-- Modern Header -->
+                    <div class="modern-header">
+                        <div class="modern-avatar">🌲</div>
+                        <div class="modern-name">Vishnu Arun</div>
+                        <div class="modern-tagline">Data Engineer & Web Builder</div>
+                        <div class="modern-location">
+                            📍 Washington DC, USA
+                        </div>
+                        <div class="modern-badges">
+                            <span class="modern-badge">🔭 Building Docflix</span>
+                            <span class="modern-badge amber">💼 Open to Work</span>
+                            <span class="modern-badge forest">✍️ Tech Blogger</span>
+                        </div>
+                    </div>
+
+                    <!-- Bento Grid -->
+                    <div class="bento-grid">
+                        <div class="bento-card">
+                            <h4>🎯 Current Focus</h4>
+                            <p>Building Docflix - a streaming platform for documentaries. Also maintaining my retro
+                                personal site at mossyrealm.space</p>
+                        </div>
+                        <div class="bento-card">
+                            <h4>💡 Fun Fact</h4>
+                            <p>I write about Data Science, History & Culture on Medium. The intersection of tech and
+                                storytelling is my jam.</p>
+                        </div>
+                        <div class="bento-card wide">
+                            <h4>🛠️ Tech Stack</h4>
+                            <div class="tech-pills">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">SQL</span>
+                                <span class="tech-pill">Pandas</span>
+                                <span class="tech-pill">PyTorch</span>
+                                <span class="tech-pill">Next.js</span>
+                                <span class="tech-pill">React</span>
+                                <span class="tech-pill">TypeScript</span>
+                                <span class="tech-pill">Tailwind</span>
+                                <span class="tech-pill">AWS</span>
+                                <span class="tech-pill">Cloudflare</span>
+                                <span class="tech-pill">Redis</span>
+                                <span class="tech-pill">Docker</span>
+                            </div>
+                        </div>
+                        <div class="bento-card">
+                            <h4>📬 Reach Me</h4>
+                            <p style="font-size: 0.85rem;">
+                                ✉️ vishnuarun218@gmail.com<br>
+                                🔗 LinkedIn: /vishnu-arun22<br>
+                                📝 Medium: @vishnuarun
+                            </p>
+                        </div>
+                        <div class="bento-card">
+                            <h4>🌐 Projects</h4>
+                            <p style="font-size: 0.85rem;">
+                                🎬 Docflix - Doc streaming<br>
+                                🌲 MossyRealm - Personal site<br>
+                                📊 Data viz experiments
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="copy-note">
+                    💡 Clean and modern. Uses GitHub's native markdown tables and badges.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== OPTION C ==================== -->
+        <div class="option">
+            <div class="option-header">
+                <h2>Option C: Pixel Art / Full Retro</h2>
+                <span class="tag" style="background: #8957e5;">BOLD</span>
+            </div>
+            <div class="option-content">
+                <div class="readme-preview">
+
+                    <div class="pixel-container scanlines">
+                        <!-- Pixel Header -->
+                        <div class="pixel-header">
+                            <pre class="pixel-art">
+        ██╗   ██╗██╗███████╗██╗  ██╗███╗   ██╗██╗   ██╗
+        ██║   ██║██║██╔════╝██║  ██║████╗  ██║██║   ██║
+        ██║   ██║██║███████╗███████║██╔██╗ ██║██║   ██║
+        ╚██╗ ██╔╝██║╚════██║██╔══██║██║╚██╗██║██║   ██║
+         ╚████╔╝ ██║███████║██║  ██║██║ ╚████║╚██████╔╝
+          ╚═══╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+              </pre>
+                            <div class="pixel-name">ARUN</div>
+                            <div class="pixel-subtitle">[ DATA ENGINEER // WEB BUILDER // DC ]</div>
+                        </div>
+
+                        <!-- ASCII Forest -->
+                        <pre class="pixel-art" style="display: block; text-align: center; margin: 20px 0;">
+     🌲      🌲🌲     🌲        🌲🌲      🌲
+    🌲🌲    🌲🌲🌲   🌲🌲      🌲🌲🌲    🌲🌲
+   🌲🌲🌲  🌲🌲🌲🌲 🌲🌲🌲    🌲🌲🌲🌲  🌲🌲🌲
+════════════════════════════════════════════════
+            </pre>
+
+                        <!-- Status -->
+                        <div class="pixel-section">
+                            <h3>► CURRENT QUEST</h3>
+                            <ul class="pixel-list">
+                                <li>Building <strong style="color: #ffeaa7;">DOCFLIX</strong> - streaming for docs</li>
+                                <li>Seeking <strong style="color: #e8a54b;">DATA ROLES</strong> - ready for adventure
+                                </li>
+                                <li>Writing on <strong style="color: #90ee90;">MEDIUM</strong> - DS, History, Culture
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="pixel-stats">
+                            <div class="pixel-stat">
+                                <div class="pixel-stat-value">5+</div>
+                                <div class="pixel-stat-label">YRS EXP</div>
+                            </div>
+                            <div class="pixel-stat">
+                                <div class="pixel-stat-value">∞</div>
+                                <div class="pixel-stat-label">CURIOSITY</div>
+                            </div>
+                            <div class="pixel-stat">
+                                <div class="pixel-stat-value">☕</div>
+                                <div class="pixel-stat-label">FUEL</div>
+                            </div>
+                            <div class="pixel-stat">
+                                <div class="pixel-stat-value">DC</div>
+                                <div class="pixel-stat-label">BASE</div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="pixel-section">
+                            <h3>► EQUIPPED SKILLS</h3>
+                            <pre style="color: #90ee90; font-size: 0.8rem;">
+┌──────────────┬──────────────┬──────────────┐
+│    DATA      │     WEB      │    INFRA     │
+├──────────────┼──────────────┼──────────────┤
+│ Python       │ Next.js      │ AWS          │
+│ SQL          │ React        │ Cloudflare   │
+│ Pandas       │ TypeScript   │ Vercel       │
+│ PyTorch      │ Tailwind     │ Docker       │
+└──────────────┴──────────────┴──────────────┘
+              </pre>
+                        </div>
+
+                        <!-- Contact -->
+                        <pre style="color: #e8a54b; text-align: center; margin-top: 20px; font-size: 0.8rem;">
+╔════════════════════════════════════════════════╗
+║  📧 vishnuarun218@gmail.com                    ║
+║  🔗 linkedin.com/in/vishnu-arun22              ║
+║  📝 medium.com/@vishnuarun                     ║
+║  🌲 mossyrealm.space                           ║
+╚════════════════════════════════════════════════╝
+            </pre>
+
+                        <p style="text-align: center; color: #4a7c59; margin-top: 20px; font-size: 0.7rem;">
+                            PRESS START TO CONNECT ▶▶▶
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="copy-note">
+                    💡 Full commitment to retro. Uses ASCII art, box drawing characters, and monospace fonts.
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="option">
+            <div class="option-header">
+                <h2>📋 Quick Comparison</h2>
+            </div>
+            <div class="option-content">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #30363d;">
+                            <th style="text-align: left; padding: 10px; color: #ffeaa7;">Option</th>
+                            <th style="text-align: left; padding: 10px; color: #ffeaa7;">Vibe</th>
+                            <th style="text-align: left; padding: 10px; color: #ffeaa7;">Best For</th>
+                            <th style="text-align: left; padding: 10px; color: #ffeaa7;">Effort</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #30363d;">
+                            <td style="padding: 10px;"><strong>A: Retro Terminal</strong></td>
+                            <td style="padding: 10px;">Cozy hacker, MossyRealm match</td>
+                            <td style="padding: 10px;">Standing out, showing personality</td>
+                            <td style="padding: 10px;">Medium (needs SVG)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #30363d;">
+                            <td style="padding: 10px;"><strong>B: Modern Forest</strong></td>
+                            <td style="padding: 10px;">Clean, professional, themed</td>
+                            <td style="padding: 10px;">Job hunting, broad appeal</td>
+                            <td style="padding: 10px;">Low (pure markdown)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><strong>C: Pixel Art</strong></td>
+                            <td style="padding: 10px;">Bold, nostalgic, maximalist</td>
+                            <td style="padding: 10px;">Making a statement</td>
+                            <td style="padding: 10px;">Low (ASCII + markdown)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top: 20px; color: #8b949e;">
+                    <strong>My recommendation:</strong> Option A or C for MossyRealm vibes. Option B if you want
+                    something cleaner for job hunting but still themed.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

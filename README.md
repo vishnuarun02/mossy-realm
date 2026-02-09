@@ -119,6 +119,31 @@ This calls DeepSeek API to generate quirky micro-content items with old comic-bo
 3. Add environment variables in Vercel dashboard
 4. Deploy — auto-deploys on every push to `main`
 
+## Site Structure
+
+```
+Outpost (/)                      # Home
+My Cabin                         # Personal / Interior
+├── /cabin/about                 # About me, background
+├── /cabin/now                   # Currently reading/listening/working
+├── /cabin/crafting-table        # Projects, wins, proof of work
+├── /cabin/recipes               # Things I cook
+└── /cabin/contact               # Ways to reach me
+Fieldwork                        # Thinking / Documenting
+├── /fieldwork/learnings         # Long-form writing
+├── /fieldwork/experiments       # Prototypes, half-baked ideas
+├── /fieldwork/field-notes       # Shorter observations
+└── /fieldwork/gallery           # Visual field notes
+Crossroads                       # Outward / Community
+├── /crossroads/rabbit-holes     # Curated links
+├── /crossroads/guestbook        # Visitor signatures
+└── /crossroads/credits          # Acknowledgements
+Archives                         # Condensed Collections
+├── /archives/collected          # Pixel art, gifs, clippings
+├── /archives/changelog          # Site updates log
+└── /archives/sitemap            # Full site map
+```
+
 ## Project Structure
 
 ```
@@ -128,8 +153,25 @@ mossyrealm/
 │   │   ├── api/
 │   │   │   ├── tracks/           # Dynamic R2 track listing API
 │   │   │   └── visitors/         # Visitor counter API
-│   │   ├── garden/               # Swamp Treasures section
-│   │   │   └── learnings/        # Blog/learnings posts
+│   │   ├── cabin/                # My Cabin section
+│   │   │   ├── about/
+│   │   │   ├── now/
+│   │   │   ├── crafting-table/
+│   │   │   ├── recipes/
+│   │   │   └── contact/
+│   │   ├── fieldwork/            # Fieldwork section
+│   │   │   ├── learnings/
+│   │   │   ├── experiments/
+│   │   │   ├── field-notes/
+│   │   │   └── gallery/
+│   │   ├── crossroads/           # Crossroads section
+│   │   │   ├── rabbit-holes/
+│   │   │   ├── guestbook/
+│   │   │   └── credits/
+│   │   ├── archives/             # Archives section
+│   │   │   ├── collected/
+│   │   │   ├── changelog/
+│   │   │   └── sitemap/
 │   │   ├── player/               # Full player page
 │   │   ├── fonts.ts
 │   │   ├── globals.css
@@ -183,6 +225,7 @@ mossyrealm/
 ## Features
 
 - Retro aesthetic with warm color palette
+- **Dropdown navigation** with 5 top-level sections (mobile accordion)
 - Visitor counter (Upstash Redis)
 - AI-generated content vault (DeepSeek)
 - Monthly poll

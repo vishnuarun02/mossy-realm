@@ -48,7 +48,7 @@ export default function LearningsPage() {
 
       {/* MAIN CONTENT */}
       <main className="order-1 md:order-2">
-        <RetroBox title="{ learnings from the swamp }" variant="alt">
+        <RetroBox title="{ learnings }" variant="alt">
 
           {/* Intro */}
           <div className="text-center mb-6 pb-5 border-b-2 border-mossy-border">

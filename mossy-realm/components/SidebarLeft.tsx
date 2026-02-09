@@ -61,7 +61,7 @@ export default function SidebarLeft() {
             5 days fighting Webamp. Two songs playing at once.
             Removed it, built a unified player instead.
           </p>
-          <Link href="/garden/learnings#webamp-rip" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
+          <Link href="/fieldwork/learnings#webamp-rip" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
             read more →
           </Link>
         </div>
