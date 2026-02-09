@@ -443,6 +443,7 @@ a:hover {
   0% {
     transform: scaleY(0.3);
   }
+
   100% {
     transform: scaleY(1);
   }
@@ -454,6 +455,7 @@ a:hover {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -466,9 +468,12 @@ a:hover {
 
 /* Pulse animation for status dot */
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.4;
   }
@@ -480,10 +485,13 @@ a:hover {
 
 /* Blink animation for "click to play" indicator */
 @keyframes blink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 8px var(--mossy-accent);
   }
+
   50% {
     opacity: 0.3;
     box-shadow: 0 0 2px var(--mossy-accent);
@@ -581,10 +589,12 @@ input[type="range"]::-moz-range-thumb:hover {
   display: flex;
   justify-content: center;
   gap: 0;
+  overflow: visible;
 }
 
 .nav-inset-item {
   position: relative;
+  overflow: visible;
 }
 
 .nav-inset-label {
@@ -594,6 +604,8 @@ input[type="range"]::-moz-range-thumb:hover {
   text-decoration: none;
   padding: 11px 20px;
   display: block;
+  position: relative;
+  overflow: visible;
   cursor: pointer;
   border: 1px solid var(--mossy-border);
   margin-right: -1px;
@@ -627,7 +639,7 @@ input[type="range"]::-moz-range-thumb:hover {
   background: var(--mossy-bg-box);
   border: 1px solid var(--mossy-border);
   border-top: none;
-  box-shadow: 
+  box-shadow:
     inset 1px 1px 4px rgba(0, 0, 0, 0.4),
     2px 2px 0 rgba(0, 0, 0, 0.2);
   padding: 0;

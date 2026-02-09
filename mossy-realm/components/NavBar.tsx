@@ -65,17 +65,6 @@ export default function NavBar() {
   return (
     <>
       <header className="site-header relative">
-        {/* Frog - resting on gold border above Outpost button */}
-        <div className="absolute top-[62px] left-[165px] hidden sm:block z-10 md:left-[215px] lg:left-[255px]">
-          <Image 
-            src="/images/frog-eats-fly.gif" 
-            alt="" 
-            width={50} 
-            height={42}
-            unoptimized
-          />
-        </div>
-
         {/* Site Title */}
         <div className="site-title">
           <h1
@@ -95,10 +84,10 @@ export default function NavBar() {
         <nav className="nav-inset hidden md:block">
           <div className="nav-inset-bar">
             {navItems.map((item) => {
-              const isActive = item.href 
-                ? pathname === item.href 
+              const isActive = item.href
+                ? pathname === item.href
                 : item.children?.some(c => pathname.startsWith(c.href));
-              
+
               return (
                 <div key={item.label} className="nav-inset-item">
                   {item.href ? (
@@ -106,7 +95,18 @@ export default function NavBar() {
                       href={item.href}
                       className={`nav-inset-label ${isActive ? 'nav-inset-label-active' : ''}`}
                     >
-                      {item.label}
+                      <span className={item.label === 'Outpost' ? 'pl-6' : ''}>{item.label}</span>
+
+                      {item.label === 'Outpost' && (
+                        <Image
+                          src="/images/frog-eats-fly.gif"
+                          alt=""
+                          width={50}
+                          height={42}
+                          unoptimized
+                          className="absolute -top-[55px] left-[6px] z-50 pointer-events-none"
+                        />
+                      )}
                     </Link>
                   ) : (
                     <>
@@ -150,8 +150,8 @@ export default function NavBar() {
           {isMobileOpen && (
             <div className="nav-mobile-menu">
               {navItems.map((item) => {
-                const isActive = item.href 
-                  ? pathname === item.href 
+                const isActive = item.href
+                  ? pathname === item.href
                   : item.children?.some(c => pathname.startsWith(c.href));
                 const isExpanded = openMobileDropdown === item.label;
 
@@ -173,7 +173,7 @@ export default function NavBar() {
                       {item.label}
                       <span className={`nav-mobile-item-caret ${isExpanded ? 'nav-mobile-item-caret-open' : ''}`}>›</span>
                     </button>
-                    
+
                     <div className={`nav-mobile-children ${isExpanded ? 'nav-mobile-children-open' : ''}`}>
                       {item.children?.map((child) => {
                         const childActive = pathname === child.href || pathname.startsWith(child.href + '/');
