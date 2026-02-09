@@ -99,6 +99,11 @@ export function AudioEngine() {
           if (howl) {
             setDuration(howl.duration());
           }
+          // Connect to audio context for visualizer after audio element is ready
+          const audioElement = getAudioElement();
+          if (audioElement) {
+            connectSource(audioElement);
+          }
         },
         onend: () => {
           nextTrack();
@@ -110,11 +115,6 @@ export function AudioEngine() {
           stopRaf();
         },
       });
-
-      const audioElement = getAudioElement();
-      if (audioElement) {
-        connectSource(audioElement);
-      }
 
       // Auto-play if we should be playing
       if (wasPlaying) {
