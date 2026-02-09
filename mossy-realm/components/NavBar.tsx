@@ -65,8 +65,8 @@ export default function NavBar() {
   return (
     <>
       <header className="site-header relative">
-        {/* Frog - resting on top of Outpost button border */}
-        <div className="absolute top-[52px] left-[232px] hidden sm:block z-10 md:left-[280px] lg:left-[320px]">
+        {/* Frog - resting on gold border above Outpost button */}
+        <div className="absolute top-[38px] left-[205px] hidden sm:block z-10 md:left-[255px] lg:left-[295px]">
           <Image 
             src="/images/frog-eats-fly.gif" 
             alt="" 
