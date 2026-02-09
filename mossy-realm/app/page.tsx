@@ -26,14 +26,14 @@ export default function Home() {
         />
       </div>
 
-      {/* Top-right corner of frame - construction button for balance */}
-      <div className="absolute top-[8px] right-[8px] z-30 rotate-[2deg]">
+      {/* Top-right corner of frame - frog catching fly */}
+      <div className="absolute top-[2px] right-[8px] z-30">
         <Image 
-          src="/images/construction/underconstruction-button.gif" 
+          src="/images/frog-eats-fly.gif" 
           alt="" 
-          width={70} 
-          height={14}
-          className="md:w-[90px]"
+          width={60} 
+          height={50}
+          className="md:w-[75px]"
           unoptimized
         />
       </div>
