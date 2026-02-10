@@ -6,7 +6,7 @@ export default function MainPanel() {
     <main className="flex flex-col gap-4">
       {/* Main Welcome Box */}
       <RetroBox title="{ what's going on here? }" variant="alt">
-        {/* Hero Art */}
+        {/* Hero Art with "hello" tag tucked into corner */}
         <div
           className="
             w-full h-40 md:h-52
@@ -24,6 +24,17 @@ export default function MainPanel() {
             className="object-cover"
             priority
           />
+          {/* Hello tag - tucked into bottom-right corner of image, half peeking out */}
+          <div className="absolute -bottom-[10px] right-3 rotate-[-4deg] z-10">
+            <Image
+              src="/images/hellotags.gif"
+              alt=""
+              width={100}
+              height={20}
+              unoptimized
+              className="drop-shadow-[1px_1px_0_rgba(0,0,0,0.5)]"
+            />
+          </div>
         </div>
 
         {/* Welcome Text */}
@@ -57,10 +68,10 @@ export default function MainPanel() {
             current status:
           </p>
           <p className="text-mossy-header font-body">
-            realm keeper * <span className="text-mossy-text-muted">just now</span>
+            status: deep work
           </p>
           <p className="text-mossy-text font-body">
-            feeling bright today! ~ working on making this place cozy~
+            quiet notes, careful edits, steady progress
           </p>
         </div>
 

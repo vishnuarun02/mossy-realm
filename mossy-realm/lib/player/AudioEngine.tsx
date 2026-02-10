@@ -11,6 +11,7 @@ import {
   setVolumeGlobal,
   seekGlobal,
 } from './globalAudio';
+import { connectToHowler, resumeAudioContext } from './audioContext';
 
 /**
  * AudioEngine - Syncs React state with global audio singleton
@@ -97,6 +98,8 @@ export function AudioEngine() {
           if (howl) {
             setDuration(howl.duration());
           }
+          // Connect analyser to Howler's audio graph for visualizer
+          connectToHowler();
         },
         onend: () => {
           nextTrack();
@@ -120,6 +123,7 @@ export function AudioEngine() {
   useEffect(() => {
     if (isPlaying) {
       playGlobal();
+      resumeAudioContext().catch(() => {});
       startRaf();
     } else {
       pauseGlobal();

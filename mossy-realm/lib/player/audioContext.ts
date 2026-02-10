@@ -1,39 +1,61 @@
 'use client';
 
-// Shared audio context and analyser for visualization
-let audioContext: AudioContext | null = null;
+import { Howler } from 'howler';
+
+// Analyser node for visualization - connects to Howler's Web Audio graph
 let analyser: AnalyserNode | null = null;
-let sourceConnected = false;
+let fallbackCtx: AudioContext | null = null;
+let fallbackAnalyser: AnalyserNode | null = null;
+let isConnected = false;
 
-export function getAudioContext(): AudioContext {
-  if (!audioContext) {
-    audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-  }
-  return audioContext;
-}
-
+/**
+ * Get or create the analyser node connected to Howler's audio graph.
+ * Uses Howler's built-in Web Audio context for seamless integration.
+ */
 export function getAnalyser(): AnalyserNode {
+  // Howler.ctx is the AudioContext used by Howler in Web Audio mode
+  const ctx = Howler.ctx;
+  if (!ctx) {
+    // Fallback: reuse a single analyser if Howler isn't ready
+    if (!fallbackCtx) {
+      fallbackCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    }
+    if (!fallbackAnalyser) {
+      fallbackAnalyser = fallbackCtx.createAnalyser();
+      fallbackAnalyser.fftSize = 64;
+    }
+    return fallbackAnalyser;
+  }
+
   if (!analyser) {
-    const ctx = getAudioContext();
     analyser = ctx.createAnalyser();
     analyser.fftSize = 64;
     analyser.smoothingTimeConstant = 0.8;
-    analyser.connect(ctx.destination);
   }
+
+  // Connect analyser to Howler's master gain if not already connected
+  if (!isConnected && Howler.masterGain) {
+    try {
+      // Insert analyser between master gain and destination
+      Howler.masterGain.disconnect();
+      Howler.masterGain.connect(analyser);
+      analyser.connect(ctx.destination);
+      isConnected = true;
+    } catch {
+      // May fail if already connected differently
+      analyser.connect(ctx.destination);
+    }
+  }
+
   return analyser;
 }
 
-export function connectSource(mediaElement: HTMLAudioElement): void {
-  if (sourceConnected) return;
-  
-  try {
-    const ctx = getAudioContext();
-    const source = ctx.createMediaElementSource(mediaElement);
-    source.connect(getAnalyser());
-    sourceConnected = true;
-  } catch {
-    // Source may already be connected
-  }
+/**
+ * Ensure analyser is connected to Howler's audio graph.
+ * Call this after audio starts playing.
+ */
+export function connectToHowler(): void {
+  getAnalyser(); // This will set up the connection
 }
 
 export function getFrequencyData(): Uint8Array {
@@ -44,13 +66,12 @@ export function getFrequencyData(): Uint8Array {
 }
 
 export function isAudioContextReady(): boolean {
-  return audioContext !== null && audioContext.state === 'running';
+  return Howler.ctx !== null && Howler.ctx?.state === 'running';
 }
 
 export async function resumeAudioContext(): Promise<void> {
-  const ctx = getAudioContext();
-  if (ctx.state === 'suspended') {
+  const ctx = Howler.ctx;
+  if (ctx && ctx.state === 'suspended') {
     await ctx.resume();
   }
 }
-

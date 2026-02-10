@@ -37,9 +37,13 @@ export function createHowl(
   }
 
   currentTrackUrl = url;
+  
+  // Use Web Audio API mode (html5: false) for proper CORS handling
+  // This allows the visualizer to analyze audio without CORS issues
+  // Note: Web Audio mode buffers the entire file, so longer tracks may have a delay
   howlInstance = new Howl({
     src: [url],
-    html5: true,
+    html5: false,  // Use Web Audio API mode for visualizer compatibility
     volume: options.volume,
     onload: options.onload,
     onend: options.onend,
@@ -85,4 +89,3 @@ export function seekGlobal(): number {
 export function durationGlobal(): number {
   return howlInstance?.duration() ?? 0;
 }
-

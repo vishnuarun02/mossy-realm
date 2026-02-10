@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePlayerStore } from '@/lib/player/store';
 import { formatDuration } from '@/lib/tracks';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
+import { Visualizer } from './Visualizer';
 import {
   PlayIcon,
   PauseIcon,
@@ -107,6 +108,11 @@ export function RealmRadioMobileSheet() {
           <p className="text-mossy-text-muted text-xs mt-1">
             vishnu is listening to:
           </p>
+        </div>
+
+        {/* Cassette Window */}
+        <div className="cassette-window p-2 mb-4">
+          <Visualizer variant="compact" />
         </div>
 
         {/* Current Track */}

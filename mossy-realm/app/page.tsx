@@ -6,19 +6,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="site-container">
+    <div className="site-container relative">
       {/* Header with title and nav */}
       <NavBar />
 
       {/* Main content area */}
       <main className="site-main">
-        {/* 
-          Three-column layout:
-          - Desktop: Left Sidebar (190px) | Main (1fr) | Right Sidebar (190px)
-          - Tablet: Two columns
-          - Mobile: Single column, stacked
-        */}
-
         {/* Desktop Layout (lg and up) */}
         <div
           className="hidden lg:grid gap-4"

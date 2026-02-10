@@ -1,147 +1,161 @@
 'use client';
 
 /**
- * Player icons - Mix of ASCII and simple SVG for clarity
+ * Player icons - 90s transport shapes (triangles/squares)
  */
+
+function IconBase({
+  children,
+  className = '',
+  label,
+  size = 16,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  label: string;
+  size?: number;
+}) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-label={label}
+      role="img"
+    >
+      {children}
+    </svg>
+  );
+}
 
 export function PlayIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Play">
-      ▶
-    </span>
+    <IconBase className={className} label="Play">
+      <polygon points="5,3 13,8 5,13" />
+    </IconBase>
   );
 }
 
 export function PauseIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Pause">
-      ❚❚
-    </span>
+    <IconBase className={className} label="Pause">
+      <rect x="4" y="3" width="3" height="10" />
+      <rect x="9" y="3" width="3" height="10" />
+    </IconBase>
   );
 }
 
 export function StopIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Stop">
-      ■
-    </span>
+    <IconBase className={className} label="Stop">
+      <rect x="4" y="4" width="8" height="8" />
+    </IconBase>
   );
 }
 
 export function PrevIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Previous">
-      ◀◀
-    </span>
+    <IconBase className={className} label="Previous">
+      <polygon points="11,3 5,8 11,13" />
+      <polygon points="8,3 2,8 8,13" />
+    </IconBase>
   );
 }
 
 export function NextIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Next">
-      ▶▶
-    </span>
+    <IconBase className={className} label="Next">
+      <polygon points="5,3 11,8 5,13" />
+      <polygon points="8,3 14,8 8,13" />
+    </IconBase>
   );
 }
 
-// SVG Speaker icons for clarity
 export function VolumeHighIcon({ className = '' }: { className?: string }) {
   return (
-    <svg 
-      className={className} 
-      width="18" 
-      height="18" 
-      viewBox="0 0 24 24" 
-      fill="currentColor"
-      aria-label="Volume"
-    >
-      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-    </svg>
+    <IconBase className={className} label="Volume">
+      <polygon points="2,6 6,6 9,3 9,13 6,10 2,10" />
+      <path d="M11 5 C12.5 6, 12.5 10, 11 11" stroke="currentColor" fill="none" strokeWidth="1.2" />
+      <path d="M12.5 3.5 C15 5.5, 15 10.5, 12.5 12.5" stroke="currentColor" fill="none" strokeWidth="1.2" />
+    </IconBase>
   );
 }
 
 export function VolumeMutedIcon({ className = '' }: { className?: string }) {
   return (
-    <svg 
-      className={className} 
-      width="18" 
-      height="18" 
-      viewBox="0 0 24 24" 
-      fill="currentColor"
-      aria-label="Muted"
-    >
-      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
-    </svg>
+    <IconBase className={className} label="Muted">
+      <polygon points="2,6 6,6 9,3 9,13 6,10 2,10" />
+      <line x1="11" y1="5" x2="14" y2="11" stroke="currentColor" strokeWidth="1.4" />
+      <line x1="14" y1="5" x2="11" y2="11" stroke="currentColor" strokeWidth="1.4" />
+    </IconBase>
   );
 }
 
 export function VolumeLowIcon({ className = '' }: { className?: string }) {
   return (
-    <svg 
-      className={className} 
-      width="18" 
-      height="18" 
-      viewBox="0 0 24 24" 
-      fill="currentColor"
-      aria-label="Volume Low"
-    >
-      <path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>
-    </svg>
+    <IconBase className={className} label="Volume Low">
+      <polygon points="2,6 6,6 9,3 9,13 6,10 2,10" />
+      <path d="M11 6 C12 7, 12 9, 11 10" stroke="currentColor" fill="none" strokeWidth="1.2" />
+    </IconBase>
   );
 }
 
 export function ExpandIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Expand">
-      ↑
-    </span>
+    <IconBase className={className} label="Expand">
+      <polygon points="8,3 13,8 3,8" />
+    </IconBase>
   );
 }
 
 export function CollapseIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Collapse">
-      ↓
-    </span>
+    <IconBase className={className} label="Collapse">
+      <polygon points="3,8 13,8 8,13" />
+    </IconBase>
   );
 }
 
 export function OpenIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Open">
-      ↗
-    </span>
+    <IconBase className={className} label="Open">
+      <polyline points="6,2 14,2 14,10" fill="none" stroke="currentColor" strokeWidth="1.4" />
+      <line x1="14" y1="2" x2="5" y2="11" stroke="currentColor" strokeWidth="1.4" />
+      <rect x="2" y="6" width="7" height="7" fill="none" stroke="currentColor" strokeWidth="1.4" />
+    </IconBase>
   );
 }
 
 export function MusicNoteIcon({ className = '' }: { className?: string }) {
   return (
-    <span className={className} aria-label="Music">
-      ♪
-    </span>
+    <IconBase className={className} label="Music">
+      <path d="M10 3v7.5a2 2 0 1 1-1-.2V5.5l-4 .8V12a2 2 0 1 1-1-.2V6l6-1.2V3z" />
+    </IconBase>
   );
 }
 
-export function StatusDot({ 
-  isPlaying, 
-  className = '' 
-}: { 
-  isPlaying: boolean; 
+export function StatusDot({
+  isPlaying,
+  className = '',
+}: {
+  isPlaying: boolean;
   className?: string;
 }) {
   return (
-    <span 
+    <span
       className={`
         inline-block w-2 h-2 rounded-full
-        ${isPlaying 
-          ? 'bg-mossy-link shadow-[0_0_6px_var(--mossy-link)]' 
+        ${isPlaying
+          ? 'bg-mossy-link shadow-[0_0_6px_var(--mossy-link)]'
           : 'bg-mossy-accent shadow-[0_0_8px_var(--mossy-accent)]'
         }
         ${className}
       `}
       style={{
-        animation: isPlaying 
-          ? 'pulse 1.2s ease-in-out infinite' 
+        animation: isPlaying
+          ? 'pulse 1.2s ease-in-out infinite'
           : 'blink 1s ease-in-out infinite',
       }}
       aria-label={isPlaying ? 'Playing' : 'Click to play'}

@@ -4,20 +4,17 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePlayerStore } from '@/lib/player/store';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
-import { 
-  PlayIcon, 
-  PauseIcon, 
-  VolumeHighIcon, 
+import {
+  PlayIcon,
+  PauseIcon,
+  VolumeHighIcon,
   VolumeMutedIcon,
   StatusDot,
-  OpenIcon
+  OpenIcon,
 } from './PlayerIcons';
 
 /**
  * RealmRadioDock - Floating mini panel for non-homepage routes
- * Design B: Mini Panel (desktop only)
- * 
- * Fixed position bottom-right
  */
 export function RealmRadioDock() {
   const [mounted, setMounted] = useState(false);
@@ -34,7 +31,6 @@ export function RealmRadioDock() {
     setMounted(true);
   }, []);
 
-  // use featured track for SSR, current track after hydration
   const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
 
   return (
@@ -49,18 +45,15 @@ export function RealmRadioDock() {
         hidden md:flex flex-col gap-1.5
       "
     >
-      {/* Header with status */}
       <div className="flex items-center gap-1.5 text-mossy-text-muted text-[0.7rem] uppercase tracking-wider">
         <StatusDot isPlaying={mounted && isPlaying} />
         <span>realm radio</span>
       </div>
 
-      {/* Track title */}
       <div className="font-accent text-mossy-header text-sm truncate max-w-32">
         {track.title}
       </div>
 
-      {/* Controls */}
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
           <button

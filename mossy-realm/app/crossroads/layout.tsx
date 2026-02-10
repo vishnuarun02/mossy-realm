@@ -1,7 +1,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-export default function GardenLayout({
+export default function CrossroadsLayout({
   children,
 }: {
   children: React.ReactNode;

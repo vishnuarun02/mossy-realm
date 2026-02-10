@@ -1,5 +1,6 @@
 import RetroBox from './RetroBox';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NatureFactWidget } from './VaultWidgets';
 import { RealmRadioWidget } from './player';
 
@@ -75,24 +76,39 @@ export default function SidebarRight() {
         </div>
       </RetroBox>
 
-      {/* Web Badges placeholder */}
+      {/* Web Badges */}
       <RetroBox title="[ badges ]">
         <div className="flex flex-wrap gap-2 justify-center">
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 1]
-          </div>
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 2]
-          </div>
-          <div className="bg-mossy-bg-box-alt border border-mossy-border px-2 py-1 text-xs text-mossy-text-muted">
-            [badge 3]
-          </div>
+          <Image
+            src="/images/badges/valid-html401.png"
+            alt="Valid HTML 4.01"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
+          <Image
+            src="/images/badges/valid-css.png"
+            alt="Valid CSS"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
+          <Image
+            src="/images/badges/valid-xhtml11.png"
+            alt="Valid XHTML 1.1"
+            width={88}
+            height={31}
+            className="border border-mossy-border"
+            unoptimized
+          />
         </div>
       </RetroBox>
 
       {/* Latest Art - moved from MainPanel */}
       <RetroBox title="[ latest art ]">
-        <Link href="/gallery" className="block no-underline group">
+        <Link href="/fieldwork/gallery" className="block no-underline group">
           <div
             className="
               w-full h-32

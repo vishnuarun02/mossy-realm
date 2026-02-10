@@ -29,20 +29,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-2 text-sm font-nav">
-            <Link href="/about" className="text-mossy-link hover:text-mossy-link-hover">
-              about
-            </Link>
-            <span className="text-mossy-border">•</span>
-            <Link href="/contact" className="text-mossy-link hover:text-mossy-link-hover">
+            <Link href="/cabin/contact" className="text-mossy-link hover:text-mossy-link-hover">
               contact
             </Link>
             <span className="text-mossy-border">•</span>
-            <Link href="/sitemap" className="text-mossy-link hover:text-mossy-link-hover">
-              sitemap
+            <Link href="/cabin/about" className="text-mossy-link hover:text-mossy-link-hover">
+              about
             </Link>
             <span className="text-mossy-border">•</span>
-            <Link href="/credits" className="text-mossy-link hover:text-mossy-link-hover">
-              credits
+            <Link href="/archives/sitemap" className="text-mossy-link hover:text-mossy-link-hover">
+              sitemap
             </Link>
           </div>
 
@@ -51,7 +47,7 @@ export default function Footer() {
             <VisitorCounter />
             <span className="text-mossy-border">|</span>
             <span className="text-mossy-text-muted font-body">
-              ♥ MossyRealm 2025
+              ♥ MossyRealm 2026
             </span>
           </div>
 
