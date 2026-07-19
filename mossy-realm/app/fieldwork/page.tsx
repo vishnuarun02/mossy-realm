@@ -17,6 +17,7 @@ export default function FieldworkLanding() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: 'fieldwork' }]}
         eyebrow="fieldwork"
         title="the lab binder"
         deckAccent={binder.whisper}

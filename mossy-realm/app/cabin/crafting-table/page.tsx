@@ -42,6 +42,7 @@ export default function CraftingTablePage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'crafting table' }]}
         eyebrow="my cabin"
         title="crafting table"
         deckAccent="~ the workbench ~"

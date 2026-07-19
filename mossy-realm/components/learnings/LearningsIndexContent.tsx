@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import RetroBox from '@/components/RetroBox';
 import {
   type LearningSummary,
@@ -96,6 +97,13 @@ export default function LearningsIndexContent({
 
       <main className="order-1 md:order-2">
         <RetroBox title="{ learnings }" variant="alt">
+          <Breadcrumbs
+            className="mb-3"
+            items={[
+              { href: '/fieldwork', label: 'fieldwork' },
+              { label: 'learnings' },
+            ]}
+          />
           <div className="study-log-header study-log-header--compact">
             <p className="study-log-label">[ study log ]</p>
             <h2 className="study-log-title">Learnings from the field</h2>

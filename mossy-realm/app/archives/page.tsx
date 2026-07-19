@@ -15,6 +15,7 @@ export default function ArchivesLanding() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: 'archives' }]}
         eyebrow="archives"
         title="the catalog room"
         deckAccent={archives.whisper}

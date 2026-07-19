@@ -1900,57 +1900,6 @@ input[type="range"]:focus-visible {
 }
 
 /*
- * Binder tabs: file-folder tabs for section navigation.
- * The slanted right edge makes the folder silhouette.
- */
-.binder-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  list-style: none;
-  margin: 0;
-  padding: 0 4px;
-}
-
-.binder-tab-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 6px 14px 6px 12px;
-  font-family: var(--font-nav), 'Cormorant', serif;
-  font-size: 1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  background: var(--surface-panel);
-  border: 1px solid var(--border-structural);
-  border-bottom: none;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
-  transition: background var(--dur-fast), color var(--dur-fast);
-}
-
-.binder-tab-link:hover {
-  background: var(--surface-panel-alt);
-  color: var(--text-primary);
-}
-
-.binder-tab-link-active {
-  background: var(--surface-strip);
-  color: var(--text-inverse);
-  font-weight: 600;
-}
-
-.binder-tab-link-active::before {
-  content: '✶ ';
-}
-
-/* The surface the tabs fold over */
-.binder-tab-desk {
-  border-top: 2px solid var(--border-structural);
-  margin-top: -1px;
-  padding-top: 12px;
-}
-
-/*
  * Instrument readout: a measurement row styled like a
  * bench instrument label. Small caps, hairline rule,
  * value right-aligned. No phosphor, no glow.
@@ -2003,51 +1952,6 @@ input[type="range"]:focus-visible {
 /* Signpost planks, signal window, bulletin.    */
 /* ============================================ */
 
-/*
- * Signpost planks: arrow-pointed direction signs.
- * The section nav for the crossroads.
- */
-.signpost {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.signpost-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  min-height: 40px;
-  padding: 6px 20px 6px 14px;
-  font-family: var(--font-nav), 'Cormorant', serif;
-  font-size: 1.05rem;
-  color: var(--text-heading);
-  text-decoration: none;
-  background: var(--surface-panel-alt);
-  border: 1px solid var(--border-structural);
-  /* the pointing plank */
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
-  transition: background var(--dur-fast), color var(--dur-fast);
-}
-
-.signpost-link:hover {
-  background: var(--surface-strip);
-  color: var(--text-inverse);
-}
-
-.signpost-link-active {
-  background: var(--surface-strip);
-  color: var(--text-inverse);
-  font-weight: 600;
-}
-
-.signpost-link-active::before {
-  content: '✶';
-}
-
 /* Signal window: the little radio listening to the sky */
 .signal-window {
   font-family: var(--font-nav), 'Cormorant', serif;
@@ -2071,52 +1975,6 @@ input[type="range"]:focus-visible {
 /* ARCHIVES - the file cabinet                  */
 /* Catalog tabs, accession cards, log printout. */
 /* ============================================ */
-
-/*
- * Catalog tabs: the little label windows on drawer dividers.
- * Rectangular with a notch, manila when active.
- */
-.catalog-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  margin: 0;
-  padding: 0 2px;
-}
-
-.catalog-tab-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 5px 16px;
-  font-family: var(--font-nav), 'Cormorant', serif;
-  font-size: 0.98rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  background: var(--surface-panel);
-  border: 1px solid var(--border-structural);
-  border-bottom-width: 3px;
-  /* the label-window notch */
-  clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
-  transition: background var(--dur-fast), color var(--dur-fast);
-}
-
-.catalog-tab-link:hover {
-  background: var(--surface-panel-alt);
-  color: var(--text-primary);
-}
-
-.catalog-tab-link-active {
-  background: var(--surface-strip);
-  color: var(--text-inverse);
-  font-weight: 600;
-}
-
-.catalog-tab-link-active::before {
-  content: '✶ ';
-  font-size: 0.75em;
-}
 
 /* The catalog log printout (changelog) */
 .catalog-log {

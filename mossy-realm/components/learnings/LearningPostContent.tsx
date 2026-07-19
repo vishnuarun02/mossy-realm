@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import RetroBox from '@/components/RetroBox';
 import {
   type LearningPost,
@@ -29,7 +30,7 @@ export default function LearningPostContent({
             Scroll through the dossier below, or return to the full study log.
           </p>
           <p className="mt-3 text-sm">
-            <Link href="/fieldwork/learnings" className="text-link hover:hover:text-link-hover">
+            <Link href="/fieldwork/learnings" className="text-link hover:text-link-hover">
               ← all learnings
             </Link>
           </p>
@@ -38,17 +39,14 @@ export default function LearningPostContent({
 
       <main className="order-1 md:order-2">
         <RetroBox title="{ expedition dossier }" variant="alt">
-          <nav className="learning-breadcrumb font-nav text-sm text-fg-secondary mb-4" aria-label="Breadcrumb">
-            <Link href="/fieldwork/learnings" className="text-link hover:hover:text-link-hover">
-              Fieldwork
-            </Link>
-            <span className="mx-2 opacity-60">/</span>
-            <Link href="/fieldwork/learnings" className="text-link hover:hover:text-link-hover">
-              Learnings
-            </Link>
-            <span className="mx-2 opacity-60">/</span>
-            <span>{post.title}</span>
-          </nav>
+          <Breadcrumbs
+            className="mb-4"
+            items={[
+              { href: '/fieldwork', label: 'fieldwork' },
+              { href: '/fieldwork/learnings', label: 'learnings' },
+              { label: post.title },
+            ]}
+          />
 
           <div className="learning-post-meta">
             <span className="study-log-meta-pill">{getCategoryLabel(post.category)}</span>
@@ -110,7 +108,7 @@ export default function LearningPostContent({
                 <li key={item.slug} className="border-b border-dashed border-border-structural pb-2 last:border-0">
                   <Link
                     href={`/fieldwork/learnings/${item.slug}`}
-                    className="text-link hover:hover:text-link-hover"
+                    className="text-link hover:text-link-hover"
                   >
                     {item.title}
                   </Link>

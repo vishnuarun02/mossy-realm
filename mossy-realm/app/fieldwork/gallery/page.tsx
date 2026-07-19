@@ -16,6 +16,7 @@ export default function GalleryPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/fieldwork', label: 'fieldwork' }, { label: 'gallery' }]}
         eyebrow="fieldwork"
         title="gallery"
         deckAccent="~ the contact sheet ~"

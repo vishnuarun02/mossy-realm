@@ -56,6 +56,7 @@ export default function CabinLandingPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: 'my cabin' }]}
         eyebrow="my cabin"
         title="the cabin"
         deckAccent={cabinWelcome.whisper}

@@ -17,6 +17,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'about' }]}
         eyebrow="my cabin"
         title="about"
         deckAccent="~ the person behind the moss ~"

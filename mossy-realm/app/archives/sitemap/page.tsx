@@ -73,6 +73,7 @@ const sections: SitemapSection[] = [
 export default function SitemapPage() {
   return (
     <PageShell
+      breadcrumbs={[{ href: '/archives', label: 'archives' }, { label: 'sitemap' }]}
       eyebrow="archives"
       title="sitemap"
       deckAccent="~ all paths through the realm ~"

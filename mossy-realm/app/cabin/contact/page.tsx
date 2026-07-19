@@ -74,6 +74,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'contact' }]}
         eyebrow="my cabin"
         title="contact"
         deckAccent="~ establish a connection ~"

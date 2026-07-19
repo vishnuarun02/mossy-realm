@@ -13,6 +13,7 @@ export default function CreditsPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/crossroads', label: 'crossroads' }, { label: 'credits' }]}
         eyebrow="crossroads"
         title="credits"
         deckAccent="~ thank you to ~"

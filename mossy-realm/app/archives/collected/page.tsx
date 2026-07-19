@@ -15,6 +15,7 @@ export default function CollectedPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/archives', label: 'archives' }, { label: 'collected' }]}
         eyebrow="archives"
         title="collected"
         deckAccent="~ digital artifacts ~"

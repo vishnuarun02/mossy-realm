@@ -13,6 +13,7 @@ export default function ExperimentsPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/fieldwork', label: 'fieldwork' }, { label: 'experiments' }]}
         eyebrow="fieldwork"
         title="experiments"
         deckAccent="~ the bench index ~"

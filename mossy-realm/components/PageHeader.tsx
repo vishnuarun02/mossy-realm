@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import TextLink from './ui/TextLink';
+import Breadcrumbs, { Crumb } from './Breadcrumbs';
 
 /**
  * PageHeader - the shared interior-page header.
@@ -15,10 +15,7 @@ import TextLink from './ui/TextLink';
  * homepage is the exception: it is the map, not a room.
  */
 
-export interface Breadcrumb {
-  href?: string;
-  label: string;
-}
+export type Breadcrumb = Crumb;
 
 interface PageHeaderProps {
   /** Trail above the title. Last item is the current page (no link). */
@@ -55,34 +52,7 @@ export default function PageHeader({
       `}
     >
       {breadcrumbs && breadcrumbs.length > 0 && (
-        <nav
-          aria-label="Breadcrumb"
-          className="
-            mb-3 text-left
-            font-nav text-meta uppercase tracking-wider
-            text-fg-secondary
-          "
-        >
-          <ol className="flex flex-wrap items-center gap-1.5">
-            {breadcrumbs.map((crumb, i) => {
-              const isLast = i === breadcrumbs.length - 1;
-              return (
-                <li key={i} className="flex items-center gap-1.5">
-                  {i > 0 && <span aria-hidden="true" className="text-border-structural">/</span>}
-                  {crumb.href && !isLast ? (
-                    <TextLink href={crumb.href} underline={false}>
-                      {crumb.label}
-                    </TextLink>
-                  ) : (
-                    <span aria-current={isLast ? 'page' : undefined}>
-                      {crumb.label}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
+        <Breadcrumbs items={breadcrumbs} className="mb-3 text-left" />
       )}
 
       {eyebrow && (

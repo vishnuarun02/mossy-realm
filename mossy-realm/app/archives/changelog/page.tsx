@@ -15,6 +15,7 @@ export default function ChangelogPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/archives', label: 'archives' }, { label: 'changelog' }]}
         eyebrow="archives"
         title="changelog"
         deckAccent="~ what changed and when ~"

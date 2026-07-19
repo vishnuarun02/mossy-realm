@@ -22,6 +22,7 @@ export default function NowPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'now' }]}
         eyebrow="my cabin"
         title="now"
         deckAccent="~ what the operator is up to ~"

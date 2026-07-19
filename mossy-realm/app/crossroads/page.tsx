@@ -15,6 +15,7 @@ export default function CrossroadsLanding() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ label: 'crossroads' }]}
         eyebrow="crossroads"
         title="the junction"
         deckAccent={junction.whisper}

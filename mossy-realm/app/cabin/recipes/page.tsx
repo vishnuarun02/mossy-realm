@@ -87,6 +87,7 @@ export default function RecipesPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'recipes' }]}
         eyebrow="my cabin"
         title="recipes"
         deckAccent="~ the kitchen database ~"

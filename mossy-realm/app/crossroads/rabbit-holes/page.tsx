@@ -33,6 +33,7 @@ export default function RabbitHolesPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/crossroads', label: 'crossroads' }, { label: 'rabbit holes' }]}
         eyebrow="crossroads"
         title="rabbit holes"
         deckAccent="~ links worth falling into ~"

@@ -13,6 +13,7 @@ export default function FieldNotesPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/fieldwork', label: 'fieldwork' }, { label: 'field notes' }]}
         eyebrow="fieldwork"
         title="field notes"
         deckAccent="~ dated one-liners ~"

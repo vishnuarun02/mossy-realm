@@ -14,6 +14,7 @@ export default function GuestbookPage() {
   return (
     <>
       <PageHeader
+        breadcrumbs={[{ href: '/crossroads', label: 'crossroads' }, { label: 'guestbook' }]}
         eyebrow="crossroads"
         title="guestbook"
         deckAccent="~ leave your mark ~"
