@@ -6,58 +6,69 @@ import Panel from '@/components/ui/Panel';
 import InsetPanel from '@/components/ui/InsetPanel';
 import Badge from '@/components/ui/Badge';
 import EmptyState from '@/components/ui/EmptyState';
+import TextLink from '@/components/ui/TextLink';
 import { recipeBox, type Recipe, type RecipeSection } from '@/lib/cabin-content';
 
 /**
  * /cabin/recipes - the recipe box crossed with an old database.
  *
- * A searchable index of cards. The filter is real: type to query
- * titles, tags, and notes. Sections keep their own trays.
- * All content from lib/cabin-content.ts.
+ * A searchable index of cards. Cards are links to the full card
+ * (/cabin/recipes/[slug]). All content from lib/cabin-content.ts.
  */
 
 const sections: RecipeSection[] = ['favorites', 'quick meals', 'experiments', 'kerala'];
 
+const statusLabels: Record<Recipe['status'], string> = {
+  favorite: '★ favorite',
+  tested: '✓ tested',
+  experiment: '⚗ experiment',
+  failed: '✗ failed',
+};
+
 function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
-    <li
-      className="
-        relative border-panel border-border-structural rounded-sm
-        bg-surface-panel-alt p-3
-      "
-    >
-      {recipe.sample && (
-        <span
-          className="
-            absolute top-2 right-2
-            font-nav text-micro uppercase tracking-wider
-            text-fg-inverse bg-surface-strip
-            px-1.5 py-0.5
-          "
-        >
-          sample
-        </span>
-      )}
-      <p className="font-heading text-sm text-fg-heading pr-14">
-        {recipe.title}
-      </p>
-      <div className="flex flex-wrap items-center gap-2 mt-1 font-nav text-meta uppercase tracking-wider text-fg-secondary">
-        {recipe.time && <span>{recipe.time}</span>}
-        {recipe.serves && <span>serves {recipe.serves}</span>}
-        {recipe.outcome && (
-          <span className={recipe.outcome === 'worked' ? 'text-status-success' : 'text-fg-warning'}>
-            {recipe.outcome === 'worked' ? '✓ worked' : '✗ failed'}
+    <li className="relative">
+      <TextLink
+        href={`/cabin/recipes/${recipe.slug}`}
+        underline={false}
+        className="
+          block relative border-panel border-border-structural rounded-sm
+          bg-surface-panel-alt p-3
+          hover:border-border-strong
+          transition-colors duration-fast
+        "
+      >
+        {recipe.sample && (
+          <span
+            className="
+              absolute top-2 right-2
+              font-nav text-micro uppercase tracking-wider
+              text-fg-inverse bg-surface-strip
+              px-1.5 py-0.5
+            "
+          >
+            sample
           </span>
         )}
-      </div>
-      <p className="text-sm text-fg-primary mt-1.5">{recipe.note}</p>
-      {recipe.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-2">
-          {recipe.tags.map((tag) => (
-            <Badge key={tag} variant="pill">{tag}</Badge>
-          ))}
+        <p className="font-heading text-sm text-fg-heading pr-14">
+          {recipe.title}
+        </p>
+        <div className="flex flex-wrap items-center gap-2 mt-1 font-nav text-meta uppercase tracking-wider text-fg-secondary">
+          <span className={recipe.status === 'failed' ? 'text-fg-warning' : 'text-fg-heading-alt'}>
+            {statusLabels[recipe.status]}
+          </span>
+          {recipe.prepTime && <span>prep {recipe.prepTime}</span>}
+          {recipe.cookTime && <span>cook {recipe.cookTime}</span>}
         </div>
-      )}
+        <p className="text-sm text-fg-primary mt-1.5">{recipe.note}</p>
+        {recipe.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {recipe.tags.map((tag) => (
+              <Badge key={tag} variant="pill">{tag}</Badge>
+            ))}
+          </div>
+        )}
+      </TextLink>
     </li>
   );
 }
@@ -125,7 +136,7 @@ export default function RecipesPage() {
               ) : (
                 <ul className="space-y-3">
                   {cards.map((recipe) => (
-                    <RecipeCard key={recipe.id} recipe={recipe} />
+                    <RecipeCard key={recipe.slug} recipe={recipe} />
                   ))}
                 </ul>
               )}

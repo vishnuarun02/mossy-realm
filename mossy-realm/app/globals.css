@@ -855,8 +855,14 @@ input[type="range"]::-moz-range-thumb:hover {
   font-size: 1.1rem;
   color: var(--text-secondary);
   text-decoration: none;
-  padding: 11px 20px;
-  display: block;
+  padding: 0 20px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* One aligned row: two-word labels never wrap, the active
+     marker (absolutely positioned) never shifts dimensions. */
+  white-space: nowrap;
   position: relative;
   overflow: visible;
   cursor: pointer;
@@ -912,7 +918,6 @@ input[type="range"]::-moz-range-thumb:hover {
 /* Parent buttons reuse the label look; reset button chrome. */
 button.nav-inset-label {
   appearance: none;
-  width: 100%;
 }
 
 .nav-inset-caret {
@@ -1766,5 +1771,82 @@ input[type="range"]:focus-visible {
 }
 
 .cabin-directory-link-active .cabin-directory-icon {
+  color: var(--border-strong);
+}
+
+/* ============================================ */
+/* CABIN DETAIL SHEETS                          */
+/* Recipe cards and build sheets: paper that    */
+/* has lived a little.                          */
+/* ============================================ */
+
+/*
+ * Stained card: a recipe card that has survived a kitchen.
+ * Two sepia blotches over the panel surface, subtle enough
+ * that text never fights them.
+ */
+.stained-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stained-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 140px 90px at 85% 12%, rgba(139, 90, 43, 0.10), transparent 70%),
+    radial-gradient(ellipse 110px 70px at 8% 88%, rgba(139, 90, 43, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* Ruled index-card lines behind ingredients/steps */
+.ruled-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent calc(1.7em - 1px),
+    var(--border-subtle) calc(1.7em - 1px),
+    var(--border-subtle) 1.7em
+  );
+}
+
+/*
+ * Status stamp: the rotated engineering stamp.
+ * Reads as a physical mark, not a UI badge.
+ */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-nav), 'Cormorant', serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  transform: rotate(-4deg);
+  opacity: 0.85;
+}
+
+.stamp-active {
+  color: var(--status-success);
+}
+
+.stamp-logged {
+  color: var(--border-strong);
+}
+
+.stamp-abandoned,
+.stamp-failed {
+  color: var(--accent-warm);
+}
+
+.stamp-tested,
+.stamp-favorite {
+  color: var(--status-success);
+}
+
+.stamp-experiment {
   color: var(--border-strong);
 }

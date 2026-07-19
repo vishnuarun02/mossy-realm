@@ -3,21 +3,17 @@
  *  MY CABIN - ALL EDITABLE CONTENT LIVES HERE
  * ══════════════════════════════════════════════════════════════
  *
- *  This is the ONLY file you need to edit to fill the cabin.
- *  Each page reads its own section:
+ *  One file feeds every cabin page, including detail routes:
  *
- *    /cabin            -> cabinWelcome
- *    /cabin/about      -> operator
- *    /cabin/now        -> now
- *    /cabin/crafting-table -> workbench
- *    /cabin/recipes    -> recipeBox
- *    /cabin/contact    -> contact
+ *    /cabin                       -> cabinWelcome
+ *    /cabin/about                 -> operator
+ *    /cabin/now                   -> now
+ *    /cabin/crafting-table        -> workbench (+ projects for detail pages)
+ *    /cabin/recipes               -> recipeBox (+ detail fields per recipe)
+ *    /cabin/contact               -> contact
  *
- *  Rules of the room:
- *  - One or two sentences per entry. The cabin is cozy, not a wiki.
- *  - No tildes at the end of sentences, no exclamation-mark hype.
- *  - Honest entries only. Unfinished things are labeled unfinished.
- *  - See MY_CABIN_CONTENT_GUIDE.md for field-by-field instructions.
+ *  Voice: short, human, slightly strange, technically literate.
+ *  No resume language. No fake nostalgia. See MY_CABIN_CONTENT_GUIDE.md.
  * ══════════════════════════════════════════════════════════════
  */
 
@@ -26,13 +22,10 @@
    ───────────────────────────────────────────── */
 
 export const cabinWelcome = {
-  /** Accent-font whisper under the title. */
   whisper: '~ come in, the kettle is on ~',
-  /** One short paragraph of welcome. */
   intro:
-    'This is my room in the realm. Desk in the corner, too many cables, a monitor that hums. Everything I make, read, cook, and break eventually ends up in here.',
-  /** Small status line shown on the door panel. */
-  doorStatus: 'the operator is in. deep in a build.',
+    'A small archive of machines, mistakes, and useful accidents. Desk in the corner, monitor that hums, cables with no known owner.',
+  doorStatus: 'in. debugging something that worked yesterday.',
 };
 
 /* ─────────────────────────────────────────────
@@ -55,60 +48,51 @@ export interface TimelineEntry {
 }
 
 export const operator = {
-  /** Short intro. Two or three sentences, first person. */
   intro:
-    "I'm vishnu. I build software, collect small obsessions, and keep this realm. The cabin is where the half-finished projects and the finished ones argue over shelf space.",
+    'Mechanical engineer by training, data person by trade. I keep other people\'s builds green for a living, and sometimes I get to build my own. This is where mine live.',
 
-  /** ID-card quick facts. Keep values short. */
   quickFacts: [
-    { label: 'operator', value: 'vishnu' },
-    { label: 'role', value: 'builder of realms' },
-    { label: 'location', value: 'the cabin' },
-    { label: 'status', value: 'deep work' },
+    { label: 'name', value: 'vishnu' },
+    { label: 'training', value: 'mechanical engineering' },
+    { label: 'day work', value: 'data + infrastructure' },
+    { label: 'side work', value: 'this site, mostly' },
     { label: 'github', value: 'vishnuarun02' },
   ] as QuickFact[],
 
-  /** Playful "system specifications". Add/edit freely. */
   systemSpecs: [
-    { label: 'os', value: 'mossOS 1.0' },
-    { label: 'kernel', value: 'curiosity-driven' },
-    { label: 'editor', value: 'whatever is open' },
-    { label: 'uptime', value: 'since the realm began' },
-    { label: 'coffee level', value: 'TODO: measure' },
+    { label: 'os', value: 'runs on coffee and curiosity' },
+    { label: 'languages', value: 'python, typescript, ruby' },
+    { label: 'hardware', value: 'opens things not meant to be opened' },
+    { label: 'uptime', value: 'interrupted by sleep' },
+    { label: 'known issue', value: 'starts more than finishes' },
   ] as QuickFact[],
 
-  /** Interest groups shown as pill clusters. */
   interests: [
-    { group: 'creative', items: ['pixel hunting', 'old web archaeology'] },
-    { group: 'hobbies', items: ['reading', 'cooking', 'walking nowhere in particular'] },
-    { group: 'tech', items: ['typescript', 'next.js', 'audio stuff', 'small tools'] },
-    { group: 'misc', items: ['note-taking systems', 'field guides'] },
+    { group: 'machines', items: ['roll forming', 'rocket motors', 'hardware teardowns'] },
+    { group: 'software', items: ['ci infrastructure', 'build systems', 'audio players'] },
+    { group: 'data', items: ['data science', 'observability', 'computer vision'] },
+    { group: 'offline', items: ['reading', 'cooking', 'music', 'field guides'] },
   ] as InterestGroup[],
 
-  /**
-   * Small timeline. 3-6 entries max.
-   * TODO: replace the prompts with real moments (first computer,
-   * first line of code, first site, this realm...).
-   */
   timeline: [
-    { year: '????', entry: 'TODO: first computer moment' },
-    { year: '????', entry: 'TODO: first thing you ever shipped' },
-    { year: '2026', entry: 'built MossyRealm and moved in' },
+    { year: 'then', entry: 'formed metal for a living. roll forming teaches you tolerances.' },
+    { year: 'then', entry: 'worked on rocket motors. yes, carefully.' },
+    { year: 'then', entry: 'taught models to find targets from drones.' },
+    { year: 'now', entry: 'keeps builds green and pipelines honest.' },
+    { year: '2026', entry: 'built this site instead of sleeping.' },
   ] as TimelineEntry[],
 
-  /** Currently-obsessed line + favorite things list. */
   currentObsession: 'note-taking systems',
   favorites: [
     'Is This Anything? - Jerry Seinfeld (current read)',
-    'Undertale soundtrack (on the radio)',
-    'the smell of rain on moss',
+    'the Undertale soundtrack (on the radio, again)',
+    'odd internet artifacts found at 1am',
   ],
 
-  /** Realm links worth pointing at from the profile. */
   realmLinks: [
     { href: '/fieldwork/learnings', label: 'learnings', note: 'what building this place taught me' },
-    { href: '/player', label: 'realm radio', note: 'what is playing in the cabin' },
-    { href: '/archives/sitemap', label: 'sitemap', note: 'every door in the realm' },
+    { href: '/player', label: 'realm radio', note: 'what is playing on the desk' },
+    { href: '/archives/sitemap', label: 'sitemap', note: 'every door' },
   ],
 };
 
@@ -125,34 +109,40 @@ export interface ProcessRow {
 }
 
 export const now = {
-  /** Shown as the monitor's last-updated stamp. Keep it honest. */
+  /** Stamp shown in the monitor strip. Update when you update rows. */
   lastUpdated: '2026-07-19 09:00',
 
-  /** The process list. led: green = active, amber = idle/slow, off = parked. */
+  /** The process list. led: green = active, amber = background, off = parked. */
   processes: [
-    { label: 'building', value: 'the cabin itself, this week', led: 'green' },
+    { label: 'building', value: 'the cabin, and the rooms beyond it', led: 'green' },
     { label: 'learning', value: 'note-taking systems', led: 'green' },
     { label: 'reading', value: 'Is This Anything? - Jerry Seinfeld', led: 'amber' },
-    { label: 'listening', value: 'realm radio, mostly Undertale', led: 'amber' },
-    { label: 'thinking about', value: 'how personal sites earn personality', led: 'green' },
+    { label: 'playing', value: 'TODO: current game', led: 'amber' },
+    { label: 'listening', value: 'the radio. Undertale, again', led: 'green' },
+    { label: 'testing', value: 'how much texture is too much texture', led: 'green' },
+    { label: 'thinking about', value: 'why old personal sites feel more alive', led: 'amber' },
   ] as ProcessRow[],
 
-  /** Small victories. Brag-sized, one line each. */
+  /** Dated entries, newest first. */
+  recentlyFixed: [
+    { date: '2026-07-19', note: 'nav no longer wraps My Cabin onto two lines' },
+    { date: '2026-02-05', note: 'the two-songs-at-once bug. removed the library instead' },
+  ],
+
+  recentlyBroken: [
+    { date: '2026-07-19', note: 'the build, twice before lunch. cached css is a liar' },
+  ],
+
   smallVictories: [
-    'unified the audio player after the two-songs-at-once incident',
+    'unified the audio player after the incident',
     'nav works with keyboard now',
     'the title finally fits on a 320px phone',
   ],
 
-  /** Current experiments. It is fine if they break. */
   experiments: [
     'how much texture is too much texture (watch this page)',
   ],
 
-  /**
-   * Short change log, newest first. One line each.
-   * TODO: keep it fresh; delete old rows freely.
-   */
   changelog: [
     { date: '2026-07-19', note: 'the cabin got walls, a door, and a directory' },
     { date: '2026-02-09', note: 'moved in. navigation restructure complete' },
@@ -164,111 +154,247 @@ export const now = {
    ───────────────────────────────────────────── */
 
 export interface BuildEntry {
+  slug: string;
   title: string;
   note: string;
-  /** green = active, amber = slow, off = parked */
+  /** green = active, amber = slow, off = abandoned */
   led: LedState;
   href?: string;
 }
 
+/** Full build sheet for /cabin/crafting-table/[slug] */
+export interface ProjectDetail {
+  slug: string;
+  title: string;
+  status: 'active' | 'logged' | 'abandoned';
+  /** One line: what it was. */
+  what: string;
+  /** Why it existed at all. */
+  why: string;
+  tools: string[];
+  /** Build notes, oldest first. Short lines. */
+  notes: string[];
+  /** What failed. The most honest section. */
+  failures: string[];
+  links: { href: string; label: string }[];
+  /** Mark samples so nobody mistakes scaffolding for history. */
+  sample?: boolean;
+}
+
 export const workbench = {
-  /** Active builds. What is actually on the bench right now. */
   activeBuilds: [
     {
-      title: 'MossyRealm',
-      note: 'this site. a scanned field guide that is also a homepage',
+      slug: 'mossyrealm',
+      title: 'mossyrealm',
+      note: 'this site. a scanned field guide that is also a homepage.',
       led: 'green',
       href: 'https://github.com/vishnuarun02/mossy-realm',
     },
   ] as BuildEntry[],
 
-  /** Experiments in progress. Half-baked is expected. */
   experiments: [
     {
-      title: 'cabin textures',
-      note: 'dither patterns and CRT scanlines that do not fight the text',
+      slug: 'mtu-notebooks',
+      title: 'mtu notebooks',
+      note: 'packet size vs. real networks. the graphs were wrong, the machine was right.',
       led: 'amber',
+    },
+    {
+      slug: 'cabin-textures',
+      title: 'cabin textures',
+      note: 'dither patterns and scanlines that do not fight the text.',
+      led: 'green',
     },
   ] as BuildEntry[],
 
-  /**
-   * Abandoned prototypes. Honest shelf of things that did not make it.
-   * TODO: name them. The webamp fight is the first entry.
-   */
   abandoned: [
     {
+      slug: 'webamp-integration',
       title: 'webamp integration',
-      note: 'two songs played at once for five days. removed it, built my own',
+      note: 'two songs played at once for five days. removed it, built my own.',
       led: 'off',
       href: '/fieldwork/learnings/audio-player-refactor',
     },
   ] as BuildEntry[],
 
-  /** Tools currently being explored. */
-  tools: ['next.js 16', 'tailwind 4', 'howler', 'cloudflare r2', 'vitest'],
+  tools: [
+    'python', 'typescript', 'next.js', 'ruby', 'redis',
+    'kafka', 'docker', 'kubernetes', 'buildkite', 'prometheus',
+  ],
 
-  /** Build log, newest first. */
   buildLog: [
     { date: '2026-07-19', note: 'design system pass: tokens, primitives, one shell' },
-    { date: '2026-02-08', note: 'radio loads tracks straight from the R2 bucket' },
+    { date: '2026-02-08', note: 'radio loads tracks straight from the bucket' },
   ],
 };
+
+/** Detail sheets, keyed by slug. Samples are clearly marked. */
+export const projects: ProjectDetail[] = [
+  {
+    slug: 'mossyrealm',
+    title: 'mossyrealm',
+    status: 'active',
+    what: 'a personal site that looks like a scanned field guide from 1999.',
+    why: 'the modern web has enough white cards with rounded corners.',
+    tools: ['next.js 16', 'tailwind 4', 'typescript', 'cloudflare r2', 'upstash redis', 'vercel'],
+    notes: [
+      'started as a neocities-style experiment. escaped onto its own domain.',
+      'the audio player was rebuilt from scratch after the two-songs-at-once incident.',
+      'one design system pass later: tokens, primitives, one shell.',
+    ],
+    failures: [
+      'trusted a css cache. the cache lied. twice.',
+      'added fireflies once. the page looked like a circus. removed them.',
+    ],
+    links: [
+      { href: 'https://github.com/vishnuarun02/mossy-realm', label: 'source on github' },
+      { href: '/fieldwork/learnings', label: 'the build log, in long form' },
+    ],
+  },
+  {
+    slug: 'mtu-notebooks',
+    title: 'mtu notebooks',
+    status: 'logged',
+    what: 'SAMPLE SHEET. network mtu and performance tests, written up as bench notes.',
+    why: 'SAMPLE. replace with what actually happened: setup, numbers, surprise.',
+    tools: ['iperf', 'ping', 'a spreadsheet that grew teeth'],
+    notes: [
+      'SAMPLE NOTE. what you tested, in one line.',
+      'SAMPLE NOTE. what the first graph said.',
+      'SAMPLE NOTE. why the graph was wrong.',
+    ],
+    failures: ['SAMPLE. the assumption that broke first.'],
+    links: [],
+    sample: true,
+  },
+  {
+    slug: 'webamp-integration',
+    title: 'webamp integration',
+    status: 'abandoned',
+    what: 'embedding a winamp clone for site music.',
+    why: 'looked perfect. winamp on a 90s site writes itself.',
+    tools: ['webamp', 'react', 'hope'],
+    notes: [
+      'day one: it rendered. day two: it played.',
+      'day three through five: two songs at once, always.',
+      'the fix was a trash icon. built a small unified player instead.',
+    ],
+    failures: [
+      'state lived in two places. both thought they owned the play button.',
+    ],
+    links: [{ href: '/fieldwork/learnings/audio-player-refactor', label: 'the full write-up' }],
+  },
+  {
+    slug: 'cabin-textures',
+    title: 'cabin textures',
+    status: 'active',
+    what: 'dither patterns and crt scanlines for the cabin pages.',
+    why: 'the site felt one degree too clean. paper has teeth.',
+    tools: ['css gradients', 'one svg noise tile', 'restraint'],
+    notes: [
+      'global grain nudged up until text complained, then backed off.',
+      'scanlines stay inside monitor frames. everywhere would be a costume.',
+    ],
+    failures: ['first pass made the body text look fuzzy. opacity is a dial, not a switch.'],
+    links: [],
+  },
+];
 
 /* ─────────────────────────────────────────────
    /cabin/recipes - the recipe box
    ───────────────────────────────────────────── */
 
 export type RecipeSection = 'favorites' | 'quick meals' | 'experiments' | 'kerala';
+export type RecipeStatus = 'favorite' | 'tested' | 'experiment' | 'failed';
 
 export interface Recipe {
-  id: string;
+  slug: string;
   title: string;
   section: RecipeSection;
-  time?: string;
-  serves?: string;
-  tags: string[];
-  /** One or two sentences. What it is, why it is here. */
+  status: RecipeStatus;
+  /** One or two sentences on the card index. */
   note: string;
-  /** 'worked' | 'failed' for experiments. Omit elsewhere. */
-  outcome?: 'worked' | 'failed';
+  prepTime?: string;
+  cookTime?: string;
+  serves?: string;
+  ingredients: string[];
+  steps: string[];
+  /** Kitchen notes at the bottom of the card. */
+  kitchenNotes: string[];
+  tags: string[];
+  /** Optional card photo: /images/cabin/... */
+  image?: string;
   /** Mark samples clearly so nobody thinks they are real yet. */
   sample?: boolean;
 }
 
 export const recipeBox = {
-  /** One-line intro for the database strip. */
   intro: 'an old database of things I cook. no life stories before the ingredients.',
 
   /**
-   * The cards. Add recipes at the TOP of the array.
+   * Add recipes at the TOP of the array.
    * Delete the samples once real cards are filed.
    */
   recipes: [
     {
-      id: 'sample-1',
-      title: 'sample card: 15-minute garlic noodles',
+      slug: 'sample-garlic-noodles',
+      title: 'sample: 15-minute garlic noodles',
       section: 'quick meals',
-      time: '15 min',
+      status: 'tested',
+      note: 'SAMPLE CARD. the structure of a real quick meal. replace with your own.',
+      prepTime: '5 min',
+      cookTime: '10 min',
       serves: '1',
+      ingredients: [
+        'noodles for one',
+        '4 cloves garlic, sliced thin',
+        '2 tbsp butter',
+        '1 tbsp soy sauce',
+        'chili flakes',
+        'spring onion, if the fridge has one',
+      ],
+      steps: [
+        'boil the noodles. save a cup of the water.',
+        'butter + garlic on low until it smells like a good decision.',
+        'noodles in, soy in, splash of noodle water. toss hard.',
+        'chili flakes on top. eat standing up if nobody is watching.',
+      ],
+      kitchenNotes: [
+        'the noodle water is the whole trick. starchy glue.',
+        'SAMPLE NOTE. replace with the thing you learned the third time.',
+      ],
       tags: ['noodles', 'weeknight'],
-      note: 'SAMPLE ENTRY. Replace with a real quick meal: what it is, and the one trick that makes it work.',
       sample: true,
     },
     {
-      id: 'sample-2',
-      title: 'sample card: the rice experiment',
+      slug: 'sample-rice-experiment',
+      title: 'sample: the toasted rice experiment',
       section: 'experiments',
+      status: 'failed',
+      note: 'SAMPLE CARD. failures get filed too. they teach more.',
+      prepTime: '2 min',
+      cookTime: '25 min',
+      serves: '2',
+      ingredients: ['1 cup rice', '2 cups water', 'salt'],
+      steps: [
+        'toast the dry rice in the pot first.',
+        'add water, salt, lid on.',
+        'SAMPLE STEP. write down what actually happened.',
+      ],
+      kitchenNotes: ['SAMPLE NOTE. what went wrong, and what you would try instead.'],
       tags: ['rice'],
-      note: 'SAMPLE ENTRY. Tried toasting the rice first. Document failures too, they teach more.',
-      outcome: 'failed',
       sample: true,
     },
     {
-      id: 'todo-kerala',
+      slug: 'todo-kerala-card',
       title: 'TODO: a kerala recipe goes here',
       section: 'kerala',
+      status: 'experiment',
+      note: 'reserved slot. file a hometown or family recipe here when ready.',
+      ingredients: [],
+      steps: [],
+      kitchenNotes: [],
       tags: ['kerala'],
-      note: 'Reserved slot. File family or hometown recipes here when ready.',
       sample: true,
     },
   ] as Recipe[],
@@ -285,20 +411,16 @@ export const contact = {
    */
   email: 'hello@mossyrealm.space',
 
-  /** Terminal lines shown while "connecting". Keep 2-3 short lines. */
   terminalIntro: [
     '> establishing connection to the cabin...',
     '> signal found. the operator is reachable.',
   ],
 
-  /** Availability / response expectations. Honest, one or two lines. */
   availability:
     'I read everything. Replies happen when the moss permits, usually within a few days.',
 
-  /** What the form is for. One line. */
   formNote: 'say hi, report a broken page, or recommend a song for the radio.',
 
-  /** External links. The mailbox also lists other doors. */
   links: [
     { href: 'https://github.com/vishnuarun02', label: 'github', note: 'where the code lives' },
     { href: '/crossroads/guestbook', label: 'guestbook', note: 'leave a public mark instead' },

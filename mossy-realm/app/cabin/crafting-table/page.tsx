@@ -8,9 +8,8 @@ import { workbench, type BuildEntry, type LedState } from '@/lib/cabin-content';
 /**
  * /cabin/crafting-table - the workbench.
  *
- * Drawers, not a project grid: active builds on the bench,
- * experiments mid-solder, and an honest shelf of abandoned
- * prototypes. All content from lib/cabin-content.ts.
+ * Drawers, not a project grid. Every build entry links to its
+ * full build sheet (/cabin/crafting-table/[slug]).
  */
 
 function Led({ state }: { state: LedState }) {
@@ -23,19 +22,13 @@ function BuildList({ entries }: { entries: BuildEntry[] }) {
   return (
     <ul className="space-y-3">
       {entries.map((entry) => (
-        <li key={entry.title} className="flex gap-2.5">
+        <li key={entry.slug} className="flex gap-2.5">
           <span className="mt-1.5"><Led state={entry.led} /></span>
           <div className="min-w-0">
-            <p className="text-fg-heading font-heading text-sm">
-              {entry.title}
-              {entry.href && (
-                <>
-                  {' '}
-                  <TextLink href={entry.href} arrow className="text-caption font-normal">
-                    more
-                  </TextLink>
-                </>
-              )}
+            <p className="font-heading text-sm">
+              <TextLink href={`/cabin/crafting-table/${entry.slug}`} className="text-fg-heading">
+                {entry.title}
+              </TextLink>
             </p>
             <p className="text-sm text-fg-secondary">{entry.note}</p>
           </div>
@@ -55,12 +48,10 @@ export default function CraftingTablePage() {
       />
 
       <div className="space-y-5">
-        {/* Active builds */}
         <Panel title="{ on the bench }" surface="alt">
           <BuildList entries={workbench.activeBuilds} />
         </Panel>
 
-        {/* Experiments */}
         <Panel title="{ mid-experiment }">
           <BuildList entries={workbench.experiments} />
           <Metadata className="mt-3">
@@ -68,12 +59,10 @@ export default function CraftingTablePage() {
           </Metadata>
         </Panel>
 
-        {/* Abandoned prototypes */}
         <Panel title="{ the shelf of good intentions }">
           <BuildList entries={workbench.abandoned} />
         </Panel>
 
-        {/* Tools */}
         <Panel title="{ tools in reach }">
           <div className="flex flex-wrap gap-1.5">
             {workbench.tools.map((tool) => (
@@ -82,7 +71,6 @@ export default function CraftingTablePage() {
           </div>
         </Panel>
 
-        {/* Build log */}
         <Panel title="{ build log }">
           <ul className="space-y-2">
             {workbench.buildLog.map((entry) => (

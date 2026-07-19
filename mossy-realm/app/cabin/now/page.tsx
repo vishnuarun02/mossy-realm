@@ -55,6 +55,34 @@ export default function NowPage() {
           </InsetPanel>
         </Panel>
 
+        {/* Recently fixed / recently broken, dated */}
+        <div className="grid md:grid-cols-2 gap-4">
+          <Panel title="{ recently fixed }">
+            <ul className="space-y-2">
+              {now.recentlyFixed.map((entry) => (
+                <li key={entry.date} className="flex gap-2.5 text-sm">
+                  <Metadata className="shrink-0 whitespace-nowrap">
+                    <span>{entry.date}</span>
+                  </Metadata>
+                  <span className="text-fg-primary">{entry.note}</span>
+                </li>
+              ))}
+            </ul>
+          </Panel>
+          <Panel title="{ recently broken }">
+            <ul className="space-y-2">
+              {now.recentlyBroken.map((entry) => (
+                <li key={entry.date} className="flex gap-2.5 text-sm">
+                  <Metadata className="shrink-0 whitespace-nowrap">
+                    <span>{entry.date}</span>
+                  </Metadata>
+                  <span className="text-fg-primary">{entry.note}</span>
+                </li>
+              ))}
+            </ul>
+          </Panel>
+        </div>
+
         {/* Small victories */}
         <Panel title="{ small victories }">
           <ul className="space-y-1.5 text-sm">

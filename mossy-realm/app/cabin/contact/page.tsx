@@ -31,6 +31,7 @@ export default function ContactPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [website, setWebsite] = useState(''); // honeypot: humans never fill this
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sendState, setSendState] = useState<SendState>('idle');
 
@@ -48,6 +49,13 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot: bots fill hidden fields. Silently drop them.
+    if (website) {
+      setSendState('sent');
+      return;
+    }
+
     const nextErrors = validate();
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -147,6 +155,20 @@ export default function ContactPage() {
                   placeholder="say hi, report a broken page, or recommend a song..."
                 />
               </FormField>
+
+              {/* Honeypot: invisible to humans, irresistible to bots */}
+              <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+                <label htmlFor="contact-website">website</label>
+                <input
+                  id="contact-website"
+                  name="contact-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
 
               <div className="flex items-center gap-3">
                 <Button type="submit" disabled={sendState === 'sending'}>
