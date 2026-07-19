@@ -36,6 +36,7 @@ const sections: SitemapSection[] = [
   {
     name: 'fieldwork',
     links: [
+      { href: '/fieldwork', note: 'the lab binder' },
       { href: '/fieldwork/learnings', note: 'long-form writing' },
       { href: '/fieldwork/experiments', note: 'the lab' },
       { href: '/fieldwork/field-notes', note: 'micro-posts' },
@@ -45,6 +46,7 @@ const sections: SitemapSection[] = [
   {
     name: 'crossroads',
     links: [
+      { href: '/crossroads', note: 'the junction' },
       { href: '/crossroads/rabbit-holes', note: 'curated links' },
       { href: '/crossroads/guestbook', note: 'visitor signatures' },
       { href: '/crossroads/credits', note: 'acknowledgements' },
@@ -53,6 +55,7 @@ const sections: SitemapSection[] = [
   {
     name: 'archives',
     links: [
+      { href: '/archives', note: 'the catalog room' },
       { href: '/archives/collected', note: 'visual artifacts' },
       { href: '/archives/changelog', note: 'what changed and when' },
       { href: '/archives/sitemap', note: 'you are here' },

@@ -1,19 +1,20 @@
 import SiteShell from "@/components/SiteShell";
-import SubNav from "@/components/SubNav";
+import CatalogTabs from "@/components/archives/CatalogTabs";
 
-const archivesLinks = [
-  { href: '/archives/collected', label: 'collected' },
-  { href: '/archives/changelog', label: 'changelog' },
-  { href: '/archives/sitemap', label: 'sitemap' },
-];
-
+/**
+ * Archives layout: the basement file cabinet.
+ *
+ * Catalog tabs mark the drawers. Everything below is catalogued,
+ * accessioned, and slightly dusty.
+ */
 export default function ArchivesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SiteShell subNav={<SubNav links={archivesLinks} label="Archives sections" />}>
+    <SiteShell>
+      <CatalogTabs />
       {children}
     </SiteShell>
   );
