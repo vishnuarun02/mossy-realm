@@ -148,8 +148,8 @@ export function StatusDot({
       className={`
         inline-block w-2 h-2 rounded-full
         ${isPlaying
-          ? 'bg-mossy-link shadow-[0_0_6px_var(--mossy-link)]'
-          : 'bg-mossy-accent shadow-[0_0_8px_var(--mossy-accent)]'
+          ? 'bg-link shadow-[0_0_6px_var(--interactive-link)]'
+          : 'bg-accent shadow-[0_0_8px_var(--accent-warm)]'
         }
         ${className}
       `}

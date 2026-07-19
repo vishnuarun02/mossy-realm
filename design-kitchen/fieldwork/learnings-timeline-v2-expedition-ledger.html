@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variation B — Expedition Ledger | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <style>
+    /* —— Variation B: left spine + stacked field-log cards —— */
+    .ledger-timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 3px solid var(--mossy-border);
+      opacity: 1;
+    }
+
+    .ledger-entry {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .ledger-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .ledger-entry::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      background: var(--mossy-link);
+      border: 3px solid var(--mossy-bg-box-alt);
+      border-radius: 50%;
+    }
+    .ledger-entry.is-muted::before {
+      background: var(--mossy-border);
+    }
+
+    .log-card {
+      border: 3px double var(--mossy-border);
+      background: var(--mossy-bg-box);
+      overflow: hidden;
+    }
+
+    .log-stamp {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--mossy-border);
+      color: var(--mossy-bg-box);
+      font-family: var(--font-nav);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .log-stamp .exp-id {
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+
+    .log-body {
+      padding: 14px 16px;
+    }
+
+    .log-body h3 {
+      font-family: var(--font-heading);
+      color: var(--mossy-header);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .takeaway-strip {
+      border-left: 4px solid var(--mossy-link);
+      background: rgba(144, 238, 144, 0.08);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--mossy-link);
+    }
+
+    .log-body p {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .log-body ul {
+      font-size: 0.85rem;
+      color: var(--mossy-text-muted);
+      margin: 0 0 10px 1.2rem;
+      line-height: 1.55;
+    }
+
+    .log-expand {
+      display: inline-block;
+      margin-top: 4px;
+      font-family: var(--font-nav);
+      font-size: 0.82rem;
+      color: var(--mossy-link);
+      border-bottom: 1px dotted var(--mossy-link);
+    }
+
+    .growing-note {
+      text-align: center;
+      padding: 16px;
+      font-style: italic;
+      color: var(--mossy-text-muted);
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+  <div class="mock-banner">
+    <strong>MOCKUP B</strong> — Expedition Ledger (evolved from your live page) ·
+    <a href="learnings-timeline-index.html">← all variations</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="#" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="three-col">
+        <aside class="sidebar left-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ why share this? ]</div>
+            <div class="retro-box-content sidebar-text">
+              <p>Documenting mistakes so other retro web builders don&apos;t repeat them.</p>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ quick jump ]</div>
+            <div class="retro-box-content">
+              <ul class="sidebar-list">
+                <li><a href="#webamp-rip">audio player refactor</a></li>
+                <li><a href="#site-wiring">site wiring guide</a></li>
+                <li><a href="#cursors">cursors &amp; effects</a></li>
+                <li><a href="#palette">color palette</a></li>
+                <li><a href="#fonts">typography</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ learnings }</div>
+            <div class="retro-box-content">
+              <div class="intro-block">
+                <p class="intro-accent">~ wisdom dug up through trial and error ~</p>
+                <p class="intro-sub">field log · expeditions in reverse chronological order</p>
+              </div>
+
+              <div class="ledger-timeline">
+                <article class="ledger-entry" id="webamp-rip">
+                  <div class="log-card">
+                    <div class="log-stamp">
+                      <span class="exp-id">Exp. 05</span>
+                      <span>Feb 5, 2026 · Frontend</span>
+                    </div>
+                    <div class="log-body">
+                      <h3>Audio player refactor</h3>
+                      <div class="takeaway-strip">
+                        &quot;Working software beats clever software every time.&quot;
+                      </div>
+                      <p><strong>removed:</strong> webamp · <strong>added:</strong> custom unified player</p>
+                      <p>Webamp looked perfect in isolation. React SPA integration was the problem — StrictMode double-mounts, orphaned DOM, two audio engines at once.</p>
+                      <ul>
+                        <li>Single Howler instance, one source of truth</li>
+                        <li>Playback persists through navigation</li>
+                      </ul>
+                      <span class="log-expand">read full expedition log →</span>
+                      <div class="tags">
+                        <span class="tag">audio</span>
+                        <span class="tag">react</span>
+                        <span class="tag">refactor</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ledger-entry" id="site-wiring">
+                  <div class="log-card">
+                    <div class="log-stamp">
+                      <span class="exp-id">Exp. 04</span>
+                      <span>Feb 5, 2026 · Infra</span>
+                    </div>
+                    <div class="log-body">
+                      <h3>Wiring with Hostinger, Cloudflare, Vercel &amp; R2</h3>
+                      <div class="takeaway-strip">
+                        Most of the work is waiting for nameservers to propagate.
+                      </div>
+                      <p>Hostinger holds the domain. Cloudflare runs DNS. Vercel hosts the app. R2 stores media.</p>
+                      <span class="log-expand">view wiring diagram →</span>
+                      <div class="tags">
+                        <span class="tag">dns</span>
+                        <span class="tag">cloudflare</span>
+                        <span class="tag">r2</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ledger-entry" id="cursors">
+                  <div class="log-card">
+                    <div class="log-stamp">
+                      <span class="exp-id">Exp. 03</span>
+                      <span>Jan 16, 2026 · Design</span>
+                    </div>
+                    <div class="log-body">
+                      <h3>The great cursor &amp; effects experiment</h3>
+                      <div class="takeaway-strip">
+                        More effects does not equal better vibes.
+                      </div>
+                      <p>Sparkles, fireflies, wax-seal cursors — all reverted. Dense layouts need simple interactions.</p>
+                      <div class="tags">
+                        <span class="tag">cursors</span>
+                        <span class="tag">reverted</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ledger-entry is-muted" id="palette">
+                  <div class="log-card">
+                    <div class="log-stamp">
+                      <span class="exp-id">Exp. 02</span>
+                      <span>Dec 2025 · Design</span>
+                    </div>
+                    <div class="log-body">
+                      <h3>Finding the right color palette</h3>
+                      <div class="takeaway-strip">Warm amber + forest green = cozy.</div>
+                      <p>Six palettes explored before Sunlit Glade won.</p>
+                      <div class="tags"><span class="tag">colors</span></div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ledger-entry is-muted" id="fonts">
+                  <div class="log-card">
+                    <div class="log-stamp">
+                      <span class="exp-id">Exp. 01</span>
+                      <span>Dec 2025 · Design</span>
+                    </div>
+                    <div class="log-body">
+                      <h3>Choosing fonts that feel right</h3>
+                      <div class="takeaway-strip">Cinzel + Lora = fantasy storybook.</div>
+                      <div class="tags"><span class="tag">typography</span></div>
+                    </div>
+                  </div>
+                </article>
+
+                <div class="ledger-entry is-muted">
+                  <p class="growing-note">~ more learnings growing here soon ~</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ topics ]</div>
+            <div class="retro-box-content tags" style="justify-content: center;">
+              <span class="tag">audio</span>
+              <span class="tag">dns</span>
+              <span class="tag">cursors</span>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ key insight ]</div>
+            <div class="retro-box-content sidebar-text" style="text-align: center;">
+              <p style="color: var(--mossy-header); font-style: italic;">90s sites had complex layouts but simple interactions.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <p>● visitors: 004321 · © mossyrealm</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

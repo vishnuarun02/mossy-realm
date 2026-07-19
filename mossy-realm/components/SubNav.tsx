@@ -3,6 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+/**
+ * SubNav - section-local wayfinding strip.
+ *
+ * Sits under the site header on interior sections (cabin, fieldwork,
+ * crossroads, archives) so visitors always know which room of the
+ * realm they're in. Active page gets the amber underline and ✶ glyph.
+ */
+
 interface SubNavLink {
   href: string;
   label: string;
@@ -10,40 +18,44 @@ interface SubNavLink {
 
 interface SubNavProps {
   links: SubNavLink[];
+  /** Accessible name, e.g. "Cabin sections". */
+  label: string;
 }
 
-export default function SubNav({ links }: SubNavProps) {
+export default function SubNav({ links, label }: SubNavProps) {
   const pathname = usePathname();
 
   return (
     <nav
+      aria-label={label}
       className="
-        bg-mossy-bg-box-alt
-        border-b-3 border-mossy-border
+        bg-surface-panel-alt
+        border-b-frame border-border-structural
         px-4 py-2
         flex flex-wrap justify-center gap-2
       "
-      style={{ borderBottomWidth: '3px' }}
     >
       {links.map((link) => {
-        const isActive = pathname === link.href;
+        const isActive = pathname === link.href || pathname.startsWith(link.href + '/');
         return (
           <Link
             key={link.href}
             href={link.href}
+            aria-current={isActive ? 'page' : undefined}
             className={`
               font-nav
               px-3 py-1
+              min-h-[44px] md:min-h-0 inline-flex items-center
               text-sm
               no-underline
               border-b-2
-              transition-none
               ${isActive
-                ? 'text-mossy-header border-mossy-border'
-                : 'text-mossy-link border-transparent hover:text-mossy-link-hover hover:border-mossy-border'
+                ? 'text-fg-heading border-border-structural'
+                : 'text-link border-transparent hover:text-link-hover hover:border-border-structural'
               }
             `}
           >
+            {isActive && <span aria-hidden="true" className="text-border-strong mr-1">✶</span>}
             {link.label}
           </Link>
         );
@@ -51,4 +63,3 @@ export default function SubNav({ links }: SubNavProps) {
     </nav>
   );
 }
-

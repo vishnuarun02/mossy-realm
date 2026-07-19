@@ -46,9 +46,9 @@ export default function VisitorCounter() {
   };
 
   return (
-    <span className="text-mossy-text-muted font-body">
+    <span className="text-fg-secondary font-body">
       ● visitors:{' '}
-      <span className="text-mossy-header font-bold">
+      <span className="text-fg-heading font-bold" aria-live="polite">
         {count !== null ? formatCount(count) : '------'}
       </span>
     </span>

@@ -1,5 +1,7 @@
 import RetroBox from './RetroBox';
 import Image from 'next/image';
+import MediaFrame from './ui/MediaFrame';
+import Divider from './ui/Divider';
 
 export default function MainPanel() {
   return (
@@ -7,25 +9,9 @@ export default function MainPanel() {
       {/* Main Welcome Box */}
       <RetroBox title="{ what's going on here? }" variant="alt">
         {/* Hero Art with "hello" tag tucked into corner */}
-        <div
-          className="
-            w-full h-40 md:h-52
-            bg-mossy-bg-box 
-            border-2 border-mossy-border
-            mb-4
-            overflow-hidden
-            relative
-          "
-        >
-          <Image
-            src="/forest-fox.png"
-            alt="A fox crossing a snowy log bridge in a dark winter forest"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Hello tag - tucked into bottom-right corner of image, half peeking out */}
-          <div className="absolute -bottom-[10px] right-3 rotate-[-4deg] z-10">
+        <MediaFrame
+          className="w-full h-40 md:h-52 mb-4"
+          cornerTag={
             <Image
               src="/images/hellotags.gif"
               alt=""
@@ -34,17 +20,25 @@ export default function MainPanel() {
               unoptimized
               className="drop-shadow-[1px_1px_0_rgba(0,0,0,0.5)]"
             />
-          </div>
-        </div>
+          }
+        >
+          <Image
+            src="/forest-fox.png"
+            alt="A fox crossing a snowy log bridge in a dark winter forest"
+            fill
+            className="object-cover"
+            priority
+          />
+        </MediaFrame>
 
         {/* Welcome Text */}
-        <div className="text-mossy-text space-y-3 font-body">
+        <div className="text-fg-primary space-y-3 font-body">
           <p>
-            Oh, little traveler! Welcome to <span className="text-mossy-header font-bold">MossyRealm</span>,
+            Oh, little traveler! Welcome to <span className="text-fg-heading font-bold">MossyRealm</span>,
             a magical kingdom on the internet where I share my thoughts, art, projects,
             and whatever else I feel like putting here!
           </p>
-          <p className="text-mossy-header text-lg text-center py-2 font-accent">
+          <p className="text-fg-heading text-lg text-center py-2 font-accent">
             ~ a cozy place for wandering souls ~
           </p>
           <p>
@@ -53,30 +47,28 @@ export default function MainPanel() {
             you&apos;re one of the lost ones or not, I hope you enjoy exploring this strange
             space! You may even come across a secret page or two :)
           </p>
-          <p className="text-mossy-accent">
+          <p className="text-accent">
             <strong>Realm warnings:</strong> some pages may contain bright colors and
-            cozy vibes that could cause overstimulation~
+            cozy vibes that could cause overstimulation.
           </p>
         </div>
 
-        {/* Divider */}
-        <div className="border-t-2 border-mossy-border my-4"></div>
+        <Divider />
 
         {/* Status Section */}
         <div className="text-center py-3">
-          <p className="text-mossy-header-alt text-lg mb-2 font-heading">
+          <p className="text-fg-heading-alt text-lg mb-2 font-heading">
             current status:
           </p>
-          <p className="text-mossy-header font-body">
+          <p className="text-fg-heading font-body">
             status: deep work
           </p>
-          <p className="text-mossy-text font-body">
+          <p className="text-fg-primary font-body">
             quiet notes, careful edits, steady progress
           </p>
         </div>
 
-        {/* Divider */}
-        <div className="border-t-2 border-mossy-border my-4"></div>
+        <Divider />
       </RetroBox>
 
       {/* Center bottom intentionally empty - exposes wallpaper */}

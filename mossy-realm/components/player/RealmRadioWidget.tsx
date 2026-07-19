@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import RetroBox from '@/components/RetroBox';
+import Panel from '@/components/ui/Panel';
+import IconButton from '@/components/ui/IconButton';
+import TextLink from '@/components/ui/TextLink';
 import { usePlayerStore } from '@/lib/player/store';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import { Visualizer } from './Visualizer';
+import TrackStatus from './TrackStatus';
+import VolumeControl from './VolumeControl';
 import {
   PlayIcon,
   PauseIcon,
@@ -41,81 +44,67 @@ export function RealmRadioWidget() {
   const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
 
   return (
-    <RetroBox title="-= realm radio =-">
+    <Panel title="-= realm radio =-">
       <div className="cassette-shell p-2 relative">
-        <div className="absolute top-2 left-2 cassette-led" />
-        <div className="absolute top-2 right-2 cassette-led" />
-        <div className="absolute bottom-2 left-2 cassette-led-amber" />
-        <div className="absolute bottom-2 right-2 cassette-led-amber" />
+        <div className="absolute top-2 left-2 cassette-led" aria-hidden="true" />
+        <div className="absolute top-2 right-2 cassette-led" aria-hidden="true" />
+        <div className="absolute bottom-2 left-2 cassette-led-amber" aria-hidden="true" />
+        <div className="absolute bottom-2 right-2 cassette-led-amber" aria-hidden="true" />
 
-        <div className="flex items-center justify-center gap-2 text-[0.62rem] uppercase tracking-wider text-mossy-text-muted mb-2">
-          <span className={mounted && isPlaying ? 'cassette-led' : 'cassette-led-amber cassette-led-blink'} />
-          <span>{mounted && isPlaying ? 'listening' : 'paused'}</span>
-          <span className={mounted && isPlaying ? 'cassette-led' : 'cassette-led-amber cassette-led-blink'} />
-        </div>
+        <TrackStatus isPlaying={mounted && isPlaying} className="mb-2" />
 
         <div className="cassette-window p-2">
           <Visualizer variant="compact" />
         </div>
 
         <div className="cassette-label mt-2 px-2 py-2 text-center">
-          <div className="font-accent text-mossy-header text-[0.7rem] leading-tight break-words">
+          <div className="font-accent text-fg-heading text-micro leading-tight break-words">
             {track.title}
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-2 mt-2">
-          <button
-            onClick={prevTrack}
-            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
-            aria-label="Previous track"
-          >
+          <IconButton variant="ghost" onClick={prevTrack} aria-label="Previous track">
             <PrevIcon />
-          </button>
-          <button
+          </IconButton>
+          <IconButton
+            variant="primary"
             onClick={togglePlay}
-            className="h-8 bg-mossy-border border-2 border-mossy-border-glow text-mossy-bg-box hover:bg-mossy-border-glow transition-colors flex items-center justify-center"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
-          </button>
-          <button
-            onClick={nextTrack}
-            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
-            aria-label="Next track"
-          >
+          </IconButton>
+          <IconButton variant="ghost" onClick={nextTrack} aria-label="Next track">
             <NextIcon />
-          </button>
-          <button
+          </IconButton>
+          <IconButton
+            variant="ghost"
             onClick={toggleMute}
-            className="h-8 bg-mossy-bg-box-alt border-2 border-mossy-border text-mossy-border hover:bg-mossy-border hover:text-mossy-bg-box transition-colors flex items-center justify-center"
             aria-label={isMuted ? 'Unmute' : 'Mute'}
+            aria-pressed={isMuted}
           >
             {isMuted ? <VolumeMutedIcon /> : <VolumeHighIcon />}
-          </button>
+          </IconButton>
         </div>
 
-        <div className="flex items-center gap-2 text-xs mt-2 overflow-hidden">
-          <span className="text-mossy-text-muted font-nav">Vol</span>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={volume * 100}
-            onChange={(e) => setVolume(Number(e.target.value) / 100)}
-            className="cassette-slider flex-1 min-w-0 cursor-pointer w-full"
-          />
-        </div>
+        <VolumeControl
+          volume={volume}
+          isMuted={isMuted}
+          onSetVolume={setVolume}
+          onToggleMute={toggleMute}
+          className="mt-2"
+        />
 
         <div className="mt-2 text-center">
-          <Link
+          <TextLink
             href="/player"
-            className="text-xs font-nav text-mossy-link hover:text-mossy-link-hover inline-flex items-center gap-1 justify-center w-full"
+            underline={false}
+            className="text-xs font-nav inline-flex items-center gap-1 justify-center w-full"
           >
             open player <OpenIcon className="inline-block" />
-          </Link>
+          </TextLink>
         </div>
       </div>
-    </RetroBox>
+    </Panel>
   );
 }

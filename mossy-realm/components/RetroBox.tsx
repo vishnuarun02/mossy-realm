@@ -1,4 +1,16 @@
 import { ReactNode } from 'react';
+import Panel from './ui/Panel';
+
+/**
+ * @deprecated RetroBox has evolved into `Panel` (components/ui/Panel).
+ * This shim keeps existing consumers working during migration.
+ *
+ * Mapping:
+ * - variant="default" -> surface="panel"
+ * - variant="alt"     -> surface="alt"
+ *
+ * New code should import Panel directly.
+ */
 
 interface RetroBoxProps {
   title?: string;
@@ -13,37 +25,13 @@ export default function RetroBox({
   variant = 'default',
   className = ''
 }: RetroBoxProps) {
-  const bgClass = variant === 'alt' ? 'bg-mossy-bg-box-alt' : 'bg-mossy-bg-box';
-
   return (
-    <div
-      className={`
-        ${bgClass}
-        border-[3px] border-mossy-border
-        rounded-sm
-        overflow-hidden
-        ${className}
-      `}
+    <Panel
+      title={title}
+      surface={variant === 'alt' ? 'alt' : 'panel'}
+      className={className}
     >
-      {title && (
-        <div
-          className="
-            font-heading
-            bg-mossy-border 
-            text-mossy-bg-box 
-            px-3 py-1.5
-            font-semibold
-            text-sm
-            lowercase
-            tracking-wider
-          "
-        >
-          {title}
-        </div>
-      )}
-      <div className="p-3 font-body">
-        {children}
-      </div>
-    </div>
+      {children}
+    </Panel>
   );
 }

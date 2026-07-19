@@ -1,5 +1,13 @@
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import SubNav from "@/components/SubNav";
+
+const cabinLinks = [
+  { href: '/cabin/about', label: 'about' },
+  { href: '/cabin/now', label: 'now' },
+  { href: '/cabin/crafting-table', label: 'crafting table' },
+  { href: '/cabin/recipes', label: 'recipes' },
+  { href: '/cabin/contact', label: 'contact' },
+];
 
 export default function CabinLayout({
   children,
@@ -7,13 +15,8 @@ export default function CabinLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="site-container">
-      <NavBar />
-      <main className="site-main">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <SiteShell subNav={<SubNav links={cabinLinks} label="Cabin sections" />}>
+      {children}
+    </SiteShell>
   );
 }
-

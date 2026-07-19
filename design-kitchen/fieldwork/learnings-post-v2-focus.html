@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player Refactor — Reading Focus | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <link rel="stylesheet" href="_learnings-post-shared.css">
+  <style>
+    /* Wider article, slim sidebars */
+    .focus-layout {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) 120px;
+      gap: 12px;
+      padding: 16px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .focus-layout {
+        grid-template-columns: 1fr;
+      }
+      .focus-side { display: none; }
+      .focus-back-mobile {
+        display: block !important;
+      }
+    }
+    .focus-side .retro-box-content {
+      font-size: 0.78rem;
+      padding: 8px;
+    }
+    .focus-side .retro-box-title {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+    }
+    .focus-main .retro-box-content {
+      padding: 20px 24px;
+      max-width: 52rem;
+      margin: 0 auto;
+    }
+    .focus-back-mobile {
+      display: none;
+      margin-bottom: 12px;
+      font-family: var(--font-nav);
+      font-size: 0.85rem;
+    }
+    .focus-back-mobile a { color: var(--mossy-link); }
+    .post-title { font-size: 1.5rem; text-align: center; margin-bottom: 8px; }
+    .expedition-meta { justify-content: center; }
+    .key-takeaway { text-align: center; max-width: 36rem; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+<body>
+  <div class="mock-banner" style="text-align:center;padding:8px;background:rgba(255,140,66,0.15);border-bottom:2px dashed var(--mossy-accent);font-family:var(--font-nav);font-size:0.8rem;color:var(--mossy-accent);">
+    <strong>POST MOCKUP B</strong> — Reading focus ·
+    <a href="learnings-post-index.html" style="color:var(--mossy-link);">all post layouts</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="learnings-timeline-v1-study-log.html" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="focus-layout">
+        <aside class="focus-side">
+          <div class="retro-box">
+            <div class="retro-box-title">[ jump ]</div>
+            <div class="retro-box-content">
+              <ul class="sidebar-list" style="font-size:0.75rem;">
+                <li><a href="#intro">intro</a></li>
+                <li><a href="#issues">issues</a></li>
+                <li><a href="#solution">fix</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="focus-main">
+          <p class="focus-back-mobile"><a href="learnings-timeline-v1-study-log.html">← back to study log</a></p>
+
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ reading mode }</div>
+            <div class="retro-box-content">
+              <div class="expedition-meta">
+                <span class="meta-pill">Frontend</span>
+                <span class="meta-date">Feb 5, 2026</span>
+                <span class="meta-exp">Exp. #05</span>
+              </div>
+
+              <h1 class="post-title">Audio player refactor</h1>
+
+              <div class="key-takeaway">
+                <strong>Key takeaway</strong>
+                Working software beats clever software.
+              </div>
+
+              <article class="article-body">
+                <p class="changelog-line" id="intro"><strong>removed:</strong> webamp · <strong>added:</strong> custom unified player</p>
+                <p>Initially integrated Webamp because the UI matched the site aesthetic. Looked great in isolation.</p>
+                <p id="issues">Integration into a React SPA was the problem. Five days. StrictMode double-mounts, orphaned DOM, dual audio engines, R2 CORS skips.</p>
+                <p id="solution">Removed Webamp. One Howler instance across all routes. Playback persists through navigation.</p>
+                <p>Lost visual flair. Gained stability.</p>
+                <blockquote class="pull-quote">&quot;Working software beats clever software every time.&quot;</blockquote>
+                <div class="tags" style="justify-content:center;display:flex;flex-wrap:wrap;gap:6px;">
+                  <span class="tag">audio</span>
+                  <span class="tag">react</span>
+                  <span class="tag">refactor</span>
+                </div>
+              </article>
+
+              <nav class="post-nav">
+                <a href="#"><span class="label">← prev</span> Site wiring</a>
+                <a href="learnings-timeline-v1-study-log.html" class="next"><span class="label">done reading?</span> Study log</a>
+              </nav>
+            </div>
+          </div>
+        </main>
+
+        <aside class="focus-side">
+          <div class="retro-box">
+            <div class="retro-box-title">[ tags ]</div>
+            <div class="retro-box-content tags">
+              <span class="tag">audio</span>
+              <span class="tag">react</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer"><p>● visitors: 004321</p></footer>
+    </div>
+  </div>
+</body>
+</html>

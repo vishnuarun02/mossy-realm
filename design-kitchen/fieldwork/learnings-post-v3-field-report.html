@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player Refactor — Field Report | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <link rel="stylesheet" href="_learnings-post-shared.css">
+  <style>
+    .report-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 3px double var(--mossy-border);
+    }
+    .report-header .file-no {
+      font-family: var(--font-nav);
+      font-size: 0.72rem;
+      text-align: right;
+      color: var(--mossy-border);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .outline-list {
+      list-style: none;
+      counter-reset: section;
+      font-size: 0.82rem;
+    }
+    .outline-list li {
+      counter-increment: section;
+      padding: 5px 0;
+      border-bottom: 1px dotted var(--mossy-border);
+    }
+    .outline-list li::before {
+      content: counter(section, decimal-leading-zero) ". ";
+      color: var(--mossy-border);
+      font-family: var(--font-heading);
+    }
+    .outline-list a { color: var(--mossy-link); }
+    .report-card {
+      border: 2px solid var(--mossy-border);
+      background: var(--mossy-bg-box);
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+    }
+    .report-card .label {
+      font-family: var(--font-nav);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--mossy-text-muted);
+      letter-spacing: 0.08em;
+    }
+    .report-card strong {
+      display: block;
+      color: var(--mossy-header);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+    .report-card a { color: var(--mossy-link); font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+  <div class="mock-banner" style="text-align:center;padding:8px;background:rgba(255,140,66,0.15);border-bottom:2px dashed var(--mossy-accent);font-family:var(--font-nav);font-size:0.8rem;color:var(--mossy-accent);">
+    <strong>POST MOCKUP C</strong> — Field report ·
+    <a href="learnings-post-index.html" style="color:var(--mossy-link);">all post layouts</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="learnings-timeline-v1-study-log.html" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="three-col">
+        <aside class="sidebar left-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ report outline ]</div>
+            <div class="retro-box-content">
+              <ol class="outline-list">
+                <li><a href="#summary">Executive summary</a></li>
+                <li><a href="#intro">Background</a></li>
+                <li><a href="#issues">Findings</a></li>
+                <li><a href="#solution">Resolution</a></li>
+                <li><a href="#lesson">Conclusion</a></li>
+              </ol>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ return ]</div>
+            <div class="retro-box-content" style="font-size:0.85rem;">
+              <a href="learnings-timeline-v1-study-log.html" style="color:var(--mossy-link);">← study log index</a>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ field report }</div>
+            <div class="retro-box-content">
+              <header class="report-header">
+                <div>
+                  <nav class="breadcrumb">
+                    <a href="learnings-timeline-v1-study-log.html">Learnings</a>
+                    <span class="sep">/</span>
+                    <span>Expedition #05</span>
+                  </nav>
+                  <h1 class="post-title" style="margin-top:8px;margin-bottom:0;">Audio player refactor</h1>
+                </div>
+                <div class="file-no">FR-2026-02-05<br>classified: public</div>
+              </header>
+
+              <div class="key-takeaway" id="summary">
+                <strong>Executive summary</strong>
+                Webamp removed after 5 days of React integration issues. Replaced with unified Howler.js engine. Trade-off: less visual flair, more stability.
+              </div>
+
+              <article class="article-body">
+                <h2 id="intro" style="font-family:var(--font-heading);font-size:0.95rem;color:var(--mossy-header-alt);margin:20px 0 10px;text-transform:uppercase;letter-spacing:0.06em;">01 — Background</h2>
+                <p class="changelog-line"><strong>removed:</strong> webamp · <strong>added:</strong> custom unified player</p>
+                <p>Webamp matched the retro aesthetic. Classic winamp UI, playlists, visualizer.</p>
+
+                <h2 id="issues" style="font-family:var(--font-heading);font-size:0.95rem;color:var(--mossy-header-alt);margin:20px 0 10px;text-transform:uppercase;letter-spacing:0.06em;">02 — Findings</h2>
+                <ul>
+                  <li>Renders to document.body — bypasses React</li>
+                  <li>StrictMode double-mount orphans DOM nodes</li>
+                  <li>Dual audio engines on route change</li>
+                  <li>R2 + CORS track skips</li>
+                </ul>
+
+                <h2 id="solution" style="font-family:var(--font-heading);font-size:0.95rem;color:var(--mossy-header-alt);margin:20px 0 10px;text-transform:uppercase;letter-spacing:0.06em;">03 — Resolution</h2>
+                <p>Single global Howler instance. Playback persists across routes. Track list from <code>/api/tracks</code>.</p>
+
+                <h2 id="lesson" style="font-family:var(--font-heading);font-size:0.95rem;color:var(--mossy-header-alt);margin:20px 0 10px;text-transform:uppercase;letter-spacing:0.06em;">04 — Conclusion</h2>
+                <blockquote class="pull-quote">Working software beats clever software every time.</blockquote>
+
+                <div class="tags">
+                  <span class="tag">audio</span>
+                  <span class="tag">react</span>
+                  <span class="tag">refactor</span>
+                </div>
+              </article>
+
+              <nav class="post-nav">
+                <a href="#"><span class="label">← filed before</span> Site wiring</a>
+                <a href="#"><span class="label">filed after →</span> Cursors experiment</a>
+              </nav>
+            </div>
+          </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ other expeditions ]</div>
+            <div class="retro-box-content">
+              <div class="report-card">
+                <span class="label">Exp. 04 · Infra</span>
+                <strong>Site wiring guide</strong>
+                <a href="#">open dossier →</a>
+              </div>
+              <div class="report-card">
+                <span class="label">Exp. 03 · Design</span>
+                <strong>Cursors &amp; effects</strong>
+                <a href="#">open dossier →</a>
+              </div>
+              <div class="report-card">
+                <span class="label">Exp. 02 · Design</span>
+                <strong>Sunlit glade palette</strong>
+                <a href="#">open dossier →</a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer"><p>● visitors: 004321</p></footer>
+    </div>
+  </div>
+</body>
+</html>

@@ -262,19 +262,23 @@ mossyrealm/
 
 ## Design Tokens
 
-Colors in `app/globals.css`:
+Semantic tokens in `app/globals.css` (raw palette `--p-*` underneath, deprecated `--mossy-*` aliases kept):
 
 ```css
---mossy-bg-main: #2a3f35;
---mossy-text: #f5f0e1;
---mossy-header: #ffeaa7;
---mossy-accent: #ff8c42;
---mossy-link: #90ee90;
---mossy-border: #e8a54b;
+--surface-panel: #1e3028;     /* panel bodies */
+--text-primary: #f5f0e1;      /* body cream */
+--text-heading: #ffeaa7;      /* headings */
+--interactive-link: #90ee90;  /* links */
+--accent-warm: #ff8c42;       /* warnings, sparse */
+--border-structural: #e8a54b; /* frames */
 ```
+
+Full reference: [mossy-realm/DESIGN_SYSTEM.md](./mossy-realm/DESIGN_SYSTEM.md) and the live showcase at `/design-system`.
 
 ## Design Docs
 
+- **[mossy-realm/DESIGN_SYSTEM.md](./mossy-realm/DESIGN_SYSTEM.md)** — The design system contract
+- **[design-kitchen/DESIGN-SYSTEM-PLAN.md](./design-kitchen/DESIGN-SYSTEM-PLAN.md)** — Audit & migration plan
 - **[design-kitchen/DESIGN-JOURNAL.md](./design-kitchen/DESIGN-JOURNAL.md)** — Design decisions & learnings
 - **[design-kitchen/cabin-pages/](./design-kitchen/cabin-pages/)** — Page templates
 - **[mossy-realm/CONTENT_STYLE.md](./mossy-realm/CONTENT_STYLE.md)** — Content writing guidelines

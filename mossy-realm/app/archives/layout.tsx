@@ -1,5 +1,11 @@
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import SubNav from "@/components/SubNav";
+
+const archivesLinks = [
+  { href: '/archives/collected', label: 'collected' },
+  { href: '/archives/changelog', label: 'changelog' },
+  { href: '/archives/sitemap', label: 'sitemap' },
+];
 
 export default function ArchivesLayout({
   children,
@@ -7,13 +13,8 @@ export default function ArchivesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="site-container">
-      <NavBar />
-      <main className="site-main">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <SiteShell subNav={<SubNav links={archivesLinks} label="Archives sections" />}>
+      {children}
+    </SiteShell>
   );
 }
-

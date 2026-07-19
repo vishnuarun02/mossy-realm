@@ -16,8 +16,9 @@ export default function Marquee({
   direction = 'left'
 }: MarqueeProps) {
   // Just the message - CSS animation handles the gap between loops
+  // Focusable so keyboard visitors can pause the scroll (focus-within rule)
   return (
-    <div className="marquee-container">
+    <div className="marquee-container" tabIndex={0} role="note" aria-label="Site ticker">
       <div className={`marquee-content ${direction === 'right' ? 'marquee-content-rtl' : ''}`}>
         {message}
       </div>

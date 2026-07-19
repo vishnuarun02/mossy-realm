@@ -1,6 +1,7 @@
 import RetroBox from './RetroBox';
-import Link from 'next/link';
 import Image from 'next/image';
+import TextLink from './ui/TextLink';
+import Button from './ui/Button';
 import { NatureFactWidget } from './VaultWidgets';
 import { RealmRadioWidget } from './player';
 
@@ -16,7 +17,7 @@ export default function SidebarRight() {
       {/* Poll Section */}
       <RetroBox title="[ monthly poll ]">
         <div className="font-body text-sm">
-          <p className="text-mossy-header mb-3 text-center font-heading">
+          <p className="text-fg-heading mb-3 text-center font-heading">
             Which unlived life do you wonder about most?
           </p>
           <div className="space-y-2">
@@ -24,54 +25,28 @@ export default function SidebarRight() {
               <label
                 key={option}
                 className="
-                  flex items-center gap-2 
+                  flex items-center gap-2
                   cursor-pointer
-                  hover:text-mossy-link
-                  transition-colors
+                  hover:text-link
+                  transition-colors duration-fast
                 "
               >
                 <input
                   type="radio"
                   name="season"
-                  className="accent-mossy-accent w-4 h-4"
+                  className="accent-accent w-4 h-4"
                 />
                 <span>{option}</span>
               </label>
             ))}
           </div>
           <div className="flex gap-2 mt-3">
-            <button
-              className="
-                font-nav
-                flex-1
-                bg-mossy-border
-                border-2 border-mossy-border-glow
-                px-3 py-1
-                text-mossy-bg-box
-                font-bold
-                hover:bg-mossy-border-glow
-                transition-colors
-                text-xs
-              "
-            >
+            <Button size="sm" className="flex-1 font-bold text-xs">
               Vote
-            </button>
-            <button
-              className="
-                font-nav
-                flex-1
-                bg-mossy-bg-box-alt
-                border-2 border-mossy-border
-                px-3 py-1
-                text-mossy-link
-                hover:bg-mossy-border
-                hover:text-mossy-bg-box
-                transition-colors
-                text-xs
-              "
-            >
+            </Button>
+            <Button variant="ghost" size="sm" className="flex-1 text-xs">
               View
-            </button>
+            </Button>
           </div>
         </div>
       </RetroBox>
@@ -81,56 +56,49 @@ export default function SidebarRight() {
         <div className="flex flex-wrap gap-2 justify-center">
           <Image
             src="/images/badges/valid-html401.png"
-            alt="Valid HTML 4.01"
+            alt="Valid HTML 4.01 badge"
             width={88}
             height={31}
-            className="border border-mossy-border"
+            className="border-hairline border-border-structural"
             unoptimized
           />
           <Image
             src="/images/badges/valid-css.png"
-            alt="Valid CSS"
+            alt="Valid CSS badge"
             width={88}
             height={31}
-            className="border border-mossy-border"
+            className="border-hairline border-border-structural"
             unoptimized
           />
           <Image
             src="/images/badges/valid-xhtml11.png"
-            alt="Valid XHTML 1.1"
+            alt="Valid XHTML 1.1 badge"
             width={88}
             height={31}
-            className="border border-mossy-border"
+            className="border-hairline border-border-structural"
             unoptimized
           />
         </div>
       </RetroBox>
 
-      {/* Latest Art - moved from MainPanel */}
+      {/* Latest Art - an honest empty frame until the gallery opens */}
       <RetroBox title="[ latest art ]">
-        <Link href="/fieldwork/gallery" className="block no-underline group">
-          <div
-            className="
-              w-full h-32
-              bg-mossy-bg-box 
-              border-2 border-dashed border-mossy-border
-              flex items-center justify-center
-              mb-2
-              group-hover:border-mossy-link
-              transition-colors
-            "
-          >
-            <div className="text-center text-mossy-text-muted">
-              <div className="text-base mb-1 font-body">[ img ]</div>
-              <p className="text-xs italic font-body">
-                [art preview]
-              </p>
-            </div>
-          </div>
-          <span className="text-mossy-link underline group-hover:text-mossy-link-hover text-sm">
-            view gallery →
-          </span>
-        </Link>
+        <div
+          className="
+            w-full
+            border-2 border-dashed border-border-structural
+            px-3 py-5
+            mb-2
+            text-center
+          "
+        >
+          <p className="text-fg-secondary text-xs italic font-body">
+            nothing hung yet. the gallery is being framed.
+          </p>
+        </div>
+        <TextLink href="/fieldwork/gallery" arrow className="text-sm">
+          view gallery
+        </TextLink>
       </RetroBox>
     </aside>
   );

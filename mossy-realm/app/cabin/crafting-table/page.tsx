@@ -1,23 +1,20 @@
-import RetroBox from "@/components/RetroBox";
+import PageShell from "@/components/PageShell";
+import Panel from "@/components/ui/Panel";
 import UnderConstruction from "@/components/UnderConstruction";
 
 export default function CraftingTablePage() {
   return (
-    <div className="max-w-2xl mx-auto">
-      <RetroBox title="{ crafting table }" variant="alt">
-        <div className="text-center space-y-4">
-          <p className="font-accent text-mossy-header text-lg">
-            ~ projects, wins, and proof of work ~
-          </p>
-          <p className="text-mossy-text">
-            A curated collection of things I&apos;ve built and shipped.
-          </p>
-        </div>
-
-        <div className="border-t-2 border-mossy-border my-6"></div>
-
-        <UnderConstruction />
-      </RetroBox>
-    </div>
+    <PageShell
+      eyebrow="my cabin"
+      title="crafting table"
+      deckAccent="~ projects, wins, and proof of work ~"
+      width="reading"
+    >
+      <Panel surface="alt">
+        <UnderConstruction
+          message="A curated collection of things I've built and shipped. this area is under construction. check back soon."
+        />
+      </Panel>
+    </PageShell>
   );
 }

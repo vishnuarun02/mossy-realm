@@ -1,5 +1,11 @@
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import SubNav from "@/components/SubNav";
+
+const crossroadsLinks = [
+  { href: '/crossroads/rabbit-holes', label: 'rabbit holes' },
+  { href: '/crossroads/guestbook', label: 'guestbook' },
+  { href: '/crossroads/credits', label: 'credits' },
+];
 
 export default function CrossroadsLayout({
   children,
@@ -7,13 +13,8 @@ export default function CrossroadsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="site-container">
-      <NavBar />
-      <main className="site-main">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <SiteShell subNav={<SubNav links={crossroadsLinks} label="Crossroads sections" />}>
+      {children}
+    </SiteShell>
   );
 }
-

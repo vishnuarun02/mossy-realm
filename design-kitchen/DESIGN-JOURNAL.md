@@ -73,6 +73,14 @@ Things I want to try or explore later:
 
 ---
 
+### July 19, 2026 - The Design System Pass
+
+The whole site got a design system. Semantic tokens in globals.css (raw palette underneath, semantic roles on top), a real primitives library (Panel, Button, Badge, Callout, EmptyState...), one SiteShell instead of six copied layouts, keyboard-accessible nav, and a unified Realm Radio. Everything documented at /design-system and in DESIGN_SYSTEM.md.
+
+Big lesson: the site already had a system, it just wasn't written down. RetroBox was the primitive all along. The work was naming things and killing the one-off values that had drifted (six border widths, fifteen font sizes, a whole secret cassette palette).
+
+---
+
 ### January 16, 2026 - The Great Cursor & Effects Experiment
 
 #### What I tried:

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import RetroBox from './RetroBox';
+import Button from './ui/Button';
 
 interface VaultItem {
     id: string;
@@ -60,7 +61,7 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
             <RetroBox title="{ nature fact! }">
                 <div className="text-center font-body text-sm">
                     <div className="text-2xl mb-2">~</div>
-                    <p className="text-mossy-text-muted italic">
+                    <p className="text-fg-secondary italic">
                         consulting the forest...
                     </p>
                 </div>
@@ -72,27 +73,12 @@ export default function NatureFact({ initialItems }: NatureFactProps) {
         <RetroBox title="{ nature fact! }">
             <div className="text-center font-body text-sm">
                 <div className="text-2xl mb-2">{getTypeLabel(currentItem?.type || 'oddity')}</div>
-                <p className="text-mossy-text">
+                <p className="text-fg-primary">
                     {currentItem?.text || 'The forest holds many secrets...'}
                 </p>
-                <button
-                    onClick={handleNewFact}
-                    className="
-                        font-nav
-                        mt-3
-                        bg-mossy-bg-box-alt
-                        border-2 border-mossy-border
-                        px-3 py-1
-                        text-mossy-link
-                        hover:bg-mossy-border
-                        hover:text-mossy-bg-box
-                        transition-colors
-                        text-xs
-                        cursor-pointer
-                    "
-                >
+                <Button variant="ghost" size="sm" onClick={handleNewFact} className="mt-3 text-xs">
                     new fact
-                </button>
+                </Button>
             </div>
         </RetroBox>
     );

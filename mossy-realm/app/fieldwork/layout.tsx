@@ -1,5 +1,12 @@
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import SubNav from "@/components/SubNav";
+
+const fieldworkLinks = [
+  { href: '/fieldwork/learnings', label: 'learnings' },
+  { href: '/fieldwork/experiments', label: 'experiments' },
+  { href: '/fieldwork/field-notes', label: 'field notes' },
+  { href: '/fieldwork/gallery', label: 'gallery' },
+];
 
 export default function FieldworkLayout({
   children,
@@ -7,13 +14,8 @@ export default function FieldworkLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="site-container">
-      <NavBar />
-      <main className="site-main">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <SiteShell subNav={<SubNav links={fieldworkLinks} label="Fieldwork sections" />}>
+      {children}
+    </SiteShell>
   );
 }
-

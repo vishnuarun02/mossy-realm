@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import IconButton from '@/components/ui/IconButton';
 import { usePlayerStore } from '@/lib/player/store';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
-import { 
-  PlayIcon, 
-  PauseIcon, 
-  VolumeHighIcon, 
+import {
+  PlayIcon,
+  PauseIcon,
+  VolumeHighIcon,
   VolumeMutedIcon,
   StatusDot,
   ExpandIcon,
@@ -16,7 +17,7 @@ import {
 /**
  * RealmRadioMobileBar - Bottom sticky bar for mobile
  * Design A: Standard mobile bar
- * 
+ *
  * Fixed position bottom, always visible on mobile
  */
 export function RealmRadioMobileBar() {
@@ -43,80 +44,61 @@ export function RealmRadioMobileBar() {
       className="
         fixed bottom-0 left-0 right-0
         h-15
-        bg-mossy-bg-box
-        border-t-3 border-mossy-border
+        bg-surface-panel
+        border-t-frame border-border-structural
         flex items-center
         px-3 gap-3
-        z-50
+        z-40
         md:hidden
       "
     >
       {/* Music Icon */}
-      <span className="text-2xl text-mossy-border">
+      <span className="text-2xl text-border-structural" aria-hidden="true">
         <MusicNoteIcon />
       </span>
 
-      {/* Track Info */}
-      <div className="flex-1 min-w-0">
-        <div className="font-accent text-mossy-header text-sm truncate">
+      {/* Track Info - tap opens the full sheet */}
+      <button
+        onClick={openMobileSheet}
+        className="flex-1 min-w-0 text-left cursor-pointer"
+        aria-label="Open full player"
+      >
+        <div className="font-accent text-fg-heading text-sm truncate">
           {track.title}
         </div>
-        <div className="flex items-center gap-1.5 text-mossy-text-muted text-xs">
+        <div className="flex items-center gap-1.5 text-fg-secondary text-xs">
           <StatusDot isPlaying={mounted && isPlaying} />
           <span>{mounted && isPlaying ? 'playing' : 'paused'}</span>
         </div>
-      </div>
+      </button>
 
       {/* Controls */}
       <div className="flex gap-2">
-        <button
+        <IconButton
+          variant="primary"
+          density="regular"
           onClick={togglePlay}
-          className="
-            w-11 h-11
-            bg-mossy-border
-            border-2 border-mossy-border-glow
-            text-mossy-bg-box
-            text-sm font-bold
-            hover:bg-mossy-border-glow
-            transition-colors
-            flex items-center justify-center
-          "
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          variant="ghost"
+          density="regular"
           onClick={toggleMute}
-          className="
-            w-11 h-11
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            text-mossy-border
-            text-xs
-            hover:bg-mossy-border hover:text-mossy-bg-box
-            transition-colors
-            flex items-center justify-center
-          "
           aria-label={isMuted ? 'Unmute' : 'Mute'}
+          aria-pressed={isMuted}
         >
           {isMuted ? <VolumeMutedIcon /> : <VolumeHighIcon />}
-        </button>
-        <button
+        </IconButton>
+        <IconButton
+          variant="ghost"
+          density="regular"
           onClick={openMobileSheet}
-          className="
-            w-11 h-11
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            text-mossy-border
-            text-sm
-            hover:bg-mossy-border hover:text-mossy-bg-box
-            transition-colors
-            flex items-center justify-center
-          "
           aria-label="Expand player"
         >
           <ExpandIcon />
-        </button>
+        </IconButton>
       </div>
     </div>
   );

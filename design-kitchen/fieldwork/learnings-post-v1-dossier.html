@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player Refactor — Expedition Dossier | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <link rel="stylesheet" href="_learnings-post-shared.css">
+</head>
+<body>
+  <div class="mock-banner" style="text-align:center;padding:8px;background:rgba(255,140,66,0.15);border-bottom:2px dashed var(--mossy-accent);font-family:var(--font-nav);font-size:0.8rem;color:var(--mossy-accent);">
+    <strong>POST MOCKUP A</strong> — Expedition dossier ·
+    <a href="learnings-post-index.html" style="color:var(--mossy-link);">all post layouts</a> ·
+    <a href="learnings-timeline-v1-study-log.html" style="color:var(--mossy-link);">← timeline</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="learnings-timeline-v1-study-log.html" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="three-col">
+        <aside class="sidebar left-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ on this page ]</div>
+            <div class="retro-box-content">
+              <ul class="sidebar-list">
+                <li><a href="#intro">the problem</a></li>
+                <li><a href="#issues">what broke</a></li>
+                <li><a href="#solution">the fix</a></li>
+                <li><a href="#lesson">lesson</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ volumes ]</div>
+            <div class="retro-box-content volumes-list" style="list-style:none;font-family:var(--font-nav);font-size:0.85rem;">
+              <p style="color:var(--mossy-text-muted);"><a href="learnings-timeline-v1-study-log.html" style="color:var(--mossy-link);">← all learnings</a></p>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ expedition dossier }</div>
+            <div class="retro-box-content">
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="learnings-timeline-v1-study-log.html">Fieldwork</a>
+                <span class="sep">/</span>
+                <a href="learnings-timeline-v1-study-log.html">Learnings</a>
+                <span class="sep">/</span>
+                <span>Audio player refactor</span>
+              </nav>
+
+              <div class="expedition-meta">
+                <span class="meta-pill">Frontend</span>
+                <span class="meta-date">Feb 5, 2026</span>
+                <span class="meta-exp">Expedition #05</span>
+              </div>
+
+              <h1 class="post-title">Audio player refactor</h1>
+
+              <div class="key-takeaway">
+                <strong>Key takeaway</strong>
+                Working software beats clever software. One global Howler instance beat five days fighting Webamp + React StrictMode.
+              </div>
+
+              <article class="article-body">
+                <p class="changelog-line" id="intro"><strong>removed:</strong> <a href="https://github.com/captbaritone/webamp">webamp</a> · <strong>added:</strong> custom unified audio player</p>
+
+                <p>Initially integrated <a href="https://webamp.org">Webamp</a> because the UI matched the site aesthetic really well. Classic winamp-style player, playlists, visualizer. Looked great in isolation.</p>
+
+                <p>Integration into a React SPA was the actual problem. Spent almost 5 days on this. Even tried building my own version using AI at some point. Honestly not worth my time.</p>
+
+                <p id="issues">Issues I ran into:</p>
+                <ul>
+                  <li>Webamp renders directly to document.body, which bypasses React entirely</li>
+                  <li>React StrictMode double-mounts in dev, resulting in orphaned DOM nodes</li>
+                  <li>Frequent removeChild errors during route changes</li>
+                  <li>Two independent audio engines at the same time</li>
+                  <li>Navigating between routes could cause both to play simultaneously</li>
+                  <li>R2 + CORS issues caused Webamp to skip tracks without playing audio</li>
+                </ul>
+
+                <p id="solution">Removed Webamp entirely. Implemented a single global audio engine using Howler.js. One audio instance, one source of truth, shared across all routes. Playback persists through navigation.</p>
+
+                <p>Lost some visual flair. Gained stability, clarity, and sanity.</p>
+
+                <blockquote class="pull-quote" id="lesson">I read a while ago that &quot;working software beats clever software every time.&quot; This was one of those moments where that line applied very literally.</blockquote>
+
+                <p style="color: var(--mossy-text-muted); font-size: 0.9rem;">Webamp is solid software. Just not designed for modern React routing, StrictMode, or shared application state.</p>
+
+                <div class="tags">
+                  <span class="tag">audio</span>
+                  <span class="tag">webamp</span>
+                  <span class="tag">react</span>
+                  <span class="tag">refactor</span>
+                </div>
+              </article>
+
+              <nav class="post-nav" aria-label="Post navigation">
+                <a href="learnings-post-v1-dossier.html">
+                  <span class="label">← previous</span>
+                  Site wiring guide
+                </a>
+                <a href="learnings-timeline-v1-study-log.html" class="next">
+                  <span class="label">back to log →</span>
+                  All learnings
+                </a>
+              </nav>
+            </div>
+          </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ key insight ]</div>
+            <div class="retro-box-content sidebar-text" style="text-align:center;">
+              <p style="color:var(--mossy-header);font-style:italic;font-size:0.9rem;">You can&apos;t max out layout complexity and interaction complexity.</p>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ related ]</div>
+            <div class="retro-box-content">
+              <ul class="sidebar-related">
+                <li><a href="#">Site wiring guide</a></li>
+                <li><a href="#">Cursors &amp; effects</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer"><p>● visitors: 004321 · © mossyrealm</p></footer>
+    </div>
+  </div>
+</body>
+</html>

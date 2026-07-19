@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learnings Timeline Mockups — MossyRealm</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <style>
+    body { padding: 2rem; }
+    .picker {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .picker h1 {
+      font-family: var(--font-display);
+      color: var(--mossy-header);
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .picker p {
+      text-align: center;
+      color: var(--mossy-text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .option-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .option-list a {
+      display: block;
+      padding: 16px 20px;
+      border: 3px solid var(--mossy-border);
+      background: var(--mossy-bg-box);
+      color: var(--mossy-link);
+      text-decoration: none;
+      font-family: var(--font-heading);
+    }
+    .option-list a:hover {
+      background: var(--mossy-bg-box-alt);
+      color: var(--mossy-link-hover);
+      border-color: var(--mossy-border-glow);
+    }
+    .option-list strong {
+      display: block;
+      color: var(--mossy-header);
+      margin-bottom: 4px;
+    }
+    .option-list span {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--mossy-text-muted);
+      font-weight: normal;
+    }
+    .note {
+      margin-top: 1.5rem;
+      padding: 12px;
+      border: 1px dashed var(--mossy-border);
+      font-size: 0.85rem;
+      color: var(--mossy-text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="picker retro-box">
+    <div class="retro-box-title">[ design kitchen ]</div>
+    <div class="retro-box-content">
+      <h1>Learnings timeline mockups</h1>
+      <p>Three variations for /fieldwork/learnings — open each in your browser, then pick one.</p>
+      <ul class="option-list">
+        <li>
+          <a href="learnings-timeline-v1-study-log.html">
+            <strong>Variation A — Study Log (alternating spine)</strong>
+            <span>Matches your reference mockups: central timeline, cards alternate left/right, key takeaway boxes, [Volumes] filter.</span>
+          </a>
+        </li>
+        <li>
+          <a href="learnings-timeline-v2-expedition-ledger.html">
+            <strong>Variation B — Expedition Ledger</strong>
+            <span>Closer to your live page: left spine + stacked “field log” cards with stamped dates and takeaway strips.</span>
+          </a>
+        </li>
+        <li>
+          <a href="learnings-timeline-v3-chronicle-strip.html">
+            <strong>Variation C — Chronicle Strip</strong>
+            <span>Horizontal month/year rail at top, entries stack below — scannable when you have many posts.</span>
+          </a>
+        </li>
+      </ul>
+      <p class="note">Current production page uses a simple left-border timeline inside { learnings }.</p>
+      <p class="note" style="margin-top: 8px;">
+        <a href="learnings-post-index.html" style="color: var(--mossy-link);">Single post page mockups →</a>
+        (click a card on Variation A to preview)
+      </p>
+    </div>
+  </div>
+</body>
+</html>

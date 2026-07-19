@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import IconButton from '@/components/ui/IconButton';
 import { usePlayerStore } from '@/lib/player/store';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import {
@@ -37,73 +37,44 @@ export function RealmRadioDock() {
     <div
       className="
         fixed bottom-5 right-5
-        bg-mossy-bg-box
-        border-3 border-mossy-border
-        shadow-[0_4px_20px_rgba(0,0,0,0.5)]
+        bg-surface-panel
+        border-frame border-border-structural
+        shadow-lift
         p-2 min-w-40
-        z-50
+        z-40
         hidden md:flex flex-col gap-1.5
       "
     >
-      <div className="flex items-center gap-1.5 text-mossy-text-muted text-[0.7rem] uppercase tracking-wider">
+      <div className="flex items-center gap-1.5 text-fg-secondary text-micro uppercase tracking-wider">
         <StatusDot isPlaying={mounted && isPlaying} />
         <span>realm radio</span>
       </div>
 
-      <div className="font-accent text-mossy-header text-sm truncate max-w-32">
+      <div className="font-accent text-fg-heading text-sm truncate max-w-32">
         {track.title}
       </div>
 
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
-          <button
+          <IconButton
+            variant="primary"
             onClick={togglePlay}
-            className="
-              w-8 h-8
-              bg-mossy-border
-              border-2 border-mossy-border-glow
-              text-mossy-bg-box
-              text-xs font-bold
-              hover:bg-mossy-border-glow
-              transition-colors
-              flex items-center justify-center
-            "
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
-          </button>
-          <button
+          </IconButton>
+          <IconButton
+            variant="ghost"
             onClick={toggleMute}
-            className="
-              w-8 h-8
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              text-xs
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
             aria-label={isMuted ? 'Unmute' : 'Mute'}
+            aria-pressed={isMuted}
           >
             {isMuted ? <VolumeMutedIcon /> : <VolumeHighIcon />}
-          </button>
+          </IconButton>
         </div>
-        <Link
-          href="/player"
-          className="
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            text-mossy-link
-            px-2 py-1
-            text-xs font-nav
-            hover:bg-mossy-border hover:text-mossy-bg-box
-            transition-colors
-            flex items-center gap-1
-          "
-        >
+        <IconButton variant="ghost" href="/player" aria-label="Open full player">
           <OpenIcon />
-        </Link>
+        </IconButton>
       </div>
     </div>
   );

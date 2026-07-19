@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variation A — Study Log Timeline | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <style>
+    /* —— Variation A: central alternating spine (reference mockup) —— */
+    .study-log-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .study-log-header .label {
+      font-family: var(--font-nav);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--mossy-text-muted);
+      margin-bottom: 8px;
+    }
+    .study-log-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: var(--mossy-header);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .study-log-header .deck {
+      font-size: 0.9rem;
+      color: var(--mossy-text-muted);
+      font-style: italic;
+      max-width: 420px;
+      margin: 10px auto 0;
+    }
+
+    .alt-timeline {
+      position: relative;
+      padding: 8px 0 24px;
+    }
+    .alt-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--mossy-border) 8%,
+        var(--mossy-border) 92%,
+        transparent
+      );
+      opacity: 0.55;
+      transform: translateX(-50%);
+    }
+
+    .alt-entry {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 36px 1fr;
+      gap: 0;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+    .alt-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .alt-entry .spine-node {
+      grid-column: 2;
+      justify-self: center;
+      width: 14px;
+      height: 14px;
+      margin-top: 28px;
+      background: var(--mossy-border);
+      border: 3px solid var(--mossy-bg-box-alt);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(232, 165, 75, 0.4);
+      z-index: 1;
+    }
+
+    .entry-card {
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      padding: 16px 18px;
+      max-width: 100%;
+    }
+
+    .alt-entry--right .entry-wrap {
+      grid-column: 3;
+      padding-left: 12px;
+    }
+    .alt-entry--left .entry-wrap {
+      grid-column: 1;
+      padding-right: 12px;
+    }
+
+    .entry-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-family: var(--font-nav);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .alt-entry--left .entry-meta {
+      justify-content: flex-end;
+    }
+
+    .meta-pill {
+      padding: 2px 8px;
+      border: 1px solid var(--mossy-border);
+      color: var(--mossy-header);
+      background: rgba(30, 48, 40, 0.6);
+    }
+    .meta-date {
+      color: var(--mossy-text-muted);
+    }
+    .meta-exp {
+      color: var(--mossy-border);
+    }
+
+    .entry-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--mossy-header);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .alt-entry--left .entry-card h3 {
+      text-align: right;
+    }
+
+    .key-takeaway {
+      border: 2px solid var(--mossy-border);
+      background: rgba(232, 165, 75, 0.12);
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .key-takeaway strong {
+      font-family: var(--font-heading);
+      color: var(--mossy-header-alt);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .entry-body {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--mossy-text);
+    }
+    .entry-body p {
+      margin-bottom: 10px;
+    }
+    .entry-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .load-more {
+      text-align: center;
+      margin-top: 28px;
+      font-family: var(--font-nav);
+      font-size: 0.85rem;
+      color: var(--mossy-link);
+    }
+
+    /* Clickable cards → single post pages */
+    a.entry-card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    a.entry-card-link:hover .entry-card,
+    a.entry-card-link:focus-visible .entry-card {
+      border-color: var(--mossy-border-glow);
+      box-shadow: 0 0 12px rgba(232, 165, 75, 0.2);
+    }
+    a.entry-card-link:focus-visible {
+      outline: 2px solid var(--mossy-link);
+      outline-offset: 4px;
+    }
+    .read-hint {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--font-nav);
+      font-size: 0.78rem;
+      color: var(--mossy-link);
+      letter-spacing: 0.04em;
+    }
+    a.entry-card-link:hover .read-hint {
+      color: var(--mossy-link-hover);
+    }
+
+    @media (max-width: 720px) {
+      .alt-timeline::before {
+        left: 18px;
+        transform: none;
+      }
+      .alt-entry {
+        grid-template-columns: 36px 1fr;
+      }
+      .alt-entry .spine-node {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .alt-entry--right .entry-wrap,
+      .alt-entry--left .entry-wrap {
+        grid-column: 2;
+        padding: 0 0 0 8px;
+      }
+      .alt-entry--left .entry-meta,
+      .alt-entry--left .entry-card h3 {
+        text-align: left;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mock-banner">
+    <strong>MOCKUP A</strong> — Study Log (alternating spine) ·
+    <a href="learnings-timeline-index.html">← all variations</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="#" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="three-col">
+        <aside class="sidebar left-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ why share this? ]</div>
+            <div class="retro-box-content sidebar-text">
+              <p>Building a personal site is trial and error. I&apos;m documenting mistakes so other retro web builders don&apos;t repeat them.</p>
+              <p class="sidebar-quote">&quot;The best design is the one you don&apos;t notice.&quot;</p>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ volumes ]</div>
+            <div class="retro-box-content">
+              <ul class="volumes-list">
+                <li class="active"><label><input type="checkbox" checked disabled> All entries (5)</label></li>
+                <li><label><input type="checkbox" disabled> Frontend (2)</label></li>
+                <li><label><input type="checkbox" disabled> Visual design (2)</label></li>
+                <li><label><input type="checkbox" disabled> Infra (1)</label></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ learnings }</div>
+            <div class="retro-box-content">
+              <div class="study-log-header">
+                <p class="label">[ study log ]</p>
+                <h2>Learnings from the field</h2>
+                <p class="deck">Observations, technical breakthroughs, and philosophical musings gathered while building this realm.</p>
+              </div>
+
+              <div class="alt-timeline">
+                <!-- Entry 1 — right -->
+                <article class="alt-entry alt-entry--right" id="webamp-rip">
+                  <div class="spine-node" aria-hidden="true"></div>
+                  <div class="entry-wrap">
+                    <div class="entry-meta">
+                      <span class="meta-pill">Frontend</span>
+                      <span class="meta-date">Feb 5, 2026</span>
+                      <span class="meta-exp">Expedition #05</span>
+                    </div>
+                    <a href="learnings-post-v1-dossier.html" class="entry-card-link" aria-label="Read full post: Audio player refactor">
+                      <div class="entry-card">
+                        <h3>Audio player refactor</h3>
+                        <div class="key-takeaway">
+                          <strong>Key takeaway</strong>
+                          Working software beats clever software. One global Howler instance beat five days fighting Webamp + React StrictMode.
+                        </div>
+                        <div class="entry-body">
+                          <p>Removed Webamp. Added a custom unified player. Playback persists across routes; R2 tracks load via <code>/api/tracks</code>.</p>
+                          <p>Lost some visual flair. Gained stability and sanity.</p>
+                        </div>
+                        <div class="tags">
+                          <span class="tag">audio</span>
+                          <span class="tag">react</span>
+                          <span class="tag">refactor</span>
+                        </div>
+                        <span class="read-hint">read expedition dossier →</span>
+                      </div>
+                    </a>
+                  </div>
+                </article>
+
+                <!-- Entry 2 — left -->
+                <article class="alt-entry alt-entry--left" id="site-wiring">
+                  <div class="spine-node" aria-hidden="true"></div>
+                  <div class="entry-wrap">
+                    <div class="entry-meta">
+                      <span class="meta-exp">Expedition #04</span>
+                      <span class="meta-date">Feb 5, 2026</span>
+                      <span class="meta-pill">Infra</span>
+                    </div>
+                    <div class="entry-card">
+                      <h3>Site wiring guide</h3>
+                      <div class="key-takeaway">
+                        <strong>Key takeaway</strong>
+                        Each service does one job: Hostinger (registrar), Cloudflare (DNS + R2), Vercel (app), R2 (media).
+                      </div>
+                      <div class="entry-body">
+                        <p>mossyrealm.space → Cloudflare → Vercel. media.mossyrealm.space → R2. Most of the work is waiting for nameserver propagation.</p>
+                      </div>
+                      <div class="tags">
+                        <span class="tag">dns</span>
+                        <span class="tag">cloudflare</span>
+                        <span class="tag">vercel</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Entry 3 — right -->
+                <article class="alt-entry alt-entry--right" id="cursors">
+                  <div class="spine-node" aria-hidden="true"></div>
+                  <div class="entry-wrap">
+                    <div class="entry-meta">
+                      <span class="meta-pill">Design</span>
+                      <span class="meta-date">Jan 16, 2026</span>
+                      <span class="meta-exp">Expedition #03</span>
+                    </div>
+                    <div class="entry-card">
+                      <h3>Cursors &amp; effects experiment</h3>
+                      <div class="key-takeaway">
+                        <strong>Key takeaway</strong>
+                        Dense retro layouts need simple interactions. More effects ≠ better vibes.
+                      </div>
+                      <div class="entry-body">
+                        <p>Sparkles, fireflies, wax-seal cursors — reverted all of it. Complexity lives in the layout, not the behavior.</p>
+                      </div>
+                      <div class="tags">
+                        <span class="tag">cursors</span>
+                        <span class="tag">90s web</span>
+                        <span class="tag">reverted</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Entry 4 — left -->
+                <article class="alt-entry alt-entry--left" id="palette">
+                  <div class="spine-node" aria-hidden="true"></div>
+                  <div class="entry-wrap">
+                    <div class="entry-meta">
+                      <span class="meta-exp">Expedition #02</span>
+                      <span class="meta-date">Dec 2025</span>
+                      <span class="meta-pill">Design</span>
+                    </div>
+                    <div class="entry-card">
+                      <h3>Sunlit glade palette</h3>
+                      <div class="key-takeaway">
+                        <strong>Key takeaway</strong>
+                        Warm amber + forest green = cozy. Cool blue + green = clinical.
+                      </div>
+                      <div class="entry-body">
+                        <p>Six palettes explored. Amber accents gave the &quot;sunlight through trees&quot; feeling.</p>
+                      </div>
+                      <div class="tags">
+                        <span class="tag">colors</span>
+                        <span class="tag">palette</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <p class="load-more">[ load archival logs ↓ ]</p>
+            </div>
+          </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ topics ]</div>
+            <div class="retro-box-content tags" style="justify-content: center;">
+              <span class="tag">audio</span>
+              <span class="tag">react</span>
+              <span class="tag">dns</span>
+              <span class="tag">infra</span>
+              <span class="tag">cursors</span>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ key insight ]</div>
+            <div class="retro-box-content sidebar-text" style="text-align: center;">
+              <p style="color: var(--mossy-header); font-style: italic;">90s sites had complex layouts but simple interactions.</p>
+              <p class="sidebar-quote">You can&apos;t max out both.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <p>● visitors: 004321 · © mossyrealm</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

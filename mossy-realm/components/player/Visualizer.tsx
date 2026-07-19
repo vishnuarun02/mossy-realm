@@ -60,6 +60,27 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Resolve the cassette material palette from CSS tokens once.
+    // Canvas paints, so it cannot reference var() directly.
+    const css = getComputedStyle(document.documentElement);
+    const token = (name: string, fallback: string) =>
+      css.getPropertyValue(name).trim() || fallback;
+    const palette = {
+      inset: token('--surface-inset', '#0b120e'),
+      windowInner: token('--cassette-window-inner', '#101a14'),
+      insetEdge: token('--border-inset-edge', '#3a5a3b'),
+      ledOn: token('--status-success', '#b7ff71'),
+      ledMid: token('--cassette-led-mid', '#cfe97c'),
+      ledHot: token('--status-warning', '#f0b15a'),
+      ledOff: token('--cassette-led-off', '#1f3a25'),
+      tape: token('--cassette-tape', '#1a2b20'),
+      reel: token('--cassette-reel', '#6a8a50'),
+      reelLit: token('--cassette-reel-lit', '#8fb86a'),
+    };
+
+    // Reduced motion: the reels stay still. Audio levels still show.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const draw = () => {
       const dpr = window.devicePixelRatio || 1;
       const width = canvas.width / dpr;
@@ -78,16 +99,16 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
       const level = clamp(Math.pow(rawLevel * 1.8, 0.65), 0, 1);
       levelRef.current += (level - levelRef.current) * 0.25;
 
-      const reelSpeed = isPlaying ? 0.08 + levelRef.current * 0.6 : 0.01;
+      const reelSpeed = reducedMotion ? 0 : isPlaying ? 0.08 + levelRef.current * 0.6 : 0.01;
       phaseRef.current += reelSpeed;
 
       // Background
-      ctx.fillStyle = '#0b120e';
+      ctx.fillStyle = palette.inset;
       ctx.fillRect(0, 0, width, height);
 
       // Inner window
-      ctx.fillStyle = '#101a14';
-      ctx.strokeStyle = '#3a5a3b';
+      ctx.fillStyle = palette.windowInner;
+      ctx.strokeStyle = palette.insetEdge;
       ctx.lineWidth = 2;
       const pad = 6;
       const winH = height - 12;
@@ -105,20 +126,20 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
         if (i < lit) {
           const ratio = i / (ledCount - 1);
           if (ratio > 0.75) {
-            ctx.fillStyle = '#f0b15a';
+            ctx.fillStyle = palette.ledHot;
           } else if (ratio > 0.45) {
-            ctx.fillStyle = '#cfe97c';
+            ctx.fillStyle = palette.ledMid;
           } else {
-            ctx.fillStyle = '#b7ff71';
+            ctx.fillStyle = palette.ledOn;
           }
         } else {
-          ctx.fillStyle = '#1f3a25';
+          ctx.fillStyle = palette.ledOff;
         }
         ctx.fillRect(x, ledY, ledW - 2, 6);
       }
 
       // Tape band
-      ctx.fillStyle = '#1a2b20';
+      ctx.fillStyle = palette.tape;
       ctx.fillRect(pad + 6, pad + winH / 2 - 6, winW - 12, 12);
 
       // Reels
@@ -128,7 +149,7 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
       const reelRadius = Math.min(winH * 0.28, 18);
 
       const drawReel = (cx: number, cy: number, angle: number) => {
-        ctx.strokeStyle = '#6a8a50';
+        ctx.strokeStyle = palette.reel;
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(cx, cy, reelRadius, 0, Math.PI * 2);
@@ -138,7 +159,7 @@ export function Visualizer({ variant = 'compact' }: VisualizerProps) {
         ctx.arc(cx, cy, reelRadius * 0.4, 0, Math.PI * 2);
         ctx.stroke();
 
-        ctx.strokeStyle = '#8fb86a';
+        ctx.strokeStyle = palette.reelLit;
         for (let i = 0; i < 3; i += 1) {
           const spokeAngle = angle + (i * Math.PI * 2) / 3;
           ctx.beginPath();

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variation C — Chronicle Strip | MossyRealm Mockup</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <link rel="stylesheet" href="_learnings-mockup-shared.css">
+  <style>
+    /* —— Variation C: horizontal chronology rail + stacked entries —— */
+    .chronicle-rail-wrap {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed var(--mossy-border);
+      overflow-x: auto;
+    }
+
+    .chronicle-rail {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      min-width: min(100%, 520px);
+      position: relative;
+      padding: 0 8px 20px;
+    }
+    .chronicle-rail::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 6px;
+      height: 2px;
+      background: var(--mossy-border);
+      opacity: 0.5;
+    }
+
+    .chronicle-stop {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      min-width: 72px;
+      cursor: default;
+    }
+    .chronicle-stop::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--mossy-bg-box-alt);
+      border: 2px solid var(--mossy-border);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .chronicle-stop.is-active::after {
+      background: var(--mossy-link);
+      box-shadow: 0 0 6px var(--mossy-link);
+    }
+    .chronicle-stop.is-future {
+      opacity: 0.45;
+    }
+
+    .chronicle-stop .month {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      color: var(--mossy-header);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .chronicle-stop .count {
+      font-family: var(--font-nav);
+      font-size: 0.65rem;
+      color: var(--mossy-text-muted);
+    }
+    .chronicle-stop.is-active .month {
+      color: var(--mossy-link);
+    }
+
+    .chronicle-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .chronicle-entry {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .date-column {
+      text-align: right;
+      padding-top: 4px;
+      border-right: 2px solid var(--mossy-border);
+      padding-right: 12px;
+    }
+    .date-column .day {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--mossy-header);
+      line-height: 1;
+    }
+    .date-column .ym {
+      font-family: var(--font-nav);
+      font-size: 0.7rem;
+      color: var(--mossy-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .chronicle-card {
+      background: var(--mossy-bg-box);
+      border: 2px solid var(--mossy-border);
+      padding: 12px 14px;
+    }
+    .chronicle-card.is-featured {
+      border-width: 3px;
+      box-shadow: inset 0 0 0 1px rgba(232, 165, 75, 0.25);
+    }
+
+    .chronicle-card header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .chronicle-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--mossy-header);
+      flex: 1 1 100%;
+    }
+    .chronicle-card .category {
+      font-family: var(--font-nav);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--mossy-border);
+    }
+
+    .chronicle-card .blurb {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .chronicle-card details {
+      font-size: 0.85rem;
+      color: var(--mossy-text-muted);
+    }
+    .chronicle-card summary {
+      cursor: pointer;
+      color: var(--mossy-link);
+      font-family: var(--font-nav);
+      margin-bottom: 8px;
+    }
+    .chronicle-card summary:hover {
+      color: var(--mossy-link-hover);
+    }
+
+    @media (max-width: 520px) {
+      .chronicle-entry {
+        grid-template-columns: 1fr;
+      }
+      .date-column {
+        text-align: left;
+        border-right: none;
+        border-bottom: 1px dashed var(--mossy-border);
+        padding: 0 0 8px;
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mock-banner">
+    <strong>MOCKUP C</strong> — Chronicle Strip (horizontal rail) ·
+    <a href="learnings-timeline-index.html">← all variations</a>
+  </div>
+
+  <div class="site-wrapper">
+    <div class="site-container">
+      <header class="site-header">
+        <h1 class="site-title">welcome to mossyrealm</h1>
+        <nav class="site-nav">
+          <a href="#" class="nav-link">Outpost</a>
+          <a href="#" class="nav-link">My Cabin</a>
+          <a href="#" class="nav-link active">Fieldwork</a>
+          <a href="#" class="nav-link">Crossroads</a>
+          <a href="#" class="nav-link">Archives</a>
+        </nav>
+      </header>
+
+      <nav class="cabin-subnav">
+        <a href="#" class="active">learnings</a>
+        <a href="#">experiments</a>
+        <a href="#">field notes</a>
+        <a href="#">gallery</a>
+      </nav>
+
+      <div class="three-col">
+        <aside class="sidebar left-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ why share this? ]</div>
+            <div class="retro-box-content sidebar-text">
+              <p>Things I learned so you don&apos;t have to.</p>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ quick jump ]</div>
+            <div class="retro-box-content">
+              <ul class="sidebar-list">
+                <li><a href="#feb-2026">feb 2026 entries</a></li>
+                <li><a href="#jan-2026">jan 2026</a></li>
+                <li><a href="#dec-2025">dec 2025</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="retro-box alt">
+            <div class="retro-box-title">{ learnings }</div>
+            <div class="retro-box-content">
+              <div class="intro-block">
+                <p class="intro-accent">~ wisdom dug up through trial and error ~</p>
+                <p class="intro-sub">scroll the chronicle · expand any entry for the full story</p>
+              </div>
+
+              <div class="chronicle-rail-wrap">
+                <div class="chronicle-rail" role="list" aria-label="Timeline by month">
+                  <div class="chronicle-stop is-future" role="listitem">
+                    <span class="month">Mar</span>
+                    <span class="count">—</span>
+                  </div>
+                  <div class="chronicle-stop is-active" role="listitem">
+                    <span class="month">Feb</span>
+                    <span class="count">2 posts</span>
+                  </div>
+                  <div class="chronicle-stop" role="listitem">
+                    <span class="month">Jan</span>
+                    <span class="count">1 post</span>
+                  </div>
+                  <div class="chronicle-stop" role="listitem">
+                    <span class="month">Dec '25</span>
+                    <span class="count">2 posts</span>
+                  </div>
+                  <div class="chronicle-stop is-future" role="listitem">
+                    <span class="month">Earlier</span>
+                    <span class="count">···</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chronicle-entries" id="feb-2026">
+                <article class="chronicle-entry" id="webamp-rip">
+                  <div class="date-column">
+                    <span class="day">05</span>
+                    <span class="ym">Feb 2026</span>
+                  </div>
+                  <div class="chronicle-card is-featured">
+                    <header>
+                      <h3>Audio player refactor</h3>
+                      <span class="category">Frontend</span>
+                    </header>
+                    <p class="blurb">Dropped Webamp after five days of React integration pain. One Howler engine, playback across routes.</p>
+                    <details>
+                      <summary>Read full entry</summary>
+                      <p>StrictMode double-mounts, orphaned DOM, dual audio engines, R2 CORS skips — the full saga lives here. Takeaway: working software beats clever software.</p>
+                    </details>
+                    <div class="tags">
+                      <span class="tag">audio</span>
+                      <span class="tag">react</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chronicle-entry" id="site-wiring">
+                  <div class="date-column">
+                    <span class="day">05</span>
+                    <span class="ym">Feb 2026</span>
+                  </div>
+                  <div class="chronicle-card">
+                    <header>
+                      <h3>Site wiring guide</h3>
+                      <span class="category">Infra</span>
+                    </header>
+                    <p class="blurb">Hostinger → Cloudflare → Vercel + R2. Each service does one job well.</p>
+                    <details>
+                      <summary>Read full entry</summary>
+                      <p>Nameserver propagation, apex domain without www, media subdomain on R2.</p>
+                    </details>
+                    <div class="tags">
+                      <span class="tag">dns</span>
+                      <span class="tag">cloudflare</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="chronicle-entries" id="jan-2026" style="margin-top: 20px;">
+                <article class="chronicle-entry" id="cursors">
+                  <div class="date-column">
+                    <span class="day">16</span>
+                    <span class="ym">Jan 2026</span>
+                  </div>
+                  <div class="chronicle-card">
+                    <header>
+                      <h3>Cursors &amp; effects</h3>
+                      <span class="category">Design</span>
+                    </header>
+                    <p class="blurb">Reverted sparkles, fireflies, and custom cursors. Dense layouts need simple interactions.</p>
+                    <div class="tags"><span class="tag">cursors</span></div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="chronicle-entries" id="dec-2025" style="margin-top: 20px; opacity: 0.9;">
+                <article class="chronicle-entry">
+                  <div class="date-column">
+                    <span class="day">—</span>
+                    <span class="ym">Dec 2025</span>
+                  </div>
+                  <div class="chronicle-card">
+                    <header>
+                      <h3>Palette &amp; typography</h3>
+                      <span class="category">Design</span>
+                    </header>
+                    <p class="blurb">Sunlit Glade palette + Cinzel/Lora pairing locked in after weeks of experiments.</p>
+                    <div class="tags">
+                      <span class="tag">colors</span>
+                      <span class="tag">fonts</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+          <div class="retro-box">
+            <div class="retro-box-title">[ topics ]</div>
+            <div class="retro-box-content tags" style="justify-content: center;">
+              <span class="tag">audio</span>
+              <span class="tag">dns</span>
+              <span class="tag">design</span>
+            </div>
+          </div>
+          <div class="retro-box">
+            <div class="retro-box-title">[ key insight ]</div>
+            <div class="retro-box-content sidebar-text" style="text-align: center;">
+              <p style="color: var(--mossy-accent); font-weight: 600;">You can&apos;t max out both.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer">
+        <p>● visitors: 004321 · © mossyrealm</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

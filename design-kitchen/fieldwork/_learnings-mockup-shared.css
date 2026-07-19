@@ -1,0 +1,137 @@
+/* Shared layout for learnings timeline mockups */
+.three-col {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (max-width: 1024px) {
+  .three-col {
+    grid-template-columns: 160px 1fr;
+  }
+  .right-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .three-col {
+    grid-template-columns: 1fr;
+  }
+  .left-sidebar {
+    order: 2;
+  }
+  .main-content {
+    order: 1;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.sidebar-quote {
+  margin-top: 12px;
+  font-style: italic;
+  color: var(--mossy-text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.sidebar-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--mossy-border);
+}
+
+.sidebar-list li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-list a {
+  color: var(--mossy-link);
+}
+
+.intro-block {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--mossy-border);
+}
+
+.intro-accent {
+  font-family: var(--font-accent);
+  color: var(--mossy-header);
+  font-size: 1.05rem;
+}
+
+.intro-sub {
+  font-size: 0.9rem;
+  color: var(--mossy-text-muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: var(--mossy-bg-box);
+  border: 1px solid var(--mossy-border);
+  color: var(--mossy-text-muted);
+  font-family: var(--font-nav);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.mock-banner {
+  text-align: center;
+  padding: 8px;
+  background: rgba(255, 140, 66, 0.15);
+  border-bottom: 2px dashed var(--mossy-accent);
+  font-family: var(--font-nav);
+  font-size: 0.8rem;
+  color: var(--mossy-accent);
+}
+
+.mock-banner a {
+  color: var(--mossy-link);
+}
+
+.volumes-list {
+  list-style: none;
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+}
+
+.volumes-list li {
+  padding: 4px 0;
+  color: var(--mossy-text-muted);
+}
+
+.volumes-list li.active {
+  color: var(--mossy-header);
+}
+
+.volumes-list input {
+  margin-right: 6px;
+  accent-color: var(--mossy-border);
+}

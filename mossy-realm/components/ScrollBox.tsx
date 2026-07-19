@@ -1,4 +1,13 @@
 import { ReactNode } from 'react';
+import Panel from './ui/Panel';
+
+/**
+ * ScrollBox - the 90s independent-scrolling panel.
+ *
+ * A Panel whose body scrolls on its own, with the classic
+ * [ scroll ↓ ] indicator strip. The scroll region is focusable
+ * so keyboard visitors can scroll it too (arrow keys).
+ */
 
 interface ScrollBoxProps {
   title?: string;
@@ -15,45 +24,26 @@ export default function ScrollBox({
   className = '',
   maxHeight = '200px'
 }: ScrollBoxProps) {
-  const bgClass = variant === 'alt' ? 'bg-mossy-bg-box-alt' : 'bg-mossy-bg-box';
-
   return (
-    <div
-      className={`
-        ${bgClass}
-        border-[3px] border-mossy-border
-        rounded-sm
-        overflow-hidden
-        ${className}
-      `}
+    <Panel
+      title={title}
+      surface={variant === 'alt' ? 'alt' : 'panel'}
+      padding="none"
+      className={className}
     >
-      {title && (
-        <div
-          className="
-            font-heading
-            bg-mossy-border 
-            text-mossy-bg-box 
-            px-3 py-1.5
-            font-semibold
-            text-sm
-            lowercase
-            tracking-wider
-          "
-        >
-          {title}
-        </div>
-      )}
-      <div 
+      <div
         className="scrollbox-content p-3 font-body"
         style={{ maxHeight }}
+        tabIndex={0}
+        role="region"
+        aria-label={typeof title === 'string' ? title : 'Scrollable content'}
       >
         {children}
       </div>
       {/* Scroll indicator */}
-      <div className="scroll-indicator">
+      <div className="scroll-indicator" aria-hidden="true">
         [ scroll ↓ ]
       </div>
-    </div>
+    </Panel>
   );
 }
-

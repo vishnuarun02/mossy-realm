@@ -1,0 +1,24 @@
+<!-- Reference only — article body used in post mockups -->
+<p class="changelog-line"><strong>removed:</strong> webamp · <strong>added:</strong> custom unified audio player</p>
+
+<p>Initially integrated <a href="https://webamp.org">Webamp</a> because the UI matched the site aesthetic really well. Classic winamp-style player, playlists, visualizer. Looked great in isolation.</p>
+
+<p>Integration into a React SPA was the actual problem. Spent almost 5 days on this. Even tried building my own version using AI at some point. Honestly not worth my time.</p>
+
+<p>Issues I ran into:</p>
+<ul>
+  <li>Webamp renders directly to document.body, which bypasses React entirely</li>
+  <li>React StrictMode double-mounts in dev, resulting in orphaned DOM nodes</li>
+  <li>Frequent removeChild errors during route changes</li>
+  <li>Two independent audio engines at the same time</li>
+  <li>Navigating between routes could cause both to play simultaneously</li>
+  <li>R2 + CORS issues caused Webamp to skip tracks without playing audio</li>
+</ul>
+
+<p>Removed Webamp entirely. Implemented a single global audio engine using Howler.js. One audio instance, one source of truth, shared across all routes.</p>
+
+<p>Lost some visual flair. Gained stability, clarity, and sanity.</p>
+
+<blockquote class="pull-quote">I read a while ago that &quot;working software beats clever software every time.&quot; This was one of those moments where that line applied very literally.</blockquote>
+
+<p class="text-muted" style="color: var(--mossy-text-muted); font-size: 0.9rem;">Webamp is solid software. Just not designed for modern React routing, StrictMode, or shared application state.</p>

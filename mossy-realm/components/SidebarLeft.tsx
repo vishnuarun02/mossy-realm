@@ -1,7 +1,7 @@
 import RetroBox from './RetroBox';
 import ScrollBox from './ScrollBox';
-import Link from 'next/link';
 import Image from 'next/image';
+import TextLink from './ui/TextLink';
 import { getUpdates } from '@/lib/updates';
 import { QuestionOfDayWidget } from './VaultWidgets';
 
@@ -15,11 +15,11 @@ export default function SidebarLeft() {
         <div className="space-y-4 font-body text-sm">
           {updates.map((update, index) => (
             <div key={`${update.formattedDate}-${index}`}>
-              <p className="text-mossy-header text-xs mb-1 font-heading">
+              <p className="text-fg-heading text-xs mb-1 font-heading">
                 {update.formattedDate}
-                <span className="text-mossy-text-muted font-body"> · {update.formattedTime}</span>
+                <span className="text-fg-secondary font-body"> · {update.formattedTime}</span>
               </p>
-              <p className="text-mossy-text">{update.message}</p>
+              <p className="text-fg-primary">{update.message}</p>
             </div>
           ))}
         </div>
@@ -31,11 +31,11 @@ export default function SidebarLeft() {
       {/* Now Reading / Now Learning */}
       <RetroBox title="[ now reading ]">
         <div className="text-sm font-body space-y-2">
-          <p className="text-mossy-text">
-            <span className="text-mossy-text-muted">now reading:</span>{' '}
-            <span className="text-mossy-header">Is This Anything?</span> — Jerry Seinfeld
+          <p className="text-fg-primary">
+            <span className="text-fg-secondary">now reading:</span>{' '}
+            <span className="text-fg-heading">Is This Anything?</span> — Jerry Seinfeld
           </p>
-          <p className="text-mossy-text-muted">
+          <p className="text-fg-secondary">
             now learning: note-taking systems
           </p>
         </div>
@@ -46,16 +46,16 @@ export default function SidebarLeft() {
         <div className="text-center">
           <Image
             src="/realm-guardian.gif"
-            alt="Once a humble booger. Now the realm's fiercest protector."
+            alt="Sir Mucus McSniff, the realm guardian"
             width={100}
             height={100}
-            className="mx-auto border-2 border-dashed border-mossy-border rounded-sm"
+            className="mx-auto border-2 border-dashed border-border-structural rounded-sm"
             unoptimized
           />
-          <p className="text-mossy-header text-xs mt-2 italic font-body font-bold uppercase">
+          <p className="text-fg-heading text-xs mt-2 italic font-body font-bold uppercase">
             Sir Mucus McSniff
           </p>
-          <p className="text-mossy-text-muted text-xs italic font-body">
+          <p className="text-fg-secondary text-xs italic font-body">
             Once a humble booger. Now the realm&apos;s fiercest protector.
           </p>
         </div>
@@ -64,22 +64,22 @@ export default function SidebarLeft() {
       {/* Latest Post */}
       <RetroBox title="[ latest post ]">
         <div>
-          <h3 className="text-mossy-header font-bold mb-1 font-heading">
+          <h3 className="text-fg-heading font-bold mb-1 font-heading">
             Audio Player Refactor
           </h3>
-          <p className="text-mossy-text-muted text-[0.7rem] uppercase tracking-wider mb-1 font-heading">
+          <p className="text-fg-secondary text-micro uppercase tracking-wider mb-1 font-heading">
             topic: audio systems
           </p>
-          <p className="text-mossy-header-alt text-xs italic mb-2 font-body">
+          <p className="text-fg-heading-alt text-xs italic mb-2 font-body">
             February 5th, 2026
           </p>
-          <p className="text-mossy-text mb-3 font-body text-sm">
+          <p className="text-fg-primary mb-3 font-body text-sm">
             5 days fighting Webamp. Two songs playing at once.
             Removed it, built a unified player instead.
           </p>
-          <Link href="/fieldwork/learnings#webamp-rip" className="text-mossy-link underline hover:text-mossy-link-hover text-sm">
-            read more →
-          </Link>
+          <TextLink href="/fieldwork/learnings#webamp-rip" arrow className="text-sm">
+            read more
+          </TextLink>
         </div>
       </RetroBox>
     </aside>

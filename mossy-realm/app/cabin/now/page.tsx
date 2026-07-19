@@ -1,23 +1,20 @@
-import RetroBox from "@/components/RetroBox";
+import PageShell from "@/components/PageShell";
+import Panel from "@/components/ui/Panel";
 import UnderConstruction from "@/components/UnderConstruction";
 
 export default function NowPage() {
   return (
-    <div className="max-w-2xl mx-auto">
-      <RetroBox title="{ now }" variant="alt">
-        <div className="text-center space-y-4">
-          <p className="font-accent text-mossy-header text-lg">
-            ~ what I&apos;m up to these days ~
-          </p>
-          <p className="text-mossy-text">
-            Currently reading, listening, building, thinking about.
-          </p>
-        </div>
-
-        <div className="border-t-2 border-mossy-border my-6"></div>
-
-        <UnderConstruction />
-      </RetroBox>
-    </div>
+    <PageShell
+      eyebrow="my cabin"
+      title="now"
+      deckAccent="~ what I'm up to these days ~"
+      width="reading"
+    >
+      <Panel surface="alt">
+        <UnderConstruction
+          message="Currently reading, listening, building, thinking about. this area is under construction. check back soon."
+        />
+      </Panel>
+    </PageShell>
   );
 }

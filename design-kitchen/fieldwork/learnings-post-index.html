@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Post Page Mockups — MossyRealm</title>
+  <link rel="stylesheet" href="../cabin-pages/cabin-demo.css">
+  <style>
+    body { padding: 2rem; }
+    .picker { max-width: 680px; margin: 0 auto; }
+    .picker h1 {
+      font-family: var(--font-display);
+      color: var(--mossy-header);
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .picker p { text-align: center; color: var(--mossy-text-muted); margin-bottom: 1.25rem; font-size: 0.95rem; }
+    .option-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .option-list a {
+      display: block;
+      padding: 14px 18px;
+      border: 3px solid var(--mossy-border);
+      background: var(--mossy-bg-box);
+      color: var(--mossy-link);
+      text-decoration: none;
+      font-family: var(--font-heading);
+    }
+    .option-list a:hover { background: var(--mossy-bg-box-alt); border-color: var(--mossy-border-glow); }
+    .option-list strong { display: block; color: var(--mossy-header); margin-bottom: 4px; }
+    .option-list span { font-family: var(--font-body); font-size: 0.85rem; color: var(--mossy-text-muted); font-weight: normal; }
+    .links { margin-top: 1.25rem; text-align: center; font-size: 0.85rem; }
+    .links a { color: var(--mossy-link); }
+  </style>
+</head>
+<body>
+  <div class="picker retro-box">
+    <div class="retro-box-title">[ single post mockups ]</div>
+    <div class="retro-box-content">
+      <h1>Learning entry pages</h1>
+      <p>Sample post: <strong>Audio Player Refactor</strong> — click a layout after opening the timeline mockup.</p>
+      <ul class="option-list">
+        <li>
+          <a href="learnings-post-v1-dossier.html">
+            <strong>Post layout A — Expedition dossier</strong>
+            <span>Same 3-column shell as the timeline. Breadcrumb, full article, prev/next at bottom.</span>
+          </a>
+        </li>
+        <li>
+          <a href="learnings-post-v2-focus.html">
+            <strong>Post layout B — Reading focus</strong>
+            <span>Narrower sidebars, wider article column. Best for long reads.</span>
+          </a>
+        </li>
+        <li>
+          <a href="learnings-post-v3-field-report.html">
+            <strong>Post layout C — Field report</strong>
+            <span>Left outline (jump links), center article, right “other expeditions.”</span>
+          </a>
+        </li>
+      </ul>
+      <p class="links">
+        <a href="learnings-timeline-v1-study-log.html">← timeline list (cards link here)</a>
+        ·
+        <a href="learnings-timeline-index.html">all timeline variations</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

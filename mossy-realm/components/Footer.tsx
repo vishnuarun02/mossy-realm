@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import Marquee from './Marquee';
 import VisitorCounter from './VisitorCounter';
+import Badge from './ui/Badge';
+import TextLink from './ui/TextLink';
 
 export default function Footer() {
   return (
@@ -16,44 +17,44 @@ export default function Footer() {
         <div className="space-y-3">
           {/* Web Buttons/Badges Row */}
           <div className="flex flex-wrap justify-center gap-2">
-            <div className="bg-mossy-bg-box-alt border-2 border-mossy-border px-2 py-1 text-sm text-mossy-text-muted hover:border-mossy-link transition-colors">
+            <Badge className="hover:border-link transition-colors duration-fast">
               [neocities]
-            </div>
-            <div className="bg-mossy-bg-box-alt border-2 border-mossy-border px-2 py-1 text-sm text-mossy-text-muted hover:border-mossy-link transition-colors">
+            </Badge>
+            <Badge className="hover:border-link transition-colors duration-fast">
               [next.js]
-            </div>
-            <div className="bg-mossy-bg-box-alt border-2 border-mossy-border px-2 py-1 text-sm text-mossy-text-muted hover:border-mossy-link transition-colors">
+            </Badge>
+            <Badge className="hover:border-link transition-colors duration-fast">
               [best viewed with ☼]
-            </div>
+            </Badge>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-wrap justify-center gap-2 text-sm font-nav">
-            <Link href="/cabin/contact" className="text-mossy-link hover:text-mossy-link-hover">
+          <div className="flex flex-wrap justify-center items-center gap-2 text-sm font-nav">
+            <TextLink href="/cabin/contact" underline={false}>
               contact
-            </Link>
-            <span className="text-mossy-border">•</span>
-            <Link href="/cabin/about" className="text-mossy-link hover:text-mossy-link-hover">
+            </TextLink>
+            <span aria-hidden="true" className="text-border-structural">•</span>
+            <TextLink href="/cabin/about" underline={false}>
               about
-            </Link>
-            <span className="text-mossy-border">•</span>
-            <Link href="/archives/sitemap" className="text-mossy-link hover:text-mossy-link-hover">
+            </TextLink>
+            <span aria-hidden="true" className="text-border-structural">•</span>
+            <TextLink href="/archives/sitemap" underline={false}>
               sitemap
-            </Link>
+            </TextLink>
           </div>
 
           {/* Visitor Counter + Copyright in one line */}
           <div className="flex flex-wrap justify-center items-center gap-3 text-sm">
             <VisitorCounter />
-            <span className="text-mossy-border">|</span>
-            <span className="text-mossy-text-muted font-body">
+            <span aria-hidden="true" className="text-border-structural">|</span>
+            <span className="text-fg-secondary font-body">
               ♥ MossyRealm 2026
             </span>
           </div>
 
           {/* Fun little message */}
-          <p className="text-mossy-text-muted text-sm font-accent">
-            ☆ thanks for visiting! come back soon~ ☆
+          <p className="text-fg-secondary text-sm font-accent">
+            ☆ thanks for visiting! come back soon ☆
           </p>
         </div>
       </footer>

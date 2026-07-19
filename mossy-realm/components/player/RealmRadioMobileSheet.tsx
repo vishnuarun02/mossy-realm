@@ -1,19 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import IconButton from '@/components/ui/IconButton';
+import TextLink from '@/components/ui/TextLink';
 import { usePlayerStore } from '@/lib/player/store';
 import { formatDuration } from '@/lib/tracks';
 import { fallbackTracks, getFeaturedTrack } from '@/data/tracks';
 import { Visualizer } from './Visualizer';
+import PlayerControls from './PlayerControls';
+import VolumeControl from './VolumeControl';
 import {
-  PlayIcon,
-  PauseIcon,
-  PrevIcon,
-  NextIcon,
-  VolumeHighIcon,
-  VolumeMutedIcon,
-  VolumeLowIcon,
   CollapseIcon,
   OpenIcon,
 } from './PlayerIcons';
@@ -22,7 +18,8 @@ import {
  * RealmRadioMobileSheet - Expanded bottom sheet for mobile
  * Design A: Full Controls
  *
- * Slides up when user taps expand on mobile bar
+ * Slides up when user taps expand on mobile bar.
+ * Behaves like a dialog: Escape closes, backdrop closes.
  */
 export function RealmRadioMobileSheet() {
   const [mounted, setMounted] = useState(false);
@@ -48,6 +45,16 @@ export function RealmRadioMobileSheet() {
     setMounted(true);
   }, []);
 
+  // Escape closes the sheet
+  useEffect(() => {
+    if (!isMobileSheetOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMobileSheet();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isMobileSheetOpen, closeMobileSheet]);
+
   // use featured track for SSR, current track after hydration
   const displayTracks = mounted ? tracks : fallbackTracks;
   const track = mounted ? getCurrentTrack() : getFeaturedTrack(fallbackTracks);
@@ -59,20 +66,24 @@ export function RealmRadioMobileSheet() {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 z-50 md:hidden"
+        className="fixed inset-0 bg-black/50 z-40 md:hidden"
         onClick={closeMobileSheet}
+        aria-hidden="true"
       />
 
       {/* Sheet */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Realm Radio full player"
         className="
           fixed bottom-0 left-0 right-0
-          bg-mossy-bg-box
-          border-t-4 border-mossy-border
+          bg-surface-panel
+          border-t-site border-border-structural
           rounded-t-2xl
           p-4
-          shadow-[0_-10px_40px_rgba(0,0,0,0.5)]
-          z-50
+          shadow-lift
+          z-40
           md:hidden
           animate-slide-up
           max-h-[85vh]
@@ -80,32 +91,24 @@ export function RealmRadioMobileSheet() {
         "
       >
         {/* Handle */}
-        <div className="w-10 h-1 bg-mossy-border rounded-full mx-auto mb-4" />
+        <div className="w-10 h-1 bg-border-structural rounded-full mx-auto mb-4" aria-hidden="true" />
 
         {/* Close Button */}
-        <button
+        <IconButton
+          variant="ghost"
           onClick={closeMobileSheet}
-          className="
-            absolute top-4 right-4
-            w-8 h-8
-            bg-mossy-bg-box-alt
-            border-2 border-mossy-border
-            text-mossy-border
-            flex items-center justify-center
-            hover:bg-mossy-border hover:text-mossy-bg-box
-            transition-colors
-          "
-          aria-label="Close"
+          aria-label="Close player"
+          className="absolute top-4 right-4"
         >
           <CollapseIcon />
-        </button>
+        </IconButton>
 
         {/* Header */}
         <div className="text-center mb-4">
-          <h2 className="font-display text-xl text-mossy-header">
+          <h2 className="font-display text-xl text-fg-heading">
             * Realm Radio *
           </h2>
-          <p className="text-mossy-text-muted text-xs mt-1">
+          <p className="text-fg-secondary text-xs mt-1">
             vishnu is listening to:
           </p>
         </div>
@@ -117,139 +120,85 @@ export function RealmRadioMobileSheet() {
 
         {/* Current Track */}
         <div className="text-center mb-5">
-          <div className="font-accent text-mossy-header text-lg">
+          <div className="font-accent text-fg-heading text-lg break-words">
             {track.title}
           </div>
         </div>
 
         {/* Main Controls */}
-        <div className="flex justify-center items-center gap-4 mb-5">
-          <button
-            onClick={prevTrack}
-            className="
-              w-12 h-12
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
-            aria-label="Previous track"
-          >
-            <PrevIcon />
-          </button>
-          <button
-            onClick={togglePlay}
-            className="
-              w-16 h-16
-              bg-mossy-border
-              border-2 border-mossy-border-glow
-              text-mossy-bg-box
-              text-xl font-bold
-              hover:bg-mossy-border-glow
-              hover:shadow-[0_0_15px_var(--mossy-border-glow)]
-              transition-all
-              flex items-center justify-center
-            "
-            aria-label={isPlaying ? 'Pause' : 'Play'}
-          >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
-          </button>
-          <button
-            onClick={nextTrack}
-            className="
-              w-12 h-12
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-border
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
-              flex items-center justify-center
-            "
-            aria-label="Next track"
-          >
-            <NextIcon />
-          </button>
-        </div>
+        <PlayerControls
+          isPlaying={isPlaying}
+          onTogglePlay={togglePlay}
+          onPrev={prevTrack}
+          onNext={nextTrack}
+          size="lg"
+          className="mb-5"
+        />
 
         {/* Volume */}
-        <div className="flex items-center gap-3 mb-5 px-4">
-          <button
-            onClick={toggleMute}
-            className="text-mossy-border"
-            aria-label={isMuted ? 'Unmute' : 'Mute'}
-          >
-            {isMuted ? <VolumeMutedIcon /> : <VolumeLowIcon />}
-          </button>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={volume * 100}
-            onChange={(e) => setVolume(Number(e.target.value) / 100)}
-            className="
-              flex-1 h-2
-              bg-mossy-bg-box
-              border-2 border-mossy-border
-              cursor-pointer
-              accent-mossy-border
-            "
-          />
-          <span className="text-mossy-border">
-            <VolumeHighIcon />
-          </span>
-        </div>
+        <VolumeControl
+          volume={volume}
+          isMuted={isMuted}
+          onSetVolume={setVolume}
+          onToggleMute={toggleMute}
+          showMute
+          className="mb-5 px-4"
+        />
 
         {/* Playlist */}
-        <div className="border-t-2 border-mossy-border pt-4">
-          <h4 className="text-mossy-border text-xs uppercase tracking-wider mb-3 font-heading">
+        <div className="border-t-2 border-border-structural pt-4">
+          <h3 className="text-border-structural text-xs uppercase tracking-wider mb-3 font-heading">
             playlist ({displayTracks.length} tracks)
-          </h4>
+          </h3>
           <div className="space-y-2 max-h-48 overflow-y-auto scrollbox-content">
-            {displayTracks.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setCurrentTrack(t.id)}
-                className={`
-                  w-full text-left
-                  p-3
-                  border transition-colors
-                  ${
-                    activeTrackId === t.id
-                      ? 'bg-mossy-bg-box-alt border-mossy-border border-l-4 border-l-mossy-link'
-                      : 'border-mossy-bg-box-alt hover:bg-mossy-bg-box-alt hover:border-mossy-border'
-                  }
-                `}
-              >
-                <div className="text-sm text-mossy-text">{t.title}</div>
-                <div className="text-xs text-mossy-text-muted flex justify-between">
-                  {t.artist && <span>by {t.artist}</span>}
-                  {t.duration && <span>{formatDuration(t.duration)}</span>}
-                </div>
-              </button>
-            ))}
+            {displayTracks.map((t) => {
+              const isActive = activeTrackId === t.id;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setCurrentTrack(t.id)}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`
+                    w-full text-left
+                    p-3
+                    border transition-colors duration-fast
+                    cursor-pointer
+                    ${
+                      isActive
+                        ? 'bg-surface-panel-alt border-border-structural border-l-4 border-l-link'
+                        : 'border-surface-panel-alt hover:bg-surface-panel-alt hover:border-border-structural'
+                    }
+                  `}
+                >
+                  <div className="text-sm text-fg-primary">{t.title}</div>
+                  <div className="text-xs text-fg-secondary flex justify-between">
+                    {t.artist && <span>by {t.artist}</span>}
+                    {t.duration && <span>{formatDuration(t.duration)}</span>}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Open Full Player */}
         <div className="mt-4 text-center">
-          <Link
+          <TextLink
             href="/player"
             onClick={closeMobileSheet}
+            underline={false}
             className="
               inline-flex items-center gap-2
-              bg-mossy-bg-box-alt
-              border-2 border-mossy-border
-              text-mossy-link
+              bg-surface-panel-alt
+              border-panel border-border-structural
               px-4 py-2
               font-nav
-              hover:bg-mossy-border hover:text-mossy-bg-box
-              transition-colors
+              hover:bg-surface-strip hover:text-fg-inverse
+              transition-colors duration-fast
             "
           >
             open full player <OpenIcon />
-          </Link>
+          </TextLink>
         </div>
       </div>
     </>

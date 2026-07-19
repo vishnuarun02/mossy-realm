@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import RetroBox from './RetroBox';
+import Button from './ui/Button';
 
 interface VaultItem {
     id: string;
@@ -57,7 +58,7 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
         return (
             <RetroBox title="[ question of the day ]">
                 <div className="text-center font-body text-sm px-1">
-                    <p className="text-mossy-text-muted italic leading-relaxed">
+                    <p className="text-fg-secondary italic leading-relaxed">
                         pondering...
                     </p>
                 </div>
@@ -68,7 +69,7 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
     return (
         <RetroBox title="[ question of the day ]">
             <div className="text-center font-body text-sm px-1">
-                <p className="text-mossy-text italic leading-relaxed">
+                <p className="text-fg-primary italic leading-relaxed">
                     &quot;{questionText || 'What mysteries await?'}&quot;
                 </p>
 
@@ -76,15 +77,15 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
                 {isRiddle && (
                     <div className="mt-2">
                         {showAnswer ? (
-                            <p className="text-mossy-accent text-xs">
+                            <p className="text-accent text-xs">
                                 Answer: {currentItem?.riddle?.answer}
                             </p>
                         ) : (
                             <button
                                 onClick={() => setShowAnswer(true)}
                                 className="
-                                    text-mossy-text-muted text-xs
-                                    underline hover:text-mossy-link
+                                    text-fg-secondary text-xs
+                                    underline hover:text-link
                                     cursor-pointer
                                 "
                             >
@@ -94,28 +95,13 @@ export default function QuestionOfDay({ initialItems }: QuestionOfDayProps) {
                     </div>
                 )}
 
-                <div className="mt-3 text-mossy-accent text-xs">
+                <div className="mt-3 text-accent text-xs">
                     ~ food for thought ~
                 </div>
 
-                <button
-                    onClick={handleNewQuestion}
-                    className="
-                        font-nav
-                        mt-2
-                        bg-mossy-bg-box-alt
-                        border-2 border-mossy-border
-                        px-3 py-1
-                        text-mossy-link
-                        hover:bg-mossy-border
-                        hover:text-mossy-bg-box
-                        transition-colors
-                        text-xs
-                        cursor-pointer
-                    "
-                >
+                <Button variant="ghost" size="sm" onClick={handleNewQuestion} className="mt-2 text-xs">
                     new question
-                </button>
+                </Button>
             </div>
         </RetroBox>
     );
