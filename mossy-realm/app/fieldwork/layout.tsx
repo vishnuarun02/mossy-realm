@@ -1,21 +1,23 @@
 import SiteShell from "@/components/SiteShell";
-import SubNav from "@/components/SubNav";
+import BinderTabs from "@/components/fieldwork/BinderTabs";
 
-const fieldworkLinks = [
-  { href: '/fieldwork/learnings', label: 'learnings' },
-  { href: '/fieldwork/experiments', label: 'experiments' },
-  { href: '/fieldwork/field-notes', label: 'field notes' },
-  { href: '/fieldwork/gallery', label: 'gallery' },
-];
-
+/**
+ * Fieldwork layout: the lab binder.
+ *
+ * Folder tabs on top mark the sections; every page sits on faint
+ * graph paper underneath. Distinct from the cabin's file tree.
+ */
 export default function FieldworkLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SiteShell subNav={<SubNav links={fieldworkLinks} label="Fieldwork sections" />}>
-      {children}
+    <SiteShell>
+      <BinderTabs />
+      <div className="mt-4">
+        {children}
+      </div>
     </SiteShell>
   );
 }
