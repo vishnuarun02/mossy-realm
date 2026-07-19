@@ -1,19 +1,20 @@
 import SiteShell from "@/components/SiteShell";
-import SubNav from "@/components/SubNav";
+import SignpostNav from "@/components/crossroads/SignpostNav";
 
-const crossroadsLinks = [
-  { href: '/crossroads/rabbit-holes', label: 'rabbit holes' },
-  { href: '/crossroads/guestbook', label: 'guestbook' },
-  { href: '/crossroads/credits', label: 'credits' },
-];
-
+/**
+ * Crossroads layout: the junction.
+ *
+ * Signpost planks mark the roads out. Each page is its own
+ * destination board; the planks stay above them all.
+ */
 export default function CrossroadsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SiteShell subNav={<SubNav links={crossroadsLinks} label="Crossroads sections" />}>
+    <SiteShell>
+      <SignpostNav />
       {children}
     </SiteShell>
   );
