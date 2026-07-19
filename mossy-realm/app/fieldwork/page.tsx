@@ -52,8 +52,8 @@ export default function FieldworkLanding() {
           {/* Latest field notes */}
           <Panel title="{ latest field notes }">
             <ul className="space-y-2.5 text-sm">
-              {latestNotes.map((note) => (
-                <li key={note.date} className="flex gap-2.5">
+              {latestNotes.map((note, i) => (
+                <li key={`${note.date}-${i}`} className="flex gap-2.5">
                   <span className="font-nav text-meta text-fg-secondary whitespace-nowrap pt-0.5">
                     {note.date}
                   </span>

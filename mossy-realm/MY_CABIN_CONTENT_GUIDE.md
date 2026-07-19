@@ -48,21 +48,35 @@ Writing rules (from CONTENT_STYLE.md): one or two sentences per entry, no traili
 - `lastUpdated`: string shown in the strip. Update it when you update the page. Format `YYYY-MM-DD HH:MM`.
 - `processes`: the process list. `{ label, value, led }`.
   - `led: 'green'` = actively doing, `'amber'` = idle/slow, `'off'` = parked.
+- `recentlyFixed` / `recentlyBroken`: dated `{ date, note }` rows, newest first. The honest heartbeat of the page.
 - `smallVictories`: one line each, brag-sized.
 - `experiments`: one line each. Breaking is expected.
 - `changelog`: `{ date, note }`, newest first. Prune old rows freely.
 
 ## /cabin/crafting-table — workbench
 
-Build entries look like: `{ title, note, led, href? }`.
+Index entries look like: `{ slug, title, note, led, href? }`.
 - `led`: green = active, amber = slow, off = abandoned.
-- `href` is optional; use it for GitHub repos or learnings posts.
+- Entries link to build sheets at `/cabin/crafting-table/[slug]`.
 
-- `activeBuilds`: what is literally on the bench now.
-- `experiments`: half-baked, in progress.
-- `abandoned`: the honest shelf. Name what died and why in one line.
-- `tools`: short strings, rendered as pills.
-- `buildLog`: `{ date, note }`, newest first.
+Full build sheets live in the `projects` array:
+
+```ts
+{
+  slug: 'mossyrealm',            // matches the index entry
+  title: 'mossyrealm',
+  status: 'active',              // 'active' | 'logged' | 'abandoned' (the stamp)
+  what: 'one line. what it was.',
+  why: 'why it existed at all.',
+  tools: ['next.js', 'tailwind'],
+  notes: ['build notes, oldest first'],
+  failures: ['the honest section. what broke.'],
+  links: [{ href: '...', label: '...' }],
+}
+```
+
+- `activeBuilds` / `experiments` / `abandoned` fill the workbench drawers; `tools` renders as pills; `buildLog` is `{ date, note }` newest first.
+- Mark scaffolding with `sample: true` until it holds a real project.
 
 ## /cabin/recipes — the recipe box
 
@@ -70,18 +84,24 @@ Add a recipe by pushing to the TOP of `recipeBox.recipes`:
 
 ```ts
 {
-  id: 'garlic-noodles',          // unique, kebab-case
+  slug: 'garlic-noodles',        // unique, kebab-case (becomes /cabin/recipes/garlic-noodles)
   title: '15-minute garlic noodles',
   section: 'quick meals',        // 'favorites' | 'quick meals' | 'experiments' | 'kerala'
-  time: '15 min',                // optional
+  status: 'tested',              // 'favorite' | 'tested' | 'experiment' | 'failed'
+  note: 'One or two sentences on the card index.',
+  prepTime: '5 min',             // optional
+  cookTime: '10 min',            // optional
   serves: '1',                   // optional
+  ingredients: ['...'],          // checkbox list on the card
+  steps: ['...'],                // numbered on the card
+  kitchenNotes: ['...'],         // handwriting-font margin notes
   tags: ['noodles', 'weeknight'],
-  note: 'What it is, and the one trick that makes it work.',
-  outcome: 'worked',             // only for experiments: 'worked' | 'failed'
+  image: '/images/cabin/...',    // optional card photo
 }
 ```
 
-- The search box filters title, note, section, and tags automatically.
+- Cards link to full detail pages automatically (`/cabin/recipes/[slug]`, prev/next in filing order).
+- The search box filters title, note, section, and tags.
 - Delete the `sample: true` cards once real ones exist.
 - The `kerala` section is a reserved tray; file hometown or family recipes there when ready.
 
@@ -128,3 +148,31 @@ Keep images compressed; the grain overlay already adds atmosphere, so clean smal
 - Cabin panels can add `className="texture-cabin"` for the rougher dither finish (used on the landing welcome panel). Use sparingly: one or two panels per page.
 - Terminal fragments use `<InsetPanel className="crt">` + `className="terminal"` text. The CRT scanlines are static and reduced-motion safe.
 - The global grain overlay sits at `--texture-grain-opacity: 0.30`. Do not add per-component noise images.
+
+---
+
+## Beyond the cabin: where everything lives
+
+The realm keeps one content file per wing. Same rules everywhere: short lines, honest labels, samples marked.
+
+| Wing | File | What it holds |
+|---|---|---|
+| My Cabin | `lib/cabin-content.ts` | profile, status, workbench + build sheets, recipes, mailbox |
+| Fieldwork | `lib/fieldwork-content.ts` | binder cover, experiment test logs, field notes, gallery frames |
+| Crossroads | `lib/crossroads-content.ts` | junction copy, destinations, transmissions, credits, signal config |
+| Archives | `lib/archives-content.ts` | catalog room, artifact accession entries |
+| Updates (site-wide) | `content/updates/YYYY-MM.md` | monthly update log (homepage + changelog read it) |
+
+### Fieldwork quick reference
+
+New experiment in `lib/fieldwork-content.ts` → `experiments` array. Fields: `slug, title, accession (FW-###), area, status (running|logged|inconclusive|failed), summary, hypothesis, apparatus[], procedure[], measurements[{label,value}], unexpected?, failureNotes[], conclusion?, nextExperiment?`. Detail page renders at `/fieldwork/experiments/[slug]`.
+
+### Crossroads quick reference
+
+- Destinations: `rabbitHoles.destinations` (`{title, href, note, kind}`). Empty `href` renders as a TODO slot.
+- Transmissions: `guestbook.transmissions` (`{date, name, message}`). Pin by hand.
+- The weather signal: `signal` block. `enabled: false` shows the fallback line forever. Coordinates are set to San Francisco — change `latitude/longitude/station` to yours.
+
+### Archives quick reference
+
+New artifact in `lib/archives-content.ts` → `artifacts` array (`{slug, accession (MR-###), title, kind, duty, provenance, src?, acquired, notes?}`). View page renders at `/archives/collected/[slug]`. The changelog reads `content/updates/` automatically; nothing to edit here.
