@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cinzelDecorative, cinzel, cormorant, lora, mysteryQuest } from "./fonts";
+import { cinzelDecorative, cinzel, cormorant, lora, mysteryQuest, vt323 } from "./fonts";
 import { RealmRadioProvider } from "@/components/player";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -25,6 +25,7 @@ export default function RootLayout({
           ${cormorant.variable}
           ${lora.variable}
           ${mysteryQuest.variable}
+          ${vt323.variable}
         `}
       >
         {/* Dark overlay for wallpaper readability */}

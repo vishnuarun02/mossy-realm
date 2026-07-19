@@ -1,4 +1,4 @@
-import { Cinzel, Cinzel_Decorative, Cormorant, Lora, Mystery_Quest } from 'next/font/google';
+import { Cinzel, Cinzel_Decorative, Cormorant, Lora, Mystery_Quest, VT323 } from 'next/font/google';
 
 // Site Title - Fancy decorative
 export const cinzelDecorative = Cinzel_Decorative({
@@ -38,5 +38,13 @@ export const mysteryQuest = Mystery_Quest({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-accent',
+  display: 'swap',
+});
+
+// Terminal / CRT Fragments (Cabin monitors only)
+export const vt323 = VT323({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-terminal',
   display: 'swap',
 });

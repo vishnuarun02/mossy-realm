@@ -1,22 +1,26 @@
 import SiteShell from "@/components/SiteShell";
-import SubNav from "@/components/SubNav";
+import CabinDirectory from "@/components/cabin/CabinDirectory";
 
-const cabinLinks = [
-  { href: '/cabin/about', label: 'about' },
-  { href: '/cabin/now', label: 'now' },
-  { href: '/cabin/crafting-table', label: 'crafting table' },
-  { href: '/cabin/recipes', label: 'recipes' },
-  { href: '/cabin/contact', label: 'contact' },
-];
-
+/**
+ * Cabin layout: the room's shell.
+ *
+ * No horizontal submenu. The CabinDirectory hangs on the left wall
+ * (sticky on desktop, a fold-away folder on mobile) and the page
+ * content occupies the rest of the room.
+ */
 export default function CabinLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SiteShell subNav={<SubNav links={cabinLinks} label="Cabin sections" />}>
-      {children}
+    <SiteShell>
+      <div className="grid gap-4 lg:grid-cols-[210px_1fr]">
+        <CabinDirectory />
+        <div className="min-w-0">
+          {children}
+        </div>
+      </div>
     </SiteShell>
   );
 }

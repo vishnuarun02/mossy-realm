@@ -25,6 +25,7 @@ const sections: SitemapSection[] = [
   {
     name: 'my cabin',
     links: [
+      { href: '/cabin', note: 'the room itself' },
       { href: '/cabin/about', note: 'about me' },
       { href: '/cabin/now', note: 'current state' },
       { href: '/cabin/crafting-table', note: 'projects & wins' },
