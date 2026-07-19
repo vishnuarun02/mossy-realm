@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./mossy-ui.css";
 import { cinzelDecorative, cinzel, cormorant, lora, mysteryQuest, vt323 } from "./fonts";
 import { RealmRadioProvider } from "@/components/player";
 import { SpeedInsights } from "@vercel/speed-insights/next";

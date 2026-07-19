@@ -15,6 +15,26 @@ import MediaFrame from '@/components/ui/MediaFrame';
 import EmptyState from '@/components/ui/EmptyState';
 import FormField, { Input, Textarea } from '@/components/ui/FormField';
 import PlayerShowcase from './PlayerShowcase';
+import {
+  MossyIcon,
+  CabinetIndex,
+  DrawerFace,
+  EmptyDrawer,
+  PaperSheet,
+  NotebookSheet,
+  IndexCard,
+  RecipeCardSurface,
+  Stamp,
+  StampDate,
+  StatusLabel,
+  FolderTab,
+  Paperclip,
+  TapeStrip,
+  Pushpin,
+  Staple,
+  SectionMark,
+} from '@/components/mossy-ui';
+import type { MossyIconName } from '@/components/mossy-ui';
 
 export const metadata: Metadata = {
   title: 'Design System - MossyRealm',
@@ -43,6 +63,27 @@ function Swatch({ token, label }: { token: string; label: string }) {
         <span className="block text-fg-primary">{label}</span>
       </span>
     </div>
+  );
+}
+
+const utilityIcons: MossyIconName[] = [
+  'cabin', 'profile', 'status', 'mail', 'learnings', 'note', 'gallery',
+  'guestbook', 'rabbit-hole', 'external', 'folder', 'file', 'floppy',
+  'cdrom', 'terminal', 'book', 'music', 'cooking', 'weather', 'trail',
+  'telescope', 'archive', 'collected', 'changelog', 'sitemap', 'recipe',
+];
+
+const technicalIcons: MossyIconName[] = [
+  'workbench', 'experiment', 'hardware', 'gamepad', 'gear', 'rocket',
+  'drone', 'target', 'network', 'packet', 'pipeline', 'build', 'test',
+  'warning', 'success', 'failure', 'radio', 'signal',
+];
+
+function Name({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="block mt-1 font-nav text-micro text-fg-secondary">
+      {children}
+    </span>
   );
 }
 
@@ -301,6 +342,287 @@ export default function DesignSystemPage() {
               <span aria-hidden="true">·</span>
               <span>motion: 120/250ms ease-realm</span>
             </MetaRow>
+          </div>
+        </Section>
+
+        {/* ══════════ MOSSY-UI ASSET LIBRARY ══════════ */}
+
+        {/* ── Cabinet parts ── */}
+        <Section
+          title="asset library: cabinet parts"
+          note="The notebook + cabinet hybrid family (design-kitchen/ASSET-SYSTEM-PLAN.md). CabinetIndex frames a set of DrawerFaces; every drawer shows number plate, label plate, caption, lamp, and decorative handle."
+        >
+          <div className="grid md:grid-cols-2 gap-4 items-start">
+            <CabinetIndex label="cabinet index" withScrews>
+              <DrawerFace href="/design-system" number="01" label="about" caption="the operator" active />
+              <DrawerFace href="/design-system" number="02" label="now" caption="live status" lamp="blink" />
+              <DrawerFace href="/design-system" number="03" label="craft table" caption="the workbench" lamp="green" />
+              <EmptyDrawer note="empty drawer. explains itself." />
+            </CabinetIndex>
+            <div className="space-y-3">
+              <div>
+                <CabinetIndex>
+                  <DrawerFace number="04" label="recipes" caption="plain frame, no screws" />
+                </CabinetIndex>
+                <Name>CabinetIndex (no label, no screws) + DrawerFace</Name>
+              </div>
+              <div className="flex items-center gap-3">
+                <StatusLabel prefix="MR" number="001" />
+                <StatusLabel prefix="FW" number="017" />
+                <Name>StatusLabel (accession numbers)</Name>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ── Paper surfaces ── */}
+        <Section
+          title="asset library: paper surfaces"
+          note="Physical paper: --surface-paper with dark ink, token-controlled texture. PaperSheet variants cover plain, aged, ruled, graph, log; stack/fold/torn are modifiers."
+        >
+          <div className="grid md:grid-cols-3 gap-4 items-start">
+            <div>
+              <PaperSheet stack>
+                <p className="text-sm">plain paper, stacked.</p>
+                <Name>PaperSheet stack</Name>
+              </PaperSheet>
+            </div>
+            <div>
+              <NotebookSheet>
+                <p className="text-sm leading-[1.7em]">spiral notebook page, ruled.</p>
+                <Name>NotebookSheet (ruled + spiral)</Name>
+              </NotebookSheet>
+            </div>
+            <div>
+              <PaperSheet variant="graph">
+                <p className="text-sm">engineering graph sheet.</p>
+                <Name>PaperSheet variant=&quot;graph&quot;</Name>
+              </PaperSheet>
+            </div>
+            <div>
+              <PaperSheet variant="log">
+                <p className="text-sm leading-[1.7em]">log sheet with red margin.</p>
+                <Name>PaperSheet variant=&quot;log&quot;</Name>
+              </PaperSheet>
+            </div>
+            <div>
+              <PaperSheet aged torn>
+                <p className="text-sm">aged, torn edges.</p>
+                <Name>PaperSheet aged torn</Name>
+              </PaperSheet>
+            </div>
+            <div>
+              <IndexCard meta={<span>index card 001-012 · filed: samples</span>}>
+                <p className="text-sm leading-[1.7em]">catalog index card with metadata strip.</p>
+                <Name>IndexCard meta + ruled</Name>
+              </IndexCard>
+            </div>
+            <div>
+              <RecipeCardSurface>
+                <p className="text-sm leading-[1.7em]">recipe card, pre-stained.</p>
+                <Name>RecipeCardSurface (stained)</Name>
+              </RecipeCardSurface>
+            </div>
+          </div>
+        </Section>
+
+        {/* ── Tabs & folders ── */}
+        <Section
+          title="asset library: tabs & folders"
+          note="FolderTab positions interlock like a folder row. Active is manila with ✶. Local cabinet navigation only."
+        >
+          <div className="flex flex-wrap items-end gap-1 border-b-2 border-border-structural pb-2">
+            <FolderTab position="left" active>details</FolderTab>
+            <FolderTab position="center" href="/design-system">results</FolderTab>
+            <FolderTab position="right" href="/design-system">notes</FolderTab>
+          </div>
+          <Name>FolderTab left(active) / center / right</Name>
+        </Section>
+
+        {/* ── Labels & stamps ── */}
+        <Section
+          title="asset library: labels & stamps"
+          note="Stamp text stays editable (component, not baked). Baked wordmarks ship as SVGs. Tones map to status colors."
+        >
+          <div className="flex flex-wrap items-center gap-3">
+            <Stamp tone="success">tested</Stamp>
+            <Stamp tone="amber">sample</Stamp>
+            <Stamp tone="warning">failed</Stamp>
+            <Stamp tone="neutral" size="sm">wip</Stamp>
+            <StampDate date="2026-07-19" />
+          </div>
+          <Name>Stamp success / amber / warning / sm + StampDate</Name>
+          <div className="flex flex-wrap items-center gap-4 mt-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/do-not-erase.svg" alt="do not erase stamp" width={120} height={26} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/property-of-mossyrealm.svg" alt="property of mossyrealm stamp" width={170} height={26} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/official-business.svg" alt="official business stamp" width={150} height={26} />
+          </div>
+          <Name>stamps/do-not-erase, property-of-mossyrealm, official-business.svg</Name>
+          <div className="flex items-center gap-4 mt-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/check-mark.svg" alt="handwritten check mark" width={24} height={24} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/cross-out.svg" alt="cross-out mark" width={24} height={24} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/registration.svg" alt="registration marks" width={24} height={24} className="text-fg-secondary" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/mossy-ui/stamps/measure-arrow.svg" alt="measurement arrows" width={60} height={12} className="text-fg-secondary" />
+          </div>
+          <Name>check-mark / cross-out / registration / measure-arrow.svg</Name>
+        </Section>
+
+        {/* ── Utility icons ── */}
+        <Section
+          title="asset library: utility icons"
+          note="One sprite, one MossyIcon component, currentColor everywhere. Late-90s utility style at 16/20/24px."
+        >
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
+            {utilityIcons.map((name) => (
+              <div key={name} className="text-center">
+                <MossyIcon name={name} size={20} className="text-fg-heading mx-auto" />
+                <Name>{name}</Name>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-4 mt-4">
+            <MossyIcon name="folder" size={16} />
+            <MossyIcon name="folder" size={20} />
+            <MossyIcon name="folder" size={24} />
+            <Name>sizes 16 / 20 / 24</Name>
+          </div>
+        </Section>
+
+        {/* ── Technical icons ── */}
+        <Section
+          title="asset library: technical icons"
+          note="The workbench set: machines, instruments, and honest outcomes."
+        >
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
+            {technicalIcons.map((name) => (
+              <div key={name} className="text-center">
+                <MossyIcon name={name} size={20} className="text-border-structural mx-auto" />
+                <Name>{name}</Name>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* ── Stickers ── */}
+        <Section
+          title="asset library: stickers"
+          note="Flat SVG stickers in stickers/. Frog family, tiny objects, word banners. Upgraded painterly versions are briefed in design-kitchen/IMAGE-ASSET-BRIEFS.md."
+        >
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 items-end">
+            {['frog-desk', 'frog-wrench', 'frog-notebook', 'frog-terminal', 'frog-folder', 'frog-radio'].map((s) => (
+              <div key={s} className="text-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/assets/mossy-ui/stickers/${s}.svg`} alt={s} width={72} height={72} className="mx-auto" />
+                <Name>{s}</Name>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 items-end mt-4">
+            {['tiny-rocket', 'tiny-crt', 'tiny-beige-pc', 'tiny-gamepad', 'tiny-cassette', 'tiny-floppy', 'tiny-gears', 'tiny-satellite', 'tiny-sign', 'tiny-mug', 'tiny-cable'].map((s) => (
+              <div key={s} className="text-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/assets/mossy-ui/stickers/${s}.svg`} alt={s} width={40} height={40} className="mx-auto" />
+                <Name>{s}</Name>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-3 mt-4">
+            {['sticker-built-instead', 'sticker-works-on-my-machine', 'sticker-graph-wrong', 'sticker-projects-folders'].map((s) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={s} src={`/assets/mossy-ui/stickers/${s}.svg`} alt={s} height={34} />
+            ))}
+          </div>
+          <Name>word stickers (baked banners)</Name>
+        </Section>
+
+        {/* ── Section marks ── */}
+        <Section
+          title="asset library: section marks"
+          note="One frame, four glyphs. The emblem for each wing, in the component and as static SVGs in section-marks/."
+        >
+          <div className="flex flex-wrap gap-4">
+            <div className="text-center">
+              <SectionMark section="cabin" />
+              <Name>cabin (house + lamp)</Name>
+            </div>
+            <div className="text-center">
+              <SectionMark section="fieldwork" />
+              <Name>fieldwork (caliper + ticks)</Name>
+            </div>
+            <div className="text-center">
+              <SectionMark section="crossroads" />
+              <Name>crossroads (signpost)</Name>
+            </div>
+            <div className="text-center">
+              <SectionMark section="archives" />
+              <Name>archives (drawer)</Name>
+            </div>
+          </div>
+        </Section>
+
+        {/* ── Textures ── */}
+        <Section
+          title="asset library: textures"
+          note="Tiny seamless tiles in textures/, layered via CSS with token-controlled opacity. Never full-screen, never blocking, always static."
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {['paper-fiber', 'dust-specks', 'photocopy-noise', 'cabinet-patina', 'ink-imperfect', 'smudge', 'edge-wear', 'print-banding'].map((t) => (
+              <div key={t} className="text-center">
+                <div
+                  className="h-16 border-hairline border-border-subtle bg-surface-panel-alt"
+                  style={{
+                    backgroundImage: `url(/assets/mossy-ui/textures/${t}.svg)`,
+                    backgroundSize: t === 'print-banding' ? '120px 8px' : '120px 120px',
+                  }}
+                />
+                <Name>{t}.svg</Name>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* ── Interactive states ── */}
+        <Section
+          title="asset library: interactive states"
+          note="Files report state by shape and mark, never color alone: hovered file slides 2px, active file stays open with amber plate and ►, focus uses the global green ring. Tab through the row."
+        >
+          <div className="max-w-md space-y-2">
+            <DrawerFace href="/design-system" number="01" label="default file" caption="hover me" />
+            <DrawerFace href="/design-system" number="02" label="active file" caption="stays open" active lamp="green" />
+            <DrawerFace href="/design-system" number="03" label="with lamp" caption="blinking" lamp="blink" />
+          </div>
+          <Name>DrawerFace default / active / lamp</Name>
+        </Section>
+
+        {/* ── Attachments ── */}
+        <Section
+          title="asset library: attachments"
+          note="Small paper hardware, absolutely positioned inside relative parents. All decorative."
+        >
+          <div className="flex items-start gap-10">
+            <div className="text-center">
+              <Paperclip className="text-fg-secondary" />
+              <Name>Paperclip</Name>
+            </div>
+            <div className="relative w-24 h-10 border-hairline border-border-subtle">
+              <TapeStrip className="-top-2 left-2" />
+              <Name>TapeStrip</Name>
+            </div>
+            <div className="text-center">
+              <Pushpin />
+              <Name>Pushpin</Name>
+            </div>
+            <div className="relative w-16 h-8 border-hairline border-border-subtle">
+              <Staple className="-top-1 left-1/2 -translate-x-1/2" />
+              <Name>Staple</Name>
+            </div>
           </div>
         </Section>
       </div>
