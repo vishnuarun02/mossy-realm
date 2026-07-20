@@ -100,6 +100,36 @@ Widths (utilities): `border-hairline` (1px), `border-panel` (2px), `border-frame
 
 Deliberately NOT built: `Stack`, `Cluster`, `Section`. Tailwind `flex`/`grid` + `space-y`/`gap` already covers them; wrappers would be abstraction for its own sake.
 
+### Stationery surface roles
+
+`StationerySurface` defines material roles without making them universal page templates. Routes opt in explicitly; defining a role does not migrate existing pages.
+
+| Role | Purpose | Current use |
+|---|---|---|
+| `personal-graph-notebook` | Warm, soft moss graph stock for personal notes | `/cabin` and `/cabin/about` only |
+| `engineering-graph-sheet` | Firmer engineering grid for measured test records | Reserved for Fieldwork; no migration yet |
+| `aged-letter` | Fibered correspondence paper | Reserved |
+| `recipe-card` | Ruled, lightly worn kitchen card | Reserved |
+| `bulletin-notice` | Dusty pinned notice stock | Reserved |
+| `catalog-card` | Ruled accession/index card | Reserved |
+| `contact-sheet` | Dark photographic contact layout | Reserved |
+| `terminal-insert` | Recessed print-banded phosphor insert | Reserved |
+
+These roles reuse `public/assets/mossy-ui/` textures and existing semantic tokens. Do not make the personal green graph sheet the default for unrelated routes.
+
+### Mossy Surprise contract
+
+Surprises are optional page-level enhancements, not permanent shell furniture. Local sources and non-repeating selection live in `lib/surprises/`; remote signals go through server routes with timeouts, cache headers, and local fallbacks.
+
+- Reveal first, navigate only after an explicit link click.
+- Never fetch a remote surprise during initial page render.
+- Buttons need visible focus and descriptive accessible names.
+- Motion is optional and must obey `prefers-reduced-motion`.
+- Every remote source needs a keyless local fallback.
+- A page selects only the surprise types that fit its purpose.
+
+Current integrations: the Cabin status lamp (local only) and the rabbit-hole switchboard (curated roads + Wikimedia signal).
+
 ## 4. Patterns & templates
 
 - **`SiteShell`**: the one publication frame (header, nav, marquee, main, footer). Section layouts are thin wrappers; `subNav` slot takes `SubNav`.

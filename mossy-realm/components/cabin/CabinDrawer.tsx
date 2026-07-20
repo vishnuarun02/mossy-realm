@@ -1,94 +1,177 @@
 'use client';
 
-import { useState } from 'react';
+import {
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+} from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CabinetIndex, DrawerFace } from '@/components/mossy-ui';
+import styles from './CabinNotebook.module.css';
 
-/**
- * CabinDrawer - the cabin's cabinet index.
- *
- * Replaces the old CabinDirectory with the mossy-ui cabinet family:
- * numbered folder rows with label plates and captions. The active
- * page stays open with an amber plate and ►. The Now drawer blinks
- * because it is live; nothing else blinks.
- *
- * Desktop: attached to the content surface on the left.
- * Mobile: a compact drawer selector above the content.
- */
+interface CabinIndexEntry {
+  href: string;
+  number: string;
+  label: string;
+  caption?: string;
+  offset: 0 | 1 | 2 | 3 | 4;
+  tab: 'left' | 'center' | 'right';
+}
 
-const drawers = [
-  { href: '/cabin', label: 'cabin door', caption: 'back to the room', number: undefined },
-  { href: '/cabin/about', label: 'about', caption: 'the operator', number: '01' },
-  { href: '/cabin/now', label: 'now', caption: 'live status', number: '02', lamp: 'blink' as const },
-  { href: '/cabin/crafting-table', label: 'craft table', caption: 'the workbench', number: '03' },
-  { href: '/cabin/recipes', label: 'recipes', caption: 'the kitchen db', number: '04' },
-  { href: '/cabin/contact', label: 'contact', caption: 'the mailbox', number: '05' },
+const entries: CabinIndexEntry[] = [
+  { href: '/cabin', number: '00', label: 'cabin', caption: 'room notes', offset: 0, tab: 'left' },
+  { href: '/cabin/about', number: '01', label: 'about', caption: 'operator', offset: 2, tab: 'center' },
+  { href: '/cabin/now', number: '02', label: 'now', caption: 'live status', offset: 4, tab: 'right' },
+  { href: '/cabin/crafting-table', number: '03', label: 'crafting table', caption: 'workbench', offset: 1, tab: 'left' },
+  { href: '/cabin/recipes', number: '04', label: 'recipes', caption: 'kitchen db', offset: 3, tab: 'center' },
+  { href: '/cabin/contact', number: '05', label: 'contact', caption: 'mailbox', offset: 0, tab: 'right' },
 ];
 
-function DrawerRows({ onNavigate }: { onNavigate?: () => void }) {
-  const pathname = usePathname();
+function isActive(pathname: string, entry: CabinIndexEntry) {
+  return entry.href === '/cabin'
+    ? pathname === '/cabin'
+    : pathname.startsWith(entry.href);
+}
 
+function CabinetLip() {
   return (
-    <>
-      {drawers.map((drawer) => {
-        const isActive =
-          drawer.href === '/cabin'
-            ? pathname === '/cabin'
-            : pathname.startsWith(drawer.href);
-        return (
-          <span key={drawer.href} onClick={onNavigate}>
-            <DrawerFace
-              href={drawer.href}
-              number={drawer.number}
-              label={drawer.label}
-              caption={drawer.caption}
-              lamp={drawer.lamp}
-              active={isActive}
-            />
-          </span>
-        );
-      })}
-    </>
+    <div className={styles.sharedCabinetLip} aria-hidden="true">
+      <Image
+        src="/assets/mossy-ui/hardware/handle.svg"
+        alt=""
+        width={44}
+        height={10}
+        unoptimized
+        className={styles.sharedCabinetHandle}
+      />
+    </div>
   );
 }
 
+function IndexLinks({
+  pathname,
+  onNavigate,
+}: {
+  pathname: string;
+  onNavigate?: () => void;
+}) {
+  return (
+    <ul className={styles.indexList}>
+      {entries.map((entry) => {
+        const active = isActive(pathname, entry);
+
+        const tabClass =
+          entry.tab === 'center'
+            ? styles.folderTabCenter
+            : entry.tab === 'right'
+              ? styles.folderTabRight
+              : '';
+        const folderStyle = {
+          '--folder-offset': `${entry.offset}px`,
+        } as CSSProperties;
+
+        return (
+          <li
+            key={entry.href}
+            className={`${styles.indexItem} ${active ? styles.indexItemActive : ''}`}
+          >
+            <Link
+              href={entry.href}
+              onClick={onNavigate}
+              aria-current={active ? 'page' : undefined}
+              className={`${styles.indexLink} ${active ? styles.indexLinkActive : ''}`}
+              style={folderStyle}
+            >
+              <span
+                className={`${styles.folderTabAsset} ${tabClass}`}
+                aria-hidden="true"
+              />
+              <span className={styles.indexNumber}>{entry.number}</span>
+              <span className={styles.indexCopy}>
+                <span className={styles.indexLabel}>{entry.label}</span>
+                {entry.caption && (
+                  <span className={styles.indexCaption}>{entry.caption}</span>
+                )}
+              </span>
+              <span className={styles.activeMarker} aria-hidden="true">
+                {active ? '✶' : ''}
+              </span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/**
+ * CabinDrawer - a compact notebook/cabinet index.
+ *
+ * One cabinet frame holds offset folder files with asset-backed tabs,
+ * number plates, paper edges, a shared label, and one shared handle.
+ */
 export default function CabinDrawer() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const current = entries.find((entry) => isActive(pathname, entry)) ?? entries[0];
+
+  function handleEscape(event: KeyboardEvent) {
+    if (event.key !== 'Escape' || !isOpen) return;
+    event.preventDefault();
+    setIsOpen(false);
+    toggleRef.current?.focus();
+  }
 
   return (
     <>
-      {/* Desktop: attached index */}
-      <div className="hidden lg:block lg:sticky lg:top-4 self-start">
-        <CabinetIndex label="cabinet index" withScrews>
-          <DrawerRows />
-        </CabinetIndex>
-      </div>
+      <aside className={styles.desktopIndex} aria-label="Cabin notebook index">
+        <div className={styles.cabinetHeader}>
+          <span className={`mui-label-plate ${styles.labelPlate}`}>
+            cabin notes
+          </span>
+        </div>
+        <nav aria-label="Cabin index">
+          <IndexLinks pathname={pathname} />
+        </nav>
+        <CabinetLip />
+      </aside>
 
-      {/* Mobile: compact drawer selector above the content */}
-      <div className="lg:hidden">
+      <div className={styles.mobileIndex}>
         <button
+          ref={toggleRef}
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((open) => !open)}
+          onKeyDown={handleEscape}
           aria-expanded={isOpen}
-          aria-controls="cabin-drawer-mobile"
-          className="
-            mui-drawer-face w-full
-            font-nav text-fg-heading
-          "
+          aria-controls="cabin-index-mobile"
+          className={styles.mobileToggle}
         >
-          <span className="mui-label-plate">cabin index</span>
-          <span className="mui-drawer-caption">pick a drawer</span>
-          <span className="flex-1" />
-          <span aria-hidden="true" className="text-fg-secondary text-sm">
-            {isOpen ? '▲ close' : '▼ open'}
+          <span className={`mui-label-plate ${styles.mobileTitle}`}>
+            cabin index
+          </span>
+          <span className={styles.mobileCurrent}>
+            {current.number} · {current.label}
+          </span>
+          <span className={styles.mobileCaret} aria-hidden="true">
+            {isOpen ? 'close −' : 'open +'}
           </span>
         </button>
         {isOpen && (
-          <div id="cabin-drawer-mobile" className="mt-2">
-            <CabinetIndex>
-              <DrawerRows onNavigate={() => setIsOpen(false)} />
-            </CabinetIndex>
-          </div>
+          <nav
+            id="cabin-index-mobile"
+            aria-label="Cabin index"
+            className={styles.mobilePanel}
+            onKeyDown={handleEscape}
+          >
+            <IndexLinks
+              pathname={pathname}
+              onNavigate={() => setIsOpen(false)}
+            />
+            <CabinetLip />
+          </nav>
         )}
       </div>
     </>

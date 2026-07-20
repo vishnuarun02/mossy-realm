@@ -118,9 +118,18 @@ Rules: pointer-events none, reduced-motion safe (all static), text contrast veri
 
 ## 8. React primitives (`components/mossy-ui/`)
 
-`MossyIcon`, `CabinetIndex`, `DrawerFace`, `DrawerHandle`, `FolderTab`, `PaperSheet`, `NotebookSheet`, `IndexCard`, `RecipeCardSurface`, `Stamp`, `StampDate`, `StatusLabel`, `Paperclip`, `TapeStrip`, `SectionMark`.
+`MossyIcon`, `CabinetIndex`, `DrawerFace`, `DrawerHandle`, `FolderTab`, `PaperSheet`, `NotebookSheet`, `IndexCard`, `RecipeCardSurface`, `Stamp`, `StampDate`, `StatusLabel`, `Paperclip`, `TapeStrip`, `SectionMark`, `StationerySurface`.
 
-Variant APIs (`variant`, `active`, `count`, `tone`) — no scattered class strings. Server components except where interaction demands client (disclosure).
+Variant APIs (`variant`, `active`, `count`, `tone`, `role`) — no scattered class strings. Server components except where interaction demands client (disclosure).
+
+### Stationery roles
+
+`StationerySurface` provides eight opt-in material roles: `personal-graph-notebook`, `engineering-graph-sheet`, `aged-letter`, `recipe-card`, `bulletin-notice`, `catalog-card`, `contact-sheet`, and `terminal-insert`. Roles reuse the texture inventory above and do not migrate pages automatically.
+
+Current application status:
+- The personal graph notebook is applied only to `/cabin` and `/cabin/about`.
+- The Cabin index is a 194px layered file stack using the shipped tab SVGs, paper-edge texture, number plate, four outer screws, cabinet patina, and one shared handle.
+- Other stationery roles remain reserved for later route migrations.
 
 ## 9. Assets needing real image generation
 

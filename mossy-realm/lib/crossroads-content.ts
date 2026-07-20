@@ -29,46 +29,9 @@ export const junction = {
    /crossroads/rabbit-holes - destinations
    ───────────────────────────────────────────── */
 
-export interface Destination {
-  title: string;
-  href: string;
-  /** One line on why it is worth the trip. */
-  note: string;
-  /** Road-sign flavor tag: links, reads, artifacts, tools */
-  kind: 'links' | 'reads' | 'artifacts' | 'tools';
-  sample?: boolean;
-}
-
 export const rabbitHoles = {
   intro:
-    'destinations worth falling into. marked with the kind of road they take.',
-  destinations: [
-    {
-      title: 'neocities',
-      href: 'https://neocities.org',
-      note: 'where the old web still lives. this site\'s spiritual landlord.',
-      kind: 'links',
-    },
-    {
-      title: 'are.na',
-      href: 'https://www.are.na',
-      note: 'a quiet place for collecting strange things together.',
-      kind: 'artifacts',
-    },
-    {
-      title: 'the cutting room floor',
-      href: 'https://tcrf.net',
-      note: 'unused content from games, catalogued by dedicated weirdos.',
-      kind: 'reads',
-    },
-    {
-      title: 'TODO: a road worth posting',
-      href: '',
-      note: 'reserved slot. the next good hole you fall into goes here.',
-      kind: 'links',
-      sample: true,
-    },
-  ] as Destination[],
+    'destinations worth falling into. one road is filed by hand; the other drifts in over the knowledge band.',
 };
 
 /* ─────────────────────────────────────────────

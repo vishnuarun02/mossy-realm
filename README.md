@@ -100,6 +100,17 @@ npm run vault:generate
 
 This calls DeepSeek API to generate quirky micro-content items with old comic-book / Reader's Digest marginalia vibe. The UI never calls the LLM — it only samples from the pre-generated vault.
 
+### Mossy Surprises
+
+Surprises are optional, local-first page enhancements:
+
+- `/cabin` uses the status lamp for short field notes, archived artifacts, rare frog messages, and the hidden `moss` keyboard sequence.
+- `/crossroads/rabbit-holes` draws from 40 typed old-web destinations without immediately repeating either of the previous two roads.
+- “Stray signal” calls Wikimedia's official random-summary endpoint through `/api/surprises/wikipedia`. The server route has a timeout, response validation, five-minute cache headers, and static local fallbacks. It needs no API key.
+- Revealed external destinations never open until the visitor explicitly follows the link.
+
+Surprise data and selection helpers live in `lib/surprises/`; curated roads live in `data/old-web-destinations.ts`.
+
 ## Scripts
 
 | Command | Description |
@@ -141,7 +152,7 @@ Fieldwork                        # Thinking / Documenting
 ├── /fieldwork/field-notes       # Shorter observations
 └── /fieldwork/gallery           # Visual field notes
 Crossroads                       # Outward / Community
-├── /crossroads/rabbit-holes     # Curated links
+├── /crossroads/rabbit-holes     # Non-repeating old-web roads + Wikimedia signal
 ├── /crossroads/guestbook        # Visitor signatures
 └── /crossroads/credits          # Acknowledgements
 Archives                         # Condensed Collections
@@ -157,6 +168,7 @@ mossyrealm/
 ├── mossy-realm/                  # Next.js application
 │   ├── app/
 │   │   ├── api/
+│   │   │   ├── surprises/        # Keyless remote signals with local fallbacks
 │   │   │   ├── tracks/           # Dynamic R2 track listing API
 │   │   │   └── visitors/         # Visitor counter API
 │   │   ├── cabin/                # My Cabin section
@@ -184,6 +196,7 @@ mossyrealm/
 │   │   ├── layout.tsx
 │   │   └── page.tsx
 │   ├── data/
+│   │   ├── old-web-destinations.ts # 40 typed curated rabbit holes
 │   │   └── tracks.ts             # Fallback tracks + utils
 │   ├── components/
 │   │   ├── RetroBox.tsx          # Card container
@@ -195,6 +208,9 @@ mossyrealm/
 │   │   ├── VisitorCounter.tsx    # Redis counter
 │   │   ├── SidebarLeft.tsx       # Updates, question, guardian, posts
 │   │   ├── SidebarRight.tsx      # Radio, facts, polls
+│   │   ├── cabin/                # Layered-folder index + personal notebook
+│   │   ├── mossy-ui/             # Cabinet, paper, icon, and stationery primitives
+│   │   ├── surprises/            # Cabin reveal + rabbit-hole switchboard
 │   │   └── player/               # Music player components
 │   │       ├── RealmRadioWidget.tsx  # Homepage sidebar player
 │   │       ├── RealmRadioDock.tsx    # Floating mini dock
@@ -211,19 +227,22 @@ mossyrealm/
 │   │   ├── visitors.ts           # Visitor ID derivation + hashing
 │   │   ├── buildDate.ts          # Commit date helper
 │   │   ├── tracks.ts             # Track types + API fetcher
+│   │   ├── surprises/            # Local sources, picker, types, Wikimedia adapter
+│   │   ├── __tests__/            # Server/data unit tests (Vitest)
+│   │   │   ├── surprises.test.ts # Roads, fallback, and timeout tests
+│   │   │   ├── vault.test.ts
+│   │   │   └── visitors.test.ts
 │   │   └── player/               # Audio engine + Zustand store
+│   │       ├── __tests__/store.test.ts
 │   │       ├── store.ts              # Player state (Zustand + persist)
 │   │       ├── AudioEngine.tsx       # Howler.js controller
 │   │       ├── globalAudio.ts        # Global Howl singleton
 │   │       └── audioContext.ts       # Web Audio API (Howler integration)
-│   ├── __tests__/                # Unit tests (Vitest)
-│   │   ├── vault.test.ts             # Weighted random picker tests
-│   │   ├── store.test.ts             # Player store tests
-│   │   └── visitors.test.ts          # Visitor ID tests
 │   ├── scripts/
 │   │   ├── new-update.ts         # Update generator
 │   │   └── generate-vault.ts     # Vault generator (DeepSeek)
 │   ├── public/
+│   │   ├── assets/mossy-ui/      # Tabs, plates, screws, paper edges, textures
 │   │   ├── images/blog/          # Blog post images
 │   │   └── ...                   # Static assets
 │   └── CONTENT_STYLE.md          # Content writing guidelines
@@ -245,6 +264,9 @@ mossyrealm/
 - "Nature fact" with rotating content
 - Responsive layout (3-col → 2-col → 1-col)
 - Grain overlay for scanned-page feel
+- **Cabin stationery** — 194px asset-backed layered-folder index joined to a warm personal graph notebook
+- **Reusable stationery roles** — personal graph, engineering graph, aged letter, recipe card, bulletin notice, catalog card, contact sheet, terminal insert
+- **Mossy Surprises** — local Cabin discoveries plus non-repeating old-web roads and a fault-tolerant Wikimedia signal
 - "Last updated" banner from git commit date
 - **Realm Radio** — Custom unified audio player
   - **Cassette deck design** with 90s hardware aesthetic (LEDs, tape reels, inset panels)
@@ -280,6 +302,8 @@ Full reference: [mossy-realm/DESIGN_SYSTEM.md](./mossy-realm/DESIGN_SYSTEM.md) a
 - **[mossy-realm/DESIGN_SYSTEM.md](./mossy-realm/DESIGN_SYSTEM.md)** — The design system contract
 - **[design-kitchen/DESIGN-SYSTEM-PLAN.md](./design-kitchen/DESIGN-SYSTEM-PLAN.md)** — Audit & migration plan
 - **[design-kitchen/DESIGN-JOURNAL.md](./design-kitchen/DESIGN-JOURNAL.md)** — Design decisions & learnings
+- **[design-kitchen/ASSET-SYSTEM-PLAN.md](./design-kitchen/ASSET-SYSTEM-PLAN.md)** — Cabinet, paper, label, texture, and stationery inventory
+- **[design-kitchen/FILE-CABINET-IMPLEMENTATION-SPEC.md](./design-kitchen/FILE-CABINET-IMPLEMENTATION-SPEC.md)** — Section-level cabinet implementation contract
 - **[design-kitchen/cabin-pages/](./design-kitchen/cabin-pages/)** — Page templates
 - **[mossy-realm/CONTENT_STYLE.md](./mossy-realm/CONTENT_STYLE.md)** — Content writing guidelines
 

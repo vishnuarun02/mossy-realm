@@ -157,6 +157,103 @@
 }
 
 /* ─────────────────────────────────────────────
+   STATIONERY SURFACE ROLES
+
+   Material roles are deliberately distinct. Defining a role does not
+   migrate a route; pages opt in through StationerySurface.
+   ───────────────────────────────────────────── */
+
+.mui-stationery {
+  --stationery-surface: var(--surface-panel);
+  position: relative;
+}
+
+/* Cabin: the Fieldwork grid primitive on a softer, warmer moss stock. */
+.mui-stationery-personal-notebook {
+  --stationery-surface: color-mix(
+    in srgb,
+    var(--surface-panel-alt) 90%,
+    var(--surface-strip)
+  );
+  background-color: var(--stationery-surface);
+  color: var(--text-primary);
+}
+
+/* Fieldwork role: firmer contrast and the full engineering grid. */
+.mui-stationery-engineering-sheet {
+  --stationery-surface: var(--surface-panel-alt);
+  background-color: var(--stationery-surface);
+  color: var(--text-primary);
+}
+
+.mui-stationery-aged-letter {
+  --stationery-surface: var(--surface-paper-aged);
+  background-color: var(--stationery-surface);
+  background-image:
+    url('/assets/mossy-ui/textures/paper-fiber.svg'),
+    url('/assets/mossy-ui/textures/edge-wear.svg');
+}
+
+.mui-stationery-recipe-card {
+  --stationery-surface: var(--surface-paper);
+  background-color: var(--stationery-surface);
+  background-image:
+    url('/assets/mossy-ui/textures/paper-fiber.svg'),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(1.7em - 1px),
+      var(--paper-line) calc(1.7em - 1px),
+      var(--paper-line) 1.7em
+    );
+}
+
+.mui-stationery-bulletin-notice {
+  --stationery-surface: var(--surface-paper-aged);
+  background-color: var(--stationery-surface);
+  background-image:
+    url('/assets/mossy-ui/textures/dust-specks.svg'),
+    url('/assets/mossy-ui/textures/paper-fiber.svg');
+}
+
+.mui-stationery-catalog-card {
+  --stationery-surface: var(--surface-paper);
+  background-color: var(--stationery-surface);
+  background-image:
+    url('/assets/mossy-ui/textures/edge-wear.svg'),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(1.7em - 1px),
+      var(--paper-line) calc(1.7em - 1px),
+      var(--paper-line) 1.7em
+    );
+}
+
+.mui-stationery-contact-sheet {
+  --stationery-surface: var(--surface-inset-alt);
+  background-color: var(--stationery-surface);
+  background-image:
+    url('/assets/mossy-ui/textures/print-banding.svg'),
+    repeating-linear-gradient(
+      90deg,
+      var(--border-subtle) 0,
+      var(--border-subtle) 1px,
+      transparent 1px,
+      transparent 5rem
+    );
+  color: var(--text-primary);
+}
+
+.mui-stationery-terminal-insert {
+  --stationery-surface: var(--surface-inset);
+  background-color: var(--stationery-surface);
+  background-image: url('/assets/mossy-ui/textures/print-banding.svg');
+  color: var(--status-success);
+  box-shadow: var(--shadow-panel-inset);
+}
+
+/* ─────────────────────────────────────────────
    NOTEBOOK BINDINGS
    ───────────────────────────────────────────── */
 

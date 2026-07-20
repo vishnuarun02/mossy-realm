@@ -1,12 +1,13 @@
-import SiteShell from "@/components/SiteShell";
-import CabinDrawer from "@/components/cabin/CabinDrawer";
+import Image from 'next/image';
+import SiteShell from '@/components/SiteShell';
+import CabinDrawer from '@/components/cabin/CabinDrawer';
+import styles from '@/components/cabin/CabinNotebook.module.css';
 
 /**
- * Cabin layout: the room's shell.
+ * Cabin layout: one slim index joined to the room's page surface.
  *
- * The cabinet index sits on the left (sticky on desktop, a compact
- * drawer selector on mobile); the page content sits beside it.
- * Paper-surface pages attach flush to the cabinet with -ml-4.
+ * Desktop keeps a 186px notebook/cabinet spine. Smaller viewports use
+ * the same index as an expandable row above the current page.
  */
 export default function CabinLayout({
   children,
@@ -15,11 +16,45 @@ export default function CabinLayout({
 }) {
   return (
     <SiteShell>
-      <div className="grid gap-4 lg:grid-cols-[212px_1fr]">
+      <div className={styles.workspace}>
+        <Image
+          src="/assets/mossy-ui/hardware/screw.svg"
+          alt=""
+          width={12}
+          height={12}
+          unoptimized
+          aria-hidden="true"
+          className={`${styles.frameScrew} ${styles.frameScrewTopLeft}`}
+        />
+        <Image
+          src="/assets/mossy-ui/hardware/screw.svg"
+          alt=""
+          width={12}
+          height={12}
+          unoptimized
+          aria-hidden="true"
+          className={`${styles.frameScrew} ${styles.frameScrewTopRight}`}
+        />
+        <Image
+          src="/assets/mossy-ui/hardware/screw.svg"
+          alt=""
+          width={12}
+          height={12}
+          unoptimized
+          aria-hidden="true"
+          className={`${styles.frameScrew} ${styles.frameScrewBottomLeft}`}
+        />
+        <Image
+          src="/assets/mossy-ui/hardware/screw.svg"
+          alt=""
+          width={12}
+          height={12}
+          unoptimized
+          aria-hidden="true"
+          className={`${styles.frameScrew} ${styles.frameScrewBottomRight}`}
+        />
         <CabinDrawer />
-        <div className="min-w-0">
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </SiteShell>
   );

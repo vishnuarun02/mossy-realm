@@ -120,10 +120,12 @@ Each primitive: semantic purpose, dimensions, padding, borders, layering, shadow
 Strength: **Archives > Cabin ≈ Fieldwork > Crossroads** (lightest).
 
 ### My Cabin (moderate)
-- Personal drawer containing About, Now, Crafting Table, Recipes, Contact.
-- The existing CabinDirectory BECOMES the drawer: folder cards (01–05) with label plates and a status lamp inside a cabinet frame. Vertical index left, paper content right (Option A).
-- Recipes keep stained-card identity, re-anchored on the recipe-card paper primitive.
-- Keep terminal/CRT flavor (the room's computer). Cabinet frames wrap the directory only, NOT every panel.
+- Personal file stack containing Cabin, About, Now, Crafting Table, Recipes, Contact (`00`–`05`).
+- The implemented desktop index is 194px wide. Files use the shipped tab SVGs, paper-edge texture, number plates, 0–4px offsets, and a 4px active pull-forward treatment.
+- One shared label plate and one shared handle serve the whole index; handles are never repeated per file. Four tiny screw assets stay on the joined outer frame.
+- `/cabin` and `/cabin/about` use the warm `personal-graph-notebook` role, based on Fieldwork's faint graph primitive. Cream ruled paper is no longer the Cabin proof-of-concept surface.
+- Recipes keep their stained-card identity; no recipe-route migration is part of the current proof of concept.
+- Keep terminal/CRT flavor (the room's computer). Cabinet dressing stays local to the Cabin index and joined notebook object.
 
 ### Fieldwork (moderate)
 - Engineering binder + compact experiment-file index.
@@ -152,11 +154,11 @@ Strength: **Archives > Cabin ≈ Fieldwork > Crossroads** (lightest).
 ## 5. Implementation phases
 
 1. ✅ This spec + ASSET-SYSTEM-PLAN.md
-2. Build asset library in the hidden showcase (textures, icons, primitives, stamps, stickers, marks).
-3. Apply the drawer navigation ONLY to My Cabin (directory → cabinet drawer). Review visually.
+2. ✅ Build asset library in the hidden showcase (textures, icons, primitives, stamps, stickers, marks).
+3. ✅ Apply and visually validate the layered-folder navigation on My Cabin only.
 4. Adapt primitives for Archives (strongest treatment: landing cabinet + collected cards).
 5. Fieldwork binder variant (experiment file index + notebook marks).
-6. Crossroads switchboard variant (lightest).
+6. Crossroads switchboard variant (lightest cabinet treatment; the current surprise switchboard is content, not a cabinet migration).
 7. Whole-site cohesion + anti-repetition review.
 
-Phases 3+ are page migration and are NOT part of the asset-library task.
+Only phase 3 has moved into route implementation. Phases 4–7 remain future work.

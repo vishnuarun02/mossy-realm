@@ -6,3 +6,5 @@ export { Stamp, StampDate, StatusLabel } from './Stamp';
 export { default as FolderTab } from './FolderTab';
 export { Paperclip, TapeStrip, Pushpin, Staple } from './Attachments';
 export { default as SectionMark } from './SectionMark';
+export { default as StationerySurface } from './StationerySurface';
+export type { StationeryRole } from './StationerySurface';
