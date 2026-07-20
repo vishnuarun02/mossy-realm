@@ -1,145 +1,160 @@
-import PageHeader from '@/components/PageHeader';
-import Panel from '@/components/ui/Panel';
-import InsetPanel from '@/components/ui/InsetPanel';
-import Badge from '@/components/ui/Badge';
-import Metadata from '@/components/ui/Metadata';
+import Image from 'next/image';
 import TextLink from '@/components/ui/TextLink';
-import Divider from '@/components/ui/Divider';
+import InsetPanel from '@/components/ui/InsetPanel';
+import { PaperSheet, TapeStrip, Stamp } from '@/components/mossy-ui';
 import { operator } from '@/lib/cabin-content';
 
 /**
- * /cabin/about - the operator profile.
+ * /cabin/about - the operator's notebook page.
  *
- * Part ID card, part system-information screen, part scrapbook.
- * All content comes from lib/cabin-content.ts.
+ * One aged sheet: id card, the CRT spec screen taped on like a
+ * photo, interests and timeline in ink, one sticker and one stamp.
+ * The cabinet index says where we are; the page opens with its h1.
  */
 export default function AboutPage() {
   return (
-    <>
-      <PageHeader
-        breadcrumbs={[{ href: '/cabin', label: 'my cabin' }, { label: 'about' }]}
-        eyebrow="my cabin"
-        title="about"
-        deckAccent="~ the person behind the moss ~"
-      />
+    <div className="lg:-ml-4">
+      <PaperSheet variant="ruled" texture aged className="relative px-5 py-6 md:px-8 md:py-7">
+        {/* Taped frog sticker */}
+        <div className="absolute -top-3 right-6 rotate-2">
+          <TapeStrip className="-top-1 left-6 z-10" rotate={6} />
+          <Image
+            src="/assets/mossy-ui/stickers/frog-notebook.svg"
+            alt=""
+            width={68}
+            height={68}
+            unoptimized
+          />
+        </div>
 
-      <div className="space-y-5">
-        {/* ID card */}
-        <Panel title="{ operator id }" surface="alt">
+        <h1 className="font-heading text-page-title uppercase tracking-[0.08em]">
+          about
+        </h1>
+        <p className="mui-ink-whisper text-md mt-1">
+          ~ the person behind the moss ~
+        </p>
+
+        <hr className="mui-ink-rule" />
+
+        {/* Operator id card, ink on paper */}
+        <section aria-label="Operator profile" className="relative">
+          <div className="absolute top-0 right-0 hidden md:block">
+            <Stamp tone="amber" size="sm">property of mossyrealm</Stamp>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Photo frame - honest empty frame until a real photo exists */}
             <div
               className="
-                shrink-0 w-full sm:w-32 h-32
-                border-2 border-dashed border-border-structural
-                flex items-center justify-center text-center
-                px-2
+                shrink-0 w-full sm:w-28 h-28
+                border-2 border-dashed border-[rgba(43,42,30,0.45)]
+                flex items-center justify-center text-center px-2
+                rotate-[-1deg]
               "
             >
-              <p className="text-micro text-fg-secondary italic">
+              <p className="mui-ink-label text-micro normal-case tracking-normal">
                 operator photo
                 <br />
                 (not developed yet)
               </p>
             </div>
             <div className="flex-1 space-y-3">
-              <p className="text-fg-primary">{operator.intro}</p>
+              <p className="leading-[1.7em]">{operator.intro}</p>
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
                 {operator.quickFacts.map((fact) => (
-                  <div key={fact.label} className="flex gap-2 text-sm">
-                    <dt className="font-nav uppercase tracking-wider text-fg-secondary text-meta pt-0.5">
-                      {fact.label}:
-                    </dt>
-                    <dd className="text-fg-heading">{fact.value}</dd>
+                  <div key={fact.label} className="flex gap-2 text-sm leading-[1.7em]">
+                    <dt className="mui-ink-label text-micro pt-0.5">{fact.label}:</dt>
+                    <dd className="font-semibold">{fact.value}</dd>
                   </div>
                 ))}
               </dl>
             </div>
           </div>
-        </Panel>
+        </section>
 
-        {/* System information */}
-        <Panel title="{ system information }">
-          <InsetPanel padding="md" className="crt">
+        <hr className="mui-ink-rule" />
+
+        {/* The CRT spec screen, taped on like a photo */}
+        <section aria-label="System information">
+          <p className="mui-ink-label text-meta mb-2">system information</p>
+          <InsetPanel padding="md" className="crt rotate-[0.4deg]">
             <div className="terminal text-md space-y-0.5">
               <p>&gt; operator.sys --info</p>
               {operator.systemSpecs.map((spec) => (
                 <p key={spec.label}>
-                  &gt; {spec.label.padEnd(12, ' ')}: {spec.value}
+                  &gt; {spec.label.padEnd(12, ' ')}: {spec.value}
                 </p>
               ))}
               <p className="terminal-cursor">&gt; </p>
             </div>
           </InsetPanel>
-        </Panel>
+        </section>
 
-        {/* Interests */}
-        <Panel title="{ interests }">
-          <div className="space-y-3">
+        <hr className="mui-ink-rule" />
+
+        {/* Interests, in ink */}
+        <section aria-label="Interests">
+          <p className="mui-ink-label text-meta mb-2">interests</p>
+          <div className="space-y-2">
             {operator.interests.map((group) => (
-              <div key={group.group}>
-                <Metadata className="mb-1.5">
-                  <span className="text-border-structural">[ {group.group} ]</span>
-                </Metadata>
-                <div className="flex flex-wrap gap-1.5">
-                  {group.items.map((item) => (
-                    <Badge key={item} variant="pill">{item}</Badge>
-                  ))}
-                </div>
-              </div>
+              <p key={group.group} className="text-sm leading-[1.7em]">
+                <span className="font-semibold">[ {group.group} ]</span>{' '}
+                {group.items.join(' · ')}
+              </p>
             ))}
           </div>
-        </Panel>
+        </section>
+
+        <hr className="mui-ink-rule" />
 
         {/* Timeline */}
-        <Panel title="{ small timeline }">
-          <ul className="space-y-2">
+        <section aria-label="Timeline">
+          <p className="mui-ink-label text-meta mb-2">small timeline</p>
+          <ul className="space-y-1">
             {operator.timeline.map((entry, i) => (
-              <li key={i} className="flex gap-3 text-sm">
-                <span className="font-nav text-fg-heading w-12 shrink-0 text-right">
+              <li key={i} className="flex gap-3 text-sm leading-[1.7em]">
+                <span className="font-nav font-semibold w-10 shrink-0 text-right">
                   {entry.year}
                 </span>
-                <span className="text-border-structural" aria-hidden="true">•</span>
-                <span className="text-fg-primary">{entry.entry}</span>
+                <span aria-hidden="true" className="text-[rgba(43,42,30,0.5)]">•</span>
+                <span>{entry.entry}</span>
               </li>
             ))}
           </ul>
-        </Panel>
+        </section>
+
+        <hr className="mui-ink-rule" />
 
         {/* Currently + favorites */}
-        <Panel title="{ currently into }">
-          <p className="text-sm mb-3">
-            <span className="font-nav uppercase tracking-wider text-meta text-fg-secondary">
-              current obsession:
-            </span>{' '}
-            <span className="text-fg-heading">{operator.currentObsession}</span>
+        <section aria-label="Currently into">
+          <p className="text-sm leading-[1.7em]">
+            <span className="mui-ink-label text-micro">current obsession:</span>{' '}
+            <span className="font-semibold">{operator.currentObsession}</span>
           </p>
-          <Divider tone="subtle" className="my-3" />
-          <p className="font-nav uppercase tracking-wider text-meta text-fg-secondary mb-2">
-            favorite things:
-          </p>
-          <ul className="space-y-1.5 text-sm">
+          <p className="mui-ink-label text-micro mt-3 mb-1.5">favorite things:</p>
+          <ul className="space-y-1">
             {operator.favorites.map((fav) => (
-              <li key={fav} className="flex gap-2">
-                <span className="text-border-structural" aria-hidden="true">✶</span>
-                <span className="text-fg-primary">{fav}</span>
+              <li key={fav} className="flex gap-2 text-sm leading-[1.7em]">
+                <span aria-hidden="true" className="text-[rgba(43,42,30,0.6)]">✶</span>
+                <span>{fav}</span>
               </li>
             ))}
           </ul>
-        </Panel>
+        </section>
 
-        {/* Realm links */}
-        <Panel title="{ elsewhere in the realm }">
-          <ul className="space-y-2 text-sm">
+        <hr className="mui-ink-rule" />
+
+        {/* Elsewhere */}
+        <section aria-label="Elsewhere in the realm">
+          <p className="mui-ink-label text-meta mb-2">elsewhere</p>
+          <ul className="space-y-1.5 text-sm">
             {operator.realmLinks.map((link) => (
-              <li key={link.href}>
-                <TextLink href={link.href} arrow>{link.label}</TextLink>
-                <span className="text-fg-secondary"> — {link.note}</span>
+              <li key={link.href} className="leading-[1.7em]">
+                <TextLink href={link.href} arrow className="font-semibold">{link.label}</TextLink>
+                <span> — {link.note}</span>
               </li>
             ))}
           </ul>
-        </Panel>
-      </div>
-    </>
+        </section>
+      </PaperSheet>
+    </div>
   );
 }

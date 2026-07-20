@@ -377,3 +377,51 @@
   border-bottom: none;
   border-radius: 2px 2px 0 0;
 }
+
+/* ─────────────────────────────────────────────
+   PAPER INK: text and links on paper surfaces.
+   Paper-scoped only; nothing global changes.
+   ───────────────────────────────────────────── */
+
+.mui-paper h1,
+.mui-paper h2,
+.mui-paper h3,
+.mui-paper h4 {
+  color: var(--text-on-paper);
+}
+
+/* Links on paper: darker forest green for readable contrast */
+.mui-paper a {
+  color: #2d6a35;
+  text-shadow: none;
+}
+
+.mui-paper a:hover {
+  color: #3a8244;
+  text-shadow: none;
+}
+
+.mui-paper a:focus-visible {
+  outline-color: #2d6a35;
+}
+
+/* Handwritten accent line on paper */
+.mui-ink-whisper {
+  font-family: var(--font-accent), 'Mystery Quest', cursive;
+  color: rgba(43, 42, 30, 0.85);
+}
+
+/* Meta/label ink on paper */
+.mui-ink-label {
+  font-family: var(--font-nav), 'Cormorant', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(43, 42, 30, 0.65);
+}
+
+/* Ink divider on paper */
+.mui-ink-rule {
+  border: none;
+  border-top: 1px dashed rgba(43, 42, 30, 0.35);
+  margin: 1rem 0;
+}
