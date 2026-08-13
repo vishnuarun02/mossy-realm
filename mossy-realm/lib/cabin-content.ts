@@ -49,7 +49,7 @@ export interface TimelineEntry {
 
 export const operator = {
   intro:
-    'I work on infrastructure and developer productivity at Shopify, where I harden CI pipelines, reduce flaky tests at scale, and build internal tools for engineers. My degree says mechanical engineering, but the road here ran through manufacturing, rocket motors, data science, and computer vision. So why is a mechanical engineer working on core software infrastructure? The materials changed from metal and motors to code and pipelines. The job is still systems thinking, failure analysis, and making complicated things reliable.',
+    'I work on infrastructure and developer productivity at Shopify, mostly around CI reliability, flaky tests, and internal tooling. Outside work, I\'m into mechanical systems, electronics, philosophy, and techno music. I also build small software projects, take things apart, and maintain this strange corner of the internet.',
 
   quickFacts: [
     { label: 'name', value: 'vishnu' },
