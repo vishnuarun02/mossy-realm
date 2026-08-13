@@ -49,21 +49,23 @@ export interface TimelineEntry {
 
 export const operator = {
   intro:
-    'Mechanical engineer by training, data person by trade. I keep other people\'s builds green for a living, and sometimes I get to build my own. This is where mine live.',
+    'I work on infrastructure and developer productivity at Shopify, where I harden CI pipelines, reduce flaky tests at scale, and build internal tools for engineers. My degree says mechanical engineering, but the road here ran through manufacturing, rocket motors, data science, and computer vision. So why is a mechanical engineer working on core software infrastructure? The materials changed from metal and motors to code and pipelines. The job is still systems thinking, failure analysis, and making complicated things reliable.',
 
   quickFacts: [
     { label: 'name', value: 'vishnu' },
+    { label: 'day work', value: 'developer productivity' },
+    { label: 'focus', value: 'CI + infrastructure' },
+    { label: 'where', value: 'Shopify' },
     { label: 'training', value: 'mechanical engineering' },
-    { label: 'day work', value: 'data + infrastructure' },
-    { label: 'side work', value: 'this site, mostly' },
     { label: 'github', value: 'vishnuarun02' },
   ] as QuickFact[],
 
   systemSpecs: [
-    { label: 'os', value: 'runs on coffee and curiosity' },
+    { label: 'role', value: 'infrastructure / developer productivity @ Shopify' },
     { label: 'languages', value: 'python, typescript, ruby' },
+    { label: 'systems', value: 'CI pipelines, build systems, internal tooling' },
+    { label: 'prior art', value: 'manufacturing, rocket motors, computer vision' },
     { label: 'hardware', value: 'opens things not meant to be opened' },
-    { label: 'uptime', value: 'interrupted by sleep' },
     { label: 'known issue', value: 'starts more than finishes' },
   ] as QuickFact[],
 
@@ -75,10 +77,10 @@ export const operator = {
   ] as InterestGroup[],
 
   timeline: [
-    { year: 'then', entry: 'formed metal for a living. roll forming teaches you tolerances.' },
-    { year: 'then', entry: 'worked on rocket motors. yes, carefully.' },
-    { year: 'then', entry: 'taught models to find targets from drones.' },
-    { year: 'now', entry: 'keeps builds green and pipelines honest.' },
+    { year: 'then', entry: 'studied mechanical engineering and learned to think in systems, tolerances, and failure modes.' },
+    { year: 'then', entry: 'worked in roll forming and on rocket motors, where small mistakes become very physical.' },
+    { year: 'next', entry: 'moved into data science and computer vision. python became another shop tool.' },
+    { year: 'now', entry: 'builds CI infrastructure and developer tooling at Shopify.' },
     { year: '2026', entry: 'built this site instead of sleeping.' },
   ] as TimelineEntry[],
 

@@ -597,7 +597,8 @@
 
 .profileCopy {
   min-width: 0;
-  padding-right: 8.5rem;
+  margin: 0;
+  padding-top: 2.2rem;
 }
 
 .profileStamp {
@@ -825,7 +826,7 @@
   }
 
   .profileCopy {
-    padding-right: 0;
+    padding-top: 0;
   }
 
   .profileStamp {
